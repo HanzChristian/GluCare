@@ -50,13 +50,15 @@
                     <navigationItem key="navigationItem" id="kry-s1-Xhi">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Jqs-eR-OaQ">
                             <connections>
-                                <segue destination="pbL-BG-HML" kind="presentation" id="dTj-z0-vrt"/>
+                                <action selector="didTapBtn:" destination="BYZ-38-t0r" id="k28-qx-8ji"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AddMedicationBtn" destination="Jqs-eR-OaQ" id="KWS-cw-Bld"/>
                         <outlet property="calendar" destination="9d8-OB-Mc0" id="Xf4-jx-KiK"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
+                        <segue destination="nHD-UU-dzJ" kind="presentation" identifier="AddMedication" id="rgF-Lf-acH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,13 +122,28 @@
             </objects>
             <point key="canvasLocation" x="-192" y="918"/>
         </scene>
-        <!--Add Medication-->
-        <scene sceneID="gPC-PV-74F">
+        <!--Navigation Controller-->
+        <scene sceneID="2Fm-0G-TEh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Add Medication" id="pbL-BG-HML" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fkm-9J-ls6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbR-wW-ame" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BlL-bp-mHc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="rUv-XO-2gr">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
             </objects>
-            <point key="canvasLocation" x="2473.8461538461538" y="70.379146919431278"/>
+            <point key="canvasLocation" x="2603" y="-827"/>
+        </scene>
+        <!--AddMedicationViewController-->
+        <scene sceneID="Km6-JM-Bir">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AddMedicationViewController" storyboardName="Add Medication" referencedIdentifier="AddMedicationViewController" id="nHD-UU-dzJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jB-Nt-sex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2602" y="71"/>
         </scene>
     </scenes>
     <resources>
