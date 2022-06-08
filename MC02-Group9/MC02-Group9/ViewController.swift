@@ -12,6 +12,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
     
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var AddMedicationBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -30,6 +32,11 @@ class ViewController: UIViewController, FSCalendarDelegate {
         let dateSelected = formatter.string(from: date)
         print("\(dateSelected)")
     }
+    
+    @IBAction func didTapBtn(_ sender: Any) {
+        self.performSegue(withIdentifier: "AddMedication", sender: self)
+    }
+    
 }
 
 extension ViewController:UITableViewDelegate{
