@@ -18,12 +18,12 @@
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
-		F0CBC5602851F8B700D638F7 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55A2851F8B700D638F7 /* Medicine+CoreDataProperties.swift */; };
-		F0CBC5612851F8B700D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55B2851F8B700D638F7 /* Medicine_Time+CoreDataProperties.swift */; };
-		F0CBC5622851F8B700D638F7 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55C2851F8B700D638F7 /* Log+CoreDataClass.swift */; };
-		F0CBC5632851F8B700D638F7 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55D2851F8B700D638F7 /* Log+CoreDataProperties.swift */; };
-		F0CBC5642851F8B700D638F7 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55E2851F8B700D638F7 /* Medicine+CoreDataClass.swift */; };
-		F0CBC5652851F8B700D638F7 /* Medicine_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC55F2851F8B700D638F7 /* Medicine_Time+CoreDataClass.swift */; };
+		F0CBC56C2851F95B00D638F7 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */; };
+		F0CBC56D2851F95B00D638F7 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */; };
+		F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5682851F95B00D638F7 /* Medicine+CoreDataClass.swift */; };
+		F0CBC56F2851F95B00D638F7 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5692851F95B00D638F7 /* Medicine+CoreDataProperties.swift */; };
+		F0CBC5702851F95B00D638F7 /* Medicine_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC56A2851F95B00D638F7 /* Medicine_Time+CoreDataClass.swift */; };
+		F0CBC5712851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC56B2851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +42,12 @@
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEF7C5711239B2CAE28BCED /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
 		851B18D1E2403DC63A822D5A /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
-		F0CBC55A2851F8B700D638F7 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0CBC55B2851F8B700D638F7 /* Medicine_Time+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0CBC55C2851F8B700D638F7 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F0CBC55D2851F8B700D638F7 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0CBC55E2851F8B700D638F7 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F0CBC55F2851F8B700D638F7 /* Medicine_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F0CBC5682851F95B00D638F7 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F0CBC5692851F95B00D638F7 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0CBC56A2851F95B00D638F7 /* Medicine_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F0CBC56B2851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +119,12 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F0CBC55C2851F8B700D638F7 /* Log+CoreDataClass.swift */,
-				F0CBC55D2851F8B700D638F7 /* Log+CoreDataProperties.swift */,
-				F0CBC55E2851F8B700D638F7 /* Medicine+CoreDataClass.swift */,
-				F0CBC55A2851F8B700D638F7 /* Medicine+CoreDataProperties.swift */,
-				F0CBC55F2851F8B700D638F7 /* Medicine_Time+CoreDataClass.swift */,
-				F0CBC55B2851F8B700D638F7 /* Medicine_Time+CoreDataProperties.swift */,
+				F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */,
+				F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */,
+				F0CBC5682851F95B00D638F7 /* Medicine+CoreDataClass.swift */,
+				F0CBC5692851F95B00D638F7 /* Medicine+CoreDataProperties.swift */,
+				F0CBC56A2851F95B00D638F7 /* Medicine_Time+CoreDataClass.swift */,
+				F0CBC56B2851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,17 +245,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0CBC5612851F8B700D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */,
-				F0CBC5622851F8B700D638F7 /* Log+CoreDataClass.swift in Sources */,
+				F0CBC5702851F95B00D638F7 /* Medicine_Time+CoreDataClass.swift in Sources */,
+				F0CBC56D2851F95B00D638F7 /* Log+CoreDataClass.swift in Sources */,
 				158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */,
-				F0CBC5602851F8B700D638F7 /* Medicine+CoreDataProperties.swift in Sources */,
-				F0CBC5652851F8B700D638F7 /* Medicine_Time+CoreDataClass.swift in Sources */,
-				F0CBC5642851F8B700D638F7 /* Medicine+CoreDataClass.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
-				F0CBC5632851F8B700D638F7 /* Log+CoreDataProperties.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
+				F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */,
+				F0CBC5712851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */,
+				F0CBC56F2851F95B00D638F7 /* Medicine+CoreDataProperties.swift in Sources */,
+				F0CBC56C2851F95B00D638F7 /* Log+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
