@@ -15,6 +15,7 @@
 		158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158B02DF284FAD0F005254A0 /* Assets.xcassets */; };
 		158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */; };
 		15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */; };
+		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		158B02E2284FAD0F005254A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158B02E4284FAD0F005254A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
+		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEF7C5711239B2CAE28BCED /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				158B02E4284FAD0F005254A0 /* Info.plist */,
 				158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
+				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 			);
 			path = "MC02-Group9";
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
+				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
