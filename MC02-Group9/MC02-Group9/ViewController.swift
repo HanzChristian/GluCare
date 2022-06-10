@@ -193,7 +193,10 @@ class ViewController: UIViewController, FSCalendarDelegate {
     }
     
     @IBAction func didTapBtn(_ sender: Any) {
-        let vc = AddMedicationViewController()
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddMedicationViewController") as? AddMedicationViewController else {
+            print("Error")
+            return
+        }
         
         let navVC = UINavigationController(rootViewController: vc)
         
