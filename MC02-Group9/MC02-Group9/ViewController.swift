@@ -97,7 +97,11 @@ class ViewController: UIViewController, FSCalendarDelegate {
     }
     
     @IBAction func didTapBtn(_ sender: Any) {
-        self.performSegue(withIdentifier: "AddMedication", sender: self)
+        let vc = AddMedicationViewController()
+        
+        let navVC = UINavigationController(rootViewController: vc)
+        
+        present(navVC, animated: true)
     }
     
 }

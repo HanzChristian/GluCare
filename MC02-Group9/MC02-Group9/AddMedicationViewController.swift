@@ -11,8 +11,14 @@ class AddMedicationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add Medication"
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .systemBackground
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissSelf))
+    }
+    
+    @objc private func dismissSelf(){
+        dismiss(animated: true, completion: nil)
     }
     
 }
