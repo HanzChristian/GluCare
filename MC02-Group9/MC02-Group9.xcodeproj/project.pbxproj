@@ -18,6 +18,8 @@
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
+		2C8E9B732853E03A0026FDF5 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* TextFieldTableViewCell.swift */; };
+		2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */; };
 		F0CBC56C2851F95B00D638F7 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */; };
 		F0CBC56D2851F95B00D638F7 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */; };
 		F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5682851F95B00D638F7 /* Medicine+CoreDataClass.swift */; };
@@ -39,6 +41,8 @@
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
+		2C8E9B712853E03A0026FDF5 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEF7C5711239B2CAE28BCED /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
 		851B18D1E2403DC63A822D5A /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				F0CBC5352851F6E800D638F7 /* Model */,
-				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
 				158B02D3284FAD0D005254A0 /* AppDelegate.swift */,
 				158B02D5284FAD0D005254A0 /* SceneDelegate.swift */,
 				158B02D7284FAD0D005254A0 /* ViewController.swift */,
@@ -94,9 +97,20 @@
 				158B02E4284FAD0F005254A0 /* Info.plist */,
 				158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
+				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
+				2C8E9B702853E0220026FDF5 /* AddMedCell */,
 			);
 			path = "MC02-Group9";
+			sourceTree = "<group>";
+		};
+		2C8E9B702853E0220026FDF5 /* AddMedCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C8E9B712853E03A0026FDF5 /* TextFieldTableViewCell.swift */,
+				2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */,
+			);
+			path = AddMedCell;
 			sourceTree = "<group>";
 		};
 		7E2D94B0B3A17586F1FB5E4E /* Frameworks */ = {
@@ -191,6 +205,7 @@
 			files = (
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
+				2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 			);
@@ -251,6 +266,7 @@
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
+				2C8E9B732853E03A0026FDF5 /* TextFieldTableViewCell.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */,
 				F0CBC5712851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */,

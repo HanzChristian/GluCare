@@ -42,7 +42,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="q1t-eh-CnE"/>
                     <connections>
-                        <outlet property="tableView" destination="Gcn-oo-jMz" id="XSD-rk-68b"/>
+                        <outlet property="tableView" destination="Gcn-oo-jMz" id="qIy-eK-QNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMt-cM-yPS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
