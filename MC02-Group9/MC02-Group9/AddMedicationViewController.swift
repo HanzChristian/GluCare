@@ -14,10 +14,20 @@ class AddMedicationViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissSelf))
+        setNavItem()
+    }
+    
+    private func setNavItem(){
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.title = "Tambah Jadwal Obat"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(dismissSelf))
     }
     
     @objc private func dismissSelf(){
+        // Tambahin logic save disini
+        
         dismiss(animated: true, completion: nil)
     }
     
