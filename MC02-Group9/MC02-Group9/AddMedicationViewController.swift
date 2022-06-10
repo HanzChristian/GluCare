@@ -7,18 +7,25 @@
 
 import UIKit
 
-class AddMedicationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddMedicationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate {
     @IBOutlet var tableView: UITableView!
+    //var pickerView = UIPickerView()
     
     let cellTitle = ["Nama Obat", "Waktu Minum"]
     let textFieldShadow = ["Misal: Metformin 250g", "Misal: sebelum makan"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nibName = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "cell1")
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        let nibName = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "textFieldTableViewCell")
+        let nibNamePicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
+        tableView.register(nibNamePicker, forCellReuseIdentifier: "pickerTableViewCell")
+        
         
         
         view.backgroundColor = .systemBackground
@@ -26,25 +33,35 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         setNavItem()
     }
     
+    //tableviewfunction
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellTitle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TextFieldTableViewCell
-        cell.cell1NameLabel.text = cellTitle[indexPath.row]
-        cell.cell1TextField?.placeholder = textFieldShadow[indexPath.row]
-        cell.cell1TextField.isSecureTextEntry = true
-        return cell
+        //logic if-else mod2
+        if (indexPath.item % 2 == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
+            cell.cell1NameLabel.text = cellTitle[indexPath.row]
+            cell.cell1TextField?.placeholder = textFieldShadow[indexPath.row]
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pickerTableViewCell", for: indexPath) as! PickerTableViewCell
+            cell.cell2NameLabel.text = cellTitle[indexPath.row]
+            return cell
+        }
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90
+        120
     }
-    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    //end of tableview function
+    
+    //pickerview function
+    
+    //end of pickerview function
     
     
     private func setNavItem(){
