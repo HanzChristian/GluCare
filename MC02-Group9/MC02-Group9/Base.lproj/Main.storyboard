@@ -91,6 +91,7 @@
                     <connections>
                         <outlet property="AddMedicationBtn" destination="Jqs-eR-OaQ" id="KWS-cw-Bld"/>
                         <outlet property="calendar" destination="9d8-OB-Mc0" id="Xf4-jx-KiK"/>
+                        <outlet property="calendarHeightConstraint" destination="MGR-5f-c3D" id="QZD-Za-jVB"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
                         <segue destination="nHD-UU-dzJ" kind="show" identifier="AddMedication" id="rgF-Lf-acH"/>
                     </connections>
