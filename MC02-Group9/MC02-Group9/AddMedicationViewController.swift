@@ -11,8 +11,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     //var pickerView = UIPickerView()
     
-    let cellTitle = ["Nama Obat", "Waktu Minum"]
-    let textFieldShadow = ["Misal: Metformin 250g", "Misal: sebelum makan"]
+    let cellTitle = ["Nama Obat", "Waktu Minum", "Frekuensi Minum"]
+    let textFieldShadow = ["Misal: Metformin 250g", "Misal: sebelum makan", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(nibName, forCellReuseIdentifier: "textFieldTableViewCell")
         let nibNamePicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
         tableView.register(nibNamePicker, forCellReuseIdentifier: "pickerTableViewCell")
+        let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
+        tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
         
         
         
@@ -40,16 +42,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2
-        if (indexPath.item % 2 == 0) {
+        if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
             cell.cell1NameLabel.text = cellTitle[indexPath.row]
             cell.cell1TextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
-        } else {
+        } else if (indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "pickerTableViewCell", for: indexPath) as! PickerTableViewCell
             cell.cell2NameLabel.text = cellTitle[indexPath.row]
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell
+            cell.lblFrequency.text = cellTitle[indexPath.row]
+            return cell
         }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120

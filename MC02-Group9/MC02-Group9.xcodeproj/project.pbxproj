@@ -17,6 +17,8 @@
 		15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */; };
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
+		1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */; };
+		1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C8E9B732853E03A0026FDF5 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* TextFieldTableViewCell.swift */; };
 		2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */; };
@@ -43,6 +45,8 @@
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
+		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
+		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
 		2C8E9B712853E03A0026FDF5 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */,
 				2C8E9B752853E5010026FDF5 /* PickerTableViewCell.swift */,
 				2C8E9B762853E5010026FDF5 /* PickerTableViewCell.xib */,
+				1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */,
+				1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */,
 			);
 			path = AddMedCell;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 				2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
+				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +284,7 @@
 				2C8E9B772853E5010026FDF5 /* PickerTableViewCell.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */,
+				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
 				F0CBC5712851F95B00D638F7 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				F0CBC56F2851F95B00D638F7 /* Medicine+CoreDataProperties.swift in Sources */,
 				F0CBC56C2851F95B00D638F7 /* Log+CoreDataProperties.swift in Sources */,
