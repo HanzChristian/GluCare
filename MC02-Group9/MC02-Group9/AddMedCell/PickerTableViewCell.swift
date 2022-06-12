@@ -36,6 +36,9 @@ class PickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return mealTime[row]
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // ambil data disini
+    }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         40
     }

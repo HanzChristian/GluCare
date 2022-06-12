@@ -31,6 +31,9 @@ class FrequencyPickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIP
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return frequency[row] // Data for each component
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // ambil data disini
+    }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         40
     }
