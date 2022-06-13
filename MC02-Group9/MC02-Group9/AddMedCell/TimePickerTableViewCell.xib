@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="KGk-i7-Jjw" customClass="TimePickerTableViewCell" customModule="MC02_Group9" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnT-zc-jbf">
+                        <rect key="frame" x="16" y="30" width="170" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="170" id="FLU-78-Omp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5x-Sl-rZN">
+                        <rect key="frame" x="217" y="23" width="87" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="87" id="wIZ-z1-F2t"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CnT-zc-jbf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="2Go-7m-IK8"/>
+                    <constraint firstItem="g5x-Sl-rZN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="8aj-nu-1aQ"/>
+                    <constraint firstAttribute="bottom" secondItem="CnT-zc-jbf" secondAttribute="bottom" constant="30" id="MSv-lU-OAv"/>
+                    <constraint firstAttribute="bottom" secondItem="g5x-Sl-rZN" secondAttribute="bottom" constant="24" id="NkT-hY-vAB"/>
+                    <constraint firstItem="g5x-Sl-rZN" firstAttribute="leading" secondItem="CnT-zc-jbf" secondAttribute="trailing" constant="31" id="chf-sU-mVC"/>
+                    <constraint firstItem="CnT-zc-jbf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fyq-OB-vRe"/>
+                    <constraint firstAttribute="trailing" secondItem="g5x-Sl-rZN" secondAttribute="trailing" constant="16" id="mVR-Ue-2hQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnTimePicker" destination="g5x-Sl-rZN" id="iSQ-yd-BPO"/>
+                <outlet property="lblTimePicker" destination="CnT-zc-jbf" id="6Km-VK-uvU"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="106.13839285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

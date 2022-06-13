@@ -20,15 +20,17 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        // Cell get medicine name
         let nibName = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "textFieldTableViewCell")
+        
+        // Cell get waktu minum
         let nibNamePicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
         tableView.register(nibNamePicker, forCellReuseIdentifier: "pickerTableViewCell")
+        
+        // Cell get frequency
         let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
         tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
-        
-        
         
         view.backgroundColor = .systemBackground
         
