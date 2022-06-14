@@ -13,7 +13,7 @@ class ViewControllerTVC: UITableViewCell {
     @IBOutlet weak var cellImgView: UIImageView!
     @IBOutlet weak var medLbl: UILabel!
     @IBOutlet weak var freqLbl: UILabel!
-    
+    @IBOutlet weak var timeLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
