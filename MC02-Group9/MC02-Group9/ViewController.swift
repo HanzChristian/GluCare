@@ -28,7 +28,6 @@ class ViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var AddMedicationBtn: UIBarButtonItem!
-    
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     var items:[Medicine_Time]?
@@ -208,7 +207,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
 
 extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 75
+            return 64
         }
         func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
@@ -286,9 +285,10 @@ extension ViewController:UITableViewDataSource{
             let medicine_time = self.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
             cell.freqLbl.text = medicine_time.time
+            cell.timeLbl.text = medicine_time.time
             
-            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
-            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
+//            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+//            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
             
             cell.tintColor = UIColor.blue
             
