@@ -24,6 +24,8 @@
 		2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* TextFieldTableViewCell.xib */; };
 		2C8E9B772853E5010026FDF5 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* PickerTableViewCell.swift */; };
 		2C8E9B782853E5010026FDF5 /* PickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* PickerTableViewCell.xib */; };
+		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
+		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
 		F0CBC56C2851F95B00D638F7 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */; };
 		F0CBC56D2851F95B00D638F7 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */; };
 		F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBC5682851F95B00D638F7 /* Medicine+CoreDataClass.swift */; };
@@ -53,6 +55,8 @@
 		2C8E9B762853E5010026FDF5 /* PickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTableViewCell.xib; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEF7C5711239B2CAE28BCED /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
+		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
+		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
 		851B18D1E2403DC63A822D5A /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 		F0CBC5662851F95B00D638F7 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F0CBC5672851F95B00D638F7 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F0CBC5352851F6E800D638F7 /* Model */,
+				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
 				158B02D3284FAD0D005254A0 /* AppDelegate.swift */,
 				158B02D5284FAD0D005254A0 /* SceneDelegate.swift */,
 				158B02D7284FAD0D005254A0 /* ViewController.swift */,
@@ -108,6 +113,7 @@
 				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 				2C8E9B702853E0220026FDF5 /* AddMedCell */,
+				6EDAF414285878900099213F /* profilePageViewController.swift */,
 			);
 			path = "MC02-Group9";
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				2C8E9B782853E5010026FDF5 /* PickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
+				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
 				2C8E9B742853E03A0026FDF5 /* TextFieldTableViewCell.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
@@ -281,6 +288,7 @@
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				2C8E9B732853E03A0026FDF5 /* TextFieldTableViewCell.swift in Sources */,
+				6EDAF415285878900099213F /* profilePageViewController.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* PickerTableViewCell.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				F0CBC56E2851F95B00D638F7 /* Medicine+CoreDataClass.swift in Sources */,
@@ -309,6 +317,14 @@
 				158B02E2284FAD0F005254A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6EDAF40F2858779F0099213F /* profilePage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6EDAF4102858779F0099213F /* Base */,
+			);
+			name = profilePage.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
