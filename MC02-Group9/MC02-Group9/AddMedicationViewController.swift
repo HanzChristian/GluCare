@@ -28,9 +28,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         let nibNamePicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
         tableView.register(nibNamePicker, forCellReuseIdentifier: "pickerTableViewCell")
         
-        // Cell get frequency
-        let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
-        tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
+        // Cell get time
+        let nibTimePicker = UINib(nibName: "TimePickerTableViewCell", bundle: nil)
+        tableView.register(nibTimePicker, forCellReuseIdentifier: "timePickerTableViewCell")
         
         view.backgroundColor = .systemBackground
         
@@ -54,8 +54,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             cell.cell2NameLabel.text = cellTitle[indexPath.row]
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell
-            cell.lblFrequency.text = cellTitle[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "timePickerTableViewCell", for: indexPath) as! TimePickerTableViewCell
+            cell.lblTimePicker.text = "Jadwal 1"
+            cell.delegate = self // To add super view to cell
             return cell
         }
         
