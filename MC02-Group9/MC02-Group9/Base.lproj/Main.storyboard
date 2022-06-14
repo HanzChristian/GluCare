@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FontsFree-Net-SF-Pro-Rounded-Regular.ttf">
+            <string>SFRounded-Ultralight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -30,46 +35,71 @@
                                     <constraint firstAttribute="height" constant="528" id="8MC-pl-REP"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="75" id="LEf-ax-wNX" customClass="ViewControllerTVC" customModule="MC02_Group9">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="64" id="LEf-ax-wNX" customClass="ViewControllerTVC" customModule="MC02_Group9">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LEf-ax-wNX" id="4fo-tE-a4Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-Gh-sSb">
-                                                    <rect key="frame" x="20" y="6" width="350" height="64"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-Gh-sSb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mediastick" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5a-W3-fcD">
-                                                            <rect key="frame" x="8" y="8" width="58" height="48"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sebelum makan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
+                                                            <rect key="frame" x="89.666666666666686" y="40" width="79.333333333333314" height="14.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="12"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panadol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-hX-q09">
+                                                            <rect key="frame" x="89.666666666666686" y="15" width="67.333333333333314" height="24"/>
+                                                            <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-qP-zfy">
+                                                            <rect key="frame" x="15.999999999999996" y="24" width="53.666666666666657" height="24"/>
+                                                            <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
+                                                            <color key="textColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pagi" translatesAutoresizingMaskIntoConstraints="NO" id="g5a-W3-fcD">
+                                                            <rect key="frame" x="290" y="0.0" width="100" height="64"/>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="64" id="AHp-L1-5jr"/>
+                                                            </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="take 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
-                                                            <rect key="frame" x="74" y="35" width="268" height="16"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Panadol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-hX-q09">
-                                                            <rect key="frame" x="74" y="8" width="268" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="tintColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="g5a-W3-fcD" secondAttribute="bottom" id="9Wt-nb-ufk"/>
+                                                        <constraint firstItem="gAs-qP-zfy" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="24" id="DSq-Zo-g3m"/>
+                                                        <constraint firstAttribute="trailing" secondItem="g5a-W3-fcD" secondAttribute="trailing" id="EvA-3O-9Id"/>
+                                                        <constraint firstItem="g5a-W3-fcD" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" id="NVB-Uy-Df3"/>
+                                                        <constraint firstItem="WsK-c3-EBv" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="Run-n4-GmO"/>
+                                                        <constraint firstItem="gAs-qP-zfy" firstAttribute="leading" secondItem="xhM-Gh-sSb" secondAttribute="leading" constant="16" id="UDo-5h-5jT"/>
+                                                        <constraint firstAttribute="height" constant="64" id="h8P-Id-itS"/>
+                                                        <constraint firstItem="WsK-c3-EBv" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="40" id="nif-kB-Sn5"/>
+                                                        <constraint firstItem="uj6-hX-q09" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="15" id="nv5-cZ-8PK"/>
+                                                        <constraint firstItem="uj6-hX-q09" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="xbd-AZ-tzv"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="xhM-Gh-sSb" firstAttribute="top" secondItem="4fo-tE-a4Z" secondAttribute="top" id="Na5-3l-qN1"/>
+                                                <constraint firstAttribute="trailing" secondItem="xhM-Gh-sSb" secondAttribute="trailing" id="vdC-GV-P4u"/>
+                                                <constraint firstItem="xhM-Gh-sSb" firstAttribute="leading" secondItem="4fo-tE-a4Z" secondAttribute="leading" id="y8z-0Z-dQm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellImgView" destination="g5a-W3-fcD" id="oka-qz-11O"/>
                                             <outlet property="cellView" destination="xhM-Gh-sSb" id="2yZ-mN-qAl"/>
                                             <outlet property="freqLbl" destination="WsK-c3-EBv" id="cO0-hE-5Hp"/>
                                             <outlet property="medLbl" destination="uj6-hX-q09" id="6Tg-OZ-u4A"/>
+                                            <outlet property="timeLbl" destination="gAs-qP-zfy" id="HrY-7L-Uur"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -186,12 +216,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mediastick" catalog="system" width="128" height="53"/>
+        <image name="Pagi" width="100" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
