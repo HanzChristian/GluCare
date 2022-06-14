@@ -3,22 +3,64 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Page View Controller-->
+        <!--Obat Kamu-->
         <scene sceneID="FPJ-Td-AgY">
             <objects>
-                <viewController id="ZlH-Jp-9ts" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Obat Kamu" id="ZlH-Jp-9ts" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WiY-Ou-T0A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9">
+                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DDo-QP-4zk">
+                                        <rect key="frame" x="20" y="32" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DDo-QP-4zk" id="7i5-s0-bQl">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZlH-Jp-9ts" id="ohc-9X-M1R"/>
+                                    <outlet property="delegate" destination="ZlH-Jp-9ts" id="XCS-Gh-Dd3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bt7-B2-tKc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a10-JW-pM9" firstAttribute="leading" secondItem="bt7-B2-tKc" secondAttribute="leading" id="J8b-oq-fV0"/>
+                            <constraint firstItem="bt7-B2-tKc" firstAttribute="bottom" secondItem="a10-JW-pM9" secondAttribute="bottom" id="YC0-BP-XmR"/>
+                            <constraint firstItem="a10-JW-pM9" firstAttribute="top" secondItem="bt7-B2-tKc" secondAttribute="top" constant="10" id="blR-6v-fU0"/>
+                            <constraint firstItem="bt7-B2-tKc" firstAttribute="trailing" secondItem="a10-JW-pM9" secondAttribute="trailing" id="e0L-at-TM5"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HRj-FI-p68"/>
+                    <navigationItem key="navigationItem" title="Obat Kamu" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HRj-FI-p68">
+                        <barButtonItem key="leftBarButtonItem" title="Ubah" id="Fa1-ec-V5z">
+                            <connections>
+                                <action selector="editMedicationPressed:" destination="ZlH-Jp-9ts" id="MJW-vf-uj6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="1RY-bC-7ii">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <action selector="btnClicked:" destination="ZlH-Jp-9ts" id="34c-Lc-3v3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="obatKamuTableView" destination="a10-JW-pM9" id="aRe-j7-09D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucx-rd-LzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,11 +69,14 @@
         <!--Profile-->
         <scene sceneID="WbI-tm-Rp3">
             <objects>
-                <navigationController title="Profile" automaticallyAdjustsScrollViewInsets="NO" id="zoA-Gj-THi" sceneMemberID="viewController">
+                <navigationController title="Profile" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zoA-Gj-THi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6b5-VE-XJn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6b5-VE-XJn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -44,6 +89,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
