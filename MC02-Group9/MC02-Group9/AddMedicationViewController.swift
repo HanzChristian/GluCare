@@ -12,7 +12,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     //var pickerView = UIPickerView()
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Frekuensi Minum"]
-    let textFieldShadow = ["Misal: Metformin 250g", "Misal: sebelum makan", "", ""]
+    let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         
         
-        let nibName = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "textFieldTableViewCell")
-        let nibNamePicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
-        tableView.register(nibNamePicker, forCellReuseIdentifier: "pickerTableViewCell")
+        let nibName = UINib(nibName: "MedNameTextFieldTVC", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "medNameTextFieldTVC")
+        let nibNamePicker = UINib(nibName: "MealTimePickerTableViewCell", bundle: nil)
+        tableView.register(nibNamePicker, forCellReuseIdentifier: "mealTimePickerTableViewCell")
         let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
         tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
         
@@ -43,13 +43,14 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
-            cell.cell1NameLabel.text = cellTitle[indexPath.row]
-            cell.cell1TextField?.placeholder = textFieldShadow[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
+            cell.medNameLabel.text = cellTitle[indexPath.row]
+            cell.medNameTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 1){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "pickerTableViewCell", for: indexPath) as! PickerTableViewCell
-            cell.cell2NameLabel.text = cellTitle[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
+            cell.mealTimeLabel.text = cellTitle[indexPath.row]
+            cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell

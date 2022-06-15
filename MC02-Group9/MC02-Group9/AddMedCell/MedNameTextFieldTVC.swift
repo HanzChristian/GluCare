@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell {
+class MedNameTextFieldTVC: UITableViewCell {
     
-    @IBOutlet var cell1NameLabel: UILabel!
-    @IBOutlet var cell1TextField: UITextField!
+    @IBOutlet var medNameLabel: UILabel!
+    @IBOutlet var medNameTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

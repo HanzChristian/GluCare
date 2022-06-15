@@ -7,11 +7,12 @@
 
 import UIKit
 
-class PickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
+class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet var cell2NameLabel: UILabel!
+
+    @IBOutlet var mealTimeLabel: UILabel!
     @IBOutlet weak var mealTimeTextField: UITextField!
-    @IBOutlet var cell2PickerView: UIPickerView!
+    
     let mealTime = ["Waktu Spesifik", "Sebelum Makan",
                     "Setelah Makan", "Bersamaan dengan Makan"]
     
