@@ -7,20 +7,26 @@
 
 import UIKit
 
-class PickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
+class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet var cell2NameLabel: UILabel!
-    @IBOutlet var cell2PickerView: UIPickerView!
-    let mealTime = ["1 Jam Sebelum Makan", "30 Menit Sebelum Makan","Dengan Makan",
-                    "30 Menit Setelah Makan", "1 Jam Setelah Makan"]
+
+    @IBOutlet var mealTimeLabel: UILabel!
+    @IBOutlet weak var mealTimeTextField: UITextField!
+    
+    let mealTime = ["Waktu Spesifik", "Sebelum Makan",
+                    "Setelah Makan", "Bersamaan dengan Makan"]
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cell2PickerView.dataSource = self
-        cell2PickerView.delegate = self
+        mealPickerView.dataSource = self
+        mealPickerView.delegate = self
+        mealTimeTextField.inputView = mealPickerView
 
         // Initialization code
     }
+    
+    var mealPickerView = UIPickerView()
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -38,6 +44,11 @@ class PickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         40
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        mealTimeTextField.text = mealTime[row]
+        mealTimeTextField.resignFirstResponder()
     }
 }
 
