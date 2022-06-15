@@ -27,6 +27,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     }
     
     var mealPickerView = UIPickerView()
+    public var mealPicked = false
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -48,6 +49,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         mealTimeTextField.text = mealTime[row]
+        mealPicked = true
         mealTimeTextField.resignFirstResponder()
     }
 }

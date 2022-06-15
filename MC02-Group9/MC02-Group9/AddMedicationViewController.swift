@@ -11,8 +11,15 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     //var pickerView = UIPickerView()
     
-    let cellTitle = ["Nama Obat", "Waktu Minum", "Frekuensi Minum"]
+    let cellTitle = ["Nama Obat", "Waktu Minum","", "Frekuensi Minum"]
     let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
+    //class: MedDesc
+    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
+    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
+                    "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
+                    "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
+                    "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +32,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(nibName, forCellReuseIdentifier: "medNameTextFieldTVC")
         let nibNamePicker = UINib(nibName: "MealTimePickerTableViewCell", bundle: nil)
         tableView.register(nibNamePicker, forCellReuseIdentifier: "mealTimePickerTableViewCell")
+        let nibMedDescPicker = UINib(nibName: "MedDescTableViewCell", bundle: nil)
+        tableView.register(nibMedDescPicker, forCellReuseIdentifier: "medDescTableViewCell")
         let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
         tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
-        
         
         
         view.backgroundColor = .systemBackground
@@ -52,13 +60,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             cell.mealTimeLabel.text = cellTitle[indexPath.row]
             cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
+        } else if (indexPath.row == 2) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
+            cell.mealDescTitle.text = mealTime[indexPath.row]
+            cell.mealDesc.text = mealTimeDesc[indexPath.row]
+            cell.mealImage.image = UIImage(named: "MealDesc\(indexPath.row)")
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell
             cell.lblFrequency.text = cellTitle[indexPath.row]
             return cell
         }
-        
     }
+    
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
