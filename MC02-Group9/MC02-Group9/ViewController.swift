@@ -169,7 +169,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
+        formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
         print("\(dateSelected)")
         
@@ -221,10 +221,59 @@ extension ViewController:UITableViewDelegate{
             alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
                 print("Sekarang tapped")
                 
+                let log = Log(context: self.context)
+                log.date = Date()
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
             }))
             
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
                 print("Tepat Waktu tapped")
+                
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                
+                
+                let log = Log(context: self.context)
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
                 
             }))
             
@@ -259,25 +308,6 @@ extension ViewController:UITableViewDelegate{
                 */
                  
                 self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
-                
-                
-                /*
-                
-                let log = Log(context: self.context)
-                log.date = Date()
-                log.action = "Take"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                
-                self.fetchLogs()
-                 
-                 */
             }
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
