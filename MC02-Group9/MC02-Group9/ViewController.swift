@@ -296,7 +296,7 @@ extension ViewController:UITableViewDelegate{
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
-            let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
+            let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
                 //Logic belom diisi
                 
                 //Create Log
@@ -306,18 +306,17 @@ extension ViewController:UITableViewDelegate{
                 let hour = calendar.component(.hour, from: date)
                 let minutes = calendar.component(.minute, from: date)
                 */
-                 
                 self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
-            let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
                 //Logic belom diisi
                 let log = Log(context: self.context)
                 log.date = Date()
                 log.action = "Skip"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
-                
+                  
                 do{
                     try self.context.save()
                 }catch{
@@ -326,6 +325,7 @@ extension ViewController:UITableViewDelegate{
                 
                 self.fetchLogs()
             }
+            
 
             takeAction.backgroundColor = .systemBlue
             return [takeAction,deleteAction]
@@ -337,7 +337,7 @@ extension ViewController:UITableViewDelegate{
 
 
 extension ViewController:UITableViewDataSource{
-    
+       
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
             /*
@@ -346,7 +346,43 @@ extension ViewController:UITableViewDataSource{
             
             return self.items?.count ?? 0
         }
-        
+    
+        func showToastSkip(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#DE6FB3")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
+        func showToastTake(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#56A3D4")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             /*
             
@@ -371,10 +407,23 @@ extension ViewController:UITableViewDataSource{
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Subtract")
                         cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+                        self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
+                        
                     }else{
                         cell.tintColor = UIColor.green
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Check")
                         cell.medLbl.text = "Take"
+                        self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                     }
                     // print("\(log.time) = \(medicine_time.time)")
                     break
@@ -384,5 +433,32 @@ extension ViewController:UITableViewDataSource{
             
             return cell
     }
+}
+
+extension UIColor {
+    public convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+                    a = CGFloat(hexNumber & 0x000000ff) / 255
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                    }
+                }
+            }
+                return nil
+        }
 }
 
