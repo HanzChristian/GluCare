@@ -71,6 +71,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         medicine.name = "Panadol"
         medicine.rules = "After"
         medicine.strength = "500 mg"
+        medicine.eat_time = 1
         
         // Add time
         let medicine_time1 = Medicine_Time(context: context)
@@ -168,7 +169,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
+        formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
         print("\(dateSelected)")
         
@@ -205,6 +206,8 @@ class ViewController: UIViewController, FSCalendarDelegate {
     
 }
 
+
+
 extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 64
@@ -212,6 +215,85 @@ extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
+    
+        func showActionSheet(indexPath: IndexPath) {
+            let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
+                print("Sekarang tapped")
+                
+                let log = Log(context: self.context)
+                log.date = Date()
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
+                print("Tepat Waktu tapped")
+                
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                
+                
+                let log = Log(context: self.context)
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
+                print("Pilih Waktu tapped")
+                
+            }))
+            
+            /*
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                
+            }))
+             
+             */
+            alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
+            }))
+            
+            present(alert, animated: true)
+        }
+    
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
             let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
@@ -225,19 +307,7 @@ extension ViewController:UITableViewDelegate{
                 let minutes = calendar.component(.minute, from: date)
                 */
                  
-                let log = Log(context: self.context)
-                log.date = Date()
-                log.action = "Take"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                
-                self.fetchLogs()
+                self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
@@ -260,7 +330,11 @@ extension ViewController:UITableViewDelegate{
             takeAction.backgroundColor = .systemBlue
             return [takeAction,deleteAction]
         }
+    
+    
+    
 }
+
 
 extension ViewController:UITableViewDataSource{
     
@@ -297,10 +371,11 @@ extension ViewController:UITableViewDataSource{
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
+                        cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
                     }else{
                         cell.tintColor = UIColor.green
+                        cell.medLbl.text = "Take"
                     }
-                    
                     // print("\(log.time) = \(medicine_time.time)")
                     break
                 }
