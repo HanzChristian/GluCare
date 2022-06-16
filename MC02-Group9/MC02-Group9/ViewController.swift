@@ -261,6 +261,8 @@ extension ViewController:UITableViewDelegate{
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
                 
+                self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
+                
                 do{
                     try self.context.save()
                 }catch{
@@ -302,6 +304,8 @@ extension ViewController:UITableViewDelegate{
                 log.action = "Take"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                 
                 do{
                     try self.context.save()
@@ -364,6 +368,8 @@ extension ViewController:UITableViewDelegate{
                         log.time = self.items![indexPath.row].time
                         log.medicine_name = self.items![indexPath.row].medicine?.name
                         
+                        self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
+                        
                         do{
                             try self.context.save()
                         }catch{
@@ -397,7 +403,7 @@ extension ViewController:UITableViewDelegate{
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
-            let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
+            let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
                 //Logic belom diisi
                 
                 //Create Log
@@ -407,11 +413,10 @@ extension ViewController:UITableViewDelegate{
                 let hour = calendar.component(.hour, from: date)
                 let minutes = calendar.component(.minute, from: date)
                 */
-                 
                 self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
-            let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
                 //change daySelected to String
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "en_gb")
@@ -443,6 +448,8 @@ extension ViewController:UITableViewDelegate{
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
                 
+                self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
+                
                 do{
                     try self.context.save()
                 }catch{
@@ -450,7 +457,11 @@ extension ViewController:UITableViewDelegate{
                 }
                 self.fetchLogs()
             }
-
+            
+            let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ _, indexPath in
+                
+            }
+            
             takeAction.backgroundColor = .systemBlue
             return [takeAction,deleteAction]
         }
@@ -461,7 +472,7 @@ extension ViewController:UITableViewDelegate{
 
 
 extension ViewController:UITableViewDataSource{
-    
+       
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
             /*
@@ -470,7 +481,43 @@ extension ViewController:UITableViewDataSource{
             
             return self.items?.count ?? 0
         }
-        
+    
+        func showToastSkip(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#FFFFFF")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
+        func showToastTake(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#56A3D4")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             /*
             
@@ -482,8 +529,21 @@ extension ViewController:UITableViewDataSource{
             
             let medicine_time = self.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
-            cell.freqLbl.text = medicine_time.time
+            if(medicine_time.medicine?.eat_time == 1){
+                cell.freqLbl.text = "Sesudah makan"
+            }
+            else if(medicine_time.medicine?.eat_time == 2){
+                cell.freqLbl.text = "Sebelum makan"
+            }
+            else if(medicine_time.medicine?.eat_time == 3){
+                cell.freqLbl.text = "Bersamaan dengan makan"
+            }
             cell.timeLbl.text = medicine_time.time
+            cell.timeLbl.layer.opacity = 1
+            cell.freqLbl.layer.opacity = 1
+            cell.medLbl.layer.opacity = 1
+            cell.cellImgView.layer.opacity = 1
+            cell.indicatorImgView.image = nil
             
 //            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
 //            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
@@ -491,14 +551,37 @@ extension ViewController:UITableViewDataSource{
             cell.tintColor = UIColor.blue
             
             for log in logs! {
-                if(log.time == cell.freqLbl.text && log.medicine_name == cell.medLbl.text){
+                if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Subtract")
                         cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+                        
                     }else{
+
+                        // Create Date Formatter
+                        let dateFormatter = DateFormatter()
+
+                        // Set Date/Time Style
+                        dateFormatter.dateStyle = .long
+                        dateFormatter.timeStyle = .short
+                        dateFormatter.dateFormat = "HH:mm"
+                        // Convert Date to String
+                        var date = dateFormatter.string(from: log.dateTake!)
+                        
                         cell.tintColor = UIColor.green
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Check")
                         cell.medLbl.text = "Take"
+                        cell.freqLbl.text = "Diminum pada \(date)"
                     }
                     // print("\(log.time) = \(medicine_time.time)")
                     break
@@ -508,5 +591,32 @@ extension ViewController:UITableViewDataSource{
             
             return cell
     }
+}
+
+extension UIColor {
+    public convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+                    a = CGFloat(hexNumber & 0x000000ff) / 255
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                    }
+                }
+            }
+                return nil
+        }
 }
 
