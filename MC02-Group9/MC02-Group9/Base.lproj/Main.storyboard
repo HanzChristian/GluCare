@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FontsFree-Net-SF-Pro-Rounded-Bold.ttf">
+        <array key="FontsFree-Net-SF-Pro-Rounded-Regular.ttf">
             <string>SFRounded-Ultralight</string>
         </array>
     </customFonts>
@@ -46,19 +46,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sebelum makan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
-                                                            <rect key="frame" x="93.666666666666686" y="40" width="86.333333333333314" height="14.333333333333336"/>
+                                                            <rect key="frame" x="89.333333333333343" y="40" width="79.333333333333343" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="12"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panadol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-hX-q09">
-                                                            <rect key="frame" x="93.666666666666686" y="15" width="73.333333333333314" height="24"/>
+                                                            <rect key="frame" x="89.333333333333343" y="15" width="67.333333333333343" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-qP-zfy">
-                                                            <rect key="frame" x="15.999999999999996" y="24" width="57.666666666666657" height="24"/>
+                                                            <rect key="frame" x="16.000000000000004" y="24" width="53.333333333333343" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
                                                             <color key="textColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -68,6 +68,12 @@
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="64" id="AHp-L1-5jr"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="d1Q-8B-LDn">
+                                                            <rect key="frame" x="311" y="12" width="60" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="Fij-AW-VHo"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -81,9 +87,11 @@
                                                         <constraint firstItem="WsK-c3-EBv" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="Run-n4-GmO"/>
                                                         <constraint firstItem="gAs-qP-zfy" firstAttribute="leading" secondItem="xhM-Gh-sSb" secondAttribute="leading" constant="16" id="UDo-5h-5jT"/>
                                                         <constraint firstAttribute="height" constant="64" id="h8P-Id-itS"/>
+                                                        <constraint firstItem="d1Q-8B-LDn" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="12" id="hAN-Kf-6CK"/>
                                                         <constraint firstItem="WsK-c3-EBv" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="40" id="nif-kB-Sn5"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="15" id="nv5-cZ-8PK"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="xbd-AZ-tzv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="d1Q-8B-LDn" secondAttribute="trailing" constant="19" id="zkJ-zL-HQW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -98,6 +106,7 @@
                                             <outlet property="cellImgView" destination="g5a-W3-fcD" id="oka-qz-11O"/>
                                             <outlet property="cellView" destination="xhM-Gh-sSb" id="2yZ-mN-qAl"/>
                                             <outlet property="freqLbl" destination="WsK-c3-EBv" id="cO0-hE-5Hp"/>
+                                            <outlet property="indicatorImgView" destination="d1Q-8B-LDn" id="slg-i6-KAf"/>
                                             <outlet property="medLbl" destination="uj6-hX-q09" id="6Tg-OZ-u4A"/>
                                             <outlet property="timeLbl" destination="gAs-qP-zfy" id="HrY-7L-Uur"/>
                                         </connections>
@@ -216,6 +225,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Check" width="42" height="42"/>
         <image name="Pagi" width="100" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
