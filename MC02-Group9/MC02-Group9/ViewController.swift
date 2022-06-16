@@ -404,7 +404,7 @@ extension ViewController:UITableViewDelegate{
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
-            let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
+            let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
                 //Logic belom diisi
                 
                 //Create Log
@@ -417,7 +417,7 @@ extension ViewController:UITableViewDelegate{
                 self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
-            let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
                 //change daySelected to String
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "en_gb")
