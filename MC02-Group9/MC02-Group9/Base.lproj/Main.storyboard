@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FontsFree-Net-SF-Pro-Rounded-Regular.ttf">
+        <array key="FontsFree-Net-SF-Pro-Rounded-Bold.ttf">
             <string>SFRounded-Ultralight</string>
         </array>
     </customFonts>
@@ -46,7 +46,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sebelum makan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
-                                                            <rect key="frame" x="89.333333333333343" y="40" width="79.333333333333343" height="14.333333333333336"/>
+                                                            <rect key="frame" x="89.333333333333343" y="40" width="79.333333333333343" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="12"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -71,10 +71,10 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ASd-Y6-89r">
-                                                            <rect key="frame" x="290" y="0.0" width="100" height="64"/>
+                                                            <rect key="frame" x="319" y="11" width="42" height="42"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="PWL-SD-I9r"/>
-                                                                <constraint firstAttribute="height" constant="64" id="yVS-go-OBT"/>
+                                                                <constraint firstAttribute="height" constant="42" id="Edv-AI-EOP"/>
+                                                                <constraint firstAttribute="width" constant="42" id="c7i-1K-hv7"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -84,14 +84,14 @@
                                                         <constraint firstAttribute="bottom" secondItem="g5a-W3-fcD" secondAttribute="bottom" id="9Wt-nb-ufk"/>
                                                         <constraint firstItem="gAs-qP-zfy" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="24" id="DSq-Zo-g3m"/>
                                                         <constraint firstAttribute="trailing" secondItem="g5a-W3-fcD" secondAttribute="trailing" id="EvA-3O-9Id"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ASd-Y6-89r" secondAttribute="trailing" constant="29" id="GRy-Fi-56l"/>
+                                                        <constraint firstItem="ASd-Y6-89r" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="11" id="M6A-Mx-nI4"/>
                                                         <constraint firstItem="g5a-W3-fcD" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" id="NVB-Uy-Df3"/>
                                                         <constraint firstItem="WsK-c3-EBv" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="Run-n4-GmO"/>
-                                                        <constraint firstItem="ASd-Y6-89r" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" id="SzK-Mw-XPT"/>
                                                         <constraint firstItem="gAs-qP-zfy" firstAttribute="leading" secondItem="xhM-Gh-sSb" secondAttribute="leading" constant="16" id="UDo-5h-5jT"/>
                                                         <constraint firstAttribute="height" constant="64" id="h8P-Id-itS"/>
                                                         <constraint firstItem="WsK-c3-EBv" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="40" id="nif-kB-Sn5"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="15" id="nv5-cZ-8PK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ASd-Y6-89r" secondAttribute="trailing" id="smk-Bl-9Cw"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="xbd-AZ-tzv"/>
                                                     </constraints>
                                                 </view>
