@@ -324,6 +324,7 @@ extension ViewController:UITableViewDelegate{
                     
                     
                     let myDatePicker: UIDatePicker = UIDatePicker()
+//                    myDatePicker.datePickerMode = .time
                     myDatePicker.preferredDatePickerStyle = .wheels
                     myDatePicker.timeZone = TimeZone.init(identifier: "ICT")
                     myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
@@ -570,7 +571,7 @@ extension ViewController:UITableViewDataSource{
                         // Set Date/Time Style
                         dateFormatter.dateStyle = .long
                         dateFormatter.timeStyle = .short
-                        dateFormatter.dateFormat = "DD:HH:mm"
+                        dateFormatter.dateFormat = "HH:mm"
                         // Convert Date to String
                         var date = dateFormatter.string(from: log.dateTake!)
                         
