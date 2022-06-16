@@ -3,6 +3,7 @@
     <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateTake" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="medicine_name" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
     </entity>
@@ -18,7 +19,7 @@
         <relationship name="medicine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medicine" inverseName="time" inverseEntity="Medicine"/>
     </entity>
     <elements>
-        <element name="Log" positionX="-36" positionY="27" width="128" height="89"/>
+        <element name="Log" positionX="-36" positionY="27" width="128" height="104"/>
         <element name="Medicine" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="Medicine_Time" positionX="-54" positionY="18" width="128" height="59"/>
     </elements>
