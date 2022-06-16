@@ -9,7 +9,8 @@ import UIKit
 import FSCalendar
 import CoreData
 
-class ViewController: UIViewController, FSCalendarDelegate {
+class ViewController: UIViewController, FSCalendarDelegate{
+    
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -35,6 +36,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
     
     var daySelected = Date()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,10 +61,11 @@ class ViewController: UIViewController, FSCalendarDelegate {
             dummyData()
             fetchMedicine()
         }
-    
+        
         
         
     }
+
     
     func dummyData(){
     
@@ -203,8 +206,12 @@ class ViewController: UIViewController, FSCalendarDelegate {
         
         present(navVC, animated: true)
     }
-    
 }
+
+
+
+
+
 
 
 
@@ -217,12 +224,39 @@ extension ViewController:UITableViewDelegate{
         }
     
         func showActionSheet(indexPath: IndexPath) {
+            
+            
             let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
                 print("Sekarang tapped")
                 
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                
                 let log = Log(context: self.context)
-                log.date = Date()
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = Date()
                 log.action = "Take"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
@@ -260,10 +294,11 @@ extension ViewController:UITableViewDelegate{
                 // Set Date Format
                 dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
                 // Convert String to Date
-                
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
                 
                 let log = Log(context: self.context)
                 log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = dateFormatter.date(from: string)
                 log.action = "Take"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
@@ -279,9 +314,73 @@ extension ViewController:UITableViewDelegate{
             
             alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
                 print("Pilih Waktu tapped")
+                // Gas
+                
+                self.dismiss(animated: true, completion: {
+                    
+                    
+                    let myDatePicker: UIDatePicker = UIDatePicker()
+                    myDatePicker.preferredDatePickerStyle = .wheels
+                    myDatePicker.timeZone = TimeZone.init(identifier: "ICT")
+                    myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+                    let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+                    
+                    alertController.view.addSubview(myDatePicker)
+                    
+                    let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                        //change daySelected to String
+                        let formatter = DateFormatter()
+                        formatter.locale = Locale(identifier: "en_gb")
+                        formatter.dateFormat = "dd MMM yyyy"
+                        let tanggal = formatter.string(from: self.daySelected)
+                        // print(tanggal)
+                        
+                        // Create String
+                        let times = self.items![indexPath.row].time!
+                        let hour = times[..<times.index(times.startIndex, offsetBy: 2)]
+                        let minutes = times[times.index(times.startIndex, offsetBy: 3)...]
+                        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                        print(string)
+                        // 29 October 2019 20:15:55 +0200
+
+                        
+                        // Create Date Formatter
+                        let dateFormatter = DateFormatter()
+
+                        // Set Date Format
+                        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                        // Convert String to Date
+                        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                        
+                        let time = myDatePicker.date
+                        // change to ICT by time interval
+                        // time.addTimeInterval(25200)
+                        print("Selected Date: \(time)")
+                        
+                        let log = Log(context: self.context)
+                        log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                        log.dateTake = time
+                        log.action = "Take"
+                        log.time = self.items![indexPath.row].time
+                        log.medicine_name = self.items![indexPath.row].medicine?.name
+                        
+                        do{
+                            try self.context.save()
+                        }catch{
+                            
+                        }
+                        self.fetchLogs()
+                        
+                    })
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    alertController.addAction(selectAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true)
+                    
+                })
                 
             }))
-            
+        
             /*
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
                 
@@ -291,7 +390,9 @@ extension ViewController:UITableViewDelegate{
             alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
             }))
             
-            present(alert, animated: true)
+            self.present(alert, animated: true) {
+                    
+            }
         }
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -311,9 +412,33 @@ extension ViewController:UITableViewDelegate{
             }
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
-                //Logic belom diisi
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                
                 let log = Log(context: self.context)
-                log.date = Date()
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = dateFormatter.date(from: string)
                 log.action = "Skip"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
@@ -323,7 +448,6 @@ extension ViewController:UITableViewDelegate{
                 }catch{
                     
                 }
-                
                 self.fetchLogs()
             }
 
