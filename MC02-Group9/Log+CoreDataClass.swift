@@ -2,7 +2,7 @@
 //  Log+CoreDataClass.swift
 //  
 //
-//  Created by Christophorus Davin on 15/06/22.
+//  Created by Christophorus Davin on 16/06/22.
 //
 //
 
