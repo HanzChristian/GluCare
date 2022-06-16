@@ -9,7 +9,8 @@ import UIKit
 import FSCalendar
 import CoreData
 
-class ViewController: UIViewController, FSCalendarDelegate {
+class ViewController: UIViewController, FSCalendarDelegate{
+    
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -35,6 +36,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
     
     var daySelected = Date()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,10 +61,11 @@ class ViewController: UIViewController, FSCalendarDelegate {
             dummyData()
             fetchMedicine()
         }
-    
+        
         
         
     }
+
     
     func dummyData(){
     
@@ -71,6 +74,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         medicine.name = "Panadol"
         medicine.rules = "After"
         medicine.strength = "500 mg"
+        medicine.eat_time = 1
         
         // Add time
         let medicine_time1 = Medicine_Time(context: context)
@@ -168,7 +172,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
+        formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
         print("\(dateSelected)")
         
@@ -202,8 +206,14 @@ class ViewController: UIViewController, FSCalendarDelegate {
         
         present(navVC, animated: true)
     }
-    
 }
+
+
+
+
+
+
+
 
 extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -212,9 +222,188 @@ extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
+    
+        func showActionSheet(indexPath: IndexPath) {
+            
+            
+            let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
+                print("Sekarang tapped")
+                
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                
+                let log = Log(context: self.context)
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = Date()
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
+                print("Tepat Waktu tapped")
+                
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                
+                let log = Log(context: self.context)
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = dateFormatter.date(from: string)
+                log.action = "Take"
+                log.time = self.items![indexPath.row].time
+                log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
+                print("Pilih Waktu tapped")
+                // Gas
+                
+                self.dismiss(animated: true, completion: {
+                    
+                    
+                    let myDatePicker: UIDatePicker = UIDatePicker()
+                    myDatePicker.preferredDatePickerStyle = .wheels
+                    myDatePicker.timeZone = TimeZone.init(identifier: "ICT")
+                    myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+                    let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+                    
+                    alertController.view.addSubview(myDatePicker)
+                    
+                    let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                        //change daySelected to String
+                        let formatter = DateFormatter()
+                        formatter.locale = Locale(identifier: "en_gb")
+                        formatter.dateFormat = "dd MMM yyyy"
+                        let tanggal = formatter.string(from: self.daySelected)
+                        // print(tanggal)
+                        
+                        // Create String
+                        let times = self.items![indexPath.row].time!
+                        let hour = times[..<times.index(times.startIndex, offsetBy: 2)]
+                        let minutes = times[times.index(times.startIndex, offsetBy: 3)...]
+                        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                        print(string)
+                        // 29 October 2019 20:15:55 +0200
+
+                        
+                        // Create Date Formatter
+                        let dateFormatter = DateFormatter()
+
+                        // Set Date Format
+                        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                        // Convert String to Date
+                        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                        
+                        let time = myDatePicker.date
+                        // change to ICT by time interval
+                        // time.addTimeInterval(25200)
+                        print("Selected Date: \(time)")
+                        
+                        let log = Log(context: self.context)
+                        log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                        log.dateTake = time
+                        log.action = "Take"
+                        log.time = self.items![indexPath.row].time
+                        log.medicine_name = self.items![indexPath.row].medicine?.name
+                        
+                        self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
+                        
+                        do{
+                            try self.context.save()
+                        }catch{
+                            
+                        }
+                        self.fetchLogs()
+                        
+                    })
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    alertController.addAction(selectAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true)
+                    
+                })
+                
+            }))
+        
+            /*
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                
+            }))
+             
+             */
+            alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
+            }))
+            
+            self.present(alert, animated: true) {
+                    
+            }
+        }
+    
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
-            let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
+            let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
                 //Logic belom diisi
                 
                 //Create Log
@@ -224,46 +413,66 @@ extension ViewController:UITableViewDelegate{
                 let hour = calendar.component(.hour, from: date)
                 let minutes = calendar.component(.minute, from: date)
                 */
-                 
-                let log = Log(context: self.context)
-                log.date = Date()
-                log.action = "Take"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                
-                self.fetchLogs()
+                self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
-            let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
-                //Logic belom diisi
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
+                //change daySelected to String
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_gb")
+                formatter.dateFormat = "dd MMM yyyy"
+                let tanggal = formatter.string(from: self.daySelected)
+                // print(tanggal)
+                
+                // Create String
+                let time = self.items![indexPath.row].time!
+                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+                print(string)
+                // 29 October 2019 20:15:55 +0200
+
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+
+                // Set Date Format
+                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                // Convert String to Date
+                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                
                 let log = Log(context: self.context)
-                log.date = Date()
+                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
+                log.dateTake = dateFormatter.date(from: string)
                 log.action = "Skip"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
                 
+                self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
+                
                 do{
                     try self.context.save()
                 }catch{
                     
                 }
-                
                 self.fetchLogs()
             }
-
+            
+            let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ _, indexPath in
+                
+            }
+            
             takeAction.backgroundColor = .systemBlue
             return [takeAction,deleteAction]
         }
+    
+    
+    
 }
 
+
 extension ViewController:UITableViewDataSource{
-    
+       
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
             /*
@@ -272,7 +481,43 @@ extension ViewController:UITableViewDataSource{
             
             return self.items?.count ?? 0
         }
-        
+    
+        func showToastSkip(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#FFFFFF")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
+        func showToastTake(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = UIColor(hex: "#56A3D4")
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             /*
             
@@ -284,8 +529,21 @@ extension ViewController:UITableViewDataSource{
             
             let medicine_time = self.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
-            cell.freqLbl.text = medicine_time.time
+            if(medicine_time.medicine?.eat_time == 1){
+                cell.freqLbl.text = "Sesudah makan"
+            }
+            else if(medicine_time.medicine?.eat_time == 2){
+                cell.freqLbl.text = "Sebelum makan"
+            }
+            else if(medicine_time.medicine?.eat_time == 3){
+                cell.freqLbl.text = "Bersamaan dengan makan"
+            }
             cell.timeLbl.text = medicine_time.time
+            cell.timeLbl.layer.opacity = 1
+            cell.freqLbl.layer.opacity = 1
+            cell.medLbl.layer.opacity = 1
+            cell.cellImgView.layer.opacity = 1
+            cell.indicatorImgView.image = nil
             
 //            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
 //            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
@@ -293,14 +551,38 @@ extension ViewController:UITableViewDataSource{
             cell.tintColor = UIColor.blue
             
             for log in logs! {
-                if(log.time == cell.freqLbl.text && log.medicine_name == cell.medLbl.text){
+                if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Subtract")
+                        cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+                        
                     }else{
+
+                        // Create Date Formatter
+                        let dateFormatter = DateFormatter()
+
+                        // Set Date/Time Style
+                        dateFormatter.dateStyle = .long
+                        dateFormatter.timeStyle = .short
+                        dateFormatter.dateFormat = "HH:mm"
+                        // Convert Date to String
+                        var date = dateFormatter.string(from: log.dateTake!)
+                        
                         cell.tintColor = UIColor.green
+                        cell.timeLbl.layer.opacity = 0.3
+                        cell.freqLbl.layer.opacity = 0.3
+                        cell.medLbl.layer.opacity = 0.3
+                        cell.cellImgView.layer.opacity = 0.3
+                        cell.indicatorImgView.image = UIImage(named: "Check")
+                        cell.medLbl.text = "Take"
+                        cell.freqLbl.text = "Diminum pada \(date)"
                     }
-                    
                     // print("\(log.time) = \(medicine_time.time)")
                     break
                 }
@@ -309,5 +591,32 @@ extension ViewController:UITableViewDataSource{
             
             return cell
     }
+}
+
+extension UIColor {
+    public convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+                    a = CGFloat(hexNumber & 0x000000ff) / 255
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                    }
+                }
+            }
+                return nil
+        }
 }
 
