@@ -44,7 +44,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         //logic if-else mod2
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
-            cell.medNameLabel.text = cellTitle[indexPath.row]
             cell.medNameTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 1){
