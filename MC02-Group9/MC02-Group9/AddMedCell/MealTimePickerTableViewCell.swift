@@ -11,19 +11,19 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
 
     @IBOutlet var mealTimeLabel: UILabel!
-    @IBOutlet weak var mealTimeTextField: UITextField!
-    
+        
     let mealTime = ["Waktu Spesifik", "Sebelum Makan",
                     "Setelah Makan", "Bersamaan dengan Makan"]
     
     
+    let pickerView = UIPickerView()
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        mealPickerView.dataSource = self
-        mealPickerView.delegate = self
-        mealTimeTextField.inputView = mealPickerView
-
-        // Initialization code
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
     }
     
     var mealPickerView = UIPickerView()
@@ -33,6 +33,19 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 
         // Configure the view for the selected state
     }
+    
+    override var canBecomeFirstResponder: Bool{
+        return true
+    }
+    
+    override var canResignFirstResponder: Bool{
+        return true
+    }
+    
+    override var inputView: UIView? {
+        return pickerView
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -42,14 +55,18 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return mealTime[row]
     }
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        40
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        mealTimeLabel.textColor = .black
+        mealTimeLabel.text = mealTime[row]
+        
+    }
+    // Dismiss when done clicked
+    @objc func btnDoneClicked(){
+        self.endEditing(true)
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        mealTimeTextField.text = mealTime[row]
-        mealTimeTextField.resignFirstResponder()
-    }
+   
 }
+
 
 
