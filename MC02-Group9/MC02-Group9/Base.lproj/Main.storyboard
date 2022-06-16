@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FontsFree-Net-SF-Pro-Rounded-Regular.ttf">
+        <array key="FontsFree-Net-SF-Pro-Rounded-Bold.ttf">
             <string>SFRounded-Ultralight</string>
         </array>
     </customFonts>
@@ -46,19 +46,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sebelum makan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
-                                                            <rect key="frame" x="89.666666666666686" y="40" width="79.333333333333314" height="14.333333333333336"/>
+                                                            <rect key="frame" x="93.666666666666686" y="40" width="86.333333333333314" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="12"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panadol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-hX-q09">
-                                                            <rect key="frame" x="89.666666666666686" y="15" width="67.333333333333314" height="24"/>
+                                                            <rect key="frame" x="93.666666666666686" y="15" width="73.333333333333314" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-qP-zfy">
-                                                            <rect key="frame" x="15.999999999999996" y="24" width="53.666666666666657" height="24"/>
+                                                            <rect key="frame" x="15.999999999999996" y="24" width="57.666666666666657" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFRounded-Ultralight" family="SF Pro Rounded" pointSize="20"/>
                                                             <color key="textColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

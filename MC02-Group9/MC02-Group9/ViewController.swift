@@ -71,6 +71,7 @@ class ViewController: UIViewController, FSCalendarDelegate {
         medicine.name = "Panadol"
         medicine.rules = "After"
         medicine.strength = "500 mg"
+        medicine.eat_time = 1
         
         // Add time
         let medicine_time1 = Medicine_Time(context: context)
@@ -205,6 +206,8 @@ class ViewController: UIViewController, FSCalendarDelegate {
     
 }
 
+
+
 extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 64
@@ -212,6 +215,36 @@ extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
         }
+    
+        func showActionSheet(indexPath: IndexPath) {
+            let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
+                print("Sekarang tapped")
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
+                print("Tepat Waktu tapped")
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
+                print("Pilih Waktu tapped")
+                
+            }))
+            
+            /*
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                
+            }))
+             
+             */
+            alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
+            }))
+            
+            present(alert, animated: true)
+        }
+    
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
             let takeAction = UITableViewRowAction(style: .normal, title: "Take"){ _, indexPath in
@@ -225,6 +258,11 @@ extension ViewController:UITableViewDelegate{
                 let minutes = calendar.component(.minute, from: date)
                 */
                  
+                self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
+                
+                
+                /*
+                
                 let log = Log(context: self.context)
                 log.date = Date()
                 log.action = "Take"
@@ -238,6 +276,8 @@ extension ViewController:UITableViewDelegate{
                 }
                 
                 self.fetchLogs()
+                 
+                 */
             }
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Skip"){ _, indexPath in
@@ -260,7 +300,11 @@ extension ViewController:UITableViewDelegate{
             takeAction.backgroundColor = .systemBlue
             return [takeAction,deleteAction]
         }
+    
+    
+    
 }
+
 
 extension ViewController:UITableViewDataSource{
     
@@ -297,10 +341,11 @@ extension ViewController:UITableViewDataSource{
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
+                        cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
                     }else{
                         cell.tintColor = UIColor.green
+                        cell.medLbl.text = "Take"
                     }
-                    
                     // print("\(log.time) = \(medicine_time.time)")
                     break
                 }
