@@ -12,6 +12,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     //var pickerView = UIPickerView()
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
+    var jadwal = ["Jadwal 1"]
 
         
         override func viewDidLoad() {
@@ -45,10 +46,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if (section == 1 || section == 2) {
-                return 2
-            } else{
+            if (section == 0) {
                 return 1
+            } else if (section == 1){
+                return 2
+            } else {
+                return jadwal.count+1
             }
         }
         
@@ -88,34 +91,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             } else if (indexPath.section == 2){
                 // SECTION 3
                 
-                if (indexPath.row == 0){
+                if (indexPath.row < jadwal.count){
                     // SECTION 3 ROW 1
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: "schedulePickerTableViewCell", for: indexPath) as! SchedulePickerTableViewCell
-                    cell.mealTimeLabel.text = "Jadwal 1"
+                    cell.mealTimeLabel.text = jadwal[indexPath.row]
                     cell.delegate = self // To add super view to cell
                     cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                     return cell
                     
-                } else if (indexPath.row == 1){
+                } else {
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: "addNewScheduleTableViewCell", for: indexPath) as! AddNewScheduleTableViewCell
                     cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                     return cell
                 }
-//                } else {
-//
-//                    let cell = tableView.dequeueReusableCell(withIdentifier: "schedulePickerTableViewCell", for: indexPath) as! SchedulePickerTableViewCell
-//                    cell.mealTimeLabel.text = "Jadwal \(indexPath.row)"
-//                    cell.delegate = self // To add super view to cell
-//                    cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
-//                    return cell
-//
-//                    tableView.beginUpdates()
-//                    tableView.insertRowsAtIndexPaths([
-//                        NSIndexPath(forRow: indexPath.row-1, inSection: 2)], withRowAnimation: .Automatic)
-//                    tableView.endUpdates()
-//                }
                 
             }
             return UITableViewCell()
@@ -126,7 +116,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
               if !cell.isFirstResponder {
                 _ = cell.becomeFirstResponder()
               }
-             }
+            } else if tableView.cellForRow(at: indexPath) is AddNewScheduleTableViewCell{
+                jadwal.append("Jadwal \(jadwal.count+1)")
+                tableView.reloadData()
+            }
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 60.0
