@@ -14,15 +14,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     let cellTitle = ["Nama Obat", "Waktu Minum","", "Frekuensi Minum"]
     let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
     //class: MedDesc
-    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
+    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
     let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
                     "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
                     "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
-                    "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan"]
+                    "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
+                    "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
+    var newMealVars = 4
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("overr", mealVars.mealPickedRow)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,6 +53,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2
+        print("AddMed TVC: mealVars", mealVars.mealPickedRow)
+        
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
             cell.medNameLabel.text = cellTitle[indexPath.row]
@@ -62,15 +67,24 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             return cell
         } else if (indexPath.row == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
-            cell.mealDescTitle.text = mealTime[indexPath.row]
-            cell.mealDesc.text = mealTimeDesc[indexPath.row]
-            cell.mealImage.image = UIImage(named: "MealDesc\(indexPath.row)")
+            // mealVars.mealPickedRow
+            cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
+            cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
+            cell.mealImage.image = UIImage(named: "MealDesc\(2)")
+//            if (mealVars.mealPickedRow == 4) {
+//                newMealVars = mealVars.mealPickedRow
+//                print("newMeal", newMealVars)
+//                tableView.reloadData()
+//                mealVars.mealPickedRow = 5
+//            }
             return cell
         } else {
+            // tableView.reloadData()
             let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell
             cell.lblFrequency.text = cellTitle[indexPath.row]
             return cell
         }
+        
     }
     
     

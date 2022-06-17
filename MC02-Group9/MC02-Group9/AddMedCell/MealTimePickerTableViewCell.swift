@@ -50,8 +50,16 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         mealTimeTextField.text = mealTime[row]
         mealPicked = true
+        mealVars.mealPickedRow = row
+        print("mealVars", mealVars.mealPickedRow)
         mealTimeTextField.resignFirstResponder()
     }
 }
 
-
+struct mealVars {
+    static var mealPickedRow = 4
+    
+}
+public func findIndex() {
+    
+}
