@@ -476,6 +476,9 @@ extension ViewController:UITableViewDelegate{
                 let logToRemove = self.logs![self.undoIdx[indexPath.row]]
                 
                 self.context.delete(logToRemove)
+                self.undoIdx[indexPath.row] = -1
+                
+                self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 
                 do{
                     try self.context.save()
@@ -535,6 +538,24 @@ extension ViewController:UITableViewDataSource{
         func showToastTake(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
             toastLabel.backgroundColor = UIColor(rgb: 0x56A3D4)
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+        
+        func showToastUndo(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = .gray
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
             toastLabel.textAlignment = .center
