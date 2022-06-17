@@ -173,7 +173,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        
+        self.resetArray()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
@@ -212,7 +212,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     func resetArray(){
         for i in undoIdx.indices{
-            undoIdx[i] = 0
+            undoIdx[i] = -1
         }
     }
 }
@@ -472,11 +472,25 @@ extension ViewController:UITableViewDelegate{
             
             let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ _, indexPath in
                 // remove
+                
+                let logToRemove = self.logs![self.undoIdx[indexPath.row]]
+                
+                self.context.delete(logToRemove)
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+                
+                
+                
             }
             
             takeAction.backgroundColor = .systemBlue
             
-            if (undoIdx[indexPath.row] == 1){
+            if (undoIdx[indexPath.row] >= 0){
                 return [untakeAction]
             }else{
                 return [takeAction,deleteAction]
@@ -568,10 +582,10 @@ extension ViewController:UITableViewDataSource{
             
             cell.tintColor = UIColor.blue
             
-            for log in logs! {
+            for (index, log) in logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
-                    undoIdx[indexPath.row] = 1
+                    undoIdx[indexPath.row] = index
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
