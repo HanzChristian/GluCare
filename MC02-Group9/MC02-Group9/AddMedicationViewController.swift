@@ -65,8 +65,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             if (indexPath.row == 0) {
             // SECTION 1 ROW 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
+
             cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
             cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
+
             return cell
             }
             
