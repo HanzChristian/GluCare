@@ -36,6 +36,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     var daySelected = Date()
     
+    var undoIdx = Array(0...100)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
         self.calendar.scope = .week
         
+        resetArray()
         
         title = "Medication Today"
         tableView.delegate = self
@@ -170,7 +173,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        
+        self.resetArray()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
@@ -205,6 +208,12 @@ class ViewController: UIViewController, FSCalendarDelegate{
         let navVC = UINavigationController(rootViewController: vc)
         
         present(navVC, animated: true)
+    }
+    
+    func resetArray(){
+        for i in undoIdx.indices{
+            undoIdx[i] = -1
+        }
     }
 }
 
@@ -269,6 +278,8 @@ extension ViewController:UITableViewDelegate{
                     
                 }
                 self.fetchLogs()
+                
+                self.resetArray()
             }))
             
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
@@ -313,7 +324,7 @@ extension ViewController:UITableViewDelegate{
                     
                 }
                 self.fetchLogs()
-                
+                self.resetArray()
             }))
             
             alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
@@ -376,6 +387,7 @@ extension ViewController:UITableViewDelegate{
                             
                         }
                         self.fetchLogs()
+                        self.resetArray()
                         
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -459,11 +471,35 @@ extension ViewController:UITableViewDelegate{
             }
             
             let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ _, indexPath in
+                // remove
+                
+                let logToRemove = self.logs![self.undoIdx[indexPath.row]]
+                
+                self.context.delete(logToRemove)
+                self.undoIdx[indexPath.row] = -1
+                
+                self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                self.fetchLogs()
+                
+                
+
                 
             }
             
             takeAction.backgroundColor = .systemBlue
-            return [takeAction,deleteAction]
+            
+            if (undoIdx[indexPath.row] >= 0){
+                return [untakeAction]
+            }else{
+                return [takeAction,deleteAction]
+            }
+            
         }
     
     
@@ -484,7 +520,8 @@ extension ViewController:UITableViewDataSource{
     
         func showToastSkip(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-            toastLabel.backgroundColor = UIColor(hex: "#FFFFFF")
+
+            toastLabel.backgroundColor = UIColor(rgb: 0xDE6FB3)
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
             toastLabel.textAlignment = .center
@@ -502,7 +539,26 @@ extension ViewController:UITableViewDataSource{
     
         func showToastTake(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-            toastLabel.backgroundColor = UIColor(hex: "#56A3D4")
+
+            toastLabel.backgroundColor = UIColor(rgb: 0x56A3D4)
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+        
+        func showToastUndo(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = .gray
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
             toastLabel.textAlignment = .center
@@ -550,8 +606,12 @@ extension ViewController:UITableViewDataSource{
             
             cell.tintColor = UIColor.blue
             
-            for log in logs! {
+
+            for (index, log) in logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
+                    
+                    undoIdx[indexPath.row] = index
+
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
@@ -560,7 +620,8 @@ extension ViewController:UITableViewDataSource{
                         cell.medLbl.layer.opacity = 0.3
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Subtract")
-                        cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+                        //cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+
                         
                     }else{
 
@@ -570,7 +631,8 @@ extension ViewController:UITableViewDataSource{
                         // Set Date/Time Style
                         dateFormatter.dateStyle = .long
                         dateFormatter.timeStyle = .short
-                        dateFormatter.dateFormat = "DD:HH:mm"
+                        dateFormatter.dateFormat = "HH:mm"
+
                         // Convert Date to String
                         var date = dateFormatter.string(from: log.dateTake!)
                         
@@ -580,7 +642,8 @@ extension ViewController:UITableViewDataSource{
                         cell.medLbl.layer.opacity = 0.3
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Check")
-                        cell.medLbl.text = "Take"
+                        //cell.medLbl.text = "Take"
+
                         cell.freqLbl.text = "Diminum pada \(date)"
                     }
                     // print("\(log.time) = \(medicine_time.time)")
@@ -594,29 +657,21 @@ extension ViewController:UITableViewDataSource{
 }
 
 extension UIColor {
-    public convenience init?(hex: String) {
-        let r, g, b, a: CGFloat
 
-        if hex.hasPrefix("#") {
-            let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
 
-            if hexColor.count == 8 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
 
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-                    a = CGFloat(hexNumber & 0x000000ff) / 255
-
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                    }
-                }
-            }
-                return nil
-        }
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }
 
