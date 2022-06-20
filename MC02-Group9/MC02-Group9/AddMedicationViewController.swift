@@ -21,12 +21,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
                     "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
     var newMealVars = 4
+    var currentCell: IndexPath?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("overr", mealVars.mealPickedRow)
-        
+        mealVars.mealPickedRow = 4
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -54,7 +54,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2
         print("AddMed TVC: mealVars", mealVars.mealPickedRow)
-        
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
             cell.medNameLabel.text = cellTitle[indexPath.row]
@@ -66,11 +65,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 2) {
+            // tableView.reloadData()
             let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
             // mealVars.mealPickedRow
             cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
             cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
-            cell.mealImage.image = UIImage(named: "MealDesc\(2)")
+            cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
 //            if (mealVars.mealPickedRow == 4) {
 //                newMealVars = mealVars.mealPickedRow
 //                print("newMeal", newMealVars)
@@ -87,7 +87,16 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let index = IndexPath(row: 2, section: 0)
+//        tableView.reloadRows(at: [index], with: .automatic)
+//        return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt: ", indexPath)
+        currentCell = indexPath
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
@@ -98,6 +107,24 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     //end of tableview function
     
     //pickerview function
+    
+//    func addRowVC() {
+//        if (newMealVars != 4) {
+//            let indexPath = IndexPath(row: 2, section: 0)
+//            tableView.beginUpdates()
+//            tableView.insertRows(at: [2]?, with: .automatic)
+//            tableView.endUpdates()
+//        }
+//    }
+//
+//            self.data?.insert("test" , at: 2)
+//            self.tableView.performBatchUpdates({
+//                self.tableView.insertRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
+//            }, completion: nil)
+
+    
+    
+    
     
     //end of pickerview function
     

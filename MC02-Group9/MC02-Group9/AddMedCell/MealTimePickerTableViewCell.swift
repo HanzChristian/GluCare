@@ -54,6 +54,12 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         print("mealVars", mealVars.mealPickedRow)
         mealTimeTextField.resignFirstResponder()
     }
+//    @IBAction public func addRow(_ sender: UIPickerView){
+//        if (mealVars.mealPickedRow != 4) {
+//            print("triggered")
+//            self.tableView.performBatchUpdates({
+//                self.tableView.insertRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
+//            }, completion: nil)
 }
 
 struct mealVars {
