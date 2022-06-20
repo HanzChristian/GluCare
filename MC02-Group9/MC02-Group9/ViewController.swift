@@ -50,7 +50,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
         resetArray()
         
-        title = "Medication Today"
+        title = "Jadwal Obat"
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -600,6 +600,56 @@ extension ViewController:UITableViewDataSource{
             cell.medLbl.layer.opacity = 1
             cell.cellImgView.layer.opacity = 1
             cell.indicatorImgView.image = nil
+            
+           
+//            dateFormatter.locale = Locale(identifier: "en_gb")
+//            dateFormatter.dateFormat = "dd MMM yyyy"
+//            let tanggal = dateFormatter.string(from: self.daySelected)
+//            // print(tanggal)
+//
+//            // Create String
+            let time = self.items![indexPath.row].time!
+            let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+            let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+            let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
+            print(string)
+            
+            let startMorning = ("20 Jun 2022 06:00:00 +0700")
+            let endMorning = ("20 Jun 2022 11:59:00 +0700")
+            
+            let startEvening = ("20 Jun 2022 12:00:00 +0700")
+            let endEvening = ("20 Jun 2022 17:59:00 +0700")
+            
+//            let startNight = ("20 Jun 2022 18:00:00 +0700")
+//            let endNight = ("21 Jun 2022 05:59:00 +0700")
+            
+            
+            
+            let dateFormatter = DateFormatter()
+
+            // Set Date Format
+            dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+            // Convert String to Date
+            print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+            
+            let newDate = dateFormatter.date(from: string)!
+            
+            let startMorningDate = dateFormatter.date(from: startMorning)!
+            let endMorningDate = dateFormatter.date(from: endMorning)!
+            let startEveningDate = dateFormatter.date(from: startEvening)!
+            let endEveningDate = dateFormatter.date(from: endEvening)!
+//            let startNightDate = dateFormatter.date(from: startNight)!
+//            let endNightDate = dateFormatter.date(from: endNight)!
+            
+            if(newDate >= startMorningDate && newDate <= endMorningDate){
+                cell.cellImgView.image = UIImage(named: "Pagi")
+            }
+            else if(newDate >= startEveningDate && newDate <= endEveningDate){
+                cell.cellImgView.image = UIImage(named: "Siang")
+            }
+            else{
+                cell.cellImgView.image = UIImage(named: "Malam")
+            }
             
 //            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
 //            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
