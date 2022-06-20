@@ -9,12 +9,13 @@ import UIKit
 
 class MedNameTextFieldTVC: UITableViewCell {
     
-    @IBOutlet var medNameLabel: UILabel!
     @IBOutlet var medNameTextField: UITextField!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+            super.awakeFromNib()
+            // Initialization code
+            medNameTextField.layer.cornerRadius = 16.0
+            medNameTextField.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

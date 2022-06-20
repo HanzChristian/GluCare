@@ -16,24 +16,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c5-gL-jkl">
-                        <rect key="frame" x="20" y="16" width="360" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsK-RQ-wJt">
-                        <rect key="frame" x="20" y="45" width="360" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsK-RQ-wJt">
+                        <rect key="frame" x="20" y="33" width="360" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="360" id="lPy-y9-XOO"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="qsK-RQ-wJt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qjj-sJ-eYD"/>
+                    <constraint firstItem="qsK-RQ-wJt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hGq-lj-jnE"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="medNameLabel" destination="4c5-gL-jkl" id="QYn-XY-e6g"/>
                 <outlet property="medNameTextField" destination="qsK-RQ-wJt" id="25s-ZR-UxT"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>

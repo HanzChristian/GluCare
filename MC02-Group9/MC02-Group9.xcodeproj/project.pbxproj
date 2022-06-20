@@ -21,6 +21,10 @@
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */; };
 		1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */; };
+		1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */; };
+		1F8813AB285B14D0009994F9 /* SchedulePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A9285B14D0009994F9 /* SchedulePickerTableViewCell.xib */; };
+		1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */; };
+		1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */; };
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
@@ -53,6 +57,10 @@
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
+		1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerTableViewCell.swift; sourceTree = "<group>"; };
+		1F8813A9285B14D0009994F9 /* SchedulePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchedulePickerTableViewCell.xib; sourceTree = "<group>"; };
+		1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTextFieldTVC.swift; sourceTree = "<group>"; };
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +149,10 @@
 				2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */,
 				1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */,
 				1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */,
+				1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */,
+				1F8813A9285B14D0009994F9 /* SchedulePickerTableViewCell.xib */,
+				1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */,
+				1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */,
 			);
 			path = AddMedCell;
 			sourceTree = "<group>";
@@ -238,6 +250,7 @@
 				1563DA7B2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf in Resources */,
 				1563DA7C2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
+				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
 				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
@@ -245,6 +258,7 @@
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
+				1F8813AB285B14D0009994F9 /* SchedulePickerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +312,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */,
+				F032A2CA2859C35E00BF21E1 /* Medicine+CoreDataProperties.swift in Sources */,
+				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
+				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,

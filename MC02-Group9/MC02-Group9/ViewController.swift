@@ -488,6 +488,7 @@ extension ViewController:UITableViewDelegate{
                 self.fetchLogs()
                 
                 
+
                 
             }
             
@@ -519,6 +520,7 @@ extension ViewController:UITableViewDataSource{
     
         func showToastSkip(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+
             toastLabel.backgroundColor = UIColor(rgb: 0xDE6FB3)
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
@@ -537,6 +539,7 @@ extension ViewController:UITableViewDataSource{
     
         func showToastTake(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+
             toastLabel.backgroundColor = UIColor(rgb: 0x56A3D4)
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
@@ -603,10 +606,12 @@ extension ViewController:UITableViewDataSource{
             
             cell.tintColor = UIColor.blue
             
+
             for (index, log) in logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     undoIdx[indexPath.row] = index
+
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
@@ -616,6 +621,7 @@ extension ViewController:UITableViewDataSource{
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Subtract")
                         //cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+
                         
                     }else{
 
@@ -626,6 +632,7 @@ extension ViewController:UITableViewDataSource{
                         dateFormatter.dateStyle = .long
                         dateFormatter.timeStyle = .short
                         dateFormatter.dateFormat = "HH:mm"
+
                         // Convert Date to String
                         var date = dateFormatter.string(from: log.dateTake!)
                         
@@ -636,6 +643,7 @@ extension ViewController:UITableViewDataSource{
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Check")
                         //cell.medLbl.text = "Take"
+
                         cell.freqLbl.text = "Diminum pada \(date)"
                     }
                     // print("\(log.time) = \(medicine_time.time)")
@@ -649,6 +657,7 @@ extension ViewController:UITableViewDataSource{
 }
 
 extension UIColor {
+
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
        assert(green >= 0 && green <= 255, "Invalid green component")
@@ -665,3 +674,4 @@ extension UIColor {
        )
    }
 }
+
