@@ -44,9 +44,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         let nibAddNewSchedulePicker = UINib(nibName: "AddNewScheduleTableViewCell", bundle: nil)
         tableView.register(nibAddNewSchedulePicker, forCellReuseIdentifier: "addNewScheduleTableViewCell")
         
+        view.backgroundColor = .systemGroupedBackground
+//        view.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+//        tableView.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
         
-        view.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
-        tableView.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+        //make navbar title rounded
+            if let roundedTitleDescriptor = UIFontDescriptor
+              .preferredFontDescriptor(withTextStyle: .largeTitle)
+              .withDesign(.rounded)?
+              .withSymbolicTraits(.traitBold) {
+                self.navigationController? // Assumes a navigationController exists on the current view
+                  .navigationBar
+                  .largeTitleTextAttributes = [
+                    .font: UIFont(descriptor: roundedTitleDescriptor, size: 0) // Note that 'size: 0' maintains the system size class
+                  ]
+            }
         
         setNavItem()
         self.hideKeyboard()
@@ -76,7 +88,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             // SECTION 1 ROW 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
             cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
-            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
+            
+//            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
             return cell
         } else if (indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
@@ -106,8 +119,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 cell.mealTimeLabel.text = "Pilih waktu minum"
-                cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
-                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+                cell.accessoryType = .disclosureIndicator
+//                cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
+//                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 // cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
                 return cell
                 
@@ -129,12 +143,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "schedulePickerTableViewCell", for: indexPath) as! SchedulePickerTableViewCell
                 cell.mealTimeLabel.text = jadwal[indexPath.row]
                 cell.delegate = self // To add super view to cell
-                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+//                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 return cell
                 
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addNewScheduleTableViewCell", for: indexPath) as! AddNewScheduleTableViewCell
-                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+//                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 return cell
             }
             
@@ -165,23 +179,30 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             if (indexPath.row == 1) {
                 height = 110
             } else {
-                height = 60.0
+                height = 52.0
             }
         } else {
-            height = 60.0
+            height = 52.0
         }
         return height
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
 
-        let sectionLabel = UILabel(frame: CGRect(x: 19, y: 0, width:
-            tableView.bounds.size.width, height: 30))
-        sectionLabel.font = UIFont(name: "Helvetica Neue", size: 16)
-        sectionLabel.textColor = UIColor.black
+        let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width:
+            tableView.bounds.size.width, height: 5))
+        
+        sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
+//        sectionLabel.font = UIFont(name: "Helvetica Neue", size: 16)
+//        sectionLabel.textColor = UIColor.black
         sectionLabel.text = cellTitle[section]
         sectionLabel.sizeToFit()
         headerView.addSubview(sectionLabel)
@@ -190,6 +211,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     //end of tableview function
+    
     
     
     private func setNavItem(){
@@ -252,3 +274,4 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         }
     
 }
+
