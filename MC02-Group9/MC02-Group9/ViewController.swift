@@ -50,7 +50,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
         resetArray()
         
-        title = "Medication Today"
+        title = "Jadwal Obat"
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -476,6 +476,9 @@ extension ViewController:UITableViewDelegate{
                 let logToRemove = self.logs![self.undoIdx[indexPath.row]]
                 
                 self.context.delete(logToRemove)
+                self.undoIdx[indexPath.row] = -1
+                
+                self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 
                 do{
                     try self.context.save()
@@ -485,6 +488,7 @@ extension ViewController:UITableViewDelegate{
                 self.fetchLogs()
                 
                 
+
                 
             }
             
@@ -516,6 +520,7 @@ extension ViewController:UITableViewDataSource{
     
         func showToastSkip(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+
             toastLabel.backgroundColor = UIColor(rgb: 0xDE6FB3)
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
@@ -534,7 +539,26 @@ extension ViewController:UITableViewDataSource{
     
         func showToastTake(message : String, font: UIFont) {
             let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+
             toastLabel.backgroundColor = UIColor(rgb: 0x56A3D4)
+            toastLabel.textColor = UIColor.white
+            toastLabel.font = font
+            toastLabel.textAlignment = .center
+            toastLabel.text = message
+            toastLabel.alpha = 1.0
+            toastLabel.layer.cornerRadius = 8;
+            toastLabel.clipsToBounds  =  true
+            self.view.addSubview(toastLabel)
+            UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+        
+        func showToastUndo(message : String, font: UIFont) {
+            let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
+            toastLabel.backgroundColor = .gray
             toastLabel.textColor = UIColor.white
             toastLabel.font = font
             toastLabel.textAlignment = .center
@@ -577,15 +601,67 @@ extension ViewController:UITableViewDataSource{
             cell.cellImgView.layer.opacity = 1
             cell.indicatorImgView.image = nil
             
+           
+//            dateFormatter.locale = Locale(identifier: "en_gb")
+//            dateFormatter.dateFormat = "dd MMM yyyy"
+//            let tanggal = dateFormatter.string(from: self.daySelected)
+//            // print(tanggal)
+//
+//            // Create String
+            let time = self.items![indexPath.row].time!
+            let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+            let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+            let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
+            print(string)
+            
+            let startMorning = ("20 Jun 2022 06:00:00 +0700")
+            let endMorning = ("20 Jun 2022 11:59:00 +0700")
+            
+            let startEvening = ("20 Jun 2022 12:00:00 +0700")
+            let endEvening = ("20 Jun 2022 17:59:00 +0700")
+            
+//            let startNight = ("20 Jun 2022 18:00:00 +0700")
+//            let endNight = ("21 Jun 2022 05:59:00 +0700")
+            
+            
+            
+            let dateFormatter = DateFormatter()
+
+            // Set Date Format
+            dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+            // Convert String to Date
+            print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+            
+            let newDate = dateFormatter.date(from: string)!
+            
+            let startMorningDate = dateFormatter.date(from: startMorning)!
+            let endMorningDate = dateFormatter.date(from: endMorning)!
+            let startEveningDate = dateFormatter.date(from: startEvening)!
+            let endEveningDate = dateFormatter.date(from: endEvening)!
+//            let startNightDate = dateFormatter.date(from: startNight)!
+//            let endNightDate = dateFormatter.date(from: endNight)!
+            
+            if(newDate >= startMorningDate && newDate <= endMorningDate){
+                cell.cellImgView.image = UIImage(named: "Pagi")
+            }
+            else if(newDate >= startEveningDate && newDate <= endEveningDate){
+                cell.cellImgView.image = UIImage(named: "Siang")
+            }
+            else{
+                cell.cellImgView.image = UIImage(named: "Malam")
+            }
+            
 //            cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
 //            cell.cellImgView.layer.cornerRadius = cell.cellImgView.frame.height / 2
             
             cell.tintColor = UIColor.blue
             
+
             for (index, log) in logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     undoIdx[indexPath.row] = index
+
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
@@ -595,6 +671,7 @@ extension ViewController:UITableViewDataSource{
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Subtract")
                         //cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
+
                         
                     }else{
 
@@ -605,6 +682,7 @@ extension ViewController:UITableViewDataSource{
                         dateFormatter.dateStyle = .long
                         dateFormatter.timeStyle = .short
                         dateFormatter.dateFormat = "HH:mm"
+
                         // Convert Date to String
                         var date = dateFormatter.string(from: log.dateTake!)
                         
@@ -615,6 +693,7 @@ extension ViewController:UITableViewDataSource{
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Check")
                         //cell.medLbl.text = "Take"
+
                         cell.freqLbl.text = "Diminum pada \(date)"
                     }
                     // print("\(log.time) = \(medicine_time.time)")
@@ -628,6 +707,7 @@ extension ViewController:UITableViewDataSource{
 }
 
 extension UIColor {
+
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
        assert(green >= 0 && green <= 255, "Invalid green component")
@@ -644,3 +724,4 @@ extension UIColor {
        )
    }
 }
+

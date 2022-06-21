@@ -19,7 +19,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9">
                                 <rect key="frame" x="0.0" y="98" width="414" height="715"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DDo-QP-4zk">
                                         <rect key="frame" x="20" y="32" width="374" height="43.5"/>
@@ -46,7 +45,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Obat Kamu" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HRj-FI-p68">
-                        <barButtonItem key="leftBarButtonItem" title="Ubah" id="Fa1-ec-V5z">
+                        <barButtonItem key="leftBarButtonItem" title="Ubah" style="plain" id="Fa1-ec-V5z">
                             <connections>
                                 <action selector="editMedicationPressed:" destination="ZlH-Jp-9ts" id="MJW-vf-uj6"/>
                             </connections>
@@ -59,6 +58,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="Fa1-ec-V5z" id="7Wv-g7-HMs"/>
+                        <outlet property="editButtonItem" destination="Fa1-ec-V5z" id="To8-Ml-C34"/>
                         <outlet property="obatKamuTableView" destination="a10-JW-pM9" id="aRe-j7-09D"/>
                     </connections>
                 </viewController>
@@ -75,7 +76,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

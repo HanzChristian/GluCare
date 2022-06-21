@@ -15,8 +15,7 @@ class ViewControllerTVC: UITableViewCell {
     @IBOutlet weak var freqLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var indicatorImgView: UIImageView!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
