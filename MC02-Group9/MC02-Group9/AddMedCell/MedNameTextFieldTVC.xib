@@ -16,25 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsK-RQ-wJt">
-                        <rect key="frame" x="20" y="33" width="360" height="34"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsK-RQ-wJt">
+                        <rect key="frame" x="20" y="41" width="360" height="18.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="360" id="lPy-y9-XOO"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="360" id="lPy-y9-XOO"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="qsK-RQ-wJt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qjj-sJ-eYD"/>
-                    <constraint firstItem="qsK-RQ-wJt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hGq-lj-jnE"/>
+                    <constraint firstAttribute="trailing" secondItem="qsK-RQ-wJt" secondAttribute="trailing" constant="20" id="RYh-8c-kNu"/>
+                    <constraint firstItem="qsK-RQ-wJt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Y4q-ei-aVD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="medNameTextField" destination="qsK-RQ-wJt" id="25s-ZR-UxT"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
+            <point key="canvasLocation" x="133" y="97"/>
         </tableViewCell>
     </objects>
 </document>

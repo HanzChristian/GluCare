@@ -13,7 +13,7 @@ class MedNameTextFieldTVC: UITableViewCell {
     
     override func awakeFromNib() {
             super.awakeFromNib()
-            medNameTextField.layer.cornerRadius = 16.0
+//            medNameTextField.layer.cornerRadius = 16.0
             medNameTextField.clipsToBounds = true
     }
 
