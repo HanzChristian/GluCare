@@ -13,7 +13,6 @@ class MedNameTextFieldTVC: UITableViewCell {
     
     override func awakeFromNib() {
             super.awakeFromNib()
-            // Initialization code
             medNameTextField.layer.cornerRadius = 16.0
             medNameTextField.clipsToBounds = true
     }
@@ -21,7 +20,6 @@ class MedNameTextFieldTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }
