@@ -153,7 +153,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="GcJ-tA-QlO" kind="relationship" relationship="viewControllers" id="2bW-9X-6p2"/>
-                        <segue destination="6vA-YS-Jcn" kind="relationship" relationship="viewControllers" id="0cu-iX-hyB"/>
+                        <segue destination="zLS-qY-ZY0" kind="relationship" relationship="viewControllers" id="ASq-Tx-3mx"/>
                         <segue destination="psE-Xi-dPC" kind="relationship" relationship="viewControllers" id="S6Z-5u-y9E"/>
                     </connections>
                 </tabBarController>
@@ -183,22 +183,6 @@
             </objects>
             <point key="canvasLocation" x="721.73913043478262" y="71.651785714285708"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="vau-lx-BSX">
-            <objects>
-                <viewController id="6vA-YS-Jcn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RGm-Wy-tAG">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lwP-XY-Ydl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="UIk-la-aOU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C1g-No-Oxl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-192" y="825"/>
-        </scene>
         <!--AddMedicationViewController-->
         <scene sceneID="Km6-JM-Bir">
             <objects>
@@ -219,6 +203,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeK-Ti-h87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="629" y="-603"/>
+        </scene>
+        <!--Badge-->
+        <scene sceneID="2EE-jR-pTG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Badge" id="zLS-qY-ZY0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="G8v-zn-oHW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvG-uU-Etl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="791"/>
         </scene>
     </scenes>
     <resources>
