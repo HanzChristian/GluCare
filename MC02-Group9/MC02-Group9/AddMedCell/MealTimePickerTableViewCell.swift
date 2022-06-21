@@ -59,27 +59,25 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         mealTimeLabel.textColor = .black
         mealTimeLabel.text = mealTime[row]
+//        mealTimeTextField.text = mealTime[row]
+        mealPicked = true
+        mealVars.mealPickedRow = row
+        print("mealVars", mealVars.mealPickedRow)
+        mealTimeLabel.resignFirstResponder()
         
     }
     // Dismiss when done clicked
     @objc func btnDoneClicked(){
         self.endEditing(true)
     }
-    
-   
-        mealTimeTextField.text = mealTime[row]
-        mealPicked = true
-        mealVars.mealPickedRow = row
-        print("mealVars", mealVars.mealPickedRow)
-        mealTimeTextField.resignFirstResponder()
-    }
+}
 //    @IBAction public func addRow(_ sender: UIPickerView){
 //        if (mealVars.mealPickedRow != 4) {
 //            print("triggered")
 //            self.tableView.performBatchUpdates({
 //                self.tableView.insertRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
 //            }, completion: nil)
-}
+//        }
 
 struct mealVars {
     static var mealPickedRow = 4

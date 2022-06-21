@@ -13,9 +13,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
-
-        
-    let cellTitle = ["Nama Obat", "Waktu Minum","", "Frekuensi Minum"]
     let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
     //class: MedDesc
     let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
@@ -26,6 +23,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
     var newMealVars = 4
     var currentCell: IndexPath?
+    var height = 60.0
     
     
     override func viewDidLoad() {
@@ -43,9 +41,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(nibMedDescPicker, forCellReuseIdentifier: "medDescTableViewCell")
         let nibFrequencyPicker = UINib(nibName: "FrequencyPickerTableViewCell", bundle: nil)
         tableView.register(nibFrequencyPicker, forCellReuseIdentifier: "frequencyPickerTableViewCell")
-        
-        
-        view.backgroundColor = .systemBackground
         let nibSchedulePicker = UINib(nibName: "SchedulePickerTableViewCell", bundle: nil)
         tableView.register(nibSchedulePicker, forCellReuseIdentifier: "schedulePickerTableViewCell")
         let nibAddNewSchedulePicker = UINib(nibName: "AddNewScheduleTableViewCell", bundle: nil)
@@ -78,26 +73,23 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2
         print("AddMed TVC: mealVars", mealVars.mealPickedRow)
-        if (indexPath.row == 0) {
-
+//        if (indexPath.row == 0) {
         
         if(indexPath.section == 0){
             // SECTION 1
-
             if (indexPath.row == 0) {
             // SECTION 1 ROW 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
-
             cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
             cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
 
-            cell.medNameLabel.text = cellTitle[indexPath.row]
-            cell.medNameTextField?.placeholder = textFieldShadow[indexPath.row]
+//            cell.medNameLabel.text = cellTitle[indexPath.row]
+//            cell.medNameTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
             cell.mealTimeLabel.text = cellTitle[indexPath.row]
-            cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
+//            cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 2) {
             // tableView.reloadData()
@@ -131,11 +123,16 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 cell.mealTimeLabel.text = "Pilih waktu minum"
                 cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
                 cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
-                
+                // cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
                 return cell
                 
             } else if (indexPath.row == 1){
                 // SECTION 2 ROW 2 (Keterangan Waktu)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
+                cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
+                cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
+                cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
+                return cell
             }
             
         } else if (indexPath.section == 2){
@@ -151,7 +148,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 return cell
                 
             } else {
-                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addNewScheduleTableViewCell", for: indexPath) as! AddNewScheduleTableViewCell
                 cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 return cell
@@ -162,6 +158,11 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        print("didSelectRowAt: ", indexPath)
+        currentCell = indexPath
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+        
         if let cell = tableView.cellForRow(at: indexPath) as? MealTimePickerTableViewCell {
           if !cell.isFirstResponder {
             _ = cell.becomeFirstResponder()
@@ -176,15 +177,26 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
 //        let index = IndexPath(row: 2, section: 0)
 //        tableView.reloadRows(at: [index], with: .automatic)
 //        return cell
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt: ", indexPath)
-        currentCell = indexPath
-        tableView.reloadRows(at: [indexPath], with: .none)
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
-    }
+    
+
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("didSelectRowAt: ", indexPath)
+//        currentCell = indexPath
+//        tableView.reloadRows(at: [indexPath], with: .none)
+//        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        if (indexPath.section == 1) {
+            if (indexPath.row == 1) {
+                height = 110
+            } else {
+                height = 60.0
+            }
+        } else {
+            height = 60.0
+        }
+        return height
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
