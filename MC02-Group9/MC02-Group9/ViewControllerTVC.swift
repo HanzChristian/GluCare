@@ -18,21 +18,10 @@ class ViewControllerTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-//        let fontSize: CGFloat = 32
-//            let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
-//            let roundedFont: UIFont
-//            if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
-//                roundedFont = UIFont(descriptor: descriptor, size: fontSize)
-//            } else {
-//                roundedFont = systemFont
-//            }
-        
-    
-//        freqLbl.font =
-        freqLbl.alpha = 0.5
-        timeLbl.font = UIFont.boldSystemFont(ofSize: 20)
+        medLbl.font = .rounded(ofSize: 16, weight: .medium)
+        freqLbl.textColor = .systemGray
+        timeLbl.font = .rounded(ofSize: 20, weight: .bold)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,3 +31,5 @@ class ViewControllerTVC: UITableViewCell {
     }
 
 }
+
+
