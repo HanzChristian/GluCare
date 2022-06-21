@@ -14,17 +14,20 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         
     let mealTime = ["Waktu Spesifik", "Sebelum Makan",
                     "Setelah Makan", "Bersamaan dengan Makan"]
-    
-    
     let pickerView = UIPickerView()
-
-    
+    let toolbarMD = UIToolbar().toolbarPicker(select: #selector(dismissPicker))
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
+//        self.pickerView.inputAccessoryView = toolbarMD
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
+        pickerView.addGestureRecognizer(gesture)
+        
+//        mealTimeLabel.inputAccessoryView = toolbar
     }
+
     
     var mealPickerView = UIPickerView()
     public var mealPicked = false
@@ -47,6 +50,10 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         return pickerView
     }
     
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -62,13 +69,42 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 //        mealTimeTextField.text = mealTime[row]
         mealPicked = true
         mealVars.mealPickedRow = row
-        print("mealVars", mealVars.mealPickedRow)
         mealTimeLabel.resignFirstResponder()
-        
     }
+    
+    @objc func doneTapped() {
+        pickerView.endEditing(true)
+    }
+    
+    @objc func cancelTapped() {
+        mealTimeLabel.text = "Pilih Waktu Minum"
+        pickerView.endEditing(true)
+    }
+    
     // Dismiss when done clicked
-    @objc func btnDoneClicked(){
+    @objc func dismissPicker() {
         self.endEditing(true)
+    }
+    
+    @objc func viewTapped(sender: UITapGestureRecognizer) {
+        pickerView.endEditing(true)
+    }
+}
+
+extension UIToolbar {
+    func toolbarPicker(select: Selector) -> UIToolbar {
+        let toolbarMD = UIToolbar()
+        toolbarMD.sizeToFit()
+        toolbarMD.barStyle = .default
+        toolbarMD.tintColor = UIColor.systemBlue
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: select)
+ //       let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolbarMD.setItems([space, doneBtn], animated: true)
+        toolbarMD.isUserInteractionEnabled = true
+        
+        return toolbarMD
     }
 }
 

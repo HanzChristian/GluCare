@@ -88,7 +88,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             // SECTION 1 ROW 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
             cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
-            
 //            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
             return cell
         } else if (indexPath.row == 1){
@@ -98,7 +97,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             return cell
         } else if (indexPath.row == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
-            // mealVars.mealPickedRow
             cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
             cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
             cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
@@ -116,7 +114,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             
             if (indexPath.row == 0){
                 // SECTION 2 ROW 1 (Picker View)
-                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 cell.mealTimeLabel.text = "Pilih waktu minum"
                 cell.accessoryType = .disclosureIndicator
@@ -159,8 +156,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.deselectRow(at: indexPath, animated: false)
         print("didSelectRowAt: ", indexPath)
         currentCell = indexPath
-        let ipMealDesc = [1,1] as IndexPath
-        tableView.reloadRows(at: [ipMealDesc], with: .fade)
+        updateMealDesc()
         tableView.reloadRows(at: [indexPath], with: .none)
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
         
@@ -209,6 +205,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
 
         return headerView
     }
+    
+    public func updateMealDesc() {
+        let ipMealDesc = [1,1] as IndexPath
+        tableView.reloadRows(at: [ipMealDesc], with: .none)
+    }
+    
 
     //end of tableview function
     
@@ -265,7 +267,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         func hideKeyboard() {
             let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissView))
             tap.cancelsTouchesInView = false
-            
             view.addGestureRecognizer(tap)
         }
         
