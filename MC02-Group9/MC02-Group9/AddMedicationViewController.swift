@@ -157,7 +157,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         print("didSelectRowAt: ", indexPath)
         currentCell = indexPath
         updateMealDesc()
-        tableView.reloadRows(at: [indexPath], with: .none)
+        let ipMealDebug = [1,0] as IndexPath
+        if (indexPath == ipMealDebug) {} else {
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
         
         if let cell = tableView.cellForRow(at: indexPath) as? MealTimePickerTableViewCell {
@@ -197,7 +200,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             tableView.bounds.size.width, height: 5))
         
         sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
-//        sectionLabel.font = UIFont(name: "Helvetica Neue", size: 16)
+//        sectionLarebel.font = UIFont(name: "Helvetica Neue", size: 16)
 //        sectionLabel.textColor = UIColor.black
         sectionLabel.text = cellTitle[section]
         sectionLabel.sizeToFit()
@@ -273,6 +276,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         @objc func dismissView() {
             view.endEditing(true)
         }
-    
+        
 }
 

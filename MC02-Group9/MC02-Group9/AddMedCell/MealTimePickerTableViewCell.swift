@@ -15,17 +15,30 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     let mealTime = ["Waktu Spesifik", "Sebelum Makan",
                     "Setelah Makan", "Bersamaan dengan Makan"]
     let pickerView = UIPickerView()
-    let toolbarMD = UIToolbar().toolbarPicker(select: #selector(dismissPicker))
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
 //        self.pickerView.inputAccessoryView = toolbarMD
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
-        pickerView.addGestureRecognizer(gesture)
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
+//        pickerView.addGestureRecognizer(gesture)
         
-//        mealTimeLabel.inputAccessoryView = toolbar
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 392, height: 80)) //cons belum dari frame
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.tintColor = UIColor.systemBlue
+        toolBar.sizeToFit()
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped(sender:)))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolBar.setItems([cancelBtn, space, doneBtn], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        self.pickerView.addSubview(toolBar)
+//        pickerView.inputAccessoryView = toolBar
     }
 
     
@@ -69,16 +82,21 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 //        mealTimeTextField.text = mealTime[row]
         mealPicked = true
         mealVars.mealPickedRow = row
+        //mealTimeLabel.resignFirstResponder()
+    }
+    
+    @objc func doneTapped(sender: UIBarButtonItem) {
+        print("done tapped")
         mealTimeLabel.resignFirstResponder()
+        pickerView.resignFirstResponder()
+        
     }
     
-    @objc func doneTapped() {
-        pickerView.endEditing(true)
-    }
-    
-    @objc func cancelTapped() {
+    @objc func cancelTapped(sender: UIBarButtonItem) {
         mealTimeLabel.text = "Pilih Waktu Minum"
-        pickerView.endEditing(true)
+        print("cancel tapped")
+        mealTimeLabel.resignFirstResponder()
+        pickerView.resignFirstResponder()
     }
     
     // Dismiss when done clicked
@@ -89,23 +107,25 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     @objc func viewTapped(sender: UITapGestureRecognizer) {
         pickerView.endEditing(true)
     }
+    
 }
 
 extension UIToolbar {
     func toolbarPicker(select: Selector) -> UIToolbar {
-        let toolbarMD = UIToolbar()
-        toolbarMD.sizeToFit()
-        toolbarMD.barStyle = .default
-        toolbarMD.tintColor = UIColor.systemBlue
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        toolBar.barStyle = .default
+        toolBar.tintColor = UIColor.systemBlue
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: select)
  //       let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        toolbarMD.setItems([space, doneBtn], animated: true)
-        toolbarMD.isUserInteractionEnabled = true
+        toolBar.setItems([space, doneBtn], animated: true)
+        toolBar.isUserInteractionEnabled = true
         
-        return toolbarMD
+        return toolBar
     }
+    
 }
 
 struct mealVars {
