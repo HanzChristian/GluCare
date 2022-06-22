@@ -1,10 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "tabbar1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "tabbar2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
