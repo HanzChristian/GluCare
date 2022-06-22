@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="mealTimeLabel" destination="X97-mW-bzG" id="QcR-z6-GbW"/>
             </connections>
-            <point key="canvasLocation" x="185.50724637681162" y="90.401785714285708"/>
+            <point key="canvasLocation" x="186" y="102"/>
         </tableViewCell>
     </objects>
 </document>
