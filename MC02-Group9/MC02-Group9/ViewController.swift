@@ -11,6 +11,7 @@ import CoreData
 
 class ViewController: UIViewController, FSCalendarDelegate{
     
+    let notificationCenter = UNUserNotificationCenter.current()
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -42,6 +43,35 @@ class ViewController: UIViewController, FSCalendarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Request for user permission
+        notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
+                    if(!permissionGranted)
+                    {
+                        self.notificationCenter.getNotificationSettings { (settings) in
+                            if(settings.authorizationStatus != .authorized){
+                                DispatchQueue.main.async {
+                                    let ac = UIAlertController(title: "Enable Notifications?", message: "To use reminder feature you must enable notifications in settings", preferredStyle: .alert)
+                                    let goToSettings = UIAlertAction(title: "Settings", style: .default){
+                                        
+                                        (_) in
+                                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString)
+                                        else{
+                                            return
+                                        }
+                                        if(UIApplication.shared.canOpenURL(settingsURL)){
+                                            UIApplication.shared.open(settingsURL){ (_) in
+                                            }
+                                        }
+                                    }
+                                    ac.addAction(goToSettings)
+                                    ac.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(_) in}))
+                                    self.present(ac,animated: true)
+                                }
+                            }
+                    }
+                }
+        }
+            
         calendar.delegate = self
         
         self.calendar.select(Date())
@@ -599,7 +629,7 @@ extension ViewController:UITableViewDataSource{
             else if(medicine_time.medicine?.eat_time == 3){
                 cell.freqLbl.text = "Bersamaan dengan makan"
             }else{
-                cell.freqLbl.text = "-"
+                cell.freqLbl.text = "Waktu Spesifik"
             }
             cell.timeLbl.text = medicine_time.time
             cell.timeLbl.layer.opacity = 1

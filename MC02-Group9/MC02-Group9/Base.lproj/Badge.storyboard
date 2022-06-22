@@ -82,8 +82,9 @@
         <scene sceneID="Yls-If-hjj">
             <objects>
                 <navigationController storyboardIdentifier="BadgeNavVC" title="Badge" automaticallyAdjustsScrollViewInsets="NO" id="JYK-4x-Th1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hNf-bZ-25r"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="rosette" catalog="system" id="4OK-Wf-Lxi"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rEC-aJ-xMn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -100,6 +101,7 @@
     </scenes>
     <resources>
         <image name="FlameBadge" width="51" height="81"/>
+        <image name="rosette" catalog="system" width="106" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
