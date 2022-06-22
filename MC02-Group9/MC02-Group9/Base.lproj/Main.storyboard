@@ -122,19 +122,11 @@
                             <constraint firstItem="GYL-rF-G8m" firstAttribute="top" secondItem="9d8-OB-Mc0" secondAttribute="bottom" id="u4W-V3-67n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kry-s1-Xhi">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Jqs-eR-OaQ">
-                            <connections>
-                                <action selector="didTapBtn:" destination="BYZ-38-t0r" id="k28-qx-8ji"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="kry-s1-Xhi"/>
                     <connections>
-                        <outlet property="AddMedicationBtn" destination="Jqs-eR-OaQ" id="KWS-cw-Bld"/>
                         <outlet property="calendar" destination="9d8-OB-Mc0" id="Xf4-jx-KiK"/>
                         <outlet property="calendarHeightConstraint" destination="fHQ-JY-PkM" id="Q42-Hu-JEa"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
-                        <segue destination="nHD-UU-dzJ" kind="show" identifier="AddMedication" id="rgF-Lf-acH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

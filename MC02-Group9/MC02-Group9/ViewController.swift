@@ -29,7 +29,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var AddMedicationBtn: UIBarButtonItem!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     var items:[Medicine_Time]?
@@ -233,17 +232,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
-    }
-    
-    @IBAction func didTapBtn(_ sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddMedicationViewController") as? AddMedicationViewController else {
-            print("Error")
-            return
-        }
-        
-        let navVC = UINavigationController(rootViewController: vc)
-        
-        present(navVC, animated: true)
     }
     
     func resetArray(){

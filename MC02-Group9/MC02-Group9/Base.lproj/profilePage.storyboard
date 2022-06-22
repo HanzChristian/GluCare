@@ -61,11 +61,20 @@
                         <outlet property="editButton" destination="Fa1-ec-V5z" id="7Wv-g7-HMs"/>
                         <outlet property="editButtonItem" destination="Fa1-ec-V5z" id="To8-Ml-C34"/>
                         <outlet property="obatKamuTableView" destination="a10-JW-pM9" id="aRe-j7-09D"/>
+                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="AddMedicationViewController" id="xms-jq-6he"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucx-rd-LzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1193" y="-605"/>
+        </scene>
+        <!--Add Medication-->
+        <scene sceneID="1Ba-kd-GiV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add Medication" id="NXy-ze-r2F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOc-h9-3Ym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2067" y="-624"/>
         </scene>
         <!--Profile-->
         <scene sceneID="WbI-tm-Rp3">

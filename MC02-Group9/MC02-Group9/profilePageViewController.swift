@@ -85,14 +85,8 @@ class profilePageViewController: UIViewController {
     
 
     @IBAction func didTapAddMed(_ sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddMedicationViewController") as? AddMedicationViewController else {
-            print("Error")
-            return
-        }
         
-        let navVC = UINavigationController(rootViewController: vc)
-        
-        present(navVC, animated: true)
+        performSegue(withIdentifier: "AddMedicationViewController", sender: nil)
     }
     
     
