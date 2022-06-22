@@ -15,6 +15,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     let mealTime = ["Waktu Spesifik", "Sebelum Makan",
                     "Setelah Makan", "Bersamaan dengan Makan"]
     let pickerView = UIPickerView()
+    // x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: 300
     
     
     
@@ -22,13 +23,15 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
-//        self.pickerView.inputAccessoryView = toolbarMD
         
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
-//        pickerView.addGestureRecognizer(gesture)
+        let screenWidth = UIScreen.main.bounds.size.width
+//        let screenHeight = UIScreen.main.bounds.size.height
         
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 392, height: 80)) //cons belum dari frame
+//        self.pickerView.inputAccessoryView = toolbar
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 44)) //cons belum dari frame width392
         toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
         toolBar.tintColor = UIColor.systemBlue
         toolBar.sizeToFit()
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
@@ -38,7 +41,20 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         toolBar.setItems([cancelBtn, space, doneBtn], animated: true)
         toolBar.isUserInteractionEnabled = true
         self.pickerView.addSubview(toolBar)
-//        pickerView.inputAccessoryView = toolBar
+//        self.pickerView.bringSubviewToFront(toolBar)
+        guard let superview = pickerView.superview else { return }
+        superview.addSubview(toolBar)
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toolBar.topAnchor.constraint(equalTo: superview.topAnchor),
+            toolBar.leftAnchor.constraint(equalTo: superview.leftAnchor),
+            toolBar.rightAnchor.constraint(equalTo: superview.rightAnchor),
+            toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor)
+        ])
+//        toolBar.isHidden = false
+//        toolBar.becomeFirstResponder()
+//        mealTimeLabel.inputAccessoryView = toolBar
+//        input accs buat field
     }
 
     
@@ -47,8 +63,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override var canBecomeFirstResponder: Bool{
@@ -62,10 +76,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     override var inputView: UIView? {
         return pickerView
     }
-    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -82,13 +92,13 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 //        mealTimeTextField.text = mealTime[row]
         mealPicked = true
         mealVars.mealPickedRow = row
-        //mealTimeLabel.resignFirstResponder()
+        mealTimeLabel.resignFirstResponder()
     }
     
     @objc func doneTapped(sender: UIBarButtonItem) {
         print("done tapped")
-        mealTimeLabel.resignFirstResponder()
-        pickerView.resignFirstResponder()
+        resignFirstResponder()
+        self.endEditing(true)
         
     }
     
