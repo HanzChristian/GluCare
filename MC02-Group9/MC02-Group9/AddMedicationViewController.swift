@@ -8,6 +8,11 @@
 import UIKit
 
 class AddMedicationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var items:[Medicine_Time]?
+    
+    
     @IBOutlet var tableView: UITableView!
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
@@ -22,6 +27,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     var newMealVars = 4
     var currentCell: IndexPath?
     var height = 60.0
+    
+    var cellMedNameTV: MedNameTextFieldTVC?
+    var cellTimePicker = [SchedulePickerTableViewCell]()
     
     
     override func viewDidLoad() {
@@ -88,12 +96,15 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             // SECTION 1 ROW 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
             cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
+            cellMedNameTV = cell
+                
             
 //            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
             return cell
         } else if (indexPath.row == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
             cell.mealTimeLabel.text = cellTitle[indexPath.row]
+            
 //            cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
             return cell
         } else if (indexPath.row == 2) {
@@ -120,6 +131,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 cell.mealTimeLabel.text = "Pilih waktu minum"
                 cell.accessoryType = .disclosureIndicator
+                
 //                cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
 //                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 // cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
@@ -144,10 +156,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 cell.mealTimeLabel.text = jadwal[indexPath.row]
                 cell.delegate = self // To add super view to cell
 //                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
+                
+                // buat simpen waktu yg nya
+                if(indexPath.row == cellTimePicker.count){
+                    cellTimePicker.append(cell)
+                }else{
+                    cellTimePicker[indexPath.row] = cell
+                }
+                
                 return cell
                 
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addNewScheduleTableViewCell", for: indexPath) as! AddNewScheduleTableViewCell
+                
 //                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 return cell
             }
@@ -254,7 +275,42 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     @objc private func saveItem(){
         // Tambahin logic save disini
         
-        tableView
+        //tableView.indexPath(for: <#T##UITableViewCell#>)
+        
+        /*
+         // DEBUG
+        print("Data SAVED")
+        print(cellMedNameTV!.medNameTextField.text!)
+        print(mealVars.mealPickedRow)
+        
+        for time in cellTimePicker{
+            print(time.btnTimePicker.text)
+        }
+         */
+        
+        
+        // create medicine
+        let medicine = Medicine(context: context)
+        medicine.name = cellMedNameTV!.medNameTextField.text!
+        medicine.rules = "After"
+        medicine.strength = "500 mg"
+        medicine.eat_time = Int16(mealVars.mealPickedRow)
+        
+        // Add time
+        
+        for time in cellTimePicker{
+            let medicine_time = Medicine_Time(context: context)
+            medicine_time.time = time.btnTimePicker.text
+            medicine.addToTime(medicine_time)
+        }
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
         dismiss(animated: true, completion: nil)
     }

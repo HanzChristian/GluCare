@@ -15,6 +15,8 @@ class MedNameTextFieldTVC: UITableViewCell {
             super.awakeFromNib()
 //            medNameTextField.layer.cornerRadius = 16.0
             medNameTextField.clipsToBounds = true
+        print("INI NAMA OBAT")
+        print(medNameTextField.text!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
