@@ -590,14 +590,16 @@ extension ViewController:UITableViewDataSource{
             
             let medicine_time = self.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
-            if(medicine_time.medicine?.eat_time == 1){
+            if(medicine_time.medicine?.eat_time == 2){
                 cell.freqLbl.text = "Sesudah makan"
             }
-            else if(medicine_time.medicine?.eat_time == 2){
+            else if(medicine_time.medicine?.eat_time == 1){
                 cell.freqLbl.text = "Sebelum makan"
             }
             else if(medicine_time.medicine?.eat_time == 3){
                 cell.freqLbl.text = "Bersamaan dengan makan"
+            }else{
+                cell.freqLbl.text = "-"
             }
             cell.timeLbl.text = medicine_time.time
             cell.timeLbl.layer.opacity = 1
