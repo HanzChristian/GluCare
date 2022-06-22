@@ -28,6 +28,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     var height = 60.0
     
     var cellMedNameTV: MedNameTextFieldTVC?
+    var cellMealTimePicker: MealTimePickerTableViewCell?
     var cellTimePicker = [SchedulePickerTableViewCell]()
     
     
@@ -68,6 +69,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         setNavItem()
+        validateForm()
         self.hideKeyboard()
     }
     
@@ -127,6 +129,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 cell.mealTimeLabel.text = "Pilih waktu minum"
                 cell.accessoryType = .disclosureIndicator
+                cellMealTimePicker = cell
                 //                cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
                 //                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 // cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
@@ -246,6 +249,15 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
+        
+        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    private func validateForm(){
+        if (cellMedNameTV?.medNameTextField.text != nil && cellMealTimePicker?.mealTimeLabel.text != "Pilih waktu minum"){
+            
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
     // Function buat pake hex color
