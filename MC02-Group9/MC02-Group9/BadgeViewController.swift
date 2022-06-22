@@ -38,7 +38,7 @@ class BadgeViewController: UIViewController {
               ]
         }
         
-        title = "Pencapaian"
+//        title = "Pencapaian"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // config label day

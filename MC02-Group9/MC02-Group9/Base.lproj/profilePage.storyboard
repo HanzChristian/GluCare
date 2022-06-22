@@ -80,7 +80,7 @@
         <scene sceneID="WbI-tm-Rp3">
             <objects>
                 <navigationController title="Profile" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zoA-Gj-THi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.2.fill" catalog="system" id="KQE-HH-g7E"/>
+                    <tabBarItem key="tabBarItem" title="Obat" image="pills.fill" catalog="system" id="KQE-HH-g7E"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6b5-VE-XJn">
@@ -101,7 +101,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="pills.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

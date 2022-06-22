@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Jadwal Obat-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Jadwal Obat" id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,7 +122,7 @@
                             <constraint firstItem="GYL-rF-G8m" firstAttribute="top" secondItem="9d8-OB-Mc0" secondAttribute="bottom" id="u4W-V3-67n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kry-s1-Xhi"/>
+                    <navigationItem key="navigationItem" title="Jadwal Obat" id="kry-s1-Xhi"/>
                     <connections>
                         <outlet property="calendar" destination="9d8-OB-Mc0" id="Xf4-jx-KiK"/>
                         <outlet property="calendarHeightConstraint" destination="fHQ-JY-PkM" id="Q42-Hu-JEa"/>
@@ -153,11 +153,11 @@
             </objects>
             <point key="canvasLocation" x="-191" y="72"/>
         </scene>
-        <!--Item-->
+        <!--Jadwal Obat-->
         <scene sceneID="8sU-Bz-U4D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GcJ-tA-QlO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="med" id="PFC-jO-WrZ"/>
+                <navigationController title="Jadwal Obat" automaticallyAdjustsScrollViewInsets="NO" id="GcJ-tA-QlO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Jadwal" image="med" id="PFC-jO-WrZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
