@@ -36,7 +36,7 @@ class BadgeViewController: UIViewController {
     }
     
     func configuration(){
-        title = "Badge"
+        title = "Pencapaian"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // config label
@@ -50,7 +50,7 @@ class BadgeViewController: UIViewController {
     }
     
     func circleBar(){
-        let circlePath = UIBezierPath(arcCenter: view.center, radius: 150, startAngle: -(.pi/2), endAngle: .pi*2, clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: view.center.x, y: 350), radius: 150, startAngle: -(.pi/2), endAngle: .pi*2, clockwise: true)
         
         let trackShape = CAShapeLayer()
         trackShape.path = circlePath.cgPath
