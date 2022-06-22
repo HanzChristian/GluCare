@@ -57,16 +57,22 @@ class ViewController: UIViewController, FSCalendarDelegate{
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
     
-        fetchMedicine()
-        fetchLogs()
+        refresh()
         
+        /*
+         Untuk Dummy Data
         if(items?.count ?? 0 == 0){
             dummyData()
             fetchMedicine()
         }
+         */
         
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+    }
+    
+    @objc func refresh() {
+        fetchMedicine()
+        fetchLogs()
     }
 
     
@@ -480,16 +486,15 @@ extension ViewController:UITableViewDelegate{
                 
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 
+                
+                
                 do{
                     try self.context.save()
                 }catch{
                     
                 }
-                self.fetchLogs()
                 
-                
-
-                
+                self.refresh()
             }
             
             takeAction.backgroundColor = .systemBlue
@@ -661,8 +666,6 @@ extension ViewController:UITableViewDataSource{
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     undoIdx[indexPath.row] = index
-
-                    
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
                         cell.timeLbl.layer.opacity = 0.3
@@ -671,8 +674,6 @@ extension ViewController:UITableViewDataSource{
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Subtract")
                         //cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
-
-                        
                     }else{
 
                         // Create Date Formatter
