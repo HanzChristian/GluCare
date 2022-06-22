@@ -82,7 +82,7 @@
         <scene sceneID="Yls-If-hjj">
             <objects>
                 <navigationController storyboardIdentifier="BadgeNavVC" title="Badge" automaticallyAdjustsScrollViewInsets="NO" id="JYK-4x-Th1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="rosette" catalog="system" id="4OK-Wf-Lxi"/>
+                    <tabBarItem key="tabBarItem" title="Pencapaian" image="rosette" catalog="system" id="4OK-Wf-Lxi"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rEC-aJ-xMn">

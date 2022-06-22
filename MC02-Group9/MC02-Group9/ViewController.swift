@@ -79,7 +79,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
         resetArray()
         
-        title = "Jadwal Obat"
+        title = "Jadwal"
         tableView.delegate = self
         tableView.dataSource = self
         
