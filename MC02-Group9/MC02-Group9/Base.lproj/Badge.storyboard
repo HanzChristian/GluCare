@@ -15,10 +15,43 @@
                     <view key="view" contentMode="scaleToFill" id="mif-m4-aL4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsf-54-ljB">
+                                <rect key="frame" x="186" y="389" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hw-7L-bia">
+                                <rect key="frame" x="186" y="417" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ppl-ol-qNE">
+                                <rect key="frame" x="166.5" y="288" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="p4K-zC-exG"/>
+                                    <constraint firstAttribute="width" constant="81" id="p6s-pi-cez"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SaF-NY-6Lp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Hw-7L-bia" firstAttribute="centerX" secondItem="SaF-NY-6Lp" secondAttribute="centerX" id="DAb-Yv-QBf"/>
+                            <constraint firstItem="qsf-54-ljB" firstAttribute="top" secondItem="ppl-ol-qNE" secondAttribute="bottom" constant="20" id="Hin-tL-mlC"/>
+                            <constraint firstItem="0Hw-7L-bia" firstAttribute="top" secondItem="qsf-54-ljB" secondAttribute="bottom" constant="7.5" id="KJV-wh-ipD"/>
+                            <constraint firstItem="ppl-ol-qNE" firstAttribute="top" secondItem="SaF-NY-6Lp" secondAttribute="top" constant="200" id="ewQ-Ty-pKb"/>
+                            <constraint firstItem="qsf-54-ljB" firstAttribute="centerX" secondItem="SaF-NY-6Lp" secondAttribute="centerX" id="fb2-Uw-UVM"/>
+                            <constraint firstItem="ppl-ol-qNE" firstAttribute="centerX" secondItem="SaF-NY-6Lp" secondAttribute="centerX" id="lK1-NJ-txD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lv1-xb-Pnx"/>
+                    <connections>
+                        <outlet property="lblDays" destination="qsf-54-ljB" id="bLg-Mc-TLh"/>
+                        <outlet property="lblStreak" destination="0Hw-7L-bia" id="Koh-TA-PPW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1L-is-6Tq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
