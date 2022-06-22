@@ -66,7 +66,7 @@ class BadgeViewController: UIViewController {
     }
     
     func circleBar(){
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: view.center.x, y: 350), radius: 150, startAngle: -(.pi/2), endAngle: .pi*2, clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: view.center.x, y: 350), radius: 150, startAngle: -(.pi/2), endAngle: .pi*1.5, clockwise: true)
         
         let trackShape = CAShapeLayer()
         trackShape.path = circlePath.cgPath
@@ -85,7 +85,7 @@ class BadgeViewController: UIViewController {
         
         // animation
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 0.4 // value akhir buat animationnya
+        animation.toValue = 1 // value akhir buat animationnya
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards

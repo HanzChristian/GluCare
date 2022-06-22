@@ -107,8 +107,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 return cell
             } else if (indexPath.row == 2) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
-                cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
-                cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
+                cell.mealDescTitle.text = "Pilih Waktu Minum"
+                cell.mealDesc.text = "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"
                 cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
                 return cell
             } else {
