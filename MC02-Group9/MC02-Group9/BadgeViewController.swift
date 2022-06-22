@@ -22,6 +22,8 @@ class BadgeViewController: UIViewController {
     
     @IBOutlet weak var lblDays: UILabel!
     @IBOutlet weak var lblStreak: UILabel!
+    @IBOutlet weak var lblBtmTitle: UILabel!
+    @IBOutlet weak var lblBtmTxt: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class BadgeViewController: UIViewController {
         // config label
         lblDays.text = "1/7"
         lblStreak.text = "day streaks"
+        lblBtmTitle.text = "Lanjutkan Perjuanganmu!"
+        lblBtmTxt.text = "Dengan membangun streak, kamu dapat membangun rutinitas konsumsi obat yang baik."
 //        lblStreak.sizeToFit()
 //        view.addSubview(lblStreak)
 //        lblStreak.center = view.center
