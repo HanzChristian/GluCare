@@ -22,13 +22,22 @@ class MedDescTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "selectTime"), object: nil)
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+    }
+    
+    @objc func refresh(){
+        mealDescTitle.text = mealTime[mealTimeVar.row]
+        mealDesc.text = mealTimeDesc[mealTimeVar.row]
+        mealImage.image = UIImage(named: "MealDesc\(mealTimeVar.row)")
+        super.setSelected(isSelected, animated: true)
     }
     
 }

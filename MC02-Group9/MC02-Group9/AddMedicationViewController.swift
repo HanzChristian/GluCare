@@ -17,12 +17,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
     let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
-    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
-    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
-                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
-                        "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
-                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
-                        "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
+//    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
+//    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
+//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
+//                        "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
+//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
+//                        "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
     var newMealVars = 4
     var currentCell: IndexPath?
     var height = 60.0
@@ -135,9 +135,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             } else if (indexPath.row == 1){
                 // SECTION 2 ROW 2 (Keterangan Waktu)
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
-                cell.mealDescTitle.text = mealTime[mealVars.mealPickedRow]
-                cell.mealDesc.text = mealTimeDesc[mealVars.mealPickedRow]
-                cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
+                cell.mealDescTitle.text = "Pilih Waktu Minum"
+                cell.mealDesc.text = "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"
                 return cell
             }
             
@@ -171,15 +170,17 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        print("didSelectRowAt: ", indexPath)
-        currentCell = indexPath
-        updateMealDesc()
-        let ipMealDebug = [1,0] as IndexPath
-        if (indexPath == ipMealDebug) {} else {
-            tableView.reloadRows(at: [indexPath], with: .none)
-        }
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+        
+        // MARK : BUG!!
+//        tableView.deselectRow(at: indexPath, animated: false)
+//        print("didSelectRowAt: ", indexPath)
+//        currentCell = indexPath
+//        updateMealDesc()
+//        let ipMealDebug = [1,0] as IndexPath
+//        if (indexPath == ipMealDebug) {} else {
+//            tableView.reloadRows(at: [indexPath], with: .none)
+//        }
+//        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
         
         if let cell = tableView.cellForRow(at: indexPath) as? MealTimePickerTableViewCell {
             if !cell.isFirstResponder {
