@@ -165,7 +165,7 @@
         <scene sceneID="8sU-Bz-U4D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GcJ-tA-QlO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PFC-jO-WrZ"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="med" id="PFC-jO-WrZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -217,6 +217,7 @@
     </scenes>
     <resources>
         <image name="Pagi" width="100" height="64"/>
+        <image name="med" width="20" height="19.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
