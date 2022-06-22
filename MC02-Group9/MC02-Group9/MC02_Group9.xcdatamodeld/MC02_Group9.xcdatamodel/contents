@@ -12,7 +12,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rules" optional="YES" attributeType="String"/>
         <attribute name="strength" optional="YES" attributeType="String"/>
-        <relationship name="time" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Medicine_Time" inverseName="medicine" inverseEntity="Medicine_Time"/>
+        <relationship name="time" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Medicine_Time" inverseName="medicine" inverseEntity="Medicine_Time"/>
     </entity>
     <entity name="Medicine_Time" representedClassName="Medicine_Time" syncable="YES">
         <attribute name="time" optional="YES" attributeType="String"/>
