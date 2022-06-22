@@ -42,6 +42,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
                     if(!permissionGranted)
@@ -70,7 +72,19 @@ class ViewController: UIViewController, FSCalendarDelegate{
                     }
                 }
         }
-            
+        
+//        Nav Bar Title Rounded
+        if let roundedTitleDescriptor = UIFontDescriptor
+          .preferredFontDescriptor(withTextStyle: .largeTitle)
+          .withDesign(.rounded)?
+          .withSymbolicTraits(.traitBold) {
+            self.navigationController? // Assumes a navigationController exists on the current view
+              .navigationBar
+              .largeTitleTextAttributes = [
+                .font: UIFont(descriptor: roundedTitleDescriptor, size: 0) // Note that 'size: 0' maintains the system size class
+              ]
+        }
+        
         calendar.delegate = self
         
         self.calendar.select(Date())
@@ -79,7 +93,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
         resetArray()
         
-        title = "Jadwal"
+//        title = "Jadwal"
         tableView.delegate = self
         tableView.dataSource = self
         
