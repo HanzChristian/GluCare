@@ -23,36 +23,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
-        
-        let screenWidth = UIScreen.main.bounds.size.width
-//        let screenHeight = UIScreen.main.bounds.size.height
-//        self.pickerView.inputAccessoryView = toolbar
 
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 44)) //cons belum dari frame width392
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.systemBlue
-        toolBar.sizeToFit()
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped(sender:)))
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        
-        toolBar.setItems([cancelBtn, space, doneBtn], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        self.pickerView.addSubview(toolBar)
-//        self.pickerView.bringSubviewToFront(toolBar)
-        guard let superview = pickerView.superview else { return }
-        superview.addSubview(toolBar)
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            toolBar.topAnchor.constraint(equalTo: superview.topAnchor),
-            toolBar.leftAnchor.constraint(equalTo: superview.leftAnchor),
-            toolBar.rightAnchor.constraint(equalTo: superview.rightAnchor),
-            toolBar.bottomAnchor.constraint(equalTo: pickerView.topAnchor)
-        ])
-//        toolBar.isHidden = false
-//        toolBar.becomeFirstResponder()
-//        mealTimeLabel.inputAccessoryView = toolBar
     }
 
     
@@ -75,6 +46,18 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         return pickerView
     }
     
+    override var inputAccessoryView: UIView?{
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneBtn = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.items = [cancelBtn, space, doneBtn]
+   
+        return toolBar
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -89,23 +72,21 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         mealTimeLabel.text = mealTime[row]
 //        mealTimeTextField.text = mealTime[row]
         mealPicked = true
+        mealTimeVar.row = row
         mealVars.mealPickedRow = row
         mealTimeLabel.resignFirstResponder()
-    }
-    
-    @objc func doneTapped(sender: UIBarButtonItem) {
-        print("done tapped")
-        resignFirstResponder()
-        // updateMealDesc()
-        self.endEditing(true)
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
+
     }
     
-    @objc func cancelTapped(sender: UIBarButtonItem) {
+    @objc func doneTapped() {
+        self.endEditing(true)
+    }
+    
+    @objc func cancelTapped() {
         mealTimeLabel.text = "Pilih Waktu Minum"
-        print("cancel tapped")
-        //mealTimeLabel.resignFirstResponder()
-        pickerView.resignFirstResponder()
+        self.endEditing(true)
     }
     
     // Dismiss when done clicked

@@ -27,6 +27,7 @@
 		1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */; };
 		1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813B52861E01A009994F9 /* BadgeViewController.swift */; };
 		1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813B72861E0DF009994F9 /* Badge.storyboard */; };
+		1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCAEAC2863293500E97CBA /* MealTime.swift */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */; };
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
@@ -67,6 +68,7 @@
 		1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		1F8813B52861E01A009994F9 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		1F8813B82861E0DF009994F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Badge.storyboard; sourceTree = "<group>"; };
+		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
 		2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedDescTableViewCell.swift; sourceTree = "<group>"; };
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
 		2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTextFieldTVC.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */,
 				F033B159285B36C900CD4941 /* Medicine+CoreDataClass.swift */,
 				F033B155285B36C900CD4941 /* Medicine+CoreDataProperties.swift */,
+				1FFCAEAC2863293500E97CBA /* MealTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */,
+				1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */,
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
