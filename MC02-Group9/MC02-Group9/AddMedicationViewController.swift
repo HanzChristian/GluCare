@@ -210,7 +210,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     public func updateMealDesc() {
-        let ipMealDesc = [1,1] as IndexPath
+        public let ipMealDesc = [1,1] as IndexPath
         tableView.reloadRows(at: [ipMealDesc], with: .none)
     }
     

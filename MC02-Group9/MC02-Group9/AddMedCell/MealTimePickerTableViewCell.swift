@@ -26,7 +26,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         
         let screenWidth = UIScreen.main.bounds.size.width
 //        let screenHeight = UIScreen.main.bounds.size.height
-        
 //        self.pickerView.inputAccessoryView = toolbar
 
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 44)) //cons belum dari frame width392
@@ -54,7 +53,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 //        toolBar.isHidden = false
 //        toolBar.becomeFirstResponder()
 //        mealTimeLabel.inputAccessoryView = toolBar
-//        input accs buat field
     }
 
     
@@ -98,6 +96,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     @objc func doneTapped(sender: UIBarButtonItem) {
         print("done tapped")
         resignFirstResponder()
+        // updateMealDesc()
         self.endEditing(true)
         
     }
@@ -105,7 +104,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     @objc func cancelTapped(sender: UIBarButtonItem) {
         mealTimeLabel.text = "Pilih Waktu Minum"
         print("cancel tapped")
-        mealTimeLabel.resignFirstResponder()
+        //mealTimeLabel.resignFirstResponder()
         pickerView.resignFirstResponder()
     }
     
