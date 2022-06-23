@@ -324,19 +324,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
                         
                         var newDate = dateFormatter.date(from: string)!
+                        var newDate2 = dateFormatter.date(from: string)!
                         
-                        
-                        //content of notification
+                        //content of notification before & after
                         var content = UNMutableNotificationContent()
                         if(medicine.eat_time == 0){
-                            content.title = "Yuk Minum Obat!"
-                            content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
-                            newDate.addTimeInterval(-1800)
+                                content.title = "Yuk Minum Obat!"
+                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
+                                newDate.addTimeInterval(-1800)
                         }
                         else if(medicine.eat_time == 1){
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa makan setelah itu!"
-                            newDate.addTimeInterval(-1800)
+                                newDate.addTimeInterval(-1800)
                         }
                         else if(medicine.eat_time == 1){
                             content.title = "Yuk Minum Obat!"
@@ -349,20 +349,55 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                             newDate.addTimeInterval(-1800)
                         }
                         
+                        //content of notification on time
+                        var content2 = UNMutableNotificationContent()
+                        if(medicine.eat_time == 0){
+                            content2.title = "Yuk Minum Obatmu Sekarang!"
+                            content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                        }
+                        else if(medicine.eat_time == 1){
+                            content2.title = "Yuk Minum Obatmu Sekarang!"
+                            content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                        }
+                        else if(medicine.eat_time == 2){
+                            content2.title = "Yuk Minum Obatmu Sekarang!"
+                            content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                        }
+                        else{
+                            content2.title = "Yuk Minum Obatmu Sekarang!"
+                            content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                        }
+                        
+                        
                         dateFormatter.dateFormat = "HH:mm"
                         let newTime = dateFormatter.string(from: newDate)
                         let newHour = newTime[..<newTime.index(newTime.startIndex, offsetBy: 2)]
                         let newMinutes = newTime[newTime.index(newTime.startIndex, offsetBy: 3)...]
                         
+                        let newTime2 = dateFormatter.string(from: newDate2)
+                        let newHour2 = newTime2[..<newTime2.index(newTime2.startIndex, offsetBy: 2)]
+                        let newMinutes2 = newTime2[newTime2.index(newTime2.startIndex, offsetBy: 3)...]
+                        
                         var dateComp = DateComponents()
+                        var dateComp2 = DateComponents()
                         
                         //String to int
                         dateComp.hour = Int(newHour)
                         dateComp.minute = Int(newMinutes)
                         
+                        dateComp2.hour = Int(newHour2)
+                        dateComp2.minute = Int(newMinutes2)
+                        
                         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: true)
+                        let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComp2, repeats: true)
                         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                                         UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                                            if let theError = error {
+                                                print(theError.localizedDescription)
+                                            }
+                                        }
+                        let request2 = UNNotificationRequest(identifier: UUID().uuidString, content: content2, trigger: trigger2)
+                                        UNUserNotificationCenter.current().add(request2) { (error : Error?) in
                                             if let theError = error {
                                                 print(theError.localizedDescription)
                                             }
