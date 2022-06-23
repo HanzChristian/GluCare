@@ -13,6 +13,15 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
     
+    func setup(){
+        let emptyVC = EmptySpaceViewController()
+        addChild(emptyVC)
+        self.view.addSubview(emptyVC.view)
+
+        emptyVC.enableHidden()
+    }
+
+
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -41,9 +50,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
                     if(!permissionGranted)
@@ -100,7 +106,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
     
-        refresh()
+//        refresh()
         
         /*
          Untuk Dummy Data
@@ -116,6 +122,13 @@ class ViewController: UIViewController, FSCalendarDelegate{
     @objc func refresh() {
         fetchMedicine()
         fetchLogs()
+        if(items!.count > 0){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+        }
+        else if(items!.count == 0){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+        }
+                
     }
 
     

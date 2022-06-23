@@ -28,7 +28,6 @@ class profilePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchMedicine()
         
         obatKamuTableView.delegate = self
@@ -85,7 +84,6 @@ class profilePageViewController: UIViewController {
     
 
     @IBAction func didTapAddMed(_ sender: Any) {
-        
         performSegue(withIdentifier: "AddMedicationViewController", sender: nil)
     }
     
@@ -137,7 +135,6 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             self.fetchMedicine()
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
