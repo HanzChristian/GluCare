@@ -75,6 +75,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         mealVars.mealPickedRow = row
         mealTimeLabel.resignFirstResponder()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
 
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BadgeViewController: UIViewController {
     
@@ -15,15 +16,38 @@ class BadgeViewController: UIViewController {
     @IBOutlet weak var lblBtmTitle: UILabel!
     @IBOutlet weak var lblBtmTxt: UILabel!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var streaks:[Streak]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        fetchStreak()
         configuration()
         circleBar()
         
-
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newStreak"), object: nil)
     }
+    
+    @objc func refresh() {
+        fetchStreak()
+        configuration()
+        circleBar()
+    }
+    
+    func fetchStreak(){
+        do{
+            let request = Streak.fetchRequest() as NSFetchRequest<Streak>
+            
+            self.streaks = try context.fetch(request)
+            
+        }catch{
+            
+        }
+    }
+    
+   
     
     func configuration(){
         
@@ -42,7 +66,7 @@ class BadgeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // config label day
-        lblDays.text = "1/7" // Set logicny
+        lblDays.text = "\(streaks!.count)" // Set logicny
         lblDays.font = .rounded(ofSize: 34, weight: .semibold)
         
         // Config lbl day txt
