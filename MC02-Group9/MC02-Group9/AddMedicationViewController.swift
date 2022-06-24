@@ -75,6 +75,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         setNavItem()
         validateForm()
         self.hideKeyboard()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.validateForm), name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
     }
     
     
@@ -258,7 +259,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
-    internal func validateForm(){
+    @objc func validateForm(){
         print("Test")
         if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
            let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
