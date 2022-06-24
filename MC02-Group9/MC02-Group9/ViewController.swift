@@ -267,6 +267,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
         } catch {
             print ("There was an error")
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
     }
     
     func addStreak(){
@@ -658,6 +660,8 @@ extension ViewController:UITableViewDelegate{
                 log.action = "Skip"
                 log.time = self.items![indexPath.row].time
                 log.medicine_name = self.items![indexPath.row].medicine?.name
+                
+                self.resetStreak()
                 
                 self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
                 
