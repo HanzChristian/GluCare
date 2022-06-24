@@ -44,6 +44,8 @@
 		F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */; };
 		F033B15F285B36C900CD4941 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B159285B36C900CD4941 /* Medicine+CoreDataClass.swift */; };
 		F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */; };
+		F06DB70C2866FD6D00CC73FC /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DB70B2866FD6D00CC73FC /* Streak+CoreDataProperties.swift */; };
+		F06DB70D2866FD6D00CC73FC /* Streak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DB70A2866FD6D00CC73FC /* Streak+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B159285B36C900CD4941 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F06DB70A2866FD6D00CC73FC /* Streak+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Streak+CoreDataClass.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-15-15/MC02-Group9/MC02-Group9/Model/Streak+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		F06DB70B2866FD6D00CC73FC /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Streak+CoreDataProperties.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-15-15/MC02-Group9/MC02-Group9/Model/Streak+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,8 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F06DB70A2866FD6D00CC73FC /* Streak+CoreDataClass.swift */,
+				F06DB70B2866FD6D00CC73FC /* Streak+CoreDataProperties.swift */,
 				F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */,
 				F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */,
 				F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */,
@@ -342,6 +348,7 @@
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
+				F06DB70D2866FD6D00CC73FC /* Streak+CoreDataClass.swift in Sources */,
 				F033B15B285B36C900CD4941 /* Medicine+CoreDataProperties.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F033B15F285B36C900CD4941 /* Medicine+CoreDataClass.swift in Sources */,
@@ -352,6 +359,7 @@
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
+				F06DB70C2866FD6D00CC73FC /* Streak+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
