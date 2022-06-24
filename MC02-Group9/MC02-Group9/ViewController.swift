@@ -106,7 +106,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
     
-//        refresh()
+        refresh()
         
         /*
          Untuk Dummy Data
