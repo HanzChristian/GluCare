@@ -48,11 +48,12 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     override var inputAccessoryView: UIView?{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
+        //toolBar.barStyle = .black
         let doneBtn = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        //let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBar.isUserInteractionEnabled = true
-        toolBar.items = [cancelBtn, space, doneBtn]
+        toolBar.items = [space, doneBtn]
         return toolBar
     }
     
