@@ -197,7 +197,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             }
         } else if tableView.cellForRow(at: indexPath) is AddNewScheduleTableViewCell{
             jadwal.append("Jadwal \(jadwal.count+1)")
-            tableView.reloadData()
+            tableView.reloadSections(IndexSet(integer: 2), with: .none)
         }
     }
     
