@@ -18,7 +18,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     // x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: 300
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerView.dataSource = self
@@ -49,12 +48,12 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     override var inputAccessoryView: UIView?{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
+        //toolBar.barStyle = .black
         let doneBtn = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        //let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBar.isUserInteractionEnabled = true
-        toolBar.items = [cancelBtn, space, doneBtn]
-   
+        toolBar.items = [space, doneBtn]
         return toolBar
     }
     
@@ -75,7 +74,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         mealTimeVar.row = row
         mealVars.mealPickedRow = row
         mealTimeLabel.resignFirstResponder()
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
 
@@ -87,6 +85,8 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
     @objc func cancelTapped() {
         mealTimeLabel.text = "Pilih Waktu Minum"
+        print("cancelTapped")
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
         self.endEditing(true)
     }
     
@@ -101,23 +101,22 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
 }
 
-extension UIToolbar {
-    func toolbarPicker(select: Selector) -> UIToolbar {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        toolBar.barStyle = .default
-        toolBar.tintColor = UIColor.systemBlue
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: select)
- //       let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        
-        toolBar.setItems([space, doneBtn], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        
-        return toolBar
-    }
-    
-}
+//extension UIToolbar {
+//    func toolbarPicker(select: Selector) -> UIToolbar {
+//        let toolBar = UIToolbar()
+//        toolBar.sizeToFit()
+//        toolBar.barStyle = .default
+//        toolBar.tintColor = UIColor.systemBlue
+//        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: select)
+// //       let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+//        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+//
+//        toolBar.setItems([space, doneBtn], animated: true)
+//        toolBar.isUserInteractionEnabled = true
+//
+//        return toolBar
+//    }
+//}
 
 struct mealVars {
     static var mealPickedRow = 4

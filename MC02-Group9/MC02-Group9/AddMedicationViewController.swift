@@ -197,7 +197,16 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             }
         } else if tableView.cellForRow(at: indexPath) is AddNewScheduleTableViewCell{
             jadwal.append("Jadwal \(jadwal.count+1)")
-            tableView.reloadSections(IndexSet(integer: 2), with: .none)
+            //tableView.reloadSections(IndexSet(integer: 2), with: .none)
+            UIView.performWithoutAnimation {
+                let loc = tableView.contentOffset
+                tableView.reloadSections(IndexSet(integer: 2), with: .none)
+                tableView.setContentOffset(loc, animated: false)
+            }
+            
+            
+            
+            
         }
     }
     
@@ -237,10 +246,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         return headerView
     }
     
-    public func updateMealDesc() {
-        let ipMealDesc = [1,1] as IndexPath
-        tableView.reloadRows(at: [ipMealDesc], with: .none)
-    }
     
     
     //end of tableview function
