@@ -203,9 +203,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 tableView.reloadSections(IndexSet(integer: 2), with: .none)
                 tableView.setContentOffset(loc, animated: false)
             }
-            
-            
-            
+            validateForm()
             
         }
     }
@@ -268,7 +266,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         print("Test")
         if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
            let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            
+            var timeSet = Set<String>()
+            for cell in cellTimePicker{
+                timeSet.insert(cell.btnTimePicker.text!)
+            }
+          
+            if (timeSet.count == cellTimePicker.count) {
+                navigationItem.rightBarButtonItem?.isEnabled = true
+            } else {
+                navigationItem.rightBarButtonItem?.isEnabled = false
+            }
+            
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
         }
