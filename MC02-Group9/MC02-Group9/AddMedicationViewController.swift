@@ -7,7 +7,11 @@
 
 import UIKit
 
-class AddMedicationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate {
+protocol checkForm {
+    func validateForm()
+}
+
+class AddMedicationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, checkForm {
     let notificationCenter = UNUserNotificationCenter.current()
     @IBOutlet var tableView: UITableView!
     
@@ -28,6 +32,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     var height = 60.0
     
     var cellMedNameTV: MedNameTextFieldTVC?
+    var cellMealTimePicker: MealTimePickerTableViewCell?
     var cellTimePicker = [SchedulePickerTableViewCell]()
     
     
@@ -68,7 +73,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         setNavItem()
+        validateForm()
         self.hideKeyboard()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.validateForm), name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
     }
     
     
@@ -96,7 +103,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
                 cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
                 cellMedNameTV = cell
-                
+                validateForm()
                 
                 //            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
                 return cell
@@ -127,6 +134,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 cell.mealTimeLabel.text = "Pilih waktu minum"
                 cell.accessoryType = .disclosureIndicator
+                cellMealTimePicker = cell
+                validateForm()
                 //                cell.mealTimeLabel.textColor = hexStringToUIColor(hex: "#A0A4A8")
                 //                cell.backgroundColor = hexStringToUIColor(hex: "FAFAFA")
                 // cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
@@ -246,6 +255,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
+        
+        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    @objc func validateForm(){
+        print("Test")
+        if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
+           let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+        
     }
     
     // Function buat pake hex color
