@@ -47,6 +47,7 @@ class SchedulePickerTableViewCell: UITableViewCell {
             formatter.dateFormat = "HH:mm"
             
             btnTimePicker.text = formatter.string(from: sender.date)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
         }
         
         // Dismiss when done clicked
