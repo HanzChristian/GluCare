@@ -109,7 +109,7 @@ class BadgeViewController: UIViewController {
         
         // animation
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 1 // value akhir buat animationnya
+        animation.toValue = 0.00 + Float(Float(streaks!.count)/Float(7)) // value akhir buat animationnya
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
