@@ -182,6 +182,18 @@ class ViewController: UIViewController, FSCalendarDelegate{
     }
     
     func validateNewStreak(){
+        
+        // check di hari yang sama apa tidak
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+        
+        let dateNow = calendar.startOfDay(for: Date())
+        let dateCalendar = calendar.startOfDay(for: daySelected)
+        
+        if(dateNow != dateCalendar){
+            return
+        }
+        
         fetchStreak()
         fetchMeds()
         refresh()
