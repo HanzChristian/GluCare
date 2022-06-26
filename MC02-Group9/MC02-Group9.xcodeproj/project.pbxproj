@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		151533132865B5C500606068 /* Streak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151533122865B5C500606068 /* Streak+CoreDataClass.swift */; };
-		151533152865B5ED00606068 /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151533142865B5ED00606068 /* Streak+CoreDataProperties.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		1563DA7B2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */; };
 		1563DA7C2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */; };
@@ -34,6 +32,8 @@
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */; };
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
+		2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */; };
+		2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */; };
 		2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */; };
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
@@ -49,8 +49,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		151533122865B5C500606068 /* Streak+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataClass.swift"; sourceTree = "<group>"; };
-		151533142865B5ED00606068 /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
 		1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Regular.ttf"; sourceTree = "<group>"; };
 		1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -77,6 +75,8 @@
 		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
 		2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedDescTableViewCell.swift; sourceTree = "<group>"; };
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
+		2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTextFieldTVC.swift; sourceTree = "<group>"; };
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,10 +198,10 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				151533122865B5C500606068 /* Streak+CoreDataClass.swift */,
-				151533142865B5ED00606068 /* Streak+CoreDataProperties.swift */,
 				F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */,
 				F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */,
+				2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */,
+				2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */,
 				F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */,
 				F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */,
 				F033B159285B36C900CD4941 /* Medicine+CoreDataClass.swift */,
@@ -344,12 +344,11 @@
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
-				151533152865B5ED00606068 /* Streak+CoreDataProperties.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
-				151533132865B5C500606068 /* Streak+CoreDataClass.swift in Sources */,
+				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				F033B15B285B36C900CD4941 /* Medicine+CoreDataProperties.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F033B15F285B36C900CD4941 /* Medicine+CoreDataClass.swift in Sources */,
@@ -360,6 +359,7 @@
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
+				2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

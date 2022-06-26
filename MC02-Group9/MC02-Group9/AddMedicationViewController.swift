@@ -197,7 +197,14 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             }
         } else if tableView.cellForRow(at: indexPath) is AddNewScheduleTableViewCell{
             jadwal.append("Jadwal \(jadwal.count+1)")
-            tableView.reloadSections(IndexSet(integer: 2), with: .none)
+            //tableView.reloadSections(IndexSet(integer: 2), with: .none)
+            UIView.performWithoutAnimation {
+                let loc = tableView.contentOffset
+                tableView.reloadSections(IndexSet(integer: 2), with: .none)
+                tableView.setContentOffset(loc, animated: false)
+            }
+            validateForm()
+            
         }
     }
     
@@ -237,10 +244,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         return headerView
     }
     
-    public func updateMealDesc() {
-        let ipMealDesc = [1,1] as IndexPath
-        tableView.reloadRows(at: [ipMealDesc], with: .none)
-    }
     
     
     //end of tableview function
@@ -263,7 +266,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         print("Test")
         if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
            let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            
+            var timeSet = Set<String>()
+            for cell in cellTimePicker{
+                timeSet.insert(cell.btnTimePicker.text!)
+            }
+          
+            if (timeSet.count == cellTimePicker.count) {
+                navigationItem.rightBarButtonItem?.isEnabled = true
+            } else {
+                navigationItem.rightBarButtonItem?.isEnabled = false
+            }
+            
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
         }
