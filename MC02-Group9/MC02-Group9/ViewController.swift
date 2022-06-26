@@ -8,10 +8,17 @@
 import UIKit
 import FSCalendar
 import CoreData
+import Gecco
 
 class ViewController: UIViewController, FSCalendarDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
+    
+    @IBAction func guideBtn(_ sender: Any) {
+        let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
+        spotLight.alpha = 0.85
+     present(spotLight, animated: true, completion: nil)
+    }
     
     func setup(){
         let emptyVC = EmptySpaceViewController()

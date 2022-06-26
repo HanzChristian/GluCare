@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1515331928687EA600606068 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331828687EA600606068 /* GuideViewController.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		1563DA7B2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */; };
 		1563DA7C2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1515331828687EA600606068 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
 		1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Regular.ttf"; sourceTree = "<group>"; };
 		1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				2C8E9B702853E0220026FDF5 /* AddMedCell */,
 				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
+				1515331828687EA600606068 /* GuideViewController.swift */,
 			);
 			path = "MC02-Group9";
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				F033B15B285B36C900CD4941 /* Medicine+CoreDataProperties.swift in Sources */,
+				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F033B15F285B36C900CD4941 /* Medicine+CoreDataClass.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
