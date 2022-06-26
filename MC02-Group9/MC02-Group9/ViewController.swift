@@ -15,9 +15,16 @@ class ViewController: UIViewController, FSCalendarDelegate{
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBAction func guideBtn(_ sender: Any) {
-        let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
-        spotLight.alpha = 0.85
-     present(spotLight, animated: true, completion: nil)
+        if(items!.count > 0){
+            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
+            spotLight.alpha = 0.85
+            present(spotLight, animated: true, completion: nil)
+        }
+        else if(items!.count == 0){
+            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
+            spotLight.alpha = 0.85
+            present(spotLight, animated: true, completion: nil)
+        }
     }
     
     func setup(){
@@ -144,7 +151,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
         }
                 
     }
-
     
     func dummyData(){
     
