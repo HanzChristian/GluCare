@@ -92,7 +92,6 @@
                                                         <constraint firstItem="g5a-W3-fcD" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" id="NVB-Uy-Df3"/>
                                                         <constraint firstItem="gAs-qP-zfy" firstAttribute="leading" secondItem="xhM-Gh-sSb" secondAttribute="leading" constant="16" id="UDo-5h-5jT"/>
                                                         <constraint firstAttribute="height" constant="64" id="h8P-Id-itS"/>
-                                                        <constraint firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="12" id="hAN-Kf-6CK"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="15" id="nv5-cZ-8PK"/>
                                                         <constraint firstItem="uj6-hX-q09" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="xbd-AZ-tzv"/>
                                                         <constraint firstItem="WsK-c3-EBv" firstAttribute="leading" secondItem="uj6-hX-q09" secondAttribute="leading" id="yt4-rL-Rpm"/>
@@ -217,37 +216,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vw-6H-Ndi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vw-6H-Ndi">
                                 <rect key="frame" x="10" y="240" width="364" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="364" id="SkG-Kr-qPB"/>
+                                    <constraint firstAttribute="height" constant="60" id="sAY-Yw-fm0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe ke kiri untuk konsumsi/lewati obat " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-Bd-mCX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kiri untuk konsumsi/lewati obat " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-Bd-mCX">
                                 <rect key="frame" x="10" y="317" width="338" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="338" id="HST-aq-glH"/>
+                                    <constraint firstAttribute="height" constant="21" id="hh6-zy-qKy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-K0-rKb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-K0-rKb">
                                 <rect key="frame" x="10" y="689" width="289" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GPu-3R-PcK"/>
+                                    <constraint firstAttribute="width" constant="289" id="gOH-nQ-Tg1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-qa-TfI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-qa-TfI">
                                 <rect key="frame" x="13" y="689" width="364" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BBb-yn-2hm"/>
+                                    <constraint firstAttribute="width" constant="364" id="wCh-U2-gZV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-lk-qGF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-lk-qGF">
                                 <rect key="frame" x="60" y="677" width="295" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="0fj-em-Zo6"/>
+                                    <constraint firstAttribute="width" constant="295" id="yu3-rw-s3s"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -255,6 +269,23 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lT5-42-rAe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="xpc-lk-qGF" secondAttribute="trailing" constant="35" id="AeH-wT-ynL"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="9vw-6H-Ndi" secondAttribute="trailing" constant="16" id="Bfb-ln-jPj"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="yXf-Bd-mCX" secondAttribute="trailing" constant="42" id="CjM-tq-hqk"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="cmZ-K0-rKb" secondAttribute="trailing" constant="91" id="GrC-o7-ZND"/>
+                            <constraint firstItem="cmZ-K0-rKb" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="IMw-N2-Gs9"/>
+                            <constraint firstItem="9vw-6H-Ndi" firstAttribute="top" secondItem="lT5-42-rAe" secondAttribute="top" constant="196" id="KMx-zy-bV3"/>
+                            <constraint firstItem="xpc-lk-qGF" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="339" id="Oa7-Jf-Z54"/>
+                            <constraint firstItem="xpc-lk-qGF" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="60" id="Q9j-yk-7jS"/>
+                            <constraint firstItem="yXf-Bd-mCX" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="VBK-ob-d2C"/>
+                            <constraint firstItem="9vw-6H-Ndi" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="W3R-UA-uxe"/>
+                            <constraint firstItem="yXf-Bd-mCX" firstAttribute="top" secondItem="9vw-6H-Ndi" secondAttribute="bottom" constant="17" id="Xzn-Un-EhR"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="0Q3-qa-TfI" secondAttribute="trailing" constant="13" id="gd7-xP-N7h"/>
+                            <constraint firstItem="0Q3-qa-TfI" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="13" id="jz4-mr-d8Q"/>
+                            <constraint firstItem="0Q3-qa-TfI" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="351" id="vXJ-bO-Pta"/>
+                            <constraint firstItem="cmZ-K0-rKb" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="351" id="xm5-3g-Ibn"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outletCollection property="annotationViews" destination="9vw-6H-Ndi" collectionClass="NSMutableArray" id="i7s-Ne-ymX"/>
@@ -276,40 +307,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada jadwal obat hari ini." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-Js-Wvi">
-                                <rect key="frame" x="80" y="262" width="230" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada jadwal obat hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-Js-Wvi">
+                                <rect key="frame" x="82" y="288" width="226" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="226" id="XRj-Xy-K7t"/>
+                                    <constraint firstAttribute="height" constant="21" id="yQc-6C-q6D"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-MM-37a">
-                                <rect key="frame" x="133" y="65" width="124" height="189"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crx-pL-myd">
-                                <rect key="frame" x="72" y="322" width="247" height="50.333333333333314"/>
+                                <rect key="frame" x="72" y="334" width="247" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="Tn5-m4-ci4"/>
+                                    <constraint firstAttribute="height" constant="52" id="XOI-G1-Q9V"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Tambah Obat"/>
                                 <connections>
                                     <action selector="addMedBtn:" destination="rai-jm-7bR" eventType="touchUpInside" id="jn7-0x-410"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-MM-37a">
+                                <rect key="frame" x="109" y="73" width="173" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="QwD-Ci-06z"/>
+                                    <constraint firstAttribute="width" constant="173" id="mEu-Le-T3k"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zGQ-h4-4dA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="S4k-MM-37a" firstAttribute="width" secondItem="egj-BU-MhK" secondAttribute="width" multiplier="0.317949" id="7An-Fb-Tpz"/>
-                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="crx-pL-myd" secondAttribute="trailing" constant="71" id="KXn-r9-RNW"/>
-                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="S4k-MM-37a" secondAttribute="trailing" constant="133" id="KtR-VV-gUr"/>
-                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="80" id="NgY-BF-7Os"/>
-                            <constraint firstItem="crx-pL-myd" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="72" id="Ssi-ce-okz"/>
-                            <constraint firstItem="S4k-MM-37a" firstAttribute="height" secondItem="egj-BU-MhK" secondAttribute="height" multiplier="0.423767" id="Wrv-XA-PRx"/>
-                            <constraint firstItem="crx-pL-myd" firstAttribute="width" secondItem="egj-BU-MhK" secondAttribute="width" multiplier="0.633333" id="YAN-ve-Vmw"/>
-                            <constraint firstItem="crx-pL-myd" firstAttribute="top" secondItem="fwY-Js-Wvi" secondAttribute="bottom" constant="39" id="ezG-7g-GIA"/>
-                            <constraint firstItem="S4k-MM-37a" firstAttribute="top" secondItem="zGQ-h4-4dA" secondAttribute="top" constant="21" id="mv7-KN-idn"/>
-                            <constraint firstItem="S4k-MM-37a" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="133" id="nx2-xR-kF8"/>
-                            <constraint firstItem="crx-pL-myd" firstAttribute="height" secondItem="egj-BU-MhK" secondAttribute="height" multiplier="0.112855" id="okv-8d-1F2"/>
-                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="top" secondItem="S4k-MM-37a" secondAttribute="bottom" constant="8" symbolic="YES" id="qPS-M9-jzm"/>
-                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="fwY-Js-Wvi" secondAttribute="trailing" constant="80" id="ru3-yj-1yV"/>
+                            <constraint firstItem="crx-pL-myd" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="72" id="3Ng-om-kex"/>
+                            <constraint firstItem="S4k-MM-37a" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="109" id="4bc-T4-zFE"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="S4k-MM-37a" secondAttribute="trailing" constant="108" id="7wN-DR-XQm"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="fwY-Js-Wvi" secondAttribute="trailing" constant="82" id="O38-lL-lHc"/>
+                            <constraint firstItem="S4k-MM-37a" firstAttribute="top" secondItem="zGQ-h4-4dA" secondAttribute="top" constant="29" id="XCk-9T-o3w"/>
+                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="top" secondItem="S4k-MM-37a" secondAttribute="bottom" constant="26" id="hBL-fl-7DV"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="crx-pL-myd" secondAttribute="trailing" constant="71" id="mfZ-aa-AIv"/>
+                            <constraint firstItem="crx-pL-myd" firstAttribute="top" secondItem="fwY-Js-Wvi" secondAttribute="bottom" constant="25" id="tEn-ao-ZJu"/>
+                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="82" id="vAX-Zi-hhM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -318,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Idw-LW-tAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="262"/>
+            <point key="canvasLocation" x="2487.6923076923076" y="261.6113744075829"/>
         </scene>
         <!--Add Medication-->
         <scene sceneID="dUt-RX-dMp">
