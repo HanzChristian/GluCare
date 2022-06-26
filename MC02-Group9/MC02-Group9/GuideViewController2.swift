@@ -8,7 +8,7 @@
 import UIKit
 import Gecco
 
-class GuideViewController: SpotlightViewController {
+class GuideViewController2: SpotlightViewController {
     
     @IBOutlet var annotationViews: [UIView]!
     
@@ -27,7 +27,7 @@ class GuideViewController: SpotlightViewController {
         case 0 :
             spotlightView.appear(Spotlight.RoundedRect(center: CGPoint(x: 0, y: 190), size: CGSize(width: 800, height: 87), cornerRadius: 10))
         case 1 :
-            spotlightView.appear(Spotlight.RoundedRect(center: CGPoint(x: 0, y: 273), size: CGSize(width: 800, height: 68), cornerRadius: 10))
+            spotlightView.appear(Spotlight.RoundedRect(center: CGPoint(x: 195, y: 555), size: CGSize(width: 275, height: 70), cornerRadius: 10))
         case 2 :
             spotlightView.appear(Spotlight.RoundedRect(center: CGPoint(x: 65, y: 790), size: CGSize(width: 65, height: 65), cornerRadius: 10))
         case 3 :
@@ -64,7 +64,7 @@ class GuideViewController: SpotlightViewController {
     */
 
 }
-extension GuideViewController: SpotlightViewControllerDelegate{
+extension GuideViewController2: SpotlightViewControllerDelegate{
     func spotlightViewControllerWillPresent(_ viewController: SpotlightViewController, animated: Bool) {
         next(false)
     }
