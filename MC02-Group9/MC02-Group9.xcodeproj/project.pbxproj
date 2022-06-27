@@ -10,8 +10,6 @@
 		1515331928687EA600606068 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331828687EA600606068 /* GuideViewController.swift */; };
 		1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331A2868A8B100606068 /* GuideViewController2.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
-		1563DA7B2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */; };
-		1563DA7C2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */; };
 		158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D3284FAD0D005254A0 /* AppDelegate.swift */; };
 		158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D5284FAD0D005254A0 /* SceneDelegate.swift */; };
 		158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D7284FAD0D005254A0 /* ViewController.swift */; };
@@ -42,6 +40,9 @@
 		2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
 		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
+		F02A60D428698FA100441781 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarHelper.swift */; };
+		F02A60D6286996A500441781 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D5286996A500441781 /* CoreDataHelper.swift */; };
+		F02A60D82869A31100441781 /* StreakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D72869A31100441781 /* StreakHelper.swift */; };
 		F033B15B285B36C900CD4941 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B155285B36C900CD4941 /* Medicine+CoreDataProperties.swift */; };
 		F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */; };
 		F033B15D285B36C900CD4941 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */; };
@@ -54,8 +55,6 @@
 		1515331828687EA600606068 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		1515331A2868A8B100606068 /* GuideViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController2.swift; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
-		1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Regular.ttf"; sourceTree = "<group>"; };
-		1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SF-Pro-Rounded-Bold.ttf"; sourceTree = "<group>"; };
 		158B02D0284FAD0D005254A0 /* MC02-Group9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC02-Group9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		158B02D3284FAD0D005254A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158B02D5284FAD0D005254A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +66,7 @@
 		158B02E4284FAD0F005254A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
-		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
+		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Add Medication.storyboard"; path = "MC02-Group9/View/Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
 		1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +89,9 @@
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
 		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
 		851B18D1E2403DC63A822D5A /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
+		F02A60D328698FA100441781 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		F02A60D5286996A500441781 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		F02A60D72869A31100441781 /* StreakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakHelper.swift; sourceTree = "<group>"; };
 		F033B155285B36C900CD4941 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -110,15 +112,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1563DA782858C683006F66F7 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				1563DA7A2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf */,
-				1563DA792858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		158B02C7284FAD0D005254A0 = {
 			isa = PBXGroup;
 			children = (
@@ -140,27 +133,15 @@
 		158B02D2284FAD0D005254A0 /* MC02-Group9 */ = {
 			isa = PBXGroup;
 			children = (
-				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
-				1563DA782858C683006F66F7 /* Fonts */,
+				F02A60DA2869A70900441781 /* Controller */,
+				F02A60D92869A6F900441781 /* View */,
+				F02A60D228698F8F00441781 /* Helper */,
 				F0CBC5352851F6E800D638F7 /* Model */,
-				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
-				6EDAF414285878900099213F /* profilePageViewController.swift */,
 				158B02D3284FAD0D005254A0 /* AppDelegate.swift */,
 				158B02D5284FAD0D005254A0 /* SceneDelegate.swift */,
-				158B02D7284FAD0D005254A0 /* ViewController.swift */,
-				158B02D9284FAD0D005254A0 /* Main.storyboard */,
 				158B02DF284FAD0F005254A0 /* Assets.xcassets */,
-				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
 				158B02E4284FAD0F005254A0 /* Info.plist */,
 				158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */,
-				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
-				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
-				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
-				2C8E9B702853E0220026FDF5 /* AddMedCell */,
-				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
-				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
-				1515331828687EA600606068 /* GuideViewController.swift */,
-				1515331A2868A8B100606068 /* GuideViewController2.swift */,
 			);
 			path = "MC02-Group9";
 			sourceTree = "<group>";
@@ -168,17 +149,11 @@
 		2C8E9B702853E0220026FDF5 /* AddMedCell */ = {
 			isa = PBXGroup;
 			children = (
-				2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */,
 				2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */,
-				2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */,
 				2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */,
-				2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */,
 				2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */,
-				1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */,
 				1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */,
-				1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */,
 				1F8813A9285B14D0009994F9 /* SchedulePickerTableViewCell.xib */,
-				1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */,
 				1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */,
 			);
 			path = AddMedCell;
@@ -199,6 +174,58 @@
 				3DEF7C5711239B2CAE28BCED /* Pods-MC02-Group9.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F02A60D228698F8F00441781 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F02A60D328698FA100441781 /* CalendarHelper.swift */,
+				F02A60D5286996A500441781 /* CoreDataHelper.swift */,
+				F02A60D72869A31100441781 /* StreakHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F02A60D92869A6F900441781 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				158B02D9284FAD0D005254A0 /* Main.storyboard */,
+				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
+				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
+				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
+				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
+				2C8E9B702853E0220026FDF5 /* AddMedCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F02A60DA2869A70900441781 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				158B02D7284FAD0D005254A0 /* ViewController.swift */,
+				6EDAF414285878900099213F /* profilePageViewController.swift */,
+				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
+				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
+				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
+				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
+				1515331828687EA600606068 /* GuideViewController.swift */,
+				1515331A2868A8B100606068 /* GuideViewController2.swift */,
+				F02A60DB2869A73900441781 /* AddMedCell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F02A60DB2869A73900441781 /* AddMedCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */,
+				2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */,
+				2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */,
+				1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */,
+				1F8813A8285B14D0009994F9 /* SchedulePickerTableViewCell.swift */,
+				1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */,
+			);
+			path = AddMedCell;
 			sourceTree = "<group>";
 		};
 		F0CBC5352851F6E800D638F7 /* Model */ = {
@@ -278,8 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
-				1563DA7B2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Regular.ttf in Resources */,
-				1563DA7C2858C698006F66F7 /* FontsFree-Net-SF-Pro-Rounded-Bold.ttf in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
@@ -353,6 +378,8 @@
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */,
+				F02A60D6286996A500441781 /* CoreDataHelper.swift in Sources */,
+				F02A60D428698FA100441781 /* CalendarHelper.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				F033B15B285B36C900CD4941 /* Medicine+CoreDataProperties.swift in Sources */,
@@ -365,6 +392,7 @@
 				F033B15D285B36C900CD4941 /* Log+CoreDataClass.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
+				F02A60D82869A31100441781 /* StreakHelper.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
 				2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */,
