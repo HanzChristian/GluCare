@@ -39,7 +39,7 @@ class StreakHelper{
         coreDataHelper.fetchMedicine(tableView: tableView)
         coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)
         
-        let medCount = coreDataHelper.medicines!.count
+        let medCount = coreDataHelper.items!.count
         var keTakeCount = 0
         
         print("Ke Take")

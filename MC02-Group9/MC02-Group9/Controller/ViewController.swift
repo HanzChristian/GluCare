@@ -119,8 +119,14 @@ class ViewController: UIViewController, FSCalendarDelegate{
     }
     
     @objc func refresh() {
+        
+        streakHelper.resetKeTake()
+        streakHelper.resetArray()
+        
         coreDataHelper.fetchMedicine(tableView: tableView)
         coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)
+        
+        //sini
         
         if(coreDataHelper.items!.count > 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
