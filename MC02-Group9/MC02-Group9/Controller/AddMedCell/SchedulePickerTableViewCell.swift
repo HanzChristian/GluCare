@@ -24,11 +24,13 @@ class SchedulePickerTableViewCell: UITableViewCell {
             formatter.locale = Locale(identifier: "en_gb")
             formatter.dateFormat = "HH:mm"
             let toolBar = UIToolbar()
-            toolBar.barStyle = .black
             toolBar.sizeToFit()
+            //toolBar.barStyle = .black
             let doneBtn = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(btnDoneClicked))
-            toolBar.items = [doneBtn]
+            //let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+            let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
             toolBar.isUserInteractionEnabled = true
+            toolBar.items = [space, doneBtn]
             btnTimePicker.inputAccessoryView = toolBar
             btnTimePicker.text = formatter.string(from: time)
             
