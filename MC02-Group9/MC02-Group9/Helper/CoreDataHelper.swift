@@ -158,8 +158,6 @@ class CoreDataHelper{
         log.time = self.items![indexPath.row].time
         log.medicine_name = self.items![indexPath.row].medicine?.name
         
-
-        
         do{
             try self.context.save()
         }catch{
@@ -273,8 +271,6 @@ class CoreDataHelper{
         // create medicine
         let medicine = Medicine(context: context)
         medicine.name = "Panadol"
-        medicine.rules = "After"
-        medicine.strength = "500 mg"
         medicine.eat_time = 1
         
         // Add time

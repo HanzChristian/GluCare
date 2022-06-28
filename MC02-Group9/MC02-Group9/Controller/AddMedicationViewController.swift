@@ -329,8 +329,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         // create medicine
         let medicine = Medicine(context: context)
         medicine.name = cellMedNameTV!.medNameTextField.text!
-        medicine.rules = "After"
-        medicine.strength = "500 mg"
         medicine.eat_time = Int16(mealVars.mealPickedRow)
         
         // Add time
