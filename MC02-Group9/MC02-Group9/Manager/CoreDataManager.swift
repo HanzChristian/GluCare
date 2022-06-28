@@ -13,6 +13,10 @@ class CoreDataManager{
     //singleton
     static let coreDataManager = CoreDataManager()
     
+    //attribute
+    var undoIdx = Array(0...100)
+    var keTake = Array(0...100)
+    
     //attriute
     var items:[Medicine_Time]?
     var logs:[Log]?
@@ -207,6 +211,9 @@ class CoreDataManager{
     
     func fetchLogs(tableView: UITableView, daySelected: Date){
         do{
+            
+            resetArray()
+            
             logs?.removeAll()
             let request = Log.fetchRequest() as NSFetchRequest<Log>
             
@@ -231,6 +238,16 @@ class CoreDataManager{
             DispatchQueue.main.async {
                 tableView.reloadData()
             }
+            
+            /*
+            //test
+            for (index, log) in self.logs!.enumerated() {
+                print("\(index): \(log.medicine_name) \(log.date) ")
+                
+            }
+            
+            //end test
+             */
         }catch{
             
         }
@@ -292,6 +309,18 @@ class CoreDataManager{
             try self.context.save()
         }catch{
             
+        }
+    }
+    
+    func resetArray(){
+        for i in undoIdx.indices{
+            undoIdx[i] = -1
+        }
+    }
+    
+    func resetKeTake(){
+        for i in keTake.indices{
+            keTake[i] = -1
         }
     }
     

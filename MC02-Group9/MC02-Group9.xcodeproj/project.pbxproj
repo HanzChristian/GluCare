@@ -47,6 +47,7 @@
 		F033B15D285B36C900CD4941 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */; };
 		F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */; };
 		F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */; };
+		F0394EFD286AEF390009215C /* CoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0394EFC286AEF390009215C /* CoreReview.swift */; };
 		F0A2D2DF286AB09D00263AB8 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2D2DE286AB09D00263AB8 /* Medicine+CoreDataClass.swift */; };
 		F0A2D2E0286AB09D00263AB8 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2D2DD286AB09D00263AB8 /* Medicine+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0394EFC286AEF390009215C /* CoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreReview.swift; sourceTree = "<group>"; };
 		F0A2D2DD286AB09D00263AB8 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataProperties.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-terakir/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		F0A2D2DE286AB09D00263AB8 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataClass.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-terakir/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				158B02DF284FAD0F005254A0 /* Assets.xcassets */,
 				158B02E4284FAD0F005254A0 /* Info.plist */,
 				158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */,
+				F0394EFC286AEF390009215C /* CoreReview.swift */,
 			);
 			path = "MC02-Group9";
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
+				F0394EFD286AEF390009215C /* CoreReview.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,

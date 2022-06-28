@@ -58,7 +58,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        streakManager.resetKeTake()
+        coreDataManager.resetKeTake()
         streakManager.checkStreakFail()
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
@@ -105,7 +105,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         self.calendar.select(Date())
         self.calendar.scope = .week
         
-        streakManager.resetArray()
+        coreDataManager.resetArray()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -120,8 +120,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     @objc func refresh() {
         
-        streakManager.resetKeTake()
-        streakManager.resetArray()
+        coreDataManager.resetKeTake()
+        coreDataManager.resetArray()
         
         coreDataManager.fetchMedicine(tableView: tableView)
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
@@ -147,7 +147,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        self.streakManager.resetArray()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
@@ -175,58 +174,8 @@ extension ViewController:UITableViewDelegate{
         }
     
         func showActionSheet(indexPath: IndexPath) {
-            
-            
             let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
             
-            /*
-            alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
-                print("Sekarang tapped")
-                
-                //change daySelected to String
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "en_gb")
-                formatter.dateFormat = "dd MMM yyyy"
-                let tanggal = formatter.string(from: self.daySelected)
-                // print(tanggal)
-                
-                // Create String
-                let time = self.items![indexPath.row].time!
-                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
-                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
-                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-                print(string)
-                // 29 October 2019 20:15:55 +0200
-
-                
-                // Create Date Formatter
-                let dateFormatter = DateFormatter()
-
-                // Set Date Format
-                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-                // Convert String to Date
-                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
-                
-                let log = Log(context: self.context)
-                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
-                log.dateTake = Date()
-                log.action = "Take"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
-                
-                self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                self.fetchLogs()
-                self.resetArray()
-                self.validateNewStreak()
-            }))
-            
-             */
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
                 //print("Tepat Waktu tapped")
                 
@@ -235,7 +184,7 @@ extension ViewController:UITableViewDelegate{
                 self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                 
                 self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-                self.streakManager.resetArray()
+
                 self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
             }))
             
@@ -261,7 +210,7 @@ extension ViewController:UITableViewDelegate{
                         self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                         
                         self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-                        self.streakManager.resetArray()
+
                         self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
                         
                     })
@@ -314,9 +263,9 @@ extension ViewController:UITableViewDelegate{
             
             let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ [self] _, indexPath in
                 
-                let logToRemove = self.coreDataManager.logs![self.streakManager.undoIdx[indexPath.row]]
+                let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[indexPath.row]]
                 coreDataManager.batalkan(logToRemove: logToRemove)
-                self.streakManager.undoIdx[indexPath.row] = -1
+                self.coreDataManager.undoIdx[indexPath.row] = -1
                 
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 self.refresh()
@@ -324,11 +273,11 @@ extension ViewController:UITableViewDelegate{
             
             takeAction.backgroundColor = .systemBlue
             
-            if (streakManager.undoIdx[indexPath.row] >= 0){
-                streakManager.keTake[indexPath.row] = -1
+            if (coreDataManager.undoIdx[indexPath.row] >= 0){
+                coreDataManager.keTake[indexPath.row] = -1
                 return [untakeAction]
             }else{
-                streakManager.keTake[indexPath.row] = 1
+                coreDataManager.keTake[indexPath.row] = 1
                 return [takeAction,deleteAction]
             }
             
@@ -408,7 +357,6 @@ extension ViewController:UITableViewDataSource{
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             /*
-            
             cell.medLbl.text = medicines[indexPath.row]
             cell.freqLbl.text = freqs[indexPath.row]
             */
@@ -493,8 +441,8 @@ extension ViewController:UITableViewDataSource{
             for (index, log) in coreDataManager.logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
-                    streakManager.undoIdx[indexPath.row] = index
-                    streakManager.keTake[indexPath.row] = 1
+                    coreDataManager.undoIdx[indexPath.row] = index
+                    coreDataManager.keTake[indexPath.row] = 1
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
@@ -503,9 +451,7 @@ extension ViewController:UITableViewDataSource{
                         cell.medLbl.layer.opacity = 0.3
                         cell.cellImgView.layer.opacity = 0.3
                         cell.indicatorImgView.image = UIImage(named: "Subtract")
-                        //cell.medLbl.text = "Skip \(medicine_time.medicine?.eat_time)"
                     }else{
-
                         // Create Date Formatter
                         let dateFormatter = DateFormatter()
 
@@ -527,12 +473,9 @@ extension ViewController:UITableViewDataSource{
 
                         cell.freqLbl.text = "Diminum pada \(date)"
                     }
-                    // print("\(log.time) = \(medicine_time.time)")
                     break
                 }
             }
-             
-            
             return cell
     }
 }
