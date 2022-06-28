@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class StreakHelper{
+class StreakManager{
     //singleton
-    static let streakHelper = StreakHelper()
+    static let streakManager = StreakManager()
     
     //attribute
     var undoIdx = Array(0...100)
     var keTake = Array(0...100)
     
     //helper
-    let calendarHelper = CalendarHelper.calendarHelper
-    let coreDataHelper = CoreDataHelper.coreDataHelper
+    let calendarManager = CalendarManager.calendarManager
+    let coreDataManager = CoreDataManager.coreDataManager
     
     private init(){
         
@@ -26,20 +26,20 @@ class StreakHelper{
     
     func validateNewStreak(daySelected: Date, tableView: UITableView){
         // check di hari yang sama apa tidak
-        let dateNow = calendarHelper.calendar.startOfDay(for: Date())
-        let dateCalendar = calendarHelper.calendar.startOfDay(for: daySelected)
+        let dateNow = calendarManager.calendar.startOfDay(for: Date())
+        let dateCalendar = calendarManager.calendar.startOfDay(for: daySelected)
         
         if(dateNow != dateCalendar){
             return
         }
         
-        coreDataHelper.fetchStreak()
-        coreDataHelper.fetchMeds()
+        coreDataManager.fetchStreak()
+        coreDataManager.fetchMeds()
         
-        coreDataHelper.fetchMedicine(tableView: tableView)
-        coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)
+        coreDataManager.fetchMedicine(tableView: tableView)
+        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         
-        let medCount = coreDataHelper.items!.count
+        let medCount = coreDataManager.items!.count
         var keTakeCount = 0
         
         print("Ke Take")
@@ -50,16 +50,16 @@ class StreakHelper{
         }
         
         if(medCount == keTakeCount){
-            if(coreDataHelper.streaks!.count == 0){
+            if(coreDataManager.streaks!.count == 0){
                 // Kondisi ga ada streak
-                coreDataHelper.addStreak()
+                coreDataManager.addStreak()
             }else{
                 // Kondisi udah ada streak di hari sebelumnya
 
                 // Get today's beginning & end
-                let dateFrom = calendarHelper.calendar.startOfDay(for: Date())
+                let dateFrom = calendarManager.calendar.startOfDay(for: Date())
                 
-                var lastDate = coreDataHelper.streaks![coreDataHelper.streaks!.count - 1].date
+                var lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
                 
                 if(lastDate == dateFrom){
                     print("ADA DI HARI YANG SAMA UDAH KETAMBAH")
@@ -71,12 +71,12 @@ class StreakHelper{
                     lastDate!.addTimeInterval(86400)
                     if(lastDate == dateFrom){
                         // Kalau jaraknya 1 hari
-                        coreDataHelper.addStreak()
+                        coreDataManager.addStreak()
                     }else{
                         // jaraknya lebih dari 1 hari
-                        coreDataHelper.resetStreak()
+                        coreDataManager.resetStreak()
                         //tambahin yg baru
-                        coreDataHelper.addStreak()
+                        coreDataManager.addStreak()
                     }
                     
                 }
@@ -85,14 +85,14 @@ class StreakHelper{
     }
     
     func checkStreakFail(){
-        coreDataHelper.fetchStreak()
+        coreDataManager.fetchStreak()
         
-        if(coreDataHelper.streaks!.count == 0){
+        if(coreDataManager.streaks!.count == 0){
             return
         }
         // Get today's beginning & end
-        let dateFrom = calendarHelper.calendar.startOfDay(for: Date())
-        var lastDate = coreDataHelper.streaks![coreDataHelper.streaks!.count - 1].date
+        let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+        var lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
         
         // lastDate!.addTimeInterval(86400)
         
@@ -100,7 +100,7 @@ class StreakHelper{
         let components = calendar.dateComponents([.day], from: lastDate!, to: dateFrom)
         
         if(components.day! > 1){
-            coreDataHelper.resetStreak()
+            coreDataManager.resetStreak()
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  CoreDataHelper.swift
+//  coreDataManager.swift
 //  MC02-Group9
 //
 //  Created by Christophorus Davin on 27/06/22.
@@ -9,9 +9,9 @@ import Foundation
 import CoreData
 import UIKit
 
-class CoreDataHelper{
+class CoreDataManager{
     //singleton
-    static let coreDataHelper = CoreDataHelper()
+    static let coreDataManager = CoreDataManager()
     
     //attriute
     var items:[Medicine_Time]?
@@ -23,7 +23,7 @@ class CoreDataHelper{
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //helper
-    let calendarHelper = CalendarHelper.calendarHelper
+    let calendarManager = CalendarManager.calendarManager
     
     private init(){
         
@@ -213,8 +213,8 @@ class CoreDataHelper{
             // Get the current calendar with local time zone
 
             // Get today's beginning & end
-            let dateFrom = calendarHelper.calendar.startOfDay(for: daySelected) // eg. 2016-10-10 00:00:00
-            let dateTo = calendarHelper.calendar.date(byAdding: .day, value: 1, to: dateFrom)
+            let dateFrom = calendarManager.calendar.startOfDay(for: daySelected) // eg. 2016-10-10 00:00:00
+            let dateTo = calendarManager.calendar.date(byAdding: .day, value: 1, to: dateFrom)
 
             // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
 
@@ -254,7 +254,7 @@ class CoreDataHelper{
     
     func addStreak(){
         // Get today's beginning & end
-        let dateFrom = calendarHelper.calendar.startOfDay(for: Date())
+        let dateFrom = calendarManager.calendar.startOfDay(for: Date())
         let streak = Streak(context: context)
         streak.date = dateFrom
         
