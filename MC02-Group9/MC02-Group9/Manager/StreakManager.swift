@@ -12,10 +12,6 @@ class StreakManager{
     //singleton
     static let streakManager = StreakManager()
     
-    //attribute
-    var undoIdx = Array(0...100)
-    var keTake = Array(0...100)
-    
     //helper
     let calendarManager = CalendarManager.calendarManager
     let coreDataManager = CoreDataManager.coreDataManager
@@ -44,7 +40,7 @@ class StreakManager{
         
         print("Ke Take")
         for i in stride(from: 0, to: medCount, by: 1) {
-            if(keTake[i] == 1){
+            if(coreDataManager.keTake[i] == 1){
                 keTakeCount += 1
             }
         }
@@ -103,18 +99,5 @@ class StreakManager{
             coreDataManager.resetStreak()
         }
     }
-    
-    func resetArray(){
-        for i in undoIdx.indices{
-            undoIdx[i] = -1
-        }
-    }
-    
-    func resetKeTake(){
-        for i in keTake.indices{
-            keTake[i] = -1
-        }
-    }
-    
 }
 
