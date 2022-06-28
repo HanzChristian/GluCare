@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1515331928687EA600606068 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331828687EA600606068 /* GuideViewController.swift */; };
 		1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331A2868A8B100606068 /* GuideViewController2.swift */; };
+		1515331E286AE68700606068 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */; };
+		1515331F286AE68700606068 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D3284FAD0D005254A0 /* AppDelegate.swift */; };
 		158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D5284FAD0D005254A0 /* SceneDelegate.swift */; };
@@ -47,13 +49,13 @@
 		F033B15D285B36C900CD4941 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */; };
 		F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */; };
 		F033B160285B36C900CD4941 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */; };
-		F0A2D2DF286AB09D00263AB8 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2D2DE286AB09D00263AB8 /* Medicine+CoreDataClass.swift */; };
-		F0A2D2E0286AB09D00263AB8 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2D2DD286AB09D00263AB8 /* Medicine+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1515331828687EA600606068 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		1515331A2868A8B100606068 /* GuideViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController2.swift; sourceTree = "<group>"; };
+		1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
 		158B02D0284FAD0D005254A0 /* MC02-Group9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC02-Group9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		158B02D3284FAD0D005254A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		F033B157285B36C900CD4941 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F033B15A285B36C900CD4941 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0A2D2DD286AB09D00263AB8 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataProperties.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-terakir/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		F0A2D2DE286AB09D00263AB8 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataClass.swift"; path = "/Users/christophorusdavin/Documents/MC02-Group9-terakir/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,8 +231,8 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F0A2D2DE286AB09D00263AB8 /* Medicine+CoreDataClass.swift */,
-				F0A2D2DD286AB09D00263AB8 /* Medicine+CoreDataProperties.swift */,
+				1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */,
+				1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */,
 				F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */,
 				F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */,
 				2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */,
@@ -369,8 +369,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */,
-				F0A2D2DF286AB09D00263AB8 /* Medicine+CoreDataClass.swift in Sources */,
-				F0A2D2E0286AB09D00263AB8 /* Medicine+CoreDataProperties.swift in Sources */,
+				1515331E286AE68700606068 /* Medicine+CoreDataClass.swift in Sources */,
+				1515331F286AE68700606068 /* Medicine+CoreDataProperties.swift in Sources */,
 				1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */,
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
