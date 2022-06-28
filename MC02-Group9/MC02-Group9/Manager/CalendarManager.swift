@@ -8,9 +8,9 @@
 import Foundation
 import CoreData
 
-class CalendarHelper{
+class CalendarManager{
     //singleton
-    static let calendarHelper = CalendarHelper()
+    static let calendarManager = CalendarManager()
     
     //attriute
     var calendar = Calendar.current

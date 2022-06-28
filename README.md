@@ -20,3 +20,23 @@
 
 ## Check out our Framework & Hifi!
 > View our UI/UX progress @https://www.figma.com/file/kCdQOPgreaYGfoXcXBewqg/Diabetes-Medicine-Reminder?node-id=0%3A1
+
+## Here are some functions in GluCare :
+
+### HomePage                      
+<p float="left">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 19.52.01.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.17.55.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.18.08.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.18.28.png" width="240" height="540">
+
+## Add Medication                      
+<p float="left">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.17.49.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.18.48.png" width="240" height="540">
+   
+## Streaks, Notification, & Spotlight                   
+<p float="left">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.16.34.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.20.01.png" width="240" height="540">
+   <img src="Screenshot/Simulator Screen Shot - iPhone 13 - 2022-06-27 at 20.20.32.png" width="240" height="540">

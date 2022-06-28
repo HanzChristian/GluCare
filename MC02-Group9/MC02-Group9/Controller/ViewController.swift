@@ -15,12 +15,12 @@ class ViewController: UIViewController, FSCalendarDelegate{
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBAction func guideBtn(_ sender: Any) {
-        if(coreDataHelper.items!.count > 0){
+        if(coreDataManager.items!.count > 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
             spotLight.alpha = 0.85
             present(spotLight, animated: true, completion: nil)
         }
-        else if(coreDataHelper.items!.count == 0){
+        else if(coreDataManager.items!.count == 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
             spotLight.alpha = 0.85
             present(spotLight, animated: true, completion: nil)
@@ -51,15 +51,15 @@ class ViewController: UIViewController, FSCalendarDelegate{
     var daySelected = Date()
     
     // Helper
-    let calendarHelper = CalendarHelper.calendarHelper
-    let coreDataHelper = CoreDataHelper.coreDataHelper
-    let streakHelper = StreakHelper.streakHelper
+    let calendarManager = CalendarManager.calendarManager
+    let coreDataManager = CoreDataManager.coreDataManager
+    let streakManager = StreakManager.streakManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        streakHelper.resetKeTake()
-        streakHelper.checkStreakFail()
+        streakManager.resetKeTake()
+        streakManager.checkStreakFail()
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
                     if(!permissionGranted)
@@ -105,7 +105,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         self.calendar.select(Date())
         self.calendar.scope = .week
         
-        streakHelper.resetArray()
+        streakManager.resetArray()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -120,18 +120,18 @@ class ViewController: UIViewController, FSCalendarDelegate{
     
     @objc func refresh() {
         
-        streakHelper.resetKeTake()
-        streakHelper.resetArray()
+        streakManager.resetKeTake()
+        streakManager.resetArray()
         
-        coreDataHelper.fetchMedicine(tableView: tableView)
-        coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)
+        coreDataManager.fetchMedicine(tableView: tableView)
+        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         
         //sini
         
-        if(coreDataHelper.items!.count > 0){
+        if(coreDataManager.items!.count > 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
         }
-        else if(coreDataHelper.items!.count == 0){
+        else if(coreDataManager.items!.count == 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
                 
@@ -147,7 +147,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        self.streakHelper.resetArray()
+        self.streakManager.resetArray()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
@@ -155,7 +155,7 @@ class ViewController: UIViewController, FSCalendarDelegate{
         //print("\(dateSelected)")
         
         daySelected = date
-        coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)        
+        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -230,13 +230,13 @@ extension ViewController:UITableViewDelegate{
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
                 //print("Tepat Waktu tapped")
                 
-                self.coreDataHelper.tepatWaktu(daySelected: self.daySelected, indexPath: indexPath)
+                self.coreDataManager.tepatWaktu(daySelected: self.daySelected, indexPath: indexPath)
                 
                 self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                 
-                self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-                self.streakHelper.resetArray()
-                self.streakHelper.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
+                self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                self.streakManager.resetArray()
+                self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
             }))
             
             alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
@@ -256,13 +256,13 @@ extension ViewController:UITableViewDelegate{
                     
                     let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
                         
-                        self.coreDataHelper.pilihWaktu(daySelected: self.daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
+                        self.coreDataManager.pilihWaktu(daySelected: self.daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
                         
                         self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                         
-                        self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-                        self.streakHelper.resetArray()
-                        self.streakHelper.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
+                        self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                        self.streakManager.resetArray()
+                        self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
                         
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -305,18 +305,18 @@ extension ViewController:UITableViewDelegate{
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
                 
-                self.coreDataHelper.lewati(daySelected: self.daySelected, indexPath: indexPath)
+                self.coreDataManager.lewati(daySelected: self.daySelected, indexPath: indexPath)
                 
-                self.coreDataHelper.resetStreak()
+                self.coreDataManager.resetStreak()
                 self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
-                self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
             }
             
             let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ [self] _, indexPath in
                 
-                let logToRemove = self.coreDataHelper.logs![self.streakHelper.undoIdx[indexPath.row]]
-                coreDataHelper.batalkan(logToRemove: logToRemove)
-                self.streakHelper.undoIdx[indexPath.row] = -1
+                let logToRemove = self.coreDataManager.logs![self.streakManager.undoIdx[indexPath.row]]
+                coreDataManager.batalkan(logToRemove: logToRemove)
+                self.streakManager.undoIdx[indexPath.row] = -1
                 
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 self.refresh()
@@ -324,11 +324,11 @@ extension ViewController:UITableViewDelegate{
             
             takeAction.backgroundColor = .systemBlue
             
-            if (streakHelper.undoIdx[indexPath.row] >= 0){
-                streakHelper.keTake[indexPath.row] = -1
+            if (streakManager.undoIdx[indexPath.row] >= 0){
+                streakManager.keTake[indexPath.row] = -1
                 return [untakeAction]
             }else{
-                streakHelper.keTake[indexPath.row] = 1
+                streakManager.keTake[indexPath.row] = 1
                 return [takeAction,deleteAction]
             }
             
@@ -347,7 +347,7 @@ extension ViewController:UITableViewDataSource{
             return medicines.count //berdasarkan variable jumlah cellnya (pake .count)
             */
             
-            return self.coreDataHelper.items?.count ?? 0
+            return self.coreDataManager.items?.count ?? 0
         }
     
         func showToastSkip(message : String, font: UIFont) {
@@ -415,7 +415,7 @@ extension ViewController:UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ViewControllerTVC
             
-            let medicine_time = self.coreDataHelper.items![indexPath.row]
+            let medicine_time = self.coreDataManager.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
             if(medicine_time.medicine?.eat_time == 2){
                 cell.freqLbl.text = "Sesudah makan"
@@ -442,7 +442,7 @@ extension ViewController:UITableViewDataSource{
 //            // print(tanggal)
 //
 //            // Create String
-            let time = self.coreDataHelper.items![indexPath.row].time!
+            let time = self.coreDataManager.items![indexPath.row].time!
             let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
             let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
             let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
@@ -490,11 +490,11 @@ extension ViewController:UITableViewDataSource{
             cell.tintColor = UIColor.blue
             
 
-            for (index, log) in coreDataHelper.logs!.enumerated() {
+            for (index, log) in coreDataManager.logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
-                    streakHelper.undoIdx[indexPath.row] = index
-                    streakHelper.keTake[indexPath.row] = 1
+                    streakManager.undoIdx[indexPath.row] = index
+                    streakManager.keTake[indexPath.row] = 1
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
