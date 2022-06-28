@@ -265,13 +265,11 @@ extension ViewController:UITableViewDelegate{
                 
                 let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[indexPath.row]]
                 coreDataManager.batalkan(logToRemove: logToRemove)
-                self.coreDataManager.undoIdx[indexPath.row] = -1
                 
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
-                self.refresh()
+                
+                self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
             }
-            
-            takeAction.backgroundColor = .systemBlue
             
             if (coreDataManager.undoIdx[indexPath.row] >= 0){
                 coreDataManager.keTake[indexPath.row] = -1
