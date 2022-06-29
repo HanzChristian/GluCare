@@ -240,15 +240,7 @@ extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
             let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
-                //Logic belom diisi
                 
-                //Create Log
-                /*
-                let date = Date()
-                let calendar = Calendar.current
-                let hour = calendar.component(.hour, from: date)
-                let minutes = calendar.component(.minute, from: date)
-                */
                 self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
             }
             //Delete button swipe
@@ -271,6 +263,8 @@ extension ViewController:UITableViewDelegate{
                 self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
             }
             
+            takeAction.backgroundColor = .systemBlue
+            
             if (coreDataManager.undoIdx[indexPath.row] >= 0){
                 coreDataManager.keTake[indexPath.row] = -1
                 return [untakeAction]
@@ -278,22 +272,13 @@ extension ViewController:UITableViewDelegate{
                 coreDataManager.keTake[indexPath.row] = 1
                 return [takeAction,deleteAction]
             }
-            
         }
-    
-    
-    
 }
 
 
 extension ViewController:UITableViewDataSource{
        
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            
-            /*
-            return medicines.count //berdasarkan variable jumlah cellnya (pake .count)
-            */
-            
             return self.coreDataManager.items?.count ?? 0
         }
     
@@ -354,11 +339,7 @@ extension ViewController:UITableViewDataSource{
         }
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            /*
-            cell.medLbl.text = medicines[indexPath.row]
-            cell.freqLbl.text = freqs[indexPath.row]
-            */
-            
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ViewControllerTVC
             
             let medicine_time = self.coreDataManager.items![indexPath.row]
@@ -398,12 +379,7 @@ extension ViewController:UITableViewDataSource{
             
             let startEvening = ("20 Jun 2022 12:00:00 +0700")
             let endEvening = ("20 Jun 2022 17:59:00 +0700")
-            
-//            let startNight = ("20 Jun 2022 18:00:00 +0700")
-//            let endNight = ("21 Jun 2022 05:59:00 +0700")
-            
-            
-            
+                     
             let dateFormatter = DateFormatter()
 
             // Set Date Format
