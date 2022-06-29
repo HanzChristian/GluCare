@@ -147,12 +147,6 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
-        let dateSelected = formatter.string(from: date)
-        
-        //print("\(dateSelected)")
-        
         daySelected = date
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
     }
