@@ -15,12 +15,12 @@ class ViewController: UIViewController, FSCalendarDelegate{
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBAction func guideBtn(_ sender: Any) {
-        if(items!.count > 0){
+        if(coreDataHelper.items!.count > 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
             spotLight.alpha = 0.85
             present(spotLight, animated: true, completion: nil)
         }
-        else if(items!.count == 0){
+        else if(coreDataHelper.items!.count == 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
             spotLight.alpha = 0.85
             present(spotLight, animated: true, completion: nil)
@@ -42,35 +42,24 @@ class ViewController: UIViewController, FSCalendarDelegate{
         return formatter
     }()
     
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    /*
-    var medicines = ["Panadol","Metformin","Mebaral","Metaglip"]
-    var freqs = ["1 time","2 times","3 times","4 times"]
-    */
-    
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    
-    
-    // Core data Var
-    var items:[Medicine_Time]?
-    var logs:[Log]?
-    var streaks:[Streak]?
-    var medicines:[Medicine]?
-    
+
+
+    // var for logic
     var daySelected = Date()
     
-    var undoIdx = Array(0...100)
-    var keTake = Array(0...100)
+    // Helper
+    let calendarHelper = CalendarHelper.calendarHelper
+    let coreDataHelper = CoreDataHelper.coreDataHelper
+    let streakHelper = StreakHelper.streakHelper
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resetKeTake()
-        checkStreakFail()
+        streakHelper.resetKeTake()
+        streakHelper.checkStreakFail()
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
                     if(!permissionGranted)
@@ -113,14 +102,11 @@ class ViewController: UIViewController, FSCalendarDelegate{
         }
         
         calendar.delegate = self
-        
         self.calendar.select(Date())
-        
         self.calendar.scope = .week
         
-        resetArray()
+        streakHelper.resetArray()
         
-//        title = "Jadwal"
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -128,267 +114,24 @@ class ViewController: UIViewController, FSCalendarDelegate{
         tableView.showsVerticalScrollIndicator = false
     
         refresh()
-        
-        /*
-         Untuk Dummy Data
-        if(items?.count ?? 0 == 0){
-            dummyData()
-            fetchMedicine()
-        }
-         */
-        
+                
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
     }
     
     @objc func refresh() {
-        fetchMedicine()
-        fetchLogs()
-        if(items!.count > 0){
+        coreDataHelper.fetchMedicine(tableView: tableView)
+        coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)
+        
+        if(coreDataHelper.items!.count > 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
         }
-        else if(items!.count == 0){
+        else if(coreDataHelper.items!.count == 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
                 
     }
     
-    func dummyData(){
     
-        // create medicine
-        let medicine = Medicine(context: context)
-        medicine.name = "Panadol"
-        medicine.rules = "After"
-        medicine.strength = "500 mg"
-        medicine.eat_time = 1
-        
-        // Add time
-        let medicine_time1 = Medicine_Time(context: context)
-        medicine_time1.time = "07.00"
-        
-        let medicine_time2 = Medicine_Time(context: context)
-        medicine_time2.time = "12.00"
-        
-        let medicine_time3 = Medicine_Time(context: context)
-        medicine_time3.time = "18.00"
-        
-        // Add Time to Medicine
-        medicine.addToTime(medicine_time1)
-        medicine.addToTime(medicine_time2)
-        medicine.addToTime(medicine_time3)
-        
-        do{
-            try self.context.save()
-        }catch{
-            
-        }
-    }
-    
-    func fetchMeds(){
-        do{
-            let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
-            
-            self.medicines = try context.fetch(request)
-    
-        }catch{
-            
-        }
-    }
-    
-    func validateNewStreak(){
-        
-        // check di hari yang sama apa tidak
-        var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone.local
-        
-        let dateNow = calendar.startOfDay(for: Date())
-        let dateCalendar = calendar.startOfDay(for: daySelected)
-        
-        if(dateNow != dateCalendar){
-            return
-        }
-        
-        fetchStreak()
-        fetchMeds()
-        refresh()
-        let medCount = medicines!.count
-        var keTakeCount = 0
-        
-        print("Ke Take")
-        for i in stride(from: 0, to: medCount, by: 1) {
-            if(keTake[i] == 1){
-                keTakeCount += 1
-            }
-        }
-        
-        if(medCount == keTakeCount){
-            if(streaks!.count == 0){
-                // Kondisi ga ada streak
-                addStreak()
-            }else{
-                // Kondisi udah ada streak di hari sebelumnya
-                
-                var calendar = Calendar.current
-                calendar.timeZone = NSTimeZone.local
-
-                // Get today's beginning & end
-                let dateFrom = calendar.startOfDay(for: Date())
-                
-                var lastDate = streaks![streaks!.count - 1].date
-                
-                if(lastDate == dateFrom){
-                    // Streak nya udah ketambah di hari yg sama
-                    return
-                }else{
-                    // Hitung Jarak Hari nya
-    
-                    lastDate!.addTimeInterval(86400)
-                    if(lastDate == dateFrom){
-                        // Kalau jaraknya 1 hari
-                        addStreak()
-                    }else{
-                        // jaraknya lebih dari 1 hari
-                        resetStreak()
-                        //tambahin yg baru
-                        addStreak()
-                    }
-                    
-                }
-            }
-        }
-    }
-    
-    func checkStreakFail(){
-        fetchStreak()
-        
-        if(streaks!.count == 0){
-            return
-        }
-        
-        var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone.local
-
-        // Get today's beginning & end
-        let dateFrom = calendar.startOfDay(for: Date())
-        var lastDate = streaks![streaks!.count - 1].date
-        
-        lastDate!.addTimeInterval(86400)
-        
-        if(lastDate != dateFrom){
-            print("LAST DATE \(lastDate)")
-            print("DATE FROM \(dateFrom)")
-            resetStreak()
-            print("KERESET")
-        }
-    }
-    
-    func resetStreak(){
-        // reset streak
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Streak")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-
-        do {
-            try context.execute(deleteRequest)
-            try context.save()
-        } catch {
-            print ("There was an error")
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
-    }
-    
-    func addStreak(){
-        var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone.local
-
-        // Get today's beginning & end
-        let dateFrom = calendar.startOfDay(for: Date())
-        
-        let streak = Streak(context: context)
-        streak.date = dateFrom
-        
-        do{
-            try self.context.save()
-        }catch{
-            
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
-    }
-    
-    func fetchStreak(){
-        do{
-            let request = Streak.fetchRequest() as NSFetchRequest<Streak>
-            
-            self.streaks = try context.fetch(request)
-            
-        }catch{
-            
-        }
-    }
-    
-    func fetchMedicine(){
-        do{
-            let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
-            
-            let sort = NSSortDescriptor(key: "time", ascending: true)
-            request.sortDescriptors = [sort]
-            
-            self.items = try context.fetch(request)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-        }catch{
-            
-        }
-    }
-    
-    func fetchLogs(){
-        do{
-            
-            logs?.removeAll()
-            let request = Log.fetchRequest() as NSFetchRequest<Log>
-            
-            // Get the current calendar with local time zone
-            var calendar = Calendar.current
-            calendar.timeZone = NSTimeZone.local
-
-            // Get today's beginning & end
-            let dateFrom = calendar.startOfDay(for: daySelected) // eg. 2016-10-10 00:00:00
-            let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
-            
-            /*
-            print("FROM DATE >= \(dateFrom)")
-            print("TO DATE < \(dateTo)")
-             */
-            // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
-
-            // Set predicate as date being today's date
-            
-            
-            let fromPredicate = NSPredicate(format: "%@ <= %K", dateFrom as NSDate, #keyPath(Log.date))
-            
-            let toPredicate = NSPredicate(format: "%K < %@", #keyPath(Log.date), dateTo! as NSDate)
-            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
-            
-            request.predicate = datePredicate
-            
-            self.logs = try context.fetch(request)
-            
-            for log in logs! {
-                print("-\(log.date)")
-            }
-            
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }catch{
-            
-        }
-        
-    }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
@@ -398,52 +141,24 @@ class ViewController: UIViewController, FSCalendarDelegate{
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        self.resetArray()
+        self.streakHelper.resetArray()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         let dateSelected = formatter.string(from: date)
-        print("\(dateSelected)")
+        
+        //print("\(dateSelected)")
         
         daySelected = date
-        fetchLogs()
-         
-         
-        /*
-        print("did select date \(self.dateFormatter.string(from: date))")
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
-        
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-         */
-        
+        coreDataHelper.fetchLogs(tableView: tableView, daySelected: daySelected)        
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+        //print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
-    func resetArray(){
-        for i in undoIdx.indices{
-            undoIdx[i] = -1
-        }
-    }
     
-    func resetKeTake(){
-        for i in keTake.indices{
-            keTake[i] = -1
-        }
-    }
 
 }
-
-
-
-
-
-
-
 
 extension ViewController:UITableViewDelegate{
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -507,53 +222,19 @@ extension ViewController:UITableViewDelegate{
             
              */
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
-                print("Tepat Waktu tapped")
+                //print("Tepat Waktu tapped")
                 
-                //change daySelected to String
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "en_gb")
-                formatter.dateFormat = "dd MMM yyyy"
-                let tanggal = formatter.string(from: self.daySelected)
-                // print(tanggal)
-                
-                // Create String
-                let time = self.items![indexPath.row].time!
-                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
-                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
-                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-                print(string)
-                // 29 October 2019 20:15:55 +0200
-
-                
-                // Create Date Formatter
-                let dateFormatter = DateFormatter()
-
-                // Set Date Format
-                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-                // Convert String to Date
-                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
-                
-                let log = Log(context: self.context)
-                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
-                log.dateTake = dateFormatter.date(from: string)
-                log.action = "Take"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
+                self.coreDataHelper.tepatWaktu(daySelected: self.daySelected, indexPath: indexPath)
                 
                 self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                 
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                self.fetchLogs()
-                self.resetArray()
-                self.validateNewStreak()
+                self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                self.streakHelper.resetArray()
+                self.streakHelper.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
             }))
             
             alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
-                print("Pilih Waktu tapped")
+                //print("Pilih Waktu tapped")
                 // Gas
                 
                 self.dismiss(animated: true, completion: {
@@ -568,52 +249,14 @@ extension ViewController:UITableViewDelegate{
                     alertController.view.addSubview(myDatePicker)
                     
                     let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                        //change daySelected to String
-                        let formatter = DateFormatter()
-                        formatter.locale = Locale(identifier: "en_gb")
-                        formatter.dateFormat = "dd MMM yyyy"
-                        let tanggal = formatter.string(from: self.daySelected)
-                        // print(tanggal)
                         
-                        // Create String
-                        let times = self.items![indexPath.row].time!
-                        let hour = times[..<times.index(times.startIndex, offsetBy: 2)]
-                        let minutes = times[times.index(times.startIndex, offsetBy: 3)...]
-                        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-                        print(string)
-                        // 29 October 2019 20:15:55 +0200
-
-                        
-                        // Create Date Formatter
-                        let dateFormatter = DateFormatter()
-
-                        // Set Date Format
-                        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-                        // Convert String to Date
-                        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
-                        
-                        let time = myDatePicker.date
-                        // change to ICT by time interval
-                        // time.addTimeInterval(25200)
-                        print("Selected Date: \(time)")
-                        
-                        let log = Log(context: self.context)
-                        log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
-                        log.dateTake = time
-                        log.action = "Take"
-                        log.time = self.items![indexPath.row].time
-                        log.medicine_name = self.items![indexPath.row].medicine?.name
+                        self.coreDataHelper.pilihWaktu(daySelected: self.daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
                         
                         self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                         
-                        do{
-                            try self.context.save()
-                        }catch{
-                            
-                        }
-                        self.fetchLogs()
-                        self.resetArray()
-                        self.validateNewStreak()
+                        self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                        self.streakHelper.resetArray()
+                        self.streakHelper.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
                         
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -655,77 +298,31 @@ extension ViewController:UITableViewDelegate{
             }
             //Delete button swipe
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
-                //change daySelected to String
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "en_gb")
-                formatter.dateFormat = "dd MMM yyyy"
-                let tanggal = formatter.string(from: self.daySelected)
-                // print(tanggal)
                 
-                // Create String
-                let time = self.items![indexPath.row].time!
-                let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
-                let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
-                let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-                print(string)
-                // 29 October 2019 20:15:55 +0200
-
+                self.coreDataHelper.lewati(daySelected: self.daySelected, indexPath: indexPath)
                 
-                // Create Date Formatter
-                let dateFormatter = DateFormatter()
-
-                // Set Date Format
-                dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-                // Convert String to Date
-                print("\(dateFormatter.date(from: string)!) ubah ke UTC")
-                
-                let log = Log(context: self.context)
-                log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
-                log.dateTake = dateFormatter.date(from: string)
-                log.action = "Skip"
-                log.time = self.items![indexPath.row].time
-                log.medicine_name = self.items![indexPath.row].medicine?.name
-                
-                self.resetStreak()
-                
+                self.coreDataHelper.resetStreak()
                 self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                self.fetchLogs()
+                self.coreDataHelper.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
             }
             
-            let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ _, indexPath in
-                // remove
+            let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ [self] _, indexPath in
                 
-                let logToRemove = self.logs![self.undoIdx[indexPath.row]]
-                
-                self.context.delete(logToRemove)
-                self.undoIdx[indexPath.row] = -1
+                let logToRemove = self.coreDataHelper.logs![self.streakHelper.undoIdx[indexPath.row]]
+                coreDataHelper.batalkan(logToRemove: logToRemove)
+                self.streakHelper.undoIdx[indexPath.row] = -1
                 
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
-                
-                
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    
-                }
-                
                 self.refresh()
             }
             
             takeAction.backgroundColor = .systemBlue
             
-            if (undoIdx[indexPath.row] >= 0){
-                keTake[indexPath.row] = -1
+            if (streakHelper.undoIdx[indexPath.row] >= 0){
+                streakHelper.keTake[indexPath.row] = -1
                 return [untakeAction]
             }else{
-                keTake[indexPath.row] = 1
+                streakHelper.keTake[indexPath.row] = 1
                 return [takeAction,deleteAction]
             }
             
@@ -744,7 +341,7 @@ extension ViewController:UITableViewDataSource{
             return medicines.count //berdasarkan variable jumlah cellnya (pake .count)
             */
             
-            return self.items?.count ?? 0
+            return self.coreDataHelper.items?.count ?? 0
         }
     
         func showToastSkip(message : String, font: UIFont) {
@@ -812,7 +409,7 @@ extension ViewController:UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ViewControllerTVC
             
-            let medicine_time = self.items![indexPath.row]
+            let medicine_time = self.coreDataHelper.items![indexPath.row]
             cell.medLbl.text = medicine_time.medicine?.name
             if(medicine_time.medicine?.eat_time == 2){
                 cell.freqLbl.text = "Sesudah makan"
@@ -839,11 +436,10 @@ extension ViewController:UITableViewDataSource{
 //            // print(tanggal)
 //
 //            // Create String
-            let time = self.items![indexPath.row].time!
+            let time = self.coreDataHelper.items![indexPath.row].time!
             let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
             let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
             let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
-            print(string)
             
             let startMorning = ("20 Jun 2022 06:00:00 +0700")
             let endMorning = ("20 Jun 2022 11:59:00 +0700")
@@ -861,7 +457,7 @@ extension ViewController:UITableViewDataSource{
             // Set Date Format
             dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
             // Convert String to Date
-            print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+            //print("\(dateFormatter.date(from: string)!) ubah ke UTC")
             
             let newDate = dateFormatter.date(from: string)!
             
@@ -888,11 +484,11 @@ extension ViewController:UITableViewDataSource{
             cell.tintColor = UIColor.blue
             
 
-            for (index, log) in logs!.enumerated() {
+            for (index, log) in coreDataHelper.logs!.enumerated() {
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
-                    undoIdx[indexPath.row] = index
-                    keTake[indexPath.row] = 1
+                    streakHelper.undoIdx[indexPath.row] = index
+                    streakHelper.keTake[indexPath.row] = 1
                     
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
@@ -953,4 +549,3 @@ extension UIColor {
        )
    }
 }
-
