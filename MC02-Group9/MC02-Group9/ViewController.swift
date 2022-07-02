@@ -430,6 +430,8 @@ extension ViewController:UITableViewDelegate{
             
             
             let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
+            
+            /*
             alert.addAction(UIAlertAction(title: "Sekarang", style: .default, handler: { action in
                 print("Sekarang tapped")
                 
@@ -476,6 +478,7 @@ extension ViewController:UITableViewDelegate{
                 self.validateNewStreak()
             }))
             
+             */
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
                 print("Tepat Waktu tapped")
                 
