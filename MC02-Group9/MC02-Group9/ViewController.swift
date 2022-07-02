@@ -40,16 +40,23 @@ class ViewController: UIViewController, FSCalendarDelegate{
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
+    
+    // Core data Var
     var items:[Medicine_Time]?
     var logs:[Log]?
+    var streaks:[Streak]?
+    var medicines:[Medicine]?
     
     var daySelected = Date()
     
     var undoIdx = Array(0...100)
-    
+    var keTake = Array(0...100)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        resetKeTake()
+        checkStreakFail()
         //Request for user permission
         notificationCenter.requestAuthorization(options: [.alert,.sound]) { permissionGranted, error in
                     if(!permissionGranted)
@@ -163,6 +170,135 @@ class ViewController: UIViewController, FSCalendarDelegate{
         }
     }
     
+    func fetchMeds(){
+        do{
+            let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
+            
+            self.medicines = try context.fetch(request)
+    
+        }catch{
+            
+        }
+    }
+    
+    func validateNewStreak(){
+        fetchStreak()
+        fetchMeds()
+        refresh()
+        let medCount = medicines!.count
+        var keTakeCount = 0
+        
+        print("Ke Take")
+        for i in stride(from: 0, to: medCount, by: 1) {
+            if(keTake[i] == 1){
+                keTakeCount += 1
+            }
+        }
+        
+        if(medCount == keTakeCount){
+            if(streaks!.count == 0){
+                // Kondisi ga ada streak
+                addStreak()
+            }else{
+                // Kondisi udah ada streak di hari sebelumnya
+                
+                var calendar = Calendar.current
+                calendar.timeZone = NSTimeZone.local
+
+                // Get today's beginning & end
+                let dateFrom = calendar.startOfDay(for: Date())
+                
+                var lastDate = streaks![streaks!.count - 1].date
+                
+                if(lastDate == dateFrom){
+                    // Streak nya udah ketambah di hari yg sama
+                    return
+                }else{
+                    // Hitung Jarak Hari nya
+    
+                    lastDate!.addTimeInterval(86400)
+                    if(lastDate == dateFrom){
+                        // Kalau jaraknya 1 hari
+                        addStreak()
+                    }else{
+                        // jaraknya lebih dari 1 hari
+                        resetStreak()
+                        //tambahin yg baru
+                        addStreak()
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func checkStreakFail(){
+        fetchStreak()
+        
+        if(streaks!.count == 0){
+            return
+        }
+        
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+
+        // Get today's beginning & end
+        let dateFrom = calendar.startOfDay(for: Date())
+        var lastDate = streaks![streaks!.count - 1].date
+        
+        lastDate!.addTimeInterval(86400)
+        
+        if(lastDate != dateFrom){
+            print("LAST DATE \(lastDate)")
+            print("DATE FROM \(dateFrom)")
+            resetStreak()
+            print("KERESET")
+        }
+    }
+    
+    func resetStreak(){
+        // reset streak
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Streak")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+    }
+    
+    func addStreak(){
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+
+        // Get today's beginning & end
+        let dateFrom = calendar.startOfDay(for: Date())
+        
+        let streak = Streak(context: context)
+        streak.date = dateFrom
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
+    }
+    
+    func fetchStreak(){
+        do{
+            let request = Streak.fetchRequest() as NSFetchRequest<Streak>
+            
+            self.streaks = try context.fetch(request)
+            
+        }catch{
+            
+        }
+    }
+    
     func fetchMedicine(){
         do{
             let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
@@ -266,6 +402,13 @@ class ViewController: UIViewController, FSCalendarDelegate{
             undoIdx[i] = -1
         }
     }
+    
+    func resetKeTake(){
+        for i in keTake.indices{
+            keTake[i] = -1
+        }
+    }
+
 }
 
 
@@ -329,8 +472,8 @@ extension ViewController:UITableViewDelegate{
                     
                 }
                 self.fetchLogs()
-                
                 self.resetArray()
+                self.validateNewStreak()
             }))
             
             alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
@@ -376,6 +519,7 @@ extension ViewController:UITableViewDelegate{
                 }
                 self.fetchLogs()
                 self.resetArray()
+                self.validateNewStreak()
             }))
             
             alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
@@ -439,6 +583,7 @@ extension ViewController:UITableViewDelegate{
                         }
                         self.fetchLogs()
                         self.resetArray()
+                        self.validateNewStreak()
                         
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -545,8 +690,10 @@ extension ViewController:UITableViewDelegate{
             takeAction.backgroundColor = .systemBlue
             
             if (undoIdx[indexPath.row] >= 0){
+                keTake[indexPath.row] = -1
                 return [untakeAction]
             }else{
+                keTake[indexPath.row] = 1
                 return [takeAction,deleteAction]
             }
             
@@ -713,6 +860,8 @@ extension ViewController:UITableViewDataSource{
                 if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                     
                     undoIdx[indexPath.row] = index
+                    keTake[indexPath.row] = 1
+                    
                     if(log.action == "Skip"){
                         cell.tintColor = UIColor.red
                         cell.timeLbl.layer.opacity = 0.3

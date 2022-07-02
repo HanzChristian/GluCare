@@ -18,9 +18,13 @@
         <attribute name="time" optional="YES" attributeType="String"/>
         <relationship name="medicine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medicine" inverseName="time" inverseEntity="Medicine"/>
     </entity>
+    <entity name="Streak" representedClassName="Streak" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Log" positionX="-36" positionY="27" width="128" height="104"/>
         <element name="Medicine" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="Medicine_Time" positionX="-54" positionY="18" width="128" height="59"/>
+        <element name="Streak" positionX="-36" positionY="54" width="128" height="44"/>
     </elements>
 </model>

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/christophorusdavin/Documents/MC02-Group9-15-15/MC02-Group9/MC02-Group9/Model/Streak+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/christophorusdavin/Documents/MC02-Group9-15-15/MC02-Group9/MC02-Group9/Model/Streak+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:MC02-Group9.xcodeproj">
    </FileRef>
    <FileRef
