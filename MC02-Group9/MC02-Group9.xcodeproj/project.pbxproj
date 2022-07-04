@@ -21,6 +21,8 @@
 		158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */; };
 		15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */; };
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
+		1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3B42872E3250056E693 /* Take Medication.storyboard */; };
+		1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */; };
 		1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */; };
@@ -69,6 +71,8 @@
 		158B02E4284FAD0F005254A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
+		1F4EF3B52872E3250056E693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Take Medication.storyboard"; sourceTree = "<group>"; };
+		1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedicationViewController.swift; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Add Medication.storyboard"; path = "MC02-Group9/View/Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		F02A60D92869A6F900441781 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EF3B42872E3250056E693 /* Take Medication.storyboard */,
 				158B02D9284FAD0D005254A0 /* Main.storyboard */,
 				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
 				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
@@ -214,6 +219,7 @@
 				1515331828687EA600606068 /* GuideViewController.swift */,
 				1515331A2868A8B100606068 /* GuideViewController2.swift */,
 				F02A60DB2869A73900441781 /* AddMedCell */,
+				1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
 				2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
+				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
 				1F8813AB285B14D0009994F9 /* SchedulePickerTableViewCell.xib in Resources */,
@@ -387,6 +394,7 @@
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
+				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
@@ -421,6 +429,14 @@
 				158B02E2284FAD0F005254A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1F4EF3B42872E3250056E693 /* Take Medication.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F4EF3B52872E3250056E693 /* Base */,
+			);
+			name = "Take Medication.storyboard";
 			sourceTree = "<group>";
 		};
 		1F8813B72861E0DF009994F9 /* Badge.storyboard */ = {
