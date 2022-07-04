@@ -18,6 +18,9 @@ class TakeMedTimeTableViewCell: UITableViewCell {
         // Initialization code
         
         lblTakeMedTime.text = "Waktu Minum"
+        
+        // Set Default waktunya yang dari core data
+        btnDatePicker.text 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
