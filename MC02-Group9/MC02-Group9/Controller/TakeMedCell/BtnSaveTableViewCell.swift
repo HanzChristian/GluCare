@@ -1,26 +1,27 @@
 //
-//  OnTimeTableViewCell.swift
+//  BtnSaveTableViewCell.swift
 //  MC02-Group9
 //
-//  Created by Marcelino Budiman on 04/07/22.
+//  Created by Marcelino Budiman on 05/07/22.
 //
 
 import UIKit
 
-class OnTimeTableViewCell: UITableViewCell {
+class BtnSaveTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblOnTime: UILabel!
-    @IBOutlet weak var switchOnTime: UISwitch!
+    @IBOutlet weak var btnSave: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        lblOnTime.text = "Tepat Waktu"
+        btnSave.titleLabel?.text = "Simpan"
     }
     
     
-
+    @IBAction func didTapBtn(_ sender: Any) {
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

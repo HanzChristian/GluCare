@@ -29,6 +29,8 @@
 		1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */; };
 		1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */; };
 		1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */; };
+		1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */; };
+		1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */; };
 		1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */; };
@@ -85,6 +87,8 @@
 		1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnTimeTableViewCell.xib; sourceTree = "<group>"; };
 		1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTimeTableViewCell.swift; sourceTree = "<group>"; };
 		1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeMedTimeTableViewCell.xib; sourceTree = "<group>"; };
+		1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnSaveTableViewCell.swift; sourceTree = "<group>"; };
+		1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BtnSaveTableViewCell.xib; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Add Medication.storyboard"; path = "MC02-Group9/View/Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				1F4EF3BC2873384A0056E693 /* MedNameTableViewCell.swift */,
 				1F4EF3C528733BCE0056E693 /* OnTimeTableViewCell.swift */,
 				1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */,
+				1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */,
 			);
 			path = TakeMedCell;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 		1F4EF3C02873385E0056E693 /* TakeMedCell */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */,
 				1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */,
 				1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */,
 				1F4EF3BD2873384A0056E693 /* MedNameTableViewCell.xib */,
@@ -353,6 +359,7 @@
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
 				2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */,
+				1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */,
 				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
 				2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
@@ -437,6 +444,7 @@
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
+				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
 				6EDAF415285878900099213F /* profilePageViewController.swift in Sources */,
