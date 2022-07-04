@@ -259,6 +259,17 @@ extension ViewController:UITableViewDelegate{
             
             takeAction.backgroundColor = .systemBlue
             
+            //kalau diatas hari ini gabole take
+            var dateNow = calendarManager.calendar.startOfDay(for: Date())
+            dateNow.addTimeInterval(86400)
+            let dateCalendar = calendarManager.calendar.startOfDay(for: daySelected)
+
+            if(dateCalendar >= dateNow){
+                return nil
+                
+            }
+            
+            
             if (coreDataManager.undoIdx[indexPath.row] >= 0){
                 coreDataManager.keTake[indexPath.row] = -1
                 return [untakeAction]
