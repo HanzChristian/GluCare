@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="528" id="8MC-pl-REP"/>
                                 </constraints>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="LC4-WD-OBS">
-                                    <rect key="frame" x="0.0" y="131.33333206176758" width="390" height="446"/>
+                                    <rect key="frame" x="0.0" y="131.33333206176752" width="390" height="446.00000000000006"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <segue destination="rai-jm-7bR" kind="embed" id="Weg-9v-dJS"/>
