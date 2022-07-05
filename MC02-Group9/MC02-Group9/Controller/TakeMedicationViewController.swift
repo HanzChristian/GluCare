@@ -8,19 +8,34 @@
 import UIKit
 
 class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
-    
 
+    
     @IBOutlet weak var tblView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setNib()
         
+        view.backgroundColor = .blue
         
-        tblView.dataSource = self
-        tblView.delegate = self
+        //tblView?.delegate = self
+        //tblView?.dataSource = self
         
         setNav()
+    }
+    
+    func setNib(){
+        
+        let nibMedName = UINib(nibName: "MedNameTableViewCell", bundle: nil)
+        tblView.register(nibMedName, forCellReuseIdentifier: "medNameTableViewCell")
+        let nibOnTime = UINib(nibName: "OnTimeTableViewCell", bundle: nil)
+        tblView.register(nibOnTime, forCellReuseIdentifier: "onTimeTableViewCell")
+        let nibTakeMed = UINib(nibName: "TakeMedTimeTableViewCell", bundle: nil)
+        tblView.register(nibTakeMed, forCellReuseIdentifier: "takeMedTimeTableViewCell")
+        let nibBtnSave = UINib(nibName: "BtnSaveTableViewCell", bundle: nil)
+        tblView.register(nibBtnSave, forCellReuseIdentifier: "btnSaveTableViewCell")
+        
     }
     
     func setNav(){
@@ -29,6 +44,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         navigationItem.title = "Masukkan Waktu Minum Obat"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
+        
         
     }
     

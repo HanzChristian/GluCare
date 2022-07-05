@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhJ-5U-YW0">
-                        <rect key="frame" x="20" y="35" width="80" height="21"/>
+                        <rect key="frame" x="20" y="39" width="80" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="nN4-lu-43Y"/>
                         </constraints>
@@ -38,7 +38,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="84j-5y-qer" secondAttribute="trailing" constant="258" id="AC3-oj-fbS"/>
                     <constraint firstAttribute="trailing" secondItem="QhJ-5U-YW0" secondAttribute="trailing" constant="258" id="Cbu-I2-onh"/>
-                    <constraint firstAttribute="bottom" secondItem="QhJ-5U-YW0" secondAttribute="bottom" constant="16" id="P8U-Ca-tSz"/>
+                    <constraint firstItem="QhJ-5U-YW0" firstAttribute="top" secondItem="84j-5y-qer" secondAttribute="bottom" constant="2" id="I9d-Di-MuS"/>
                     <constraint firstItem="84j-5y-qer" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="sTL-sP-LrN"/>
                 </constraints>
             </tableViewCellContentView>
