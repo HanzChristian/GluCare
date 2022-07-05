@@ -14,7 +14,6 @@
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D3284FAD0D005254A0 /* AppDelegate.swift */; };
 		158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D5284FAD0D005254A0 /* SceneDelegate.swift */; };
-		158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D7284FAD0D005254A0 /* ViewController.swift */; };
 		158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B02D9284FAD0D005254A0 /* Main.storyboard */; };
 		158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */; };
 		158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158B02DF284FAD0F005254A0 /* Assets.xcassets */; };
@@ -23,6 +22,15 @@
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3B42872E3250056E693 /* Take Medication.storyboard */; };
 		1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */; };
+		1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3BC2873384A0056E693 /* MedNameTableViewCell.swift */; };
+		1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3BD2873384A0056E693 /* MedNameTableViewCell.xib */; };
+		1F4EF3C428733A900056E693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C328733A900056E693 /* ViewController.swift */; };
+		1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C528733BCE0056E693 /* OnTimeTableViewCell.swift */; };
+		1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */; };
+		1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */; };
+		1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */; };
+		1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */; };
+		1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */; };
 		1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */; };
 		1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */; };
 		1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */; };
@@ -63,7 +71,6 @@
 		158B02D0284FAD0D005254A0 /* MC02-Group9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC02-Group9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		158B02D3284FAD0D005254A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158B02D5284FAD0D005254A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		158B02D7284FAD0D005254A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		158B02DA284FAD0D005254A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		158B02DD284FAD0D005254A0 /* MC02_Group9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MC02_Group9.xcdatamodel; sourceTree = "<group>"; };
 		158B02DF284FAD0F005254A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +80,15 @@
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
 		1F4EF3B52872E3250056E693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Take Medication.storyboard"; sourceTree = "<group>"; };
 		1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedicationViewController.swift; sourceTree = "<group>"; };
+		1F4EF3BC2873384A0056E693 /* MedNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTableViewCell.swift; sourceTree = "<group>"; };
+		1F4EF3BD2873384A0056E693 /* MedNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTableViewCell.xib; sourceTree = "<group>"; };
+		1F4EF3C328733A900056E693 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F4EF3C528733BCE0056E693 /* OnTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTimeTableViewCell.swift; sourceTree = "<group>"; };
+		1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnTimeTableViewCell.xib; sourceTree = "<group>"; };
+		1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTimeTableViewCell.swift; sourceTree = "<group>"; };
+		1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeMedTimeTableViewCell.xib; sourceTree = "<group>"; };
+		1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnSaveTableViewCell.swift; sourceTree = "<group>"; };
+		1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BtnSaveTableViewCell.xib; sourceTree = "<group>"; };
 		1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Add Medication.storyboard"; path = "MC02-Group9/View/Add Medication.storyboard"; sourceTree = SOURCE_ROOT; };
 		1F8813A028562171009994F9 /* FrequencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		1F8813A128562171009994F9 /* FrequencyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyPickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -162,6 +178,28 @@
 			path = "MC02-Group9";
 			sourceTree = "<group>";
 		};
+		1F4EF3B9287331580056E693 /* TakeMedCell */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EF3BC2873384A0056E693 /* MedNameTableViewCell.swift */,
+				1F4EF3C528733BCE0056E693 /* OnTimeTableViewCell.swift */,
+				1F4EF3C928733C020056E693 /* TakeMedTimeTableViewCell.swift */,
+				1F4EF3CD28736AEF0056E693 /* BtnSaveTableViewCell.swift */,
+			);
+			path = TakeMedCell;
+			sourceTree = "<group>";
+		};
+		1F4EF3C02873385E0056E693 /* TakeMedCell */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EF3CE28736AEF0056E693 /* BtnSaveTableViewCell.xib */,
+				1F4EF3CA28733C020056E693 /* TakeMedTimeTableViewCell.xib */,
+				1F4EF3C628733BCE0056E693 /* OnTimeTableViewCell.xib */,
+				1F4EF3BD2873384A0056E693 /* MedNameTableViewCell.xib */,
+			);
+			path = TakeMedCell;
+			sourceTree = "<group>";
+		};
 		2C8E9B702853E0220026FDF5 /* AddMedCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +234,7 @@
 		F02A60D92869A6F900441781 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EF3C02873385E0056E693 /* TakeMedCell */,
 				1F4EF3B42872E3250056E693 /* Take Medication.storyboard */,
 				158B02D9284FAD0D005254A0 /* Main.storyboard */,
 				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
@@ -210,7 +249,8 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				158B02D7284FAD0D005254A0 /* ViewController.swift */,
+				1F4EF3C328733A900056E693 /* ViewController.swift */,
+				1F4EF3B9287331580056E693 /* TakeMedCell */,
 				6EDAF414285878900099213F /* profilePageViewController.swift */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
@@ -319,13 +359,17 @@
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
 				2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */,
+				1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */,
 				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
 				2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
+				1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
 				1F8813AB285B14D0009994F9 /* SchedulePickerTableViewCell.xib in Resources */,
+				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
+				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,11 +422,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158B02D8284FAD0D005254A0 /* ViewController.swift in Sources */,
 				1515331E286AE68700606068 /* Medicine+CoreDataClass.swift in Sources */,
 				1515331F286AE68700606068 /* Medicine+CoreDataProperties.swift in Sources */,
 				1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */,
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
+				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
@@ -393,10 +437,14 @@
 				F0394EFF286AFC780009215C /* CodeReview.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
+				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
+				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
+				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
+				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
 				6EDAF415285878900099213F /* profilePageViewController.swift in Sources */,

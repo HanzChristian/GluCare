@@ -231,6 +231,19 @@ extension ViewController:UITableViewDelegate{
             }
         }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = TakeMedicationViewController()
+        
+        if let sheet = vc.presentationController as? UISheetPresentationController{
+            sheet.detents = [.medium()]
+        }
+
+        present(vc, animated: true,completion: nil)
+       // performSegue(withIdentifier: "takeMedicationViewController", sender: self)
+        
+    }
+    
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
             let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
