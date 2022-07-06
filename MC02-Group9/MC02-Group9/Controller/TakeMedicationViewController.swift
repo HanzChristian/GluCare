@@ -17,7 +17,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         
         //setNib()
         
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemBackground
         
         //tblView?.delegate = self
         //tblView?.dataSource = self

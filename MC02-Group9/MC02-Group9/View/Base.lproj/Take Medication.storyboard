@@ -11,7 +11,7 @@
         <!--Take Medication View Controller-->
         <scene sceneID="xkh-1K-v4Q">
             <objects>
-                <viewController id="ygD-6T-ClO" customClass="TakeMedicationViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TakeMedicationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ygD-6T-ClO" customClass="TakeMedicationViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5mp-Mg-GFU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

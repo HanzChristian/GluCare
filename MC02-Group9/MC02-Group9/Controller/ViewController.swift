@@ -233,14 +233,20 @@ extension ViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = TakeMedicationViewController()
-        
-        if let sheet = vc.presentationController as? UISheetPresentationController{
+        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController")
+        let nav =  UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .overCurrentContext
+
+        if let sheet = nav.presentationController as? UISheetPresentationController{
             sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
         }
 
-        present(vc, animated: true,completion: nil)
-       // performSegue(withIdentifier: "takeMedicationViewController", sender: self)
+        self.present(nav, animated: true,completion: nil)
+//        performSegue(withIdentifier: "takeMedicationViewController", sender: self)
         
     }
     
