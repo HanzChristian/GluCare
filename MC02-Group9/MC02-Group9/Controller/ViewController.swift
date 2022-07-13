@@ -50,13 +50,24 @@ class ViewController: UIViewController, FSCalendarDelegate{
     // var for logic
     var daySelected = Date()
     
-    // Helper
+    // Manager
     let calendarManager = CalendarManager.calendarManager
     let coreDataManager = CoreDataManager.coreDataManager
     let streakManager = StreakManager.streakManager
+    let networkManager = NetworkManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        networkManager.getMedicationListName { (medicineApi, error) -> (Void) in
+            if let _ = error {
+               print("Error")
+               return
+            }
+            print(medicineApi![0].name)
+            print(medicineApi!)
+         }
+         
         
         coreDataManager.resetKeTake()
         streakManager.checkStreakFail()
