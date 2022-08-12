@@ -21,7 +21,7 @@ class BadgeViewController: UIViewController {
     var streaks:[Streak]?
     
     var maxStreak:Int = 10
-    let debugStreak:Int = 40
+    let debugStreak:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
