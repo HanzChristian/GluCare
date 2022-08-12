@@ -51,10 +51,8 @@ class StreakManager{
                 coreDataManager.addStreak()
             }else{
                 // Kondisi udah ada streak di hari sebelumnya
-
                 // Get today's beginning & end
                 let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-                
                 var lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
                 
                 if(lastDate == dateFrom){
@@ -67,11 +65,13 @@ class StreakManager{
                     lastDate!.addTimeInterval(86400)
                     if(lastDate == dateFrom){
                         // Kalau jaraknya 1 hari
+                        // Tambah validasi untuk apakah dia udah take semua obat di hari sebelumnya
                         coreDataManager.addStreak()
+                        
                     }else{
                         // jaraknya lebih dari 1 hari
                         coreDataManager.resetStreak()
-                        //tambahin yg baru
+                        // tambahin yg baru
                         coreDataManager.addStreak()
                     }
                     
