@@ -282,6 +282,19 @@ class CoreDataManager{
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
     }
 
+    func removeStreak(streakToRemove: Streak){
+        // streak
+        self.context.delete(streakToRemove)
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
+    }
+
     func dummyData(){
         // create medicine
         let medicine = Medicine(context: context)

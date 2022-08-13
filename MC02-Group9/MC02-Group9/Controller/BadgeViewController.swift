@@ -20,6 +20,8 @@ class BadgeViewController: UIViewController {
     
     var streaks:[Streak]?
     
+    var maxStreak:Int = 10
+    let debugStreak:Int = 40
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,10 +47,16 @@ class BadgeViewController: UIViewController {
         }catch{
             
         }
+        if(streaks!.count + debugStreak <= 10){
+            maxStreak = 10
+        }else{
+            maxStreak = 10
+            while(streaks!.count + debugStreak - 1 >= maxStreak){
+                maxStreak = maxStreak * 2
+            }
+        }
     }
-    
-   
-    
+
     func configuration(){
         
         if let roundedTitleDescriptor = UIFontDescriptor
@@ -66,7 +74,7 @@ class BadgeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // config label day
-        lblDays.text = "\(streaks!.count)" // Set logicny
+        lblDays.text = "\(streaks!.count + debugStreak) / \(maxStreak)" // Set logicny
         lblDays.font = .rounded(ofSize: 34, weight: .semibold)
         
         // Config lbl day txt
@@ -109,7 +117,13 @@ class BadgeViewController: UIViewController {
         
         // animation
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 0.00 + Float(Float(streaks!.count)/Float(7)) // value akhir buat animationnya
+        
+        if(streaks!.count + debugStreak <= 10){
+            animation.toValue = 0.00 + Float(Float(streaks!.count + debugStreak) / Float(maxStreak))
+        }else{
+            animation.toValue = 0.00 + Float(Float(streaks!.count + debugStreak - (maxStreak/2)) / Float(maxStreak/2)) // value akhir buat animationnya
+        }
+        
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards

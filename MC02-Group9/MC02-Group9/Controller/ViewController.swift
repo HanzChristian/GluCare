@@ -64,8 +64,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
                print("Error")
                return
             }
-            print(medicineApi![0].name)
-            print(medicineApi!)
+            //print(medicineApi![0].name)
+            //print(medicineApi!)
          }
          
         
@@ -285,6 +285,21 @@ extension ViewController:UITableViewDelegate{
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 
                 self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                
+                coreDataManager.fetchStreak()
+                if(coreDataManager.streaks!.isEmpty == true){
+                    return
+                }
+                // Streak Logic
+                let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+                let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+                
+                if(lastDate == dateFrom){
+                    // Streak nya udah ketambah di hari yg sama
+                    
+                    coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+                    coreDataManager.fetchStreak()
+                }
             }
             
             takeAction.backgroundColor = .systemBlue
