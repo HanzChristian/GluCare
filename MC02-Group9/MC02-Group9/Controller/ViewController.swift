@@ -251,7 +251,6 @@ extension ViewController:UITableViewDelegate{
 
         if let sheet = nav.presentationController as? UISheetPresentationController{
             sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
         }
