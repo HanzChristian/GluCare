@@ -11,7 +11,6 @@ class TakeMedTimeTableViewCell: UITableViewCell {
     let formatter = DateFormatter()
     let timePicker = UIDatePicker()
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -39,6 +38,7 @@ class TakeMedTimeTableViewCell: UITableViewCell {
         // Set Date Picker to Text Field
         btnDatePicker.inputView = timePicker
     }
+    
     
     // Change Text Field on Value Changed
     @objc func timePickerValueChange(sender: UIDatePicker){

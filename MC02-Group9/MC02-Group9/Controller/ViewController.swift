@@ -13,7 +13,7 @@ import Gecco
 class ViewController: UIViewController, FSCalendarDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
-    
+ 
     @IBAction func guideBtn(_ sender: Any) {
         if(coreDataManager.items!.count > 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
@@ -127,7 +127,20 @@ class ViewController: UIViewController, FSCalendarDelegate{
         refresh()
                 
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetHidden), name: NSNotification.Name(rawValue: "sheetOn"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetunHidden), name: NSNotification.Name(rawValue: "sheetOff"), object: nil)
+        
     }
+    
+//    @objc func sheetHidden(){
+//        self.cellTakeMed!.isHidden = true
+//    }
+//
+//    @objc func sheetunHidden(){
+//        self.cellTakeMed!.isHidden = false
+//    }
+    
     
     @objc func refresh() {
         
@@ -242,10 +255,19 @@ extension ViewController:UITableViewDelegate{
             }
         }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+//    let sheet = UINavigationController(rootViewController: UIStoryboard(name: "Take Medication", bundle: nil).instantiateViewController(withIdentifier: "TakeMedicationViewController")) as? UISheetPresentationController{
+//            sheet.detents = [.medium()]
+//            sheet.preferredCornerRadius = 30
+//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//    }
+    
+    func makeSheet(isSkipped:Bool,indexPath:IndexPath){
+        if(isSkipped == true){
+            return
+        }
         let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
+        
         let nav =  UINavigationController(rootViewController: vc)
 //        nav.modalPresentationStyle = .overCurrentContext
 
@@ -253,12 +275,29 @@ extension ViewController:UITableViewDelegate{
             sheet.detents = [.medium()]
             sheet.preferredCornerRadius = 30
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            
         }
-
+        vc.daySelected = self.daySelected
+        vc.tableView = self.tableView
+        vc.indexPath = indexPath
+        
         self.present(nav, animated: true,completion: nil)
-//        performSegue(withIdentifier: "takeMedicationViewController", sender: self)
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var isSkipped = false
+        
+        if (coreDataManager.undoIdx[indexPath.row] >= 0){
+            coreDataManager.keTake[indexPath.row] = -1
+            isSkipped = true
+        }
+
+        coreDataManager.medicineSelectedIdx = indexPath.row
+        makeSheet(isSkipped: isSkipped,indexPath: indexPath)
+    }
+    
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
