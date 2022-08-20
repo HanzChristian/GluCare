@@ -23,6 +23,9 @@ class CoreDataManager{
     var streaks:[Streak]?
     var medicines:[Medicine]?
     
+    //takemed attribute
+    var medicineSelectedIdx = 0
+    
     //context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
