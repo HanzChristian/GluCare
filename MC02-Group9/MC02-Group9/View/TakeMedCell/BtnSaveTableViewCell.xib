@@ -18,8 +18,9 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="141-wx-bWJ">
                         <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
+                        <color key="tintColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="Simpan"/>
                         <connections>
                             <action selector="didTapBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qyw-eg-T34"/>
                         </connections>

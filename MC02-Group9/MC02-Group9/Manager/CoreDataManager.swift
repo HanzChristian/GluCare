@@ -23,6 +23,9 @@ class CoreDataManager{
     var streaks:[Streak]?
     var medicines:[Medicine]?
     
+    //takemed attribute
+    var medicineSelectedIdx = 0
+    
     //context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -272,6 +275,19 @@ class CoreDataManager{
         let dateFrom = calendarManager.calendar.startOfDay(for: Date())
         let streak = Streak(context: context)
         streak.date = dateFrom
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newStreak"), object: nil)
+    }
+
+    func removeStreak(streakToRemove: Streak){
+        // streak
+        self.context.delete(streakToRemove)
         
         do{
             try self.context.save()

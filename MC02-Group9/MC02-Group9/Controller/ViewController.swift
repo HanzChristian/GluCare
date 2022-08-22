@@ -65,8 +65,8 @@ class ViewController: UIViewController, FSCalendarDelegate{
                print("Error")
                return
             }
-            print(medicineApi![0].name)
-            print(medicineApi!)
+            //print(medicineApi![0].name)
+            //print(medicineApi!)
          }
          
         
@@ -128,7 +128,20 @@ class ViewController: UIViewController, FSCalendarDelegate{
         refresh()
                 
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetHidden), name: NSNotification.Name(rawValue: "sheetOn"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetunHidden), name: NSNotification.Name(rawValue: "sheetOff"), object: nil)
+        
     }
+    
+//    @objc func sheetHidden(){
+//        self.cellTakeMed!.isHidden = true
+//    }
+//
+//    @objc func sheetunHidden(){
+//        self.cellTakeMed!.isHidden = false
+//    }
+    
     
     @objc func refresh() {
         
@@ -243,24 +256,49 @@ extension ViewController:UITableViewDelegate{
             }
         }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+//    let sheet = UINavigationController(rootViewController: UIStoryboard(name: "Take Medication", bundle: nil).instantiateViewController(withIdentifier: "TakeMedicationViewController")) as? UISheetPresentationController{
+//            sheet.detents = [.medium()]
+//            sheet.preferredCornerRadius = 30
+//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//    }
+    
+    func makeSheet(isSkipped:Bool,indexPath:IndexPath){
+        if(isSkipped == true){
+            return
+        }
         let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
+        
         let nav =  UINavigationController(rootViewController: vc)
 //        nav.modalPresentationStyle = .overCurrentContext
 
         if let sheet = nav.presentationController as? UISheetPresentationController{
             sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            
         }
-
+        vc.daySelected = self.daySelected
+        vc.tableView = self.tableView
+        vc.indexPath = indexPath
+        
         self.present(nav, animated: true,completion: nil)
-//        performSegue(withIdentifier: "takeMedicationViewController", sender: self)
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var isSkipped = false
+        
+        if (coreDataManager.undoIdx[indexPath.row] >= 0){
+            coreDataManager.keTake[indexPath.row] = -1
+            isSkipped = true
+        }
+
+        coreDataManager.medicineSelectedIdx = indexPath.row
+        makeSheet(isSkipped: isSkipped,indexPath: indexPath)
+    }
+    
     
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             //Take button swipe
@@ -286,6 +324,21 @@ extension ViewController:UITableViewDelegate{
                 self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
                 
                 self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                
+                coreDataManager.fetchStreak()
+                if(coreDataManager.streaks!.isEmpty == true){
+                    return
+                }
+                // Streak Logic
+                let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+                let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+                
+                if(lastDate == dateFrom){
+                    // Streak nya udah ketambah di hari yg sama
+                    
+                    coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+                    coreDataManager.fetchStreak()
+                }
             }
             
             takeAction.backgroundColor = .systemBlue
