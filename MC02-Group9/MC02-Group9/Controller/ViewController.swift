@@ -13,7 +13,8 @@ import Gecco
 class ViewController: UIViewController, FSCalendarDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
- 
+//    let dismissNotfication = UNNotificationDismissActionIdentifier
+    
     @IBAction func guideBtn(_ sender: Any) {
         if(coreDataManager.items!.count > 0){
             let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController

@@ -127,21 +127,26 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             // dummyModel.remove(at: indexPath.row)
             let medicine = self.items![indexPath.row]
             self.context.delete(medicine)
+            let deletedId: [String] = [medicine.id!]
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
             
+            do{
+                try self.context.save()
+            }catch{
+            }
+            
+            self.fetchMedicine()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+//            context.delete(Medicine[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            tableView.endUpdates()
             do{
                 try self.context.save()
             }catch{
                 
             }
-            
-            self.fetchMedicine()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
-            
-            tableView.endUpdates()
+//            self.saveData()
         }
     }
     

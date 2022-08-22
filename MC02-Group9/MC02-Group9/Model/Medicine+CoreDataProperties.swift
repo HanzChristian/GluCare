@@ -2,7 +2,7 @@
 //  Medicine+CoreDataProperties.swift
 //  
 //
-//  Created by Christophorus Davin on 28/06/22.
+//  Created by Richard Mulyadi on 22/08/22.
 //
 //
 
@@ -18,6 +18,7 @@ extension Medicine {
 
     @NSManaged public var eat_time: Int16
     @NSManaged public var name: String?
+    @NSManaged public var id: String?
     @NSManaged public var time: NSSet?
 
 }

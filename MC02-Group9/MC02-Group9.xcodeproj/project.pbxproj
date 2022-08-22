@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1515331928687EA600606068 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331828687EA600606068 /* GuideViewController.swift */; };
 		1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331A2868A8B100606068 /* GuideViewController2.swift */; };
-		1515331E286AE68700606068 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */; };
-		1515331F286AE68700606068 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D3284FAD0D005254A0 /* AppDelegate.swift */; };
 		158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D5284FAD0D005254A0 /* SceneDelegate.swift */; };
@@ -50,6 +48,8 @@
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
 		2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */; };
+		2CFE757D28B36C1100E3B30B /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE757C28B36C1100E3B30B /* Medicine+CoreDataClass.swift */; };
+		2CFE757F28B36C1500E3B30B /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE757E28B36C1500E3B30B /* Medicine+CoreDataProperties.swift */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
 		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
@@ -67,8 +67,6 @@
 /* Begin PBXFileReference section */
 		1515331828687EA600606068 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		1515331A2868A8B100606068 /* GuideViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController2.swift; sourceTree = "<group>"; };
-		1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
 		158B02D0284FAD0D005254A0 /* MC02-Group9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC02-Group9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		158B02D3284FAD0D005254A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +107,8 @@
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTimePickerTableViewCell.xib; sourceTree = "<group>"; };
+		2CFE757C28B36C1100E3B30B /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataClass.swift"; path = "/Users/richardmulyadi/Documents/GluCare/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		2CFE757E28B36C1500E3B30B /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Medicine+CoreDataProperties.swift"; path = "/Users/richardmulyadi/Documents/GluCare/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
 		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
@@ -256,8 +256,8 @@
 			children = (
 				1F4EF3C328733A900056E693 /* ViewController.swift */,
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
-				6EDAF414285878900099213F /* profilePageViewController.swift */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
+				6EDAF414285878900099213F /* profilePageViewController.swift */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
@@ -285,8 +285,8 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1515331C286AE68700606068 /* Medicine+CoreDataClass.swift */,
-				1515331D286AE68700606068 /* Medicine+CoreDataProperties.swift */,
+				2CFE757C28B36C1100E3B30B /* Medicine+CoreDataClass.swift */,
+				2CFE757E28B36C1500E3B30B /* Medicine+CoreDataProperties.swift */,
 				F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */,
 				F033B156285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift */,
 				2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */,
@@ -428,8 +428,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1515331E286AE68700606068 /* Medicine+CoreDataClass.swift in Sources */,
-				1515331F286AE68700606068 /* Medicine+CoreDataProperties.swift in Sources */,
 				1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */,
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
@@ -448,6 +446,7 @@
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
+				2CFE757F28B36C1500E3B30B /* Medicine+CoreDataProperties.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
@@ -463,6 +462,7 @@
 				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
+				2CFE757D28B36C1100E3B30B /* Medicine+CoreDataClass.swift in Sources */,
 				2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
