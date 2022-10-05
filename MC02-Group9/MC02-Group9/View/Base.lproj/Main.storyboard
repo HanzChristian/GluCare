@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0n-Oj-qNT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0n-Oj-qNT">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,20 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="9d8-OB-Mc0" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="140" width="390" height="250"/>
+                                <rect key="frame" x="0.0" y="143" width="390" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="fHQ-JY-PkM"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
-                                <rect key="frame" x="0.0" y="390" width="390" height="528"/>
+                                <rect key="frame" x="0.0" y="393" width="390" height="528"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="528" id="8MC-pl-REP"/>
                                 </constraints>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="LC4-WD-OBS">
-                                    <rect key="frame" x="0.0" y="131.33333206176752" width="390" height="446.00000000000006"/>
+                                    <rect key="frame" x="0.0" y="142" width="390" height="446"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <segue destination="rai-jm-7bR" kind="embed" id="Weg-9v-dJS"/>
@@ -38,7 +39,7 @@
                                 </containerView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="64" id="LEf-ax-wNX" customClass="ViewControllerTVC" customModule="MC02_Group9">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="64"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LEf-ax-wNX" id="4fo-tE-a4Z">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
@@ -173,7 +174,7 @@
                     <tabBarItem key="tabBarItem" title="Jadwal" image="med" id="PFC-jO-WrZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
@@ -218,7 +219,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vw-6H-Ndi">
-                                <rect key="frame" x="10" y="240" width="364" height="60"/>
+                                <rect key="frame" x="10" y="243" width="364" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="364" id="SkG-Kr-qPB"/>
                                     <constraint firstAttribute="height" constant="60" id="sAY-Yw-fm0"/>
@@ -228,7 +229,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kiri untuk konsumsi/lewati obat " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-Bd-mCX">
-                                <rect key="frame" x="10" y="317" width="338" height="21"/>
+                                <rect key="frame" x="10" y="320" width="338" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="338" id="HST-aq-glH"/>
                                     <constraint firstAttribute="height" constant="21" id="hh6-zy-qKy"/>
@@ -238,7 +239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-K0-rKb">
-                                <rect key="frame" x="10" y="689" width="289" height="60"/>
+                                <rect key="frame" x="10" y="692" width="289" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GPu-3R-PcK"/>
                                     <constraint firstAttribute="width" constant="289" id="gOH-nQ-Tg1"/>
@@ -248,7 +249,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-qa-TfI">
-                                <rect key="frame" x="13" y="689" width="364" height="60"/>
+                                <rect key="frame" x="13" y="692" width="364" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="BBb-yn-2hm"/>
                                     <constraint firstAttribute="width" constant="364" id="wCh-U2-gZV"/>
@@ -258,7 +259,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-lk-qGF">
-                                <rect key="frame" x="60" y="677" width="295" height="84"/>
+                                <rect key="frame" x="60" y="680" width="295" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="0fj-em-Zo6"/>
                                     <constraint firstAttribute="width" constant="295" id="yu3-rw-s3s"/>
@@ -309,7 +310,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada jadwal obat hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-Js-Wvi">
-                                <rect key="frame" x="82" y="288" width="226" height="21"/>
+                                <rect key="frame" x="82" y="291" width="226" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="226" id="XRj-Xy-K7t"/>
                                     <constraint firstAttribute="height" constant="21" id="yQc-6C-q6D"/>
@@ -319,7 +320,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crx-pL-myd">
-                                <rect key="frame" x="72" y="334" width="247" height="52"/>
+                                <rect key="frame" x="72" y="337" width="247" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="247" id="Tn5-m4-ci4"/>
                                     <constraint firstAttribute="height" constant="52" id="XOI-G1-Q9V"/>
@@ -331,7 +332,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-MM-37a">
-                                <rect key="frame" x="109" y="73" width="173" height="189"/>
+                                <rect key="frame" x="109" y="76" width="173" height="189"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="189" id="QwD-Ci-06z"/>
                                     <constraint firstAttribute="width" constant="173" id="mEu-Le-T3k"/>
@@ -377,7 +378,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-vn-cwX">
-                                <rect key="frame" x="10" y="239.99999999999997" width="364" height="40.666666666666657"/>
+                                <rect key="frame" x="10" y="242.99999999999997" width="364" height="40.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="H6X-Zt-1KL"/>
                                     <constraint firstAttribute="width" constant="364" id="i8O-oO-Tiu"/>
@@ -387,7 +388,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35R-NT-dZ5">
-                                <rect key="frame" x="10" y="669" width="289" height="40.666666666666629"/>
+                                <rect key="frame" x="10" y="672" width="289" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="289" id="Pcg-JK-6np"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="ysI-Fq-EhH"/>
@@ -397,7 +398,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvH-nR-q8r">
-                                <rect key="frame" x="60" y="657" width="295" height="40.666666666666629"/>
+                                <rect key="frame" x="60" y="660" width="295" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="4ta-R5-SeX"/>
                                     <constraint firstAttribute="width" constant="295" id="cTj-ZM-vMB"/>
@@ -407,7 +408,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-YJ-arW">
-                                <rect key="frame" x="13" y="669" width="364" height="40.666666666666629"/>
+                                <rect key="frame" x="13" y="672" width="364" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="364" id="VGZ-6F-Km2"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="kgx-xz-L9d"/>
@@ -417,7 +418,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tekan tombol untuk menambahkan Obat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ6-Nh-14j">
-                                <rect key="frame" x="30" y="599" width="330" height="21"/>
+                                <rect key="frame" x="30" y="602" width="330" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ETX-f3-s4x"/>
                                     <constraint firstAttribute="width" constant="330" id="iaw-5J-Gav"/>
