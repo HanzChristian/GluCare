@@ -8,9 +8,17 @@
 import UIKit
 import CoreData
 
+class RutinitasSection {
+    var rutinitasSectionTitle: String?
+    init(rutinitasSectionTitle: String) {
+        self.rutinitasSectionTitle = rutinitasSectionTitle
+    }
+}
+
 class profilePageViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var rutinitasSection = [RutinitasSection]()
     var items:[Medicine]?
     
     /*
@@ -23,15 +31,17 @@ class profilePageViewController: UIViewController {
      */
     
     
-    @IBOutlet weak var obatKamuTableView: UITableView!
+    @IBOutlet weak var daftarRutinitasTableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMedicine()
+        rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Minum Obat"))
+        rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
-        obatKamuTableView.delegate = self
-        obatKamuTableView.delegate = self
+        daftarRutinitasTableView.delegate = self
+        daftarRutinitasTableView.delegate = self
         view.backgroundColor = .systemGroupedBackground
         
 
@@ -62,7 +72,7 @@ class profilePageViewController: UIViewController {
             self.items = try context.fetch(request)
             
             DispatchQueue.main.async {
-                self.obatKamuTableView.reloadData()
+                self.daftarRutinitasTableView.reloadData()
             }
             
         }catch{
@@ -71,9 +81,9 @@ class profilePageViewController: UIViewController {
     }
     
     @IBAction func editMedicationPressed(_ sender: Any) {
-        obatKamuTableView.isEditing = !obatKamuTableView.isEditing
+        daftarRutinitasTableView.isEditing = !daftarRutinitasTableView.isEditing
         
-        if obatKamuTableView.isEditing {
+        if daftarRutinitasTableView.isEditing {
             editButton.title = "Selesai"
         } else {
             editButton.title = "Ubah"
@@ -106,6 +116,30 @@ extension UIFont {
 }
 
 extension profilePageViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        58
+    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return rutinitasSection[section].rutinitasSectionTitle
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UIView()
+            let sectionLabel = UILabel(frame: CGRect(x: 21, y: 28, width:
+                tableView.bounds.size.width, height: tableView.bounds.size.height))
+            sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
+            sectionLabel.textColor = UIColor.black
+            sectionLabel.text = rutinitasSection[section].rutinitasSectionTitle
+            sectionLabel.sizeToFit()
+            headerView.addSubview(sectionLabel)
+
+            return headerView
+        }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items?.count ?? 0
     }
