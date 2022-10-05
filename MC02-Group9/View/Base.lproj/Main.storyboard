@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0n-Oj-qNT">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jadwal Obat-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Jadwal Obat" id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="9d8-OB-Mc0" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="143" width="390" height="250"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="fHQ-JY-PkM"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
+                                <rect key="frame" x="0.0" y="393" width="390" height="515"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="515" id="8MC-pl-REP"/>
+                                </constraints>
+                                <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="LC4-WD-OBS">
+                                    <rect key="frame" x="0.0" y="35" width="390" height="446"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <segue destination="rai-jm-7bR" kind="embed" id="Weg-9v-dJS"/>
+                                    </connections>
+                                </containerView>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9d8-OB-Mc0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0kK-a0-np3"/>
+                            <constraint firstItem="GYL-rF-G8m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4d4-1V-dNu"/>
+                            <constraint firstItem="9d8-OB-Mc0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LN6-S9-3vf"/>
+                            <constraint firstItem="GYL-rF-G8m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cqm-Tm-3vM"/>
+                            <constraint firstItem="9d8-OB-Mc0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iLO-qJ-Ryq"/>
+                            <constraint firstItem="GYL-rF-G8m" firstAttribute="top" secondItem="9d8-OB-Mc0" secondAttribute="bottom" id="u4W-V3-67n"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hari ini" id="kry-s1-Xhi">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="questionmark.app" catalog="system" id="lDH-6j-OxT">
+                            <connections>
+                                <action selector="guideBtn:" destination="BYZ-38-t0r" id="JCw-dX-qOv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="9d8-OB-Mc0" id="Xf4-jx-KiK"/>
+                        <outlet property="calendarHeightConstraint" destination="fHQ-JY-PkM" id="Q42-Hu-JEa"/>
+                        <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
+                        <segue destination="KPE-ud-t8b" kind="presentation" identifier="takeMedicationViewController" id="UBa-f7-4Lr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630.7692307692307" y="71.090047393364927"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hUj-a1-HlK">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="k0n-Oj-qNT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IgG-7y-pgL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GcJ-tA-QlO" kind="relationship" relationship="viewControllers" id="2bW-9X-6p2"/>
+                        <segue destination="zLS-qY-ZY0" kind="relationship" relationship="viewControllers" id="ASq-Tx-3mx"/>
+                        <segue destination="psE-Xi-dPC" kind="relationship" relationship="viewControllers" id="S6Z-5u-y9E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N9M-Tp-TIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-191" y="72"/>
+        </scene>
+        <!--Jadwal Obat-->
+        <scene sceneID="8sU-Bz-U4D">
+            <objects>
+                <navigationController title="Jadwal Obat" automaticallyAdjustsScrollViewInsets="NO" id="GcJ-tA-QlO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Jadwal" image="med" id="PFC-jO-WrZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
+                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mfq-pJ-vsq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBG-Jc-Wak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721.73913043478262" y="71.651785714285708"/>
+        </scene>
+        <!--profilePage-->
+        <scene sceneID="mcr-ge-HIP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="profilePage" id="psE-Xi-dPC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="IWB-N1-gkg"/>
+                    <navigationItem key="navigationItem" id="E3O-pF-KL0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qeK-Ti-h87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="629" y="-603"/>
+        </scene>
+        <!--Badge-->
+        <scene sceneID="2EE-jR-pTG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Badge" id="zLS-qY-ZY0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="G8v-zn-oHW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvG-uU-Etl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="791"/>
+        </scene>
+        <!--Guide View Controller-->
+        <scene sceneID="gm2-uG-7Ht">
+            <objects>
+                <viewController storyboardIdentifier="Guide" id="dYZ-Q9-J5c" customClass="GuideViewController" customModule="MC02_Group9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f2T-3d-Arh">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vw-6H-Ndi">
+                                <rect key="frame" x="10" y="243" width="364" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="364" id="SkG-Kr-qPB"/>
+                                    <constraint firstAttribute="height" constant="60" id="sAY-Yw-fm0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kiri untuk konsumsi/lewati obat " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-Bd-mCX">
+                                <rect key="frame" x="10" y="320" width="338" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="338" id="HST-aq-glH"/>
+                                    <constraint firstAttribute="height" constant="21" id="hh6-zy-qKy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-K0-rKb">
+                                <rect key="frame" x="10" y="692" width="289" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GPu-3R-PcK"/>
+                                    <constraint firstAttribute="width" constant="289" id="gOH-nQ-Tg1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-qa-TfI">
+                                <rect key="frame" x="13" y="692" width="364" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BBb-yn-2hm"/>
+                                    <constraint firstAttribute="width" constant="364" id="wCh-U2-gZV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-lk-qGF">
+                                <rect key="frame" x="60" y="680" width="295" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="0fj-em-Zo6"/>
+                                    <constraint firstAttribute="width" constant="295" id="yu3-rw-s3s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lT5-42-rAe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="xpc-lk-qGF" secondAttribute="trailing" constant="35" id="AeH-wT-ynL"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="9vw-6H-Ndi" secondAttribute="trailing" constant="16" id="Bfb-ln-jPj"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="yXf-Bd-mCX" secondAttribute="trailing" constant="42" id="CjM-tq-hqk"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="cmZ-K0-rKb" secondAttribute="trailing" constant="91" id="GrC-o7-ZND"/>
+                            <constraint firstItem="cmZ-K0-rKb" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="IMw-N2-Gs9"/>
+                            <constraint firstItem="9vw-6H-Ndi" firstAttribute="top" secondItem="lT5-42-rAe" secondAttribute="top" constant="196" id="KMx-zy-bV3"/>
+                            <constraint firstItem="xpc-lk-qGF" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="339" id="Oa7-Jf-Z54"/>
+                            <constraint firstItem="xpc-lk-qGF" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="60" id="Q9j-yk-7jS"/>
+                            <constraint firstItem="yXf-Bd-mCX" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="VBK-ob-d2C"/>
+                            <constraint firstItem="9vw-6H-Ndi" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="10" id="W3R-UA-uxe"/>
+                            <constraint firstItem="yXf-Bd-mCX" firstAttribute="top" secondItem="9vw-6H-Ndi" secondAttribute="bottom" constant="17" id="Xzn-Un-EhR"/>
+                            <constraint firstItem="lT5-42-rAe" firstAttribute="trailing" secondItem="0Q3-qa-TfI" secondAttribute="trailing" constant="13" id="gd7-xP-N7h"/>
+                            <constraint firstItem="0Q3-qa-TfI" firstAttribute="leading" secondItem="lT5-42-rAe" secondAttribute="leading" constant="13" id="jz4-mr-d8Q"/>
+                            <constraint firstItem="0Q3-qa-TfI" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="351" id="vXJ-bO-Pta"/>
+                            <constraint firstItem="cmZ-K0-rKb" firstAttribute="top" secondItem="yXf-Bd-mCX" secondAttribute="bottom" constant="351" id="xm5-3g-Ibn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="annotationViews" destination="9vw-6H-Ndi" collectionClass="NSMutableArray" id="i7s-Ne-ymX"/>
+                        <outletCollection property="annotationViews" destination="yXf-Bd-mCX" collectionClass="NSMutableArray" id="nQ4-6c-akR"/>
+                        <outletCollection property="annotationViews" destination="cmZ-K0-rKb" collectionClass="NSMutableArray" id="JfG-mm-wyw"/>
+                        <outletCollection property="annotationViews" destination="xpc-lk-qGF" collectionClass="NSMutableArray" id="AKI-RK-sx8"/>
+                        <outletCollection property="annotationViews" destination="0Q3-qa-TfI" collectionClass="NSMutableArray" id="bNI-95-YCz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGf-aT-gIW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2503.0769230769229" y="-256.6350710900474"/>
+        </scene>
+        <!--Empty Space View Controller-->
+        <scene sceneID="biJ-SM-Fnl">
+            <objects>
+                <viewController id="rai-jm-7bR" customClass="EmptySpaceViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="egj-BU-MhK">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada jadwal obat hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-Js-Wvi">
+                                <rect key="frame" x="82" y="291" width="226" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="226" id="XRj-Xy-K7t"/>
+                                    <constraint firstAttribute="height" constant="21" id="yQc-6C-q6D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crx-pL-myd">
+                                <rect key="frame" x="72" y="337" width="247" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="Tn5-m4-ci4"/>
+                                    <constraint firstAttribute="height" constant="52" id="XOI-G1-Q9V"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Tambah Obat"/>
+                                <connections>
+                                    <action selector="addMedBtn:" destination="rai-jm-7bR" eventType="touchUpInside" id="jn7-0x-410"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-MM-37a">
+                                <rect key="frame" x="109" y="76" width="173" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="QwD-Ci-06z"/>
+                                    <constraint firstAttribute="width" constant="173" id="mEu-Le-T3k"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zGQ-h4-4dA"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="crx-pL-myd" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="72" id="3Ng-om-kex"/>
+                            <constraint firstItem="S4k-MM-37a" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="109" id="4bc-T4-zFE"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="S4k-MM-37a" secondAttribute="trailing" constant="108" id="7wN-DR-XQm"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="fwY-Js-Wvi" secondAttribute="trailing" constant="82" id="O38-lL-lHc"/>
+                            <constraint firstItem="S4k-MM-37a" firstAttribute="top" secondItem="zGQ-h4-4dA" secondAttribute="top" constant="29" id="XCk-9T-o3w"/>
+                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="top" secondItem="S4k-MM-37a" secondAttribute="bottom" constant="26" id="hBL-fl-7DV"/>
+                            <constraint firstItem="zGQ-h4-4dA" firstAttribute="trailing" secondItem="crx-pL-myd" secondAttribute="trailing" constant="71" id="mfZ-aa-AIv"/>
+                            <constraint firstItem="crx-pL-myd" firstAttribute="top" secondItem="fwY-Js-Wvi" secondAttribute="bottom" constant="25" id="tEn-ao-ZJu"/>
+                            <constraint firstItem="fwY-Js-Wvi" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="82" id="vAX-Zi-hhM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="LQM-PY-pKD" kind="presentation" identifier="addMedicationViewController" id="f8Y-W9-w9f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Idw-LW-tAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2487.6923076923076" y="261.6113744075829"/>
+        </scene>
+        <!--Add Medication-->
+        <scene sceneID="dUt-RX-dMp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add Medication" id="LQM-PY-pKD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R71-Ui-JYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3196" y="252"/>
+        </scene>
+        <!--Guide View Controller2-->
+        <scene sceneID="6J3-Mj-OCK">
+            <objects>
+                <viewController storyboardIdentifier="Guide2" id="jym-Pv-m7u" customClass="GuideViewController2" customModule="MC02_Group9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yDB-9R-0G0">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-vn-cwX">
+                                <rect key="frame" x="10" y="242.99999999999997" width="364" height="40.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40.670000000000002" id="H6X-Zt-1KL"/>
+                                    <constraint firstAttribute="width" constant="364" id="i8O-oO-Tiu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35R-NT-dZ5">
+                                <rect key="frame" x="10" y="672" width="289" height="40.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="289" id="Pcg-JK-6np"/>
+                                    <constraint firstAttribute="height" constant="40.670000000000002" id="ysI-Fq-EhH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvH-nR-q8r">
+                                <rect key="frame" x="60" y="660" width="295" height="40.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40.670000000000002" id="4ta-R5-SeX"/>
+                                    <constraint firstAttribute="width" constant="295" id="cTj-ZM-vMB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-YJ-arW">
+                                <rect key="frame" x="13" y="672" width="364" height="40.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="364" id="VGZ-6F-Km2"/>
+                                    <constraint firstAttribute="height" constant="40.670000000000002" id="kgx-xz-L9d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tekan tombol untuk menambahkan Obat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ6-Nh-14j">
+                                <rect key="frame" x="30" y="602" width="330" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ETX-f3-s4x"/>
+                                    <constraint firstAttribute="width" constant="330" id="iaw-5J-Gav"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SeP-U1-jwe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UQ6-Nh-14j" firstAttribute="top" secondItem="Yah-vn-cwX" secondAttribute="bottom" constant="318.32999999999998" id="5al-SU-ND0"/>
+                            <constraint firstItem="35R-NT-dZ5" firstAttribute="top" secondItem="UQ6-Nh-14j" secondAttribute="bottom" constant="49" id="7bQ-y3-xGi"/>
+                            <constraint firstItem="UvH-nR-q8r" firstAttribute="leading" secondItem="SeP-U1-jwe" secondAttribute="leading" constant="60" id="AAp-gH-TYx"/>
+                            <constraint firstItem="aNh-YJ-arW" firstAttribute="leading" secondItem="SeP-U1-jwe" secondAttribute="leading" constant="13" id="Hdd-m4-DSH"/>
+                            <constraint firstItem="SeP-U1-jwe" firstAttribute="trailing" secondItem="35R-NT-dZ5" secondAttribute="trailing" constant="91" id="K7K-5e-Ez8"/>
+                            <constraint firstItem="UvH-nR-q8r" firstAttribute="top" secondItem="UQ6-Nh-14j" secondAttribute="bottom" constant="37" id="Kkg-Ok-2Uj"/>
+                            <constraint firstItem="35R-NT-dZ5" firstAttribute="leading" secondItem="SeP-U1-jwe" secondAttribute="leading" constant="10" id="Qym-HR-ovB"/>
+                            <constraint firstItem="aNh-YJ-arW" firstAttribute="top" secondItem="UQ6-Nh-14j" secondAttribute="bottom" constant="49" id="axb-FA-DKb"/>
+                            <constraint firstItem="SeP-U1-jwe" firstAttribute="trailing" secondItem="aNh-YJ-arW" secondAttribute="trailing" constant="13" id="cSf-he-vgR"/>
+                            <constraint firstItem="Yah-vn-cwX" firstAttribute="top" secondItem="SeP-U1-jwe" secondAttribute="top" constant="196" id="dUv-Af-cJq"/>
+                            <constraint firstItem="UQ6-Nh-14j" firstAttribute="leading" secondItem="SeP-U1-jwe" secondAttribute="leading" constant="30" id="ffH-YW-1Kc"/>
+                            <constraint firstItem="SeP-U1-jwe" firstAttribute="trailing" secondItem="UvH-nR-q8r" secondAttribute="trailing" constant="35" id="gyw-Ma-huz"/>
+                            <constraint firstItem="SeP-U1-jwe" firstAttribute="trailing" secondItem="UQ6-Nh-14j" secondAttribute="trailing" constant="30" id="rs1-vp-8UX"/>
+                            <constraint firstItem="SeP-U1-jwe" firstAttribute="trailing" secondItem="Yah-vn-cwX" secondAttribute="trailing" constant="16" id="urX-yu-G2o"/>
+                            <constraint firstItem="Yah-vn-cwX" firstAttribute="leading" secondItem="SeP-U1-jwe" secondAttribute="leading" constant="10" id="zC9-AJ-Ijm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="annotationViews" destination="Yah-vn-cwX" collectionClass="NSMutableArray" id="u1E-OT-VGP"/>
+                        <outletCollection property="annotationViews" destination="UQ6-Nh-14j" collectionClass="NSMutableArray" id="9bj-WN-0Ju"/>
+                        <outletCollection property="annotationViews" destination="35R-NT-dZ5" collectionClass="NSMutableArray" id="tg1-eh-LT2"/>
+                        <outletCollection property="annotationViews" destination="UvH-nR-q8r" collectionClass="NSMutableArray" id="it0-lq-loI"/>
+                        <outletCollection property="annotationViews" destination="aNh-YJ-arW" collectionClass="NSMutableArray" id="S4K-Bx-58a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47g-Be-Fkt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3258" y="-257"/>
+        </scene>
+        <!--Take Medication-->
+        <scene sceneID="Lus-HP-r14">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Take Medication" id="KPE-ud-t8b" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8h-ns-eBs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1631" y="889"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="empty" width="386" height="546"/>
+        <image name="med" width="20" height="19.333333969116211"/>
+        <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

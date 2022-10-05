@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/richardmulyadi/Documents/GluCare/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/richardmulyadi/Documents/GluCare/MC02-Group9/MC02-Group9/Model/Medicine+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:MC02-Group9.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
