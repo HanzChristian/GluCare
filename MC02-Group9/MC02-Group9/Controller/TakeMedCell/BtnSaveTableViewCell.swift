@@ -14,6 +14,7 @@ class BtnSaveTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnSkip: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,19 +27,11 @@ class BtnSaveTableViewCell: UITableViewCell {
     
     @IBAction func didTapBtn(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "save"), object: nil)
-//        self.dismiss(animated: true, completion: {
-//        self.coreDataManager.pilihWaktu(daySelected: self.daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
-//
-//        self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
-//
-//        self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-//
-//        self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
-//        })
-
-                     
     }
     
+    @IBAction func didTapSkipBtn(_ sender: Any){
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "skip"),object: nil)
+    }
  
     
     override func setSelected(_ selected: Bool, animated: Bool) {

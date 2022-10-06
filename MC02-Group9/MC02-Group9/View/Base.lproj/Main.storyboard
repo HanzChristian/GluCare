@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0n-Oj-qNT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0n-Oj-qNT">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,104 +18,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="9d8-OB-Mc0" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="140" width="390" height="250"/>
+                                <rect key="frame" x="0.0" y="143" width="390" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="fHQ-JY-PkM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
-                                <rect key="frame" x="0.0" y="390" width="390" height="528"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
+                                <rect key="frame" x="0.0" y="393" width="390" height="515"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="528" id="8MC-pl-REP"/>
+                                    <constraint firstAttribute="height" constant="515" id="8MC-pl-REP"/>
                                 </constraints>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="LC4-WD-OBS">
-                                    <rect key="frame" x="0.0" y="131.33333206176752" width="390" height="446.00000000000006"/>
+                                    <rect key="frame" x="0.0" y="35" width="390" height="446"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <segue destination="rai-jm-7bR" kind="embed" id="Weg-9v-dJS"/>
                                     </connections>
                                 </containerView>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="64" id="LEf-ax-wNX" customClass="ViewControllerTVC" customModule="MC02_Group9">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LEf-ax-wNX" id="4fo-tE-a4Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-Gh-sSb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panadol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-hX-q09">
-                                                            <rect key="frame" x="88.333333333333343" y="15" width="70.333333333333343" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-qP-zfy">
-                                                            <rect key="frame" x="16.000000000000004" y="20" width="52.333333333333343" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <color key="textColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pagi" translatesAutoresizingMaskIntoConstraints="NO" id="g5a-W3-fcD">
-                                                            <rect key="frame" x="290" y="0.0" width="100" height="64"/>
-                                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="64" id="AHp-L1-5jr"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ASd-Y6-89r">
-                                                            <rect key="frame" x="319" y="11" width="42" height="42"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="42" id="Edv-AI-EOP"/>
-                                                                <constraint firstAttribute="width" constant="42" id="c7i-1K-hv7"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sebelum makan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-c3-EBv">
-                                                            <rect key="frame" x="88.333333333333343" y="41" width="75.333333333333343" height="12"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="gAs-qP-zfy" firstAttribute="centerY" secondItem="xhM-Gh-sSb" secondAttribute="centerY" id="7dU-O4-R0u"/>
-                                                        <constraint firstAttribute="bottom" secondItem="g5a-W3-fcD" secondAttribute="bottom" id="9Wt-nb-ufk"/>
-                                                        <constraint firstAttribute="trailing" secondItem="g5a-W3-fcD" secondAttribute="trailing" id="EvA-3O-9Id"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ASd-Y6-89r" secondAttribute="trailing" constant="29" id="GRy-Fi-56l"/>
-                                                        <constraint firstItem="WsK-c3-EBv" firstAttribute="top" secondItem="uj6-hX-q09" secondAttribute="bottom" constant="2" id="Hmd-C4-eg7"/>
-                                                        <constraint firstItem="ASd-Y6-89r" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="11" id="M6A-Mx-nI4"/>
-                                                        <constraint firstItem="g5a-W3-fcD" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" id="NVB-Uy-Df3"/>
-                                                        <constraint firstItem="gAs-qP-zfy" firstAttribute="leading" secondItem="xhM-Gh-sSb" secondAttribute="leading" constant="16" id="UDo-5h-5jT"/>
-                                                        <constraint firstAttribute="height" constant="64" id="h8P-Id-itS"/>
-                                                        <constraint firstItem="uj6-hX-q09" firstAttribute="top" secondItem="xhM-Gh-sSb" secondAttribute="top" constant="15" id="nv5-cZ-8PK"/>
-                                                        <constraint firstItem="uj6-hX-q09" firstAttribute="leading" secondItem="gAs-qP-zfy" secondAttribute="trailing" constant="20" id="xbd-AZ-tzv"/>
-                                                        <constraint firstItem="WsK-c3-EBv" firstAttribute="leading" secondItem="uj6-hX-q09" secondAttribute="leading" id="yt4-rL-Rpm"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="xhM-Gh-sSb" firstAttribute="top" secondItem="4fo-tE-a4Z" secondAttribute="top" id="Na5-3l-qN1"/>
-                                                <constraint firstAttribute="trailing" secondItem="xhM-Gh-sSb" secondAttribute="trailing" id="vdC-GV-P4u"/>
-                                                <constraint firstItem="xhM-Gh-sSb" firstAttribute="leading" secondItem="4fo-tE-a4Z" secondAttribute="leading" id="y8z-0Z-dQm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellImgView" destination="g5a-W3-fcD" id="oka-qz-11O"/>
-                                            <outlet property="cellView" destination="xhM-Gh-sSb" id="2yZ-mN-qAl"/>
-                                            <outlet property="freqLbl" destination="WsK-c3-EBv" id="cO0-hE-5Hp"/>
-                                            <outlet property="indicatorImgView" destination="ASd-Y6-89r" id="vW7-Ms-3aN"/>
-                                            <outlet property="medLbl" destination="uj6-hX-q09" id="6Tg-OZ-u4A"/>
-                                            <outlet property="timeLbl" destination="gAs-qP-zfy" id="HrY-7L-Uur"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -128,7 +50,7 @@
                             <constraint firstItem="GYL-rF-G8m" firstAttribute="top" secondItem="9d8-OB-Mc0" secondAttribute="bottom" id="u4W-V3-67n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Jadwal Obat" id="kry-s1-Xhi">
+                    <navigationItem key="navigationItem" title="Hari ini" id="kry-s1-Xhi">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="questionmark.app" catalog="system" id="lDH-6j-OxT">
                             <connections>
                                 <action selector="guideBtn:" destination="BYZ-38-t0r" id="JCw-dX-qOv"/>
@@ -140,6 +62,7 @@
                         <outlet property="calendarHeightConstraint" destination="fHQ-JY-PkM" id="Q42-Hu-JEa"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
                         <segue destination="KPE-ud-t8b" kind="presentation" identifier="takeMedicationViewController" id="UBa-f7-4Lr"/>
+                        <segue destination="FiD-NL-f0c" kind="presentation" identifier="takeBGViewController" id="DG7-nQ-4uQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,7 +96,7 @@
                     <tabBarItem key="tabBarItem" title="Jadwal" image="med" id="PFC-jO-WrZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
@@ -218,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vw-6H-Ndi">
-                                <rect key="frame" x="10" y="240" width="364" height="60"/>
+                                <rect key="frame" x="10" y="243" width="364" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="364" id="SkG-Kr-qPB"/>
                                     <constraint firstAttribute="height" constant="60" id="sAY-Yw-fm0"/>
@@ -228,7 +151,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kiri untuk konsumsi/lewati obat " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-Bd-mCX">
-                                <rect key="frame" x="10" y="317" width="338" height="21"/>
+                                <rect key="frame" x="10" y="320" width="338" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="338" id="HST-aq-glH"/>
                                     <constraint firstAttribute="height" constant="21" id="hh6-zy-qKy"/>
@@ -238,7 +161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-K0-rKb">
-                                <rect key="frame" x="10" y="689" width="289" height="60"/>
+                                <rect key="frame" x="10" y="692" width="289" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GPu-3R-PcK"/>
                                     <constraint firstAttribute="width" constant="289" id="gOH-nQ-Tg1"/>
@@ -248,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-qa-TfI">
-                                <rect key="frame" x="13" y="689" width="364" height="60"/>
+                                <rect key="frame" x="13" y="692" width="364" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="BBb-yn-2hm"/>
                                     <constraint firstAttribute="width" constant="364" id="wCh-U2-gZV"/>
@@ -258,7 +181,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpc-lk-qGF">
-                                <rect key="frame" x="60" y="677" width="295" height="84"/>
+                                <rect key="frame" x="60" y="680" width="295" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="0fj-em-Zo6"/>
                                     <constraint firstAttribute="width" constant="295" id="yu3-rw-s3s"/>
@@ -309,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada jadwal obat hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-Js-Wvi">
-                                <rect key="frame" x="82" y="288" width="226" height="21"/>
+                                <rect key="frame" x="82" y="291" width="226" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="226" id="XRj-Xy-K7t"/>
                                     <constraint firstAttribute="height" constant="21" id="yQc-6C-q6D"/>
@@ -319,7 +242,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crx-pL-myd">
-                                <rect key="frame" x="72" y="334" width="247" height="52"/>
+                                <rect key="frame" x="72" y="337" width="247" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="247" id="Tn5-m4-ci4"/>
                                     <constraint firstAttribute="height" constant="52" id="XOI-G1-Q9V"/>
@@ -331,7 +254,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-MM-37a">
-                                <rect key="frame" x="109" y="73" width="173" height="189"/>
+                                <rect key="frame" x="109" y="76" width="173" height="189"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="189" id="QwD-Ci-06z"/>
                                     <constraint firstAttribute="width" constant="173" id="mEu-Le-T3k"/>
@@ -339,7 +262,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zGQ-h4-4dA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="crx-pL-myd" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="72" id="3Ng-om-kex"/>
                             <constraint firstItem="S4k-MM-37a" firstAttribute="leading" secondItem="zGQ-h4-4dA" secondAttribute="leading" constant="109" id="4bc-T4-zFE"/>
@@ -377,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe ke kanan atau ke kiri untuk mengubah tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yah-vn-cwX">
-                                <rect key="frame" x="10" y="239.99999999999997" width="364" height="40.666666666666657"/>
+                                <rect key="frame" x="10" y="242.99999999999997" width="364" height="40.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="H6X-Zt-1KL"/>
                                     <constraint firstAttribute="width" constant="364" id="i8O-oO-Tiu"/>
@@ -387,7 +310,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Jadwal untuk melihat &amp; mengonsumsi obat sesuai tanggal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35R-NT-dZ5">
-                                <rect key="frame" x="10" y="669" width="289" height="40.666666666666629"/>
+                                <rect key="frame" x="10" y="672" width="289" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="289" id="Pcg-JK-6np"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="ysI-Fq-EhH"/>
@@ -397,7 +320,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Pencapaian untuk melihat total streak minum obat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvH-nR-q8r">
-                                <rect key="frame" x="60" y="657" width="295" height="40.666666666666629"/>
+                                <rect key="frame" x="60" y="660" width="295" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="4ta-R5-SeX"/>
                                     <constraint firstAttribute="width" constant="295" id="cTj-ZM-vMB"/>
@@ -407,7 +330,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Obat untuk menambahkan &amp; menghapus obat" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-YJ-arW">
-                                <rect key="frame" x="13" y="669" width="364" height="40.666666666666629"/>
+                                <rect key="frame" x="13" y="672" width="364" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="364" id="VGZ-6F-Km2"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="kgx-xz-L9d"/>
@@ -417,7 +340,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tekan tombol untuk menambahkan Obat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ6-Nh-14j">
-                                <rect key="frame" x="30" y="599" width="330" height="21"/>
+                                <rect key="frame" x="30" y="602" width="330" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ETX-f3-s4x"/>
                                     <constraint firstAttribute="width" constant="330" id="iaw-5J-Gav"/>
@@ -459,6 +382,14 @@
             </objects>
             <point key="canvasLocation" x="3258" y="-257"/>
         </scene>
+        <!--Take BG-->
+        <scene sceneID="kL5-dX-NTi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Take BG" id="FiD-NL-f0c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yx-O1-6iu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="889"/>
+        </scene>
         <!--Take Medication-->
         <scene sceneID="Lus-HP-r14">
             <objects>
@@ -469,12 +400,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pagi" width="100" height="64"/>
         <image name="empty" width="386" height="546"/>
         <image name="med" width="20" height="19.333333969116211"/>
         <image name="questionmark.app" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

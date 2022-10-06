@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,27 +19,49 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="141-wx-bWJ">
-                        <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
-                        <color key="tintColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="12" y="3" width="152" height="45"/>
+                        <color key="tintColor" red="0.7803921568627451" green="0.8784313725490196" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="Lewati">
+                            <color key="baseForegroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="didTapSkipBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VoQ-Vw-t0j"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aL-hq-arU">
+                        <rect key="frame" x="186" y="3" width="152" height="45"/>
+                        <color key="tintColor" red="0.1176470588" green="0.51764705879999995" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" title="Simpan"/>
                         <connections>
-                            <action selector="didTapBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qyw-eg-T34"/>
+                            <action selector="didTapBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1IW-os-ppX"/>
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="141-wx-bWJ" secondAttribute="trailing" id="Pl5-dt-DOs"/>
-                    <constraint firstItem="141-wx-bWJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XpG-bF-Yhz"/>
-                    <constraint firstAttribute="bottom" secondItem="141-wx-bWJ" secondAttribute="bottom" id="Zr6-TC-2VA"/>
-                    <constraint firstItem="141-wx-bWJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pRT-RA-l47"/>
+                    <constraint firstItem="141-wx-bWJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="2Lr-Fp-sBg"/>
+                    <constraint firstItem="141-wx-bWJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="2Yr-5q-RfH"/>
+                    <constraint firstItem="141-wx-bWJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.865385" id="IbP-0A-PMZ"/>
+                    <constraint firstItem="2aL-hq-arU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="NFk-hL-CRu"/>
+                    <constraint firstAttribute="trailing" secondItem="2aL-hq-arU" secondAttribute="trailing" constant="20" symbolic="YES" id="OPJ-2u-EXd"/>
+                    <constraint firstItem="2aL-hq-arU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.424581" id="Tag-aS-Olz"/>
+                    <constraint firstItem="141-wx-bWJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.424581" id="YXc-by-drh"/>
+                    <constraint firstItem="2aL-hq-arU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.865385" id="teO-j4-9XK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnSave" destination="141-wx-bWJ" id="OJ8-PJ-lth"/>
+                <outlet property="btnSave" destination="2aL-hq-arU" id="gZq-Sx-PN1"/>
+                <outlet property="btnSkip" destination="141-wx-bWJ" id="WHu-7l-zuC"/>
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="91.071428571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
