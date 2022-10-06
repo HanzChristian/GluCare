@@ -13,7 +13,7 @@ import Gecco
 // var for logic
 var daySelected = Date()
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
     //    let dismissNotfication = UNNotificationDismissActionIdentifier
@@ -76,14 +76,38 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     {
         super.viewDidAppear(animated)
         collectionView.scrollToItem(at: IndexPath(row: indexSelected, section: 0), at: .centeredHorizontally, animated: false)
-        print(indexSelected)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+         let tabBarIndex = tabBarController.selectedIndex
+         if tabBarIndex == 0 {
+             DispatchQueue.main.async {
+                 self.navigationItem.title = "Today"
+                 daySelected = Date()
+                 
+                 self.setWeekView()
+                 self.refresh()
+                 self.collectionView.scrollToItem(at: IndexPath(row: self.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+             }
+         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.delegate = self
+
         // dapong
-        title = "Today"
+        self.tabBarController?.title = "Jadwal"
+        self.navigationItem.title = "Today"
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -230,25 +254,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.dayOfWeek.text = String(mySubstring)
         cell.dayOfWeek.textColor = blue
         
+        cell.dayOfMonth.backgroundColor = UIColor.white
+        cell.dayOfMonth.layer.cornerRadius = 34/2
+        cell.dayOfMonth.layer.masksToBounds = true
         
         if(date == daySelected)
         {
-            cell.dayOfMonth.backgroundColor = UIColor.white
-            cell.dayOfMonth.layer.cornerRadius = 34/2
-            cell.dayOfMonth.layer.masksToBounds = true
-            
-            
-            
             cell.backgroundColor = blue
             cell.dayOfWeek.textColor = UIColor.white
             cell.layer.cornerRadius = 25
-            // cell.layer.borderWidth = 1
+            
+            cell.dayOfMonth.layer.borderWidth = 0
         }
         else
         {
             cell.backgroundColor = UIColor.white
             cell.dayOfMonth.backgroundColor = UIColor.white
-            // cell.layer.borderWidth = 0
+            
+            if(calendarManager.calendar.isDate(date, inSameDayAs: Date())){
+                cell.dayOfMonth.layer.borderWidth = 2
+                cell.dayOfMonth.layer.borderColor = CGColor(red: 211/255, green: 63/255, blue: 154/255, alpha: 1)
+            }else{
+                cell.dayOfMonth.layer.borderWidth = 0
+            }
+
         }
          
          
@@ -293,13 +322,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if(strDate == strToday)
         {
-            title = "Today"
+            self.navigationItem.title = "Today"
         }else if(numberOfDays == -1){
-            title = "Yesterday"
+            self.navigationItem.title = "Yesterday"
         }else if(numberOfDays == 1){
-            title = "Tomorrow"
+            self.navigationItem.title = "Tomorrow"
         }else{
-            title = strDate
+            self.navigationItem.title = strDate
         }
         
         collectionView.reloadData()
