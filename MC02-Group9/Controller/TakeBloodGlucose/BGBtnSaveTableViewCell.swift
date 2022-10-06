@@ -1,15 +1,17 @@
 //
-//  BGNameTableViewCell.swift
+//  BGBtnSaveTableViewCell.swift
 //  MC02-Group9
 //
-//  Created by Hanz Christian on 05/10/22.
+//  Created by Hanz Christian on 06/10/22.
 //
 
 import UIKit
 
-class BGNameTableViewCell: UITableViewCell {
+class BGBtnSaveTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var BGNameLbl: UILabel!
+    @IBOutlet weak var BGBtnSkip: UIButton!
+    @IBOutlet weak var BGBtnSave: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

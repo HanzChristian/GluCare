@@ -147,7 +147,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     func setNav(){
         
         let label = UILabel()
-        label.text = "Masukkan Waktu Minum Obat"
+        label.text = "Konsumsi Obat"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         //        label.sizeToFit()
         

@@ -62,6 +62,7 @@
                         <outlet property="calendarHeightConstraint" destination="fHQ-JY-PkM" id="Q42-Hu-JEa"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
                         <segue destination="KPE-ud-t8b" kind="presentation" identifier="takeMedicationViewController" id="UBa-f7-4Lr"/>
+                        <segue destination="FiD-NL-f0c" kind="presentation" identifier="takeBGViewController" id="DG7-nQ-4uQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -380,6 +381,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47g-Be-Fkt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3258" y="-257"/>
+        </scene>
+        <!--Take BG-->
+        <scene sceneID="kL5-dX-NTi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Take BG" id="FiD-NL-f0c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yx-O1-6iu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="889"/>
         </scene>
         <!--Take Medication-->
         <scene sceneID="Lus-HP-r14">

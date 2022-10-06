@@ -284,8 +284,8 @@ extension ViewController:UITableViewDelegate{
             self.isSkipped = true
         }
         
-        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
+        let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
 
         let nav =  UINavigationController(rootViewController: vc)
         //        nav.modalPresentationStyle = .overCurrentContext
@@ -297,99 +297,100 @@ extension ViewController:UITableViewDelegate{
 
         }
 
-        vc.daySelected = self.daySelected
-        vc.tableView = self.tableView
-        vc.indexPath = IndexPath(row: idx,section : 0)
-        
-        if(isSkipped){
-            //isi dari untake action
-            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
-            coreDataManager.batalkan(logToRemove: logToRemove)
-            
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-            
-            coreDataManager.fetchStreak()
-            if(coreDataManager.streaks!.isEmpty == true){
-                return
-            }
-            // Streak Logic
-            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-            
-            if(lastDate == dateFrom){
-                // Streak nya udah ketambah di hari yg sama
-                
-                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-                coreDataManager.fetchStreak()
-            }
-            
-        }
-        
-        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
-        print("\(vc.indexPath)")
-        print(self.isSkipped)
+        //nanti dinyalain lagi tunggu code dari richard
+//        vc.daySelected = self.daySelected
+//        vc.tableView = self.tableView
+//        vc.indexPath = IndexPath(row: idx,section : 0)
+//
+//        if(isSkipped){
+//            //isi dari untake action
+//            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
+//            coreDataManager.batalkan(logToRemove: logToRemove)
+//
+//            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+//
+//            coreDataManager.fetchStreak()
+//            if(coreDataManager.streaks!.isEmpty == true){
+//                return
+//            }
+//            // Streak Logic
+//            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+//            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+//
+//            if(lastDate == dateFrom){
+//                // Streak nya udah ketambah di hari yg sama
+//
+//                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+//                coreDataManager.fetchStreak()
+//            }
+//
+//        }
+//        
+//        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
+//        print("\(vc.indexPath)")
+//        print(self.isSkipped)
         self.present(nav, animated: true,completion: nil)
 
     }
     
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        //Take button swipe
-        let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
-
-            self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
-        }
-        //Delete button swipe
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
-
-        }
-
-        let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ [self] _, indexPath in
-
-            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[indexPath.row]]
-            coreDataManager.batalkan(logToRemove: logToRemove)
-
-            self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
-
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-
-            coreDataManager.fetchStreak()
-            if(coreDataManager.streaks!.isEmpty == true){
-                return
-            }
-            // Streak Logic
-            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-
-            if(lastDate == dateFrom){
-                // Streak nya udah ketambah di hari yg sama
-
-                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-                coreDataManager.fetchStreak()
-            }
-        }
-
-        takeAction.backgroundColor = .systemBlue
-
-        //kalau diatas hari ini gabole take
-        var dateNow = calendarManager.calendar.startOfDay(for: Date())
-        dateNow.addTimeInterval(86400)
-        let dateCalendar = calendarManager.calendar.startOfDay(for: daySelected)
-
-        if(dateCalendar >= dateNow){
-            return nil
-
-        }
-
-
-        if (coreDataManager.undoIdx[indexPath.row] >= 0){
-            coreDataManager.keTake[indexPath.row] = -1
-            return [untakeAction]
-        }else{
-            coreDataManager.keTake[indexPath.row] = 1
-            return [takeAction,deleteAction]
-        }
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        //Take button swipe
+//        let takeAction = UITableViewRowAction(style: .normal, title: "Konsumsi"){ _, indexPath in
+//
+//            self.showActionSheet(indexPath: indexPath) /// pass in the indexPath
+//        }
+//        //Delete button swipe
+//        let deleteAction = UITableViewRowAction(style: .destructive, title: "Lewati"){ _, indexPath in
+//
+//        }
+//
+//        let untakeAction = UITableViewRowAction(style: .normal, title: "Batalkan"){ [self] _, indexPath in
+//
+//            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[indexPath.row]]
+//            coreDataManager.batalkan(logToRemove: logToRemove)
+//
+//            self.showToastUndo(message: "Kamu telah membatalkan obatmu..", font: .systemFont(ofSize: 12.0))
+//
+//            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+//
+//            coreDataManager.fetchStreak()
+//            if(coreDataManager.streaks!.isEmpty == true){
+//                return
+//            }
+//            // Streak Logic
+//            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+//            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+//
+//            if(lastDate == dateFrom){
+//                // Streak nya udah ketambah di hari yg sama
+//
+//                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+//                coreDataManager.fetchStreak()
+//            }
+//        }
+//
+//        takeAction.backgroundColor = .systemBlue
+//
+//        //kalau diatas hari ini gabole take
+//        var dateNow = calendarManager.calendar.startOfDay(for: Date())
+//        dateNow.addTimeInterval(86400)
+//        let dateCalendar = calendarManager.calendar.startOfDay(for: daySelected)
+//
+//        if(dateCalendar >= dateNow){
+//            return nil
+//
+//        }
+//
+//
+//        if (coreDataManager.undoIdx[indexPath.row] >= 0){
+//            coreDataManager.keTake[indexPath.row] = -1
+//            return [untakeAction]
+//        }else{
+//            coreDataManager.keTake[indexPath.row] = 1
+//            return [takeAction,deleteAction]
+//        }
+//    }
 }
 
 

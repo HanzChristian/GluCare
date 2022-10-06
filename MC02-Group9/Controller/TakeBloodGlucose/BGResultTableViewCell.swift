@@ -9,6 +9,9 @@ import UIKit
 
 class BGResultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var BGInputLbl: UITextField!
+    @IBOutlet weak var BGUnitLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
