@@ -145,9 +145,30 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.items![indexPath.row].name
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        cell.textLabel?.text = self.items![indexPath.row].name
+//        var titleCell = self.items![indexPath.row].name!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesTVC
+        cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name
+        print(self.items![indexPath.row].time!)
+//        cell.routinesDescCellLbl?.text = self.items![indexPath.row].id
+        //self.items![indexPath.row].name!
+        cell.routinesDescCellLbl?.text = "Ini keterangan"
+//        cell.routinesTimeDescLbl?.text = "Ini jadwal"
+        let times = self.items![indexPath.row].time!
+        cell.routinesTimeDescLbl?.text = ""
+        for t in times {
+            cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+        }
+//        cell.routinesTimeDescLbl?.text = self.items![indexPath.row].time
+        cell.routinesClockImgView?.image = UIImage(named: "clock")
+        cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+        
+        
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 95
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
