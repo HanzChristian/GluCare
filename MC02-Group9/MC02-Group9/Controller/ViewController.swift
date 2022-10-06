@@ -10,7 +10,10 @@ import FSCalendar
 import CoreData
 import Gecco
 
-class ViewController: UIViewController, FSCalendarDelegate{
+// var for logic
+var daySelected = Date()
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     let notificationCenter = UNUserNotificationCenter.current()
     //    let dismissNotfication = UNNotificationDismissActionIdentifier
@@ -45,18 +48,20 @@ class ViewController: UIViewController, FSCalendarDelegate{
         return formatter
     }()
     
-    @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
+    
+    // dapong
+    @IBOutlet weak var collectionView: UICollectionView!
+    var totalSquares = [Date]()
+    var indexSelected:Int = 0
+    var flowLayout = UICollectionViewFlowLayout()
     
     func setNib(){
         let nibTakeMed = UINib(nibName: "TakeMedTableViewCell", bundle: nil)
         tableView.register(nibTakeMed, forCellReuseIdentifier: "cell")
     }
-    
-    // var for logic
-    var daySelected = Date()
-    
+
     // Manager
     let calendarManager = CalendarManager.calendarManager
     let coreDataManager = CoreDataManager.coreDataManager
@@ -67,8 +72,23 @@ class ViewController: UIViewController, FSCalendarDelegate{
     var isSkipped:Bool = false
     var indexPath:Int = 0
     
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        collectionView.scrollToItem(at: IndexPath(row: indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+        print(indexSelected)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // dapong
+        title = "Today"
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setCellsView()
+        setWeekView()
         
         networkManager.getMedicationListName { (medicineApi, error) -> (Void) in
             if let _ = error {
@@ -123,9 +143,10 @@ class ViewController: UIViewController, FSCalendarDelegate{
                 ]
         }
         
-        calendar.delegate = self
-        self.calendar.select(Date())
-        self.calendar.scope = .week
+        // dapong delete
+        //calendar.delegate = self
+        //self.calendar.select(Date())
+        //self.calendar.scope = .week
         
         coreDataManager.resetArray()
         
@@ -147,13 +168,149 @@ class ViewController: UIViewController, FSCalendarDelegate{
         
     }
     
-    //    @objc func sheetHidden(){
-    //        self.cellTakeMed!.isHidden = true
-    //    }
-    //
-    //    @objc func sheetunHidden(){
-    //        self.cellTakeMed!.isHidden = false
-    //    }
+    func setCellsView()
+    {
+        let width = (collectionView.frame.size.width - 2) / 8
+        let height = (collectionView.frame.size.height - 2)
+        
+        flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.itemSize = CGSize(width: width, height: height)
+        flowLayout.scrollDirection = .horizontal
+        
+        flowLayout.collectionView?.bounces = false
+        flowLayout.collectionView?.showsHorizontalScrollIndicator = false
+        flowLayout.collectionView?.showsVerticalScrollIndicator = false
+    }
+    
+    func setWeekView()
+    {
+        totalSquares.removeAll()
+        
+        //var current = CalendarHelper().sundayForDate(date: daySelected)
+        var current = CalendarHelper().addDays(date: daySelected, days: -100)
+        let nextSunday = CalendarHelper().addDays(date: daySelected, days: 100)
+        
+        var count = 0;
+        
+        while (current < nextSunday)
+        {
+            count+=1
+            totalSquares.append(current)
+            current = CalendarHelper().addDays(date: current, days: 1)
+            
+            if(current == daySelected)
+            {
+                indexSelected = count
+                print(indexSelected)
+            }
+            
+        }
+    
+        collectionView.reloadData()
+        
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        print("dapong \(totalSquares.count)")
+        return totalSquares.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
+    
+        let date = totalSquares[indexPath.item]
+        cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
+        let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
+        let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 1)
+        let mySubstring = dayOfWeek[..<index]
+        
+        let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
+        
+        cell.dayOfWeek.text = String(mySubstring)
+        cell.dayOfWeek.textColor = blue
+        
+        
+        if(date == daySelected)
+        {
+            cell.dayOfMonth.backgroundColor = UIColor.white
+            cell.dayOfMonth.layer.cornerRadius = 34/2
+            cell.dayOfMonth.layer.masksToBounds = true
+            
+            
+            
+            cell.backgroundColor = blue
+            cell.dayOfWeek.textColor = UIColor.white
+            cell.layer.cornerRadius = 25
+            // cell.layer.borderWidth = 1
+        }
+        else
+        {
+            cell.backgroundColor = UIColor.white
+            cell.dayOfMonth.backgroundColor = UIColor.white
+            // cell.layer.borderWidth = 0
+        }
+         
+         
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        daySelected = totalSquares[indexPath.item]
+        
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+        let dateComponents = DateComponents()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        /*
+         Wednesday, Sep 12, 2018           --> EEEE, MMM d, yyyy
+         09/12/2018                        --> MM/dd/yyyy
+         09-12-2018 14:11                  --> MM-dd-yyyy HH:mm
+         Sep 12, 2:11 PM                   --> MMM d, h:mm a
+         September 2018                    --> MMMM yyyy
+         Sep 12, 2018                      --> MMM d, yyyy
+         Wed, 12 Sep 2018 14:11:54 +0000   --> E, d MMM yyyy HH:mm:ss Z
+         2018-09-12T14:11:54+0000          --> yyyy-MM-dd'T'HH:mm:ssZ
+         12.09.18                          --> dd.MM.yy
+         10:41:02.112                      --> HH:mm:ss.SSS
+         */
+        
+        // change format date to str
+        let strDate = dateFormatter.string(from: daySelected)
+        let strToday = dateFormatter.string(from: Date())
+        
+        // Start Of Day
+        let calendar = NSCalendar.current
+        
+        let from = calendar.startOfDay(for: Date())
+        let to = calendar.startOfDay(for: daySelected)
+        
+        // numberOfDaysBetween
+        let numberOfDays = Calendar.current.dateComponents([.day], from: from, to: to).day
+        
+        if(strDate == strToday)
+        {
+            title = "Today"
+        }else if(numberOfDays == -1){
+            title = "Yesterday"
+        }else if(numberOfDays == 1){
+            title = "Tomorrow"
+        }else{
+            title = strDate
+        }
+        
+        collectionView.reloadData()
+        
+        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+    }
+    
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
     
     
     @objc func refresh() {
@@ -176,21 +333,11 @@ class ViewController: UIViewController, FSCalendarDelegate{
     }
     
     
-    
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarHeightConstraint.constant = bounds.height
-        self.view.layoutIfNeeded()
-    }
-    
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
+        //dapong
         daySelected = date
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-    }
-    
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        //print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
     
@@ -211,13 +358,13 @@ extension ViewController:UITableViewDelegate{
         alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
             //print("Tepat Waktu tapped")
             
-            self.coreDataManager.tepatWaktu(daySelected: self.daySelected, indexPath: indexPath)
+            self.coreDataManager.tepatWaktu(daySelected: daySelected, indexPath: indexPath)
             
             self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
             
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
             
-            self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
+            self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
         }))
         
         
@@ -238,13 +385,13 @@ extension ViewController:UITableViewDelegate{
                 
                 let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     
-                    self.coreDataManager.pilihWaktu(daySelected: self.daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
+                    self.coreDataManager.pilihWaktu(daySelected: daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
                     
                     self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                     
-                    self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
+                    self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
                     
-                    self.streakManager.validateNewStreak(daySelected: self.daySelected, tableView: self.tableView)
+                    self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
                     
                 })
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
