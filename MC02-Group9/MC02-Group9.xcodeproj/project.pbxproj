@@ -74,6 +74,8 @@
 		F0394EFF286AFC780009215C /* CodeReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0394EFE286AFC780009215C /* CodeReview.swift */; };
 		F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D4276287EC2070051C9F9 /* MedicineApi.swift */; };
 		F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D4278287EC2250051C9F9 /* NetworkManager.swift */; };
+		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
+		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +149,8 @@
 		F0394EFE286AFC780009215C /* CodeReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeReview.swift; sourceTree = "<group>"; };
 		F04D4276287EC2070051C9F9 /* MedicineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineApi.swift; sourceTree = "<group>"; };
 		F04D4278287EC2250051C9F9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +218,7 @@
 		158B02D2284FAD0D005254A0 /* MC02-Group9 */ = {
 			isa = PBXGroup;
 			children = (
+				F05616A628EED4B200F61C4C /* Helper */,
 				F02A60DA2869A70900441781 /* Controller */,
 				F02A60D92869A6F900441781 /* View */,
 				F02A60D228698F8F00441781 /* Manager */,
@@ -304,6 +309,7 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F05616A928EED6F400F61C4C /* CalendarCell */,
 				1F4EF3C328733A900056E693 /* ViewController.swift */,
 				155F70A728ED466A003A844B /* TakeBloodGlucose */,
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
@@ -332,6 +338,22 @@
 				1F8813AC285B37AB009994F9 /* AddNewScheduleTableViewCell.swift */,
 			);
 			path = AddMedCell;
+			sourceTree = "<group>";
+		};
+		F05616A628EED4B200F61C4C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F05616A728EED4BD00F61C4C /* CalendarHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F05616A928EED6F400F61C4C /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				F05616AA28EED70200F61C4C /* CalendarCell.swift */,
+			);
+			path = CalendarCell;
 			sourceTree = "<group>";
 		};
 		F0CBC5352851F6E800D638F7 /* Model */ = {
@@ -490,6 +512,7 @@
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
+				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
@@ -515,6 +538,7 @@
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
+				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
 				6EDAF415285878900099213F /* profilePageViewController.swift in Sources */,
 				1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */,
