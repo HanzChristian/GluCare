@@ -6,6 +6,7 @@ target 'MC02-Group9' do
   use_frameworks!
 
   # Pods for MC02-Group9
+
 pod 'FSCalendar'
 pod 'Gecco'
 

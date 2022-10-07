@@ -16,7 +16,7 @@ class MedNameTextFieldTVC: UITableViewCell {
 //            medNameTextField.layer.cornerRadius = 16.0
             medNameTextField.clipsToBounds = true
         medNameTextField.addTarget(self, action: #selector(txtFieldEdit(_:)), for: .editingChanged)
-        print("INI NAMA OBAT")
+        print(" ")
         print(medNameTextField.text!)
     }
     
