@@ -1,6 +1,6 @@
 //
 //  Medicine+CoreDataClass.swift
-//
+//  
 //
 //  Created by Richard Mulyadi on 22/08/22.
 //

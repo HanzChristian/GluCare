@@ -266,7 +266,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @objc func validateForm(){
-        print("Test")
         if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
            let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
             

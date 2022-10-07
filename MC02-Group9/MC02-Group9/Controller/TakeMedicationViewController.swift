@@ -39,7 +39,6 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "switchOff"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.saveSheet), name: NSNotification.Name(rawValue: "save"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.skipSheet), name: NSNotification.Name(rawValue: "skip"), object: nil)
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.gettime), name: NSNotification.Name(rawValue: "switchOff"), object: nil)
     }
@@ -62,15 +61,6 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     @objc func unableHidden(){
         self.cellTakeMed!.isHidden = false
         reloadTableView()
-    }
-    
-    @objc func skipSheet(){
-        self.coreDataManager.lewati(daySelected: self.daySelected!, indexPath: indexPath!)
-        
-        self.coreDataManager.resetStreak()
-        self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
-        self.coreDataManager.fetchLogs(tableView: self.tableView!, daySelected: self.daySelected!)
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func saveSheet(){
@@ -111,25 +101,6 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
             toastLabel.removeFromSuperview()
         })
     }
-    
-    func showToastSkip(message : String, font: UIFont) {
-        let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-        
-        toastLabel.backgroundColor = UIColor(rgb: 0xDE6FB3)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 8;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
 
     
     func setNib(){
@@ -147,7 +118,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     func setNav(){
         
         let label = UILabel()
-        label.text = "Konsumsi Obat"
+        label.text = "Masukkan Waktu Minum Obat"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         //        label.sizeToFit()
         
