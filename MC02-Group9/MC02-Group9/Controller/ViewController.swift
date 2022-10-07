@@ -70,7 +70,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // SheetPresentation
     var isSkipped:Bool = false
-    var indexPath:Int = 0
+    //var indexPath:Int = 0
     
     override func viewDidAppear(_ animated: Bool)
     {
@@ -453,6 +453,8 @@ extension ViewController:UITableViewDelegate{
     
     @objc func makeSheet(_ notification:Notification){
         let idx = notification.userInfo!["indexPath"] as! Int
+        
+        print("debug1: idx \(idx)")
         self.isSkipped = false
         
         if (coreDataManager.undoIdx[idx] >= 0){
@@ -460,8 +462,8 @@ extension ViewController:UITableViewDelegate{
             self.isSkipped = true
         }
         
-        let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
+        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
 
         let nav =  UINavigationController(rootViewController: vc)
         //        nav.modalPresentationStyle = .overCurrentContext
@@ -474,37 +476,37 @@ extension ViewController:UITableViewDelegate{
         }
 
         //nanti dinyalain lagi tunggu code dari richard
-//        vc.daySelected = self.daySelected
-//        vc.tableView = self.tableView
-//        vc.indexPath = IndexPath(row: idx,section : 0)
-//
-//        if(isSkipped){
-//            //isi dari untake action
-//            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
-//            coreDataManager.batalkan(logToRemove: logToRemove)
-//
-//            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: self.daySelected)
-//
-//            coreDataManager.fetchStreak()
-//            if(coreDataManager.streaks!.isEmpty == true){
-//                return
-//            }
-//            // Streak Logic
-//            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-//            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-//
-//            if(lastDate == dateFrom){
-//                // Streak nya udah ketambah di hari yg sama
-//
-//                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-//                coreDataManager.fetchStreak()
-//            }
-//
-//        }
-//        
-//        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
-//        print("\(vc.indexPath)")
-//        print(self.isSkipped)
+        vc.daySelected = daySelected
+        vc.tableView = self.tableView
+        vc.indexPath = IndexPath(row: idx,section : 0)
+
+        if(isSkipped){
+            //isi dari untake action
+            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
+            coreDataManager.batalkan(logToRemove: logToRemove)
+
+            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
+
+            coreDataManager.fetchStreak()
+            if(coreDataManager.streaks!.isEmpty == true){
+                return
+            }
+            // Streak Logic
+            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+
+            if(lastDate == dateFrom){
+                // Streak nya udah ketambah di hari yg sama
+
+                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+                coreDataManager.fetchStreak()
+            }
+
+        }
+        
+        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
+        print("\(vc.indexPath)")
+        print(self.isSkipped)
         self.present(nav, animated: true,completion: nil)
 
     }
@@ -573,6 +575,8 @@ extension ViewController:UITableViewDelegate{
 extension ViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         return self.coreDataManager.items?.count ?? 0
     }
     
@@ -651,7 +655,7 @@ extension ViewController:UITableViewDataSource{
         cell.timeLbl.text = medicine_time.time
         cell.tintColor = UIColor.blue
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
-       
+        cell.indexPath = indexPath.row
         
         for (index, log) in coreDataManager.logs!.enumerated() {
             if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
@@ -684,7 +688,7 @@ extension ViewController:UITableViewDataSource{
                 break
             }
             
-            cell.indexPath = indexPath.row
+            
           
         }
         return cell
