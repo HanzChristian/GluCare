@@ -1,32 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zoA-Gj-THi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zoA-Gj-THi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Obat Kamu-->
+        <!--Daftar Rutinitas-->
         <scene sceneID="FPJ-Td-AgY">
             <objects>
-                <viewController title="Obat Kamu" id="ZlH-Jp-9ts" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Daftar Rutinitas" id="ZlH-Jp-9ts" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WiY-Ou-T0A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9">
-                                <rect key="frame" x="0.0" y="98" width="414" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9" userLabel="Daftar Rutinitas Table View">
+                                <rect key="frame" x="0.0" y="102" width="414" height="662"/>
+                                <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="EIo-O9-sdb">
+                                    <rect key="frame" x="0.0" y="151" width="414" height="771"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <connections>
+                                        <segue destination="Uhg-L4-s0g" kind="embed" id="McN-YQ-Af3"/>
+                                    </connections>
+                                </containerView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DDo-QP-4zk">
-                                        <rect key="frame" x="20" y="32" width="374" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="DDo-QP-4zk" customClass="RoutinesTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="38" width="374" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DDo-QP-4zk" id="7i5-s0-bQl">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DDo-QP-4zk" id="7i5-s0-bQl" customClass="RoutinesTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-Hg-SXG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-Ox-OXC">
+                                                            <rect key="frame" x="8" y="41" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihO-hc-eK1">
+                                                            <rect key="frame" x="8" y="10" width="318" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsn-I2-ND3">
+                                                            <rect key="frame" x="8" y="64" width="358" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="OWI-0p-hJb">
+                                                            <rect key="frame" x="324" y="10" width="21" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfx-xq-5xd">
+                                                            <rect key="frame" x="31" y="41" width="290" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                            </subviews>
+                                            <connections>
+                                                <outlet property="routinesView" destination="z3V-Hg-SXG" id="cT5-QN-Wf9"/>
+                                            </connections>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="routinesArrowImgView" destination="OWI-0p-hJb" id="v1A-dg-evs"/>
+                                            <outlet property="routinesClockImgView" destination="RgI-Ox-OXC" id="le7-BA-xKe"/>
+                                            <outlet property="routinesDescCellLbl" destination="Qsn-I2-ND3" id="fqk-zi-DC7"/>
+                                            <outlet property="routinesTimeDescLbl" destination="Xfx-xq-5xd" id="RKC-BQ-bQg"/>
+                                            <outlet property="routinesTitleCellLbl" destination="ihO-hc-eK1" id="4DU-ZV-ATf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -35,21 +93,16 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="bt7-B2-tKc"/>
+                        <viewLayoutGuide key="safeArea" id="HTv-7d-E2s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="leading" secondItem="bt7-B2-tKc" secondAttribute="leading" id="J8b-oq-fV0"/>
-                            <constraint firstItem="bt7-B2-tKc" firstAttribute="bottom" secondItem="a10-JW-pM9" secondAttribute="bottom" id="YC0-BP-XmR"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="top" secondItem="bt7-B2-tKc" secondAttribute="top" constant="10" id="blR-6v-fU0"/>
-                            <constraint firstItem="bt7-B2-tKc" firstAttribute="trailing" secondItem="a10-JW-pM9" secondAttribute="trailing" id="e0L-at-TM5"/>
+                            <constraint firstItem="a10-JW-pM9" firstAttribute="leading" secondItem="HTv-7d-E2s" secondAttribute="leading" id="J8b-oq-fV0"/>
+                            <constraint firstItem="HTv-7d-E2s" firstAttribute="bottom" secondItem="a10-JW-pM9" secondAttribute="bottom" id="YC0-BP-XmR"/>
+                            <constraint firstItem="a10-JW-pM9" firstAttribute="top" secondItem="HTv-7d-E2s" secondAttribute="top" constant="10" id="blR-6v-fU0"/>
+                            <constraint firstItem="HTv-7d-E2s" firstAttribute="trailing" secondItem="a10-JW-pM9" secondAttribute="trailing" id="e0L-at-TM5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Obat Kamu" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HRj-FI-p68">
-                        <barButtonItem key="leftBarButtonItem" title="Ubah" style="plain" id="Fa1-ec-V5z">
-                            <connections>
-                                <action selector="editMedicationPressed:" destination="ZlH-Jp-9ts" id="MJW-vf-uj6"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Daftar Rutinitas" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HRj-FI-p68">
                         <barButtonItem key="rightBarButtonItem" id="1RY-bC-7ii">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                             <connections>
@@ -58,15 +111,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="Fa1-ec-V5z" id="7Wv-g7-HMs"/>
-                        <outlet property="editButtonItem" destination="Fa1-ec-V5z" id="To8-Ml-C34"/>
-                        <outlet property="obatKamuTableView" destination="a10-JW-pM9" id="aRe-j7-09D"/>
+                        <outlet property="daftarRutinitasTableView" destination="a10-JW-pM9" id="NTT-BR-znU"/>
                         <segue destination="NXy-ze-r2F" kind="presentation" identifier="AddMedicationViewController" id="xms-jq-6he"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucx-rd-LzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1193" y="-605"/>
+            <point key="canvasLocation" x="1192.753623188406" y="-605.35714285714278"/>
         </scene>
         <!--Add Medication-->
         <scene sceneID="1Ba-kd-GiV">
@@ -74,17 +125,19 @@
                 <viewControllerPlaceholder storyboardName="Add Medication" id="NXy-ze-r2F" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOc-h9-3Ym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2067" y="-624"/>
+            <point key="canvasLocation" x="1990" y="-590"/>
         </scene>
         <!--Profile-->
         <scene sceneID="WbI-tm-Rp3">
             <objects>
                 <navigationController title="Profile" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zoA-Gj-THi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Obat" image="pills.fill" catalog="system" id="KQE-HH-g7E"/>
+                    <tabBarItem key="tabBarItem" title="Rutinitas" id="KQE-HH-g7E">
+                        <imageReference key="image" image="routine" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6b5-VE-XJn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -99,10 +152,77 @@
             </objects>
             <point key="canvasLocation" x="274" y="-605"/>
         </scene>
+        <!--Empty Routines SpaceVC-->
+        <scene sceneID="pIU-z0-8gi">
+            <objects>
+                <viewController id="Uhg-L4-s0g" customClass="EmptyRoutinesSpaceVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qeu-lt-eGi">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada rutinitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL5-dP-1De">
+                                <rect key="frame" x="122" y="280" width="146" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="iTX-MO-1NO"/>
+                                    <constraint firstAttribute="height" constant="21" id="tCq-3G-4bJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="qDn-8a-XeT">
+                                <rect key="frame" x="2" y="67" width="386" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="38P-BE-sdM"/>
+                                    <constraint firstAttribute="width" constant="386" id="Kef-Cm-fvM"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOz-qN-cIJ">
+                                <rect key="frame" x="72" y="325" width="247" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Abn-Vx-qZ0"/>
+                                    <constraint firstAttribute="width" constant="247" id="RKc-I5-T7x"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Tambah Rutinitas"/>
+                                <connections>
+                                    <action selector="addRoutinesBtn:" destination="Uhg-L4-s0g" eventType="touchUpInside" id="78y-N8-6nc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7mc-1Y-Bn8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hOz-qN-cIJ" firstAttribute="leading" secondItem="7mc-1Y-Bn8" secondAttribute="leading" constant="72" id="6d0-hA-2Kf"/>
+                            <constraint firstItem="qDn-8a-XeT" firstAttribute="top" secondItem="7mc-1Y-Bn8" secondAttribute="top" constant="19" id="7ij-HY-kk1"/>
+                            <constraint firstItem="7mc-1Y-Bn8" firstAttribute="trailing" secondItem="hOz-qN-cIJ" secondAttribute="trailing" constant="71" id="AdR-lk-QtS"/>
+                            <constraint firstItem="7mc-1Y-Bn8" firstAttribute="trailing" secondItem="qDn-8a-XeT" secondAttribute="trailing" constant="2" id="HFh-qs-Wv1"/>
+                            <constraint firstItem="XL5-dP-1De" firstAttribute="leading" secondItem="7mc-1Y-Bn8" secondAttribute="leading" constant="122" id="Shc-gz-KCU"/>
+                            <constraint firstItem="XL5-dP-1De" firstAttribute="top" secondItem="qDn-8a-XeT" secondAttribute="bottom" constant="24" id="Zup-0x-udH"/>
+                            <constraint firstItem="qDn-8a-XeT" firstAttribute="leading" secondItem="7mc-1Y-Bn8" secondAttribute="leading" constant="2" id="dCZ-Qf-RMS"/>
+                            <constraint firstItem="hOz-qN-cIJ" firstAttribute="top" secondItem="XL5-dP-1De" secondAttribute="bottom" constant="24" id="fSD-HX-BS8"/>
+                            <constraint firstItem="7mc-1Y-Bn8" firstAttribute="trailing" secondItem="XL5-dP-1De" secondAttribute="trailing" constant="122" id="n8c-49-r63"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="390" height="446"/>
+                    <connections>
+                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="addMedicationViewController" id="An5-dY-bv8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lYo-DQ-ZUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1212" y="66"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="An5-dY-bv8"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="pills.fill" catalog="system" width="128" height="106"/>
+        <image name="clock" width="26" height="26"/>
+        <image name="empty" width="386" height="546"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="right-arrow" width="16" height="16"/>
+        <image name="routine" width="45.5" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
