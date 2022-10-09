@@ -62,6 +62,8 @@
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
 		2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */; };
+		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
+		2CE0722628F27724008B8EB0 /* RoutinesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesTVC.swift */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
 		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
@@ -135,6 +137,8 @@
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTimePickerTableViewCell.xib; sourceTree = "<group>"; };
+		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyRoutinesSpaceVC.swift; path = Routines/EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
+		2CE0722428F27724008B8EB0 /* RoutinesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutinesTVC.swift; path = Routines/RoutinesTVC.swift; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
 		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
 				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
 				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
+				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
+				2CE0722428F27724008B8EB0 /* RoutinesTVC.swift */,
 				155F70BC28ED47E6003A844B /* TakeBGCell */,
 				1F4EF3C02873385E0056E693 /* TakeMedCell */,
 				2C8E9B702853E0220026FDF5 /* AddMedCell */,
@@ -512,6 +518,7 @@
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
+				2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
@@ -551,6 +558,7 @@
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
 				156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */,
 				15D576D328EC029500603F1D /* Medicine+CoreDataClass.swift in Sources */,
+				2CE0722628F27724008B8EB0 /* RoutinesTVC.swift in Sources */,
 				2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 			);
