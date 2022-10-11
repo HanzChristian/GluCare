@@ -25,6 +25,8 @@ class BadgeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("tes")
+        
         fetchStreak()
         configuration()
         circleBar()
