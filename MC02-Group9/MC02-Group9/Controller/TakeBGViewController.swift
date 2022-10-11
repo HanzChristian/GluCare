@@ -51,7 +51,6 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.navigationItem.leftBarButtonItem = leftItem
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
-        
     }
     
     func setNib(){

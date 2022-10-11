@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bgFrequencyTableViewCell" id="KGk-i7-Jjw" customClass="BGFrequencyTableViewCell" customModule="MC02_Group9" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frekuensi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0T-BL-L0o">
+                        <rect key="frame" x="16" y="12" width="73.666666666666671" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtv-Er-ms6">
+                        <rect key="frame" x="268" y="4" width="36" height="35"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="arrowupdown"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBa-xP-voV">
+                        <rect key="frame" x="237" y="11" width="31" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="M0T-BL-L0o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="3v5-xK-kE8"/>
+                    <constraint firstItem="M0T-BL-L0o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="KwU-64-nvs"/>
+                    <constraint firstAttribute="bottom" secondItem="gtv-Er-ms6" secondAttribute="bottom" constant="5" id="QRI-5J-QgH"/>
+                    <constraint firstAttribute="bottom" secondItem="M0T-BL-L0o" secondAttribute="bottom" constant="11" id="Vul-sy-gLw"/>
+                    <constraint firstItem="gtv-Er-ms6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Wrt-4X-I00"/>
+                    <constraint firstAttribute="bottom" secondItem="YBa-xP-voV" secondAttribute="bottom" constant="12" id="cjq-tl-mBu"/>
+                    <constraint firstItem="YBa-xP-voV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="gVF-BV-wvn"/>
+                    <constraint firstItem="gtv-Er-ms6" firstAttribute="leading" secondItem="YBa-xP-voV" secondAttribute="trailing" id="sMH-UE-Ggb"/>
+                    <constraint firstAttribute="trailing" secondItem="gtv-Er-ms6" secondAttribute="trailing" constant="16" id="z5K-Dw-q6c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bgFrequencyBtn" destination="gtv-Er-ms6" id="41j-ra-BKg"/>
+                <outlet property="bgFrequencyLbl" destination="M0T-BL-L0o" id="3HX-3f-URM"/>
+                <outlet property="bgFrequencyScheduleLbl" destination="YBa-xP-voV" id="cQe-Kj-nCo"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="21"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrowupdown" width="12" height="14"/>
+    </resources>
+</document>

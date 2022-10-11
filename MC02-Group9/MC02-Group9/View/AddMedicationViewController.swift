@@ -109,25 +109,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 //            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
                 return cell
             }
-//            else if (indexPath.row == 1){
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
-//                cell.mealTimeLabel.text = cellTitle[indexPath.row]
-//                //            cell.mealTimeTextField?.placeholder = textFieldShadow[indexPath.row]
-//                return cell
-//            }
-            //else if (indexPath.row == 2) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
-//                cell.mealDescTitle.text = "Pilih Waktu Minum"
-//                cell.mealDesc.text = "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"
-//                cell.mealImage.image = UIImage(named: "MealDesc\(mealVars.mealPickedRow)")
-//                return cell
-//            } else {
-//                // tableView.reloadData()
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "frequencyPickerTableViewCell", for: indexPath) as! FrequencyPickerTableViewCell
-//                cell.lblFrequency.text = cellTitle[indexPath.row]
-//                return cell
-//            }
-            
             
         } else if (indexPath.section == 1){
             // SECTION 2
