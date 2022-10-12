@@ -46,6 +46,7 @@
 		15CAFD0B28F54716009A7686 /* BGWeeklyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFD0928F54716009A7686 /* BGWeeklyTableViewCell.xib */; };
 		15CAFD0E28F54725009A7686 /* BGMonthlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD0C28F54725009A7686 /* BGMonthlyTableViewCell.swift */; };
 		15CAFD0F28F54725009A7686 /* BGMonthlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFD0D28F54725009A7686 /* BGMonthlyTableViewCell.xib */; };
+		15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */; };
 		15D576D328EC029500603F1D /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D576D228EC029500603F1D /* Medicine+CoreDataClass.swift */; };
 		15D576D528EC02AA00603F1D /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D576D428EC02AA00603F1D /* Medicine+CoreDataProperties.swift */; };
 		1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EF3B42872E3250056E693 /* Take Medication.storyboard */; };
@@ -138,6 +139,7 @@
 		15CAFD0928F54716009A7686 /* BGWeeklyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGWeeklyTableViewCell.xib; sourceTree = "<group>"; };
 		15CAFD0C28F54725009A7686 /* BGMonthlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMonthlyTableViewCell.swift; sourceTree = "<group>"; };
 		15CAFD0D28F54725009A7686 /* BGMonthlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGMonthlyTableViewCell.xib; sourceTree = "<group>"; };
+		15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTime.swift; sourceTree = "<group>"; };
 		15D576D228EC029500603F1D /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		15D576D428EC02AA00603F1D /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F4EF3B52872E3250056E693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Take Medication.storyboard"; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				F04D4276287EC2070051C9F9 /* MedicineApi.swift */,
 				15D576D228EC029500603F1D /* Medicine+CoreDataClass.swift */,
 				15D576D428EC02AA00603F1D /* Medicine+CoreDataProperties.swift */,
+				15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
+				15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,

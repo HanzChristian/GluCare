@@ -101,23 +101,6 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
 }
 
-//extension UIToolbar {
-//    func toolbarPicker(select: Selector) -> UIToolbar {
-//        let toolBar = UIToolbar()
-//        toolBar.sizeToFit()
-//        toolBar.barStyle = .default
-//        toolBar.tintColor = UIColor.systemBlue
-//        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: select)
-// //       let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-//        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-//
-//        toolBar.setItems([space, doneBtn], animated: true)
-//        toolBar.isUserInteractionEnabled = true
-//
-//        return toolBar
-//    }
-//}
-
 struct mealVars {
     static var mealPickedRow = 4
     

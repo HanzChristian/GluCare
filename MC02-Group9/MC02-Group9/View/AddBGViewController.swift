@@ -14,6 +14,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
     
+    var cellFrequencyPicker: BGFrequencyTableViewCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -35,6 +37,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         setNib()
     }
+    
     
     @objc private func dismissSelf(){
         dismiss(animated: true, completion: nil)
@@ -110,6 +113,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
             else if(indexPath.row == 2){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "bgFrequencyTableViewCell",for:indexPath) as! BGFrequencyTableViewCell
                 cell.bgFrequencyLbl.text = "Frekuensi"
+                cellFrequencyPicker = cell
                 return cell
             }
             else if(indexPath.row == 3){
@@ -150,6 +154,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
+            if !cell.isFirstResponder{
+                _ = cell.becomeFirstResponder()
+            }
+        }
+    }
     
 
     /*
