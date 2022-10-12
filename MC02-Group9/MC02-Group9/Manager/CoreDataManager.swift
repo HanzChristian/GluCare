@@ -27,13 +27,50 @@ class CoreDataManager{
     var medicineSelectedIdx = 0
     
     //context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let container: NSPersistentCloudKitContainer!
+    let context: NSManagedObjectContext!
     
     //helper
     let calendarManager = CalendarManager.calendarManager
     
-    private init(){
+    private func setupObserverForNotification(){
+        let persistentContainer = container
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector (fetchMeds),
+            name: .NSPersistentStoreRemoteChange,
+            object: persistentContainer?.persistentStoreCoordinator
+        )
         
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector (fetchMedicine),
+//            name: .NSPersistentStoreRemoteChange,
+//            object: persistentContainer?.persistentStoreCoordinator
+//        )
+//        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector (fetchStreak),
+//            name: .NSPersistentStoreRemoteChange,
+//            object: persistentContainer?.persistentStoreCoordinator
+//        )
+//        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector (fetchLogs),
+//            name: .NSPersistentStoreRemoteChange,
+//            object: persistentContainer?.persistentStoreCoordinator
+//        )
+    }
+    
+    private init(){
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        container = appDelegate?.persistentContainer as? NSPersistentCloudKitContainer
+        context = container.viewContext
+        
+        setupObserverForNotification()
     }
     
     func batalkan(logToRemove: Log){
@@ -172,7 +209,7 @@ class CoreDataManager{
         }
     }
     
-    func fetchMeds(){
+    @objc func fetchMeds(){
         do{
             let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
             
@@ -183,7 +220,7 @@ class CoreDataManager{
         }
     }
     
-    func fetchStreak(){
+    @objc func fetchStreak(){
         do{
             let request = Streak.fetchRequest() as NSFetchRequest<Streak>
             
@@ -194,7 +231,7 @@ class CoreDataManager{
         }
     }
     
-    func fetchMedicine(tableView: UITableView){
+    @objc func fetchMedicine(tableView: UITableView){
         do{
             let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
             
@@ -212,7 +249,7 @@ class CoreDataManager{
         }
     }
     
-    func fetchLogs(tableView: UITableView, daySelected: Date){
+    @objc func fetchLogs(tableView: UITableView, daySelected: Date){
         do{
             resetArray()
             logs?.removeAll()
