@@ -14,7 +14,14 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
     
+    
     var cellFrequencyPicker: BGFrequencyTableViewCell?
+    var cellCalendar: BGCalendarTableViewCell?
+    var bgFrequency: BGFrequencyTableViewCell?
+    
+    var calendarOff:Bool = true
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         view.backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
+        
+        cellCalendar?.isHidden = true
         
         if let roundedTitleDescriptor = UIFontDescriptor
             .preferredFontDescriptor(withTextStyle: .largeTitle)
@@ -36,9 +45,33 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         setNavItem()
         
         setNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.enableCalendar), name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.unableCalendar), name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
     }
     
+    @objc func enableCalendar(){
+        calendarOff = false
+        height = 49.0
+        reloadTableView()
+    }
     
+    @objc func unableCalendar(){
+        calendarOff = true
+        height = 49.0
+        reloadTableView()
+    }
+    
+    func reloadTableView(){
+        do{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }catch{
+
+        }
+    }
+
     @objc private func dismissSelf(){
         dismiss(animated: true, completion: nil)
     }
@@ -76,6 +109,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         tableView.register(nibBGFrequency, forCellReuseIdentifier: "bgFrequencyTableViewCell")
         let nibBGSubFrequency = UINib(nibName: "BGSubFrequencyTableViewCell",bundle: nil)
         tableView.register(nibBGSubFrequency, forCellReuseIdentifier: "bgSubFrequencyTableViewCell")
+        let nibBGCalendar = UINib(nibName: "BGCalendarTableViewCell", bundle: nil)
+        tableView.register(nibBGCalendar, forCellReuseIdentifier: "bgCalendarTableViewCell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,7 +121,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         if (section == 0) {
             return 1
         } else{
-            return 4
+            return 5
         }
     }
     
@@ -121,13 +156,23 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
                 cell.bgSubFrequencyEveryLbl.text = "Setiap"
                 return cell
             }
+            else if(indexPath.row == 4){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "bgCalendarTableViewCell",for: indexPath) as! BGCalendarTableViewCell
+                
+                cell.configure(with: CalendarViewModel.calendarViewModel.calendarModel!)
+                
+                return cell
+            }
         }
         return UITableViewCell()
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return height
+        if(indexPath.section == 1 && indexPath.row == 4 && calendarOff){
+            return 0
+        }
+            return height
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -156,6 +201,11 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
+            if !cell.isFirstResponder{
+                _ = cell.becomeFirstResponder()
+            }
+        }
+        else if let cell = tableView.cellForRow(at: indexPath) as? BGSubFrequencyTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
             }

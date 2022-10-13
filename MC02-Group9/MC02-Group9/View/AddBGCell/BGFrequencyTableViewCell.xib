@@ -23,16 +23,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtv-Er-ms6">
-                        <rect key="frame" x="268" y="4" width="36" height="35"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="arrowupdown"/>
-                        <connections>
-                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2xd-4u-rRw"/>
-                        </connections>
-                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9B-vR-pcK">
+                        <rect key="frame" x="377" y="58" width="46" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowupdown" translatesAutoresizingMaskIntoConstraints="NO" id="0am-f9-Nib">
+                        <rect key="frame" x="292" y="16" width="12" height="12"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBa-xP-voV">
-                        <rect key="frame" x="237" y="11" width="31" height="21"/>
+                        <rect key="frame" x="255" y="11" width="31" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,22 +40,21 @@
                 <constraints>
                     <constraint firstItem="M0T-BL-L0o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="3v5-xK-kE8"/>
                     <constraint firstItem="M0T-BL-L0o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="KwU-64-nvs"/>
-                    <constraint firstAttribute="bottom" secondItem="gtv-Er-ms6" secondAttribute="bottom" constant="5" id="QRI-5J-QgH"/>
+                    <constraint firstItem="0am-f9-Nib" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Lzz-lm-4Um"/>
+                    <constraint firstAttribute="bottom" secondItem="YBa-xP-voV" secondAttribute="bottom" constant="12" id="PEk-cZ-GwM"/>
+                    <constraint firstItem="0am-f9-Nib" firstAttribute="leading" secondItem="YBa-xP-voV" secondAttribute="trailing" constant="6" id="Pd6-SG-Oc2"/>
                     <constraint firstAttribute="bottom" secondItem="M0T-BL-L0o" secondAttribute="bottom" constant="11" id="Vul-sy-gLw"/>
-                    <constraint firstItem="gtv-Er-ms6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Wrt-4X-I00"/>
-                    <constraint firstAttribute="bottom" secondItem="YBa-xP-voV" secondAttribute="bottom" constant="12" id="cjq-tl-mBu"/>
-                    <constraint firstItem="YBa-xP-voV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="gVF-BV-wvn"/>
-                    <constraint firstItem="gtv-Er-ms6" firstAttribute="leading" secondItem="YBa-xP-voV" secondAttribute="trailing" id="sMH-UE-Ggb"/>
-                    <constraint firstAttribute="trailing" secondItem="gtv-Er-ms6" secondAttribute="trailing" constant="16" id="z5K-Dw-q6c"/>
+                    <constraint firstAttribute="trailing" secondItem="0am-f9-Nib" secondAttribute="trailing" constant="16" id="XHx-Zd-Dr6"/>
+                    <constraint firstAttribute="bottom" secondItem="0am-f9-Nib" secondAttribute="bottom" constant="16" id="bKc-iY-RDg"/>
+                    <constraint firstItem="YBa-xP-voV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="dlr-eh-GZz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bgFrequencyBtn" destination="gtv-Er-ms6" id="41j-ra-BKg"/>
                 <outlet property="bgFrequencyLbl" destination="M0T-BL-L0o" id="3HX-3f-URM"/>
                 <outlet property="bgFrequencyScheduleLbl" destination="YBa-xP-voV" id="cQe-Kj-nCo"/>
             </connections>
-            <point key="canvasLocation" x="29" y="21"/>
+            <point key="canvasLocation" x="27.69230769230769" y="20.616113744075829"/>
         </tableViewCell>
     </objects>
     <resources>
