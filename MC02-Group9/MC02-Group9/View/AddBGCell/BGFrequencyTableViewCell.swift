@@ -1,34 +1,32 @@
 //
-//  PickerTableViewCell.swift
+//  BGFrequencyTableViewCell.swift
 //  MC02-Group9
 //
-//  Created by Richard Mulyadi on 11/06/22.
+//  Created by Hanz Christian on 11/10/22.
 //
 
 import UIKit
 
-class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
+class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
-
-    @IBOutlet var mealTimeLabel: UILabel!
-        
-    let mealTime = ["Waktu Spesifik", "Sebelum Makan",
-                    "Setelah Makan", "Bersamaan dengan Makan"]
+    
+    @IBOutlet var bgFrequencyLbl:UILabel!
+    @IBOutlet var bgFrequencyScheduleLbl:UILabel!
+    
+    let scheduleTime = ["Hari","Minggu","Bulan"]
     let pickerView = UIPickerView()
-    // x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: 300
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
-
+        
     }
-
     
-    var mealPickerView = UIPickerView()
-    public var mealPicked = false
-
+    var schedulePickerView = UIPickerView()
+    public var schedulePicked = false
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -48,9 +46,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     override var inputAccessoryView: UIView?{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        //toolBar.barStyle = .black
         let doneBtn = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
-        //let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBar.isUserInteractionEnabled = true
         toolBar.items = [space, doneBtn]
@@ -60,37 +56,38 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mealTime.count
+        return scheduleTime.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mealTime[row]
+        return scheduleTime[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        mealTimeLabel.textColor = .black
-        mealTimeLabel.text = mealTime[row]
-//        mealTimeTextField.text = mealTime[row]
-        mealPicked = true
-        mealTimeVar.row = row
-        mealVars.mealPickedRow = row
-        mealTimeLabel.resignFirstResponder()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
-
+        bgFrequencyScheduleLbl.textColor = .black
+        bgFrequencyScheduleLbl.text = scheduleTime[row]
+        schedulePicked = true
+        scheduleVars.schedulePickedRow = row
+        scheduleTimeVar.row = row
+        bgFrequencyScheduleLbl.resignFirstResponder()
+        //ngubah label di sub frequency
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeSub"), object: nil)
+        if(bgFrequencyScheduleLbl.text == "Hari"){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+        }
+        else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+        }
+        //melakukan validasi total
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }
     
     @objc func doneTapped() {
         self.endEditing(true)
     }
     
-    @objc func cancelTapped() {
-        mealTimeLabel.text = "Pilih Waktu Minum"
-        print("cancelTapped")
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
-        self.endEditing(true)
-    }
-    
-    // Dismiss when done clicked
     @objc func dismissPicker() {
         self.endEditing(true)
     }
@@ -99,9 +96,13 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         pickerView.endEditing(true)
     }
     
+    @IBAction func btnClicked(_ sender: UIButton) {
+        if (pickerView.isHidden == true){
+            pickerView.isHidden = false
+        }
+    }
 }
 
-struct mealVars {
-    static var mealPickedRow = 4
-    
+struct scheduleVars {
+    static var schedulePickedRow = 3
 }

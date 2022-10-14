@@ -15,9 +15,7 @@ class EmptyRoutinesSpaceVC: UIViewController {
         let actJadwalMinumObat = UIAlertAction(title: "Jadwal Minum Obat", style: .default) { _ in
             self.performSegue(withIdentifier: "addMedicationViewController", sender: nil)
         }
-        let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default){ _ in
-            self.performSegue(withIdentifier: "addBGViewController", sender: nil)
-        }
+        let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default)
         let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
         let actBatal = UIAlertAction(title: "Batal", style: .cancel)
         actionSheet.addAction(actJadwalMinumObat)

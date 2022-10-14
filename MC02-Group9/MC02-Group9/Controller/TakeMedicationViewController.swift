@@ -19,8 +19,8 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     let coreDataManager = CoreDataManager.coreDataManager
     let streakManager = StreakManager.streakManager
     
-    var cellTakeMed: TakeMedTimeTableViewCell?
-    var switchMode: OnTimeTableViewCell?
+    var cellTakeMed: TakeMedTimeTableViewCell? //cell
+    var switchMode: OnTimeTableViewCell? //triger
     
     @IBOutlet weak var tblView: UITableView!
     
