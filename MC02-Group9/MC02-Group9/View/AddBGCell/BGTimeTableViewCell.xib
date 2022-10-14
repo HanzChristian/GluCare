@@ -23,28 +23,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvT-9n-UNZ">
-                        <rect key="frame" x="235.33333333333334" y="4" width="68.666666666666657" height="35"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="gray" title="08.00"/>
-                    </button>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08:00" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLo-kc-qgo">
+                        <rect key="frame" x="237" y="5" width="67" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="28O-1z-Sfx" secondAttribute="bottom" constant="11" id="31y-y6-pgc"/>
-                    <constraint firstAttribute="trailing" secondItem="WvT-9n-UNZ" secondAttribute="trailing" constant="16" id="Aqj-eU-ByL"/>
-                    <constraint firstAttribute="bottom" secondItem="WvT-9n-UNZ" secondAttribute="bottom" constant="5" id="Sgd-6Z-4wm"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="amQ-M5-XpW"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="cGP-2F-Y9j"/>
-                    <constraint firstItem="WvT-9n-UNZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="imZ-fI-4Ba"/>
+                    <constraint firstAttribute="trailing" secondItem="SLo-kc-qgo" secondAttribute="trailing" constant="16" id="ot4-aB-76l"/>
+                    <constraint firstItem="SLo-kc-qgo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="u3n-BR-wES"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bgTimeBtn" destination="WvT-9n-UNZ" id="f2a-kZ-L4i"/>
                 <outlet property="bgTimeLbl" destination="28O-1z-Sfx" id="t6X-ir-bZI"/>
+                <outlet property="bgTimePicker" destination="SLo-kc-qgo" id="fCE-sk-IYE"/>
             </connections>
-            <point key="canvasLocation" x="28" y="21"/>
+            <point key="canvasLocation" x="27.69230769230769" y="20.616113744075829"/>
         </tableViewCell>
     </objects>
 </document>
