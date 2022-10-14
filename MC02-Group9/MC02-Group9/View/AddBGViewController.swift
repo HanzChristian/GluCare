@@ -20,6 +20,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     var bgFrequency: BGFrequencyTableViewCell?
     
     var calendarOff:Bool = true
+    var calendarWiden:Bool = false
     
 
     
@@ -48,6 +49,19 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableCalendar), name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableCalendar), name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.wideCalendar), name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.narrowCalendar), name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+    }
+    
+    @objc func wideCalendar(){
+        calendarWiden = true
+        reloadTableView()
+    }
+    
+    @objc func narrowCalendar(){
+        calendarWiden = false
+        reloadTableView()
     }
     
     @objc func enableCalendar(){
@@ -159,7 +173,11 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
             else if(indexPath.row == 4){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "bgCalendarTableViewCell",for: indexPath) as! BGCalendarTableViewCell
                 
-                cell.configure(with: CalendarViewModel.calendarViewModel.calendarModel!)
+                if(calendarWiden){
+                    cell.configure(with: CalendarViewModel.calendarViewModel.calendarMonthModel!)
+                }else{
+                    cell.configure(with: CalendarViewModel.calendarViewModel.calendarModel!)
+                }
                 
                 return cell
             }
@@ -171,6 +189,9 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 1 && indexPath.row == 4 && calendarOff){
             return 0
+        }
+        else if(indexPath.section == 1 && indexPath.row == 4 && calendarWiden){
+            return 250
         }
             return height
     }
