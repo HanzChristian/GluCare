@@ -8,6 +8,7 @@
 import UIKit
 
 class BGStartDateTableViewCell: UITableViewCell {
+    
     weak var delegate: BGStartDateTableViewCell?
         @IBOutlet var bgStartDateLbl:UILabel!
         @IBOutlet var bgStartDatePicker: UITextField!
@@ -34,23 +35,24 @@ class BGStartDateTableViewCell: UITableViewCell {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(datePickerValueChange(sender:)), for: UIControl.Event.valueChanged)
-        
         bgStartDatePicker.inputView = datePicker
         bgStartDatePicker.inputAccessoryView = createToolbar()
+  //      bgStartDatePicker.text = dateFormatter.string(from: datePicker.date)
     }
   
     @objc func datePickerValueChange(sender: UIDatePicker) {
         dateFormatter.locale = Locale(identifier: "en_gb")
-//        dateFormatter.dateFormat = ""
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+//        dateFormatter.dateFormat = "HH:mm"
+        bgStartDatePicker.text = dateFormatter.string(from: sender.date)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
         
     }
   
     @objc func btnDoneClicked(){
-        dateFormatter.locale = Locale(identifier: "en_gb")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        
-        self.bgStartDatePicker.text = dateFormatter.string(from: datePicker.date)
+//        self.bgStartDatePicker.text = dateFormatter.string(from: datePicker.date)
         self.endEditing(true)
     }
     
@@ -74,11 +76,5 @@ class BGStartDateTableViewCell: UITableViewCell {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
 }
