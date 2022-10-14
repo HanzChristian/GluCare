@@ -14,7 +14,9 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
     
-    
+    var cellBGPicker: BGTypeTableViewCell?
+    var cellDatePicker: BGStartDateTableViewCell?
+    var cellTimePicker: BGTimeTableViewCell?
     var cellFrequencyPicker: BGFrequencyTableViewCell?
     var cellCalendar: BGCalendarTableViewCell?
     var bgFrequency: BGFrequencyTableViewCell?
@@ -48,6 +50,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableCalendar), name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableCalendar), name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+        
     }
     
     @objc func enableCalendar(){
@@ -65,7 +68,10 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     func reloadTableView(){
         do{
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                let loc = self.tableView.contentOffset
+                self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                self.tableView.setContentOffset(loc, animated: false)
+           //     self.tableView.reloadData()
             }
         }catch{
 
@@ -131,6 +137,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
             if(indexPath.row == 0){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "bgTypeTableViewCell", for: indexPath) as! BGTypeTableViewCell
                 cell.bgTypeLbl.text = "Pilih Jenis Cek Gula Darah"
+                cellBGPicker = cell
                 return cell
             }
         }
@@ -200,7 +207,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
+        if let cell = tableView.cellForRow(at: indexPath) as? BGTypeTableViewCell{
+            if !cell.isFirstResponder{
+                _ = cell.becomeFirstResponder()
+            }
+        }
+        
+        else if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
             }

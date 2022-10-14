@@ -9,7 +9,6 @@ import UIKit
 
 class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    
     @IBOutlet var bgFrequencyLbl:UILabel!
     @IBOutlet var bgFrequencyScheduleLbl:UILabel!
     
@@ -20,7 +19,6 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
-        
     }
     
     var schedulePickerView = UIPickerView()
@@ -81,7 +79,7 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
         }
         //melakukan validasi total
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }
     
     @objc func doneTapped() {
