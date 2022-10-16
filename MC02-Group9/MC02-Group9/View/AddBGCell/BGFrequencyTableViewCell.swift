@@ -76,7 +76,14 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
         }
         else{
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+            if(bgFrequencyScheduleLbl.text == "Minggu"){
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+            }
+            else{
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
+            }
         }
         //melakukan validasi total
         //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
