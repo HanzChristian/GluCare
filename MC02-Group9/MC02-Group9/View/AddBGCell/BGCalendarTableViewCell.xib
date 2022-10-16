@@ -40,7 +40,7 @@
             <connections>
                 <outlet property="calendarCollectionView" destination="Xfa-4I-tXY" id="6IG-lf-s9E"/>
             </connections>
-            <point key="canvasLocation" x="58" y="21"/>
+            <point key="canvasLocation" x="56.92307692307692" y="20.616113744075829"/>
         </tableViewCell>
     </objects>
     <resources>
