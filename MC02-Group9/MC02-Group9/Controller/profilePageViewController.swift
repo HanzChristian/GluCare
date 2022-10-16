@@ -18,10 +18,20 @@ class RutinitasSection {
 class profilePageViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let coreDataMeds = CoreDataManager.fetchMeds
+//    let coreDataMedicine = CoreDataManager.fetchMedicine
     var rutinitasSection = [RutinitasSection]()
     var items:[Medicine]?
     
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
+    
+    func setup(){
+        let emptyVC = EmptyRoutinesSpaceVC()
+        addChild(emptyVC)
+        self.view.addSubview(emptyVC.view)
+        
+        emptyVC.enableHidden()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +61,12 @@ class profilePageViewController: UIViewController {
     
     @objc func refresh() {
         fetchMedicine()
+//        if(coreDataMedicine.items!.count > 0){
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+//        }
+//        else if(coreDataMedicine.items!.count == 0){
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+//        }
     }
     
     func fetchMedicine(){
@@ -109,13 +125,13 @@ extension UIFont {
 
 extension profilePageViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
-//        if self.items?.count == 0 {
-//            return 0
-//        }
-//        else {
-//            return 1
-//        }
+//        1
+        if self.items?.count == 0 {
+            return 0
+        }
+        else {
+            return 2
+        }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         58
@@ -139,8 +155,6 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = self.items![indexPath.row].name
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesTVC
         cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
         cell.routinesDescCellLbl?.text = "Ini keterangan"

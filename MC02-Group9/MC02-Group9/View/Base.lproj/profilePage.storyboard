@@ -112,8 +112,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="daftarRutinitasTableView" destination="a10-JW-pM9" id="NTT-BR-znU"/>
-                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="AddMedicationViewController" id="xms-jq-6he"/>
-                        <segue destination="jZX-Yz-ICg" kind="presentation" identifier="AddBGViewController" id="7w2-2s-ND6"/>
+                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="addMedicationViewController" id="xms-jq-6he"/>
+                        <segue destination="jZX-Yz-ICg" kind="presentation" identifier="addBGViewController" id="7w2-2s-ND6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucx-rd-LzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,7 +225,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OYa-JF-vxI"/>
+        <segue reference="7w2-2s-ND6"/>
         <segue reference="xms-jq-6he"/>
     </inferredMetricsTieBreakers>
     <resources>
