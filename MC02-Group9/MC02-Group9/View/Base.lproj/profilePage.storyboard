@@ -28,10 +28,10 @@
                                     </connections>
                                 </containerView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="DDo-QP-4zk" customClass="RoutinesTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="DDo-QP-4zk" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
                                         <rect key="frame" x="20" y="38" width="374" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DDo-QP-4zk" id="7i5-s0-bQl" customClass="RoutinesTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DDo-QP-4zk" id="7i5-s0-bQl" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -112,8 +112,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="daftarRutinitasTableView" destination="a10-JW-pM9" id="NTT-BR-znU"/>
-                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="AddMedicationViewController" id="xms-jq-6he"/>
-                        <segue destination="jZX-Yz-ICg" kind="presentation" identifier="AddBGViewController" id="7w2-2s-ND6"/>
+                        <segue destination="NXy-ze-r2F" kind="presentation" identifier="addMedicationViewController" id="xms-jq-6he"/>
+                        <segue destination="jZX-Yz-ICg" kind="presentation" identifier="addBGViewController" id="7w2-2s-ND6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucx-rd-LzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,7 +225,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OYa-JF-vxI"/>
+        <segue reference="7w2-2s-ND6"/>
         <segue reference="xms-jq-6he"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -221,7 +221,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
+        if let cell = tableView.cellForRow(at: indexPath) as? BGTypeTableViewCell{
+            if !cell.isFirstResponder{
+                _ = cell.becomeFirstResponder()
+            }
+        }
+        else if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
             }

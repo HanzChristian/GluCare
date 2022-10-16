@@ -28,7 +28,6 @@ class EmptyRoutinesSpaceVC: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableHidden), name: NSNotification.Name(rawValue: "hidden"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "unhidden"), object: nil)
