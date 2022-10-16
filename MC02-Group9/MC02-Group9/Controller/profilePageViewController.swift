@@ -22,6 +22,8 @@ class profilePageViewController: UIViewController {
 //    let coreDataMedicine = CoreDataManager.fetchMedicine
     var rutinitasSection = [RutinitasSection]()
     var items:[Medicine]?
+    var indexPath:IndexPath?
+    var tableView:UITableView?
     
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
     
@@ -43,6 +45,10 @@ class profilePageViewController: UIViewController {
         daftarRutinitasTableView.delegate = self
         view.backgroundColor = .systemGroupedBackground
         
+//        let nibMedsName = UINib(nibName: "RoutinesMedsTVC", bundle: nil)
+//        daftarRutinitasTableView.register(nibMedsName, forCellReuseIdentifier: "routinesMedsTVC")
+        let nibBGName = UINib(nibName: "RoutinesBGTVC", bundle: nil)
+        daftarRutinitasTableView.register(nibBGName, forCellReuseIdentifier: "routinesBGTVC")
 
     //make navbar title rounded
         if let roundedTitleDescriptor = UIFontDescriptor
@@ -125,6 +131,8 @@ extension UIFont {
 
 extension profilePageViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+//  LOGICNYA BELUM BS JALAN KARENA GAADA CORE DATA BG-NYA //
+//  Kalau mau lihat cell ubah return = 2, tp kalau dihapus crash //
 //        1
         if self.items?.count == 0 {
             return 0
@@ -155,18 +163,35 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesTVC
-        cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
-        cell.routinesDescCellLbl?.text = "Ini keterangan"
-        let times = self.items![indexPath.row].time!
-        cell.routinesTimeDescLbl?.text = ""
-        for t in times {
-            cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+        if(indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesMedsTVC
+            cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
+            cell.routinesDescCellLbl?.text = "Ini keterangan Meds"
+            let times = self.items![indexPath.row].time!
+            cell.routinesTimeDescLbl?.text = ""
+            for t in times {
+                cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+            }
+            cell.routinesClockImgView?.image = UIImage(named: "clock")
+            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+            return cell
         }
-        cell.routinesClockImgView?.image = UIImage(named: "clock")
-        cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
-        return cell
+        else if (indexPath.section == 1) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "routinesBGTVC", for: indexPath) as! RoutinesBGTVC
+            cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
+            cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
+            let times = self.items![indexPath.row].time!
+            cell.routinesTimeDescLbl?.text = ""
+            for t in times {
+                cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+            }
+            cell.routinesClockImgView?.image = UIImage(named: "clock")
+            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+            return cell
+        }
+        return UITableViewCell()
     }
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

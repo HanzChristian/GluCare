@@ -1,14 +1,14 @@
 //
-//  RoutinesTVC.swift
+//  RoutinesBGTVC.swift
 //  MC02-Group9
 //
-//  Created by Richard Mulyadi on 06/10/22.
+//  Created by Richard Mulyadi on 16/10/22.
 //
 
 import UIKit
 
-class RoutinesTVC: UITableViewCell {
-    
+class RoutinesBGTVC: UITableViewCell {
+
     @IBOutlet weak var routinesView: UIView!
     @IBOutlet weak var routinesClockImgView: UIImageView!
     @IBOutlet weak var routinesArrowImgView: UIImageView!
@@ -16,7 +16,6 @@ class RoutinesTVC: UITableViewCell {
     @IBOutlet weak var routinesDescCellLbl: UILabel!
     @IBOutlet weak var routinesTimeDescLbl: UILabel!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +26,5 @@ class RoutinesTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
