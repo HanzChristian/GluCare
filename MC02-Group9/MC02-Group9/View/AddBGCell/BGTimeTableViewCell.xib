@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,28 +24,36 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvT-9n-UNZ">
-                        <rect key="frame" x="235.33333333333334" y="4" width="68.666666666666657" height="35"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="gray" title="08.00"/>
-                    </button>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="08:00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLo-kc-qgo">
+                        <rect key="frame" x="244" y="5" width="60" height="34"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="FOw-n1-ltT"/>
+                            <constraint firstAttribute="height" constant="34" id="rHo-tq-PSQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="28O-1z-Sfx" secondAttribute="bottom" constant="11" id="31y-y6-pgc"/>
-                    <constraint firstAttribute="trailing" secondItem="WvT-9n-UNZ" secondAttribute="trailing" constant="16" id="Aqj-eU-ByL"/>
-                    <constraint firstAttribute="bottom" secondItem="WvT-9n-UNZ" secondAttribute="bottom" constant="5" id="Sgd-6Z-4wm"/>
+                    <constraint firstItem="SLo-kc-qgo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Xnq-jz-tAO"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="amQ-M5-XpW"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="cGP-2F-Y9j"/>
-                    <constraint firstItem="WvT-9n-UNZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="imZ-fI-4Ba"/>
+                    <constraint firstAttribute="trailing" secondItem="SLo-kc-qgo" secondAttribute="trailing" constant="16" id="hRj-JD-6PC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bgTimeBtn" destination="WvT-9n-UNZ" id="f2a-kZ-L4i"/>
                 <outlet property="bgTimeLbl" destination="28O-1z-Sfx" id="t6X-ir-bZI"/>
+                <outlet property="bgTimePicker" destination="SLo-kc-qgo" id="fCE-sk-IYE"/>
             </connections>
-            <point key="canvasLocation" x="28" y="21"/>
+            <point key="canvasLocation" x="27.69230769230769" y="20.616113744075829"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
