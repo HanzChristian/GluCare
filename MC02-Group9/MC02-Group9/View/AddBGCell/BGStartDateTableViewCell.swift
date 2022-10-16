@@ -2,7 +2,7 @@
 //  BGStartDateTableViewCell.swift
 //  MC02-Group9
 //
-//  Created by Hanz Christian on 11/10/22.
+//  Created by Richard Mulyadi on 11/10/22.
 //
 
 import UIKit
@@ -13,11 +13,13 @@ class BGStartDateTableViewCell: UITableViewCell {
         @IBOutlet var bgStartDateLbl:UILabel!
         @IBOutlet var bgStartDatePicker: UITextField!
     
+    let currentTime = Date()
     let datePicker = UIDatePicker()
     let dateFormatter = DateFormatter()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        currentDate()
         createDatePicker()
     }
     
@@ -31,21 +33,26 @@ class BGStartDateTableViewCell: UITableViewCell {
         return toolBar
     }
     
+    func currentDate() {
+        dateFormatter.locale = Locale(identifier: "en_gb")
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
+        bgStartDatePicker.text = dateFormatter.string(from: currentTime)
+    }
+    
     func createDatePicker() {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(datePickerValueChange(sender:)), for: UIControl.Event.valueChanged)
         bgStartDatePicker.inputView = datePicker
         bgStartDatePicker.inputAccessoryView = createToolbar()
-  //      bgStartDatePicker.text = dateFormatter.string(from: datePicker.date)
     }
   
     @objc func datePickerValueChange(sender: UIDatePicker) {
         dateFormatter.locale = Locale(identifier: "en_gb")
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        //dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-//        dateFormatter.dateFormat = "HH:mm"
         bgStartDatePicker.text = dateFormatter.string(from: sender.date)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
         

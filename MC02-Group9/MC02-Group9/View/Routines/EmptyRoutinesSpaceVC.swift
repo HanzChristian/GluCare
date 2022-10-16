@@ -25,9 +25,6 @@ class EmptyRoutinesSpaceVC: UIViewController {
         actionSheet.addAction(actInputHasilGulaDarah)
         actionSheet.addAction(actBatal)
         present(actionSheet, animated: true, completion: nil)
-        
-//        performSegue(withIdentifier: "addMedicationViewController", sender: nil)
-//        print("clicckkk")
     }
     
     override func viewDidLoad() {
