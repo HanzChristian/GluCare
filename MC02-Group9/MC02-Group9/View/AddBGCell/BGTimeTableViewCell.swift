@@ -2,7 +2,7 @@
 //  BGTimeTableViewCell.swift
 //  MC02-Group9
 //
-//  Created by Hanz Christian on 11/10/22.
+//  Created by Richard Mulyadi on 11/10/22.
 //
 
 import UIKit

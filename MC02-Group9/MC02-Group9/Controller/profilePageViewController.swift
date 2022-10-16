@@ -73,7 +73,20 @@ class profilePageViewController: UIViewController {
     
 
     @IBAction func didTapAddMed(_ sender: Any) {
-        performSegue(withIdentifier: "AddMedicationViewController", sender: nil)
+        let actionSheet = UIAlertController(title: "Apa yang ingin kamu tambahkan?", message: nil, preferredStyle: .actionSheet)
+        let actJadwalMinumObat = UIAlertAction(title: "Jadwal Minum Obat", style: .default) { _ in
+            self.performSegue(withIdentifier: "addMedicationViewController", sender: nil)
+        }
+        let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default){ _ in
+            self.performSegue(withIdentifier: "addBGViewController", sender: nil)
+        }
+        let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
+        let actBatal = UIAlertAction(title: "Batal", style: .cancel)
+        actionSheet.addAction(actJadwalMinumObat)
+        actionSheet.addAction(actJadwalCekGulaDarah)
+        actionSheet.addAction(actInputHasilGulaDarah)
+        actionSheet.addAction(actBatal)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     

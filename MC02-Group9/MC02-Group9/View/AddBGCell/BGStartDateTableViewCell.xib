@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,18 +25,20 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-gg-J3l">
-                        <rect key="frame" x="173" y="5" width="131" height="34"/>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="01 Jan 2023" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-gg-J3l">
+                        <rect key="frame" x="194" y="5" width="110" height="33"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="131" id="6CM-PS-EV7"/>
+                            <constraint firstAttribute="width" constant="110" id="atq-cy-7Da"/>
+                            <constraint firstAttribute="height" constant="33" id="nMu-pb-qc5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Coh-gg-J3l" secondAttribute="trailing" constant="16" id="ep7-8S-jV1"/>
-                    <constraint firstItem="Coh-gg-J3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xIH-42-n9r"/>
+                    <constraint firstItem="Coh-gg-J3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3ts-In-na2"/>
+                    <constraint firstAttribute="trailing" secondItem="Coh-gg-J3l" secondAttribute="trailing" constant="16" id="DTb-Ua-6Fg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -46,4 +49,9 @@
             <point key="canvasLocation" x="61.538461538461533" y="20.616113744075829"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
