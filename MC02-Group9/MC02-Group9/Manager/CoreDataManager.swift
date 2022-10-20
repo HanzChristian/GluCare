@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import UIKit
+import CloudKit
 
 class CoreDataManager{
     //singleton
@@ -34,6 +35,11 @@ class CoreDataManager{
     //helper
     let calendarManager = CalendarManager.calendarManager
     
+    let ckContainer = CKContainer(identifier:"iCloud.christophorusdavin.glucare")
+    
+    // cloudkit
+    
+    
     private func setupObserverForNotification(){
         let persistentContainer = container
         NotificationCenter.default.addObserver(
@@ -42,14 +48,7 @@ class CoreDataManager{
             name: .NSPersistentStoreRemoteChange,
             object: persistentContainer?.persistentStoreCoordinator
         )
-        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector (fetchMedicine),
-//            name: .NSPersistentStoreRemoteChange,
-//            object: persistentContainer?.persistentStoreCoordinator
-//        )
-//        
+        //        
 //        NotificationCenter.default.addObserver(
 //            self,
 //            selector: #selector (fetchStreak),
@@ -65,12 +64,85 @@ class CoreDataManager{
 //        )
     }
     
+    func mirrorToShared(){
+        let sharedStoreDescription = container.copy()
+//        let sharedStoreURL = storesURL.ap
+        
+    }
+    
+    
+    
+    
+    func getUserInfoIcloud(){
+        
+        ckContainer.accountStatus { [weak self] status, error in
+            DispatchQueue.main.async {
+                switch status{
+                case .available:
+                    print("is SignIn to iCloud")
+                default:
+                    print("x")
+                }
+            }
+        }
+        
+    }
+    
+    func requestPermission() {
+        ckContainer.requestApplicationPermission([.userDiscoverability]) {
+            [weak self] status, error in
+            DispatchQueue.main.async {
+                if status == .granted {
+                    print("granted")
+                    self!.fetchIcloudUserRecordID()
+                }else{
+                    print("not granted")
+                }
+            }
+        }
+        
+    }
+    
+    func fetchIcloudUserRecordID(){
+        ckContainer.fetchUserRecordID { [weak self] id, error in
+            if let id = id {
+                self!.discoveriCloudUser(id: id)
+            }
+        }
+    }
+    
+    func discoveriCloudUser(id: CKRecord.ID){
+        ckContainer.discoverUserIdentity(withUserRecordID: id) { [weak self] identity, error in
+            DispatchQueue.main.async {
+                if let name = identity?.nameComponents?.givenName{
+                    
+                    let x  = identity?.nameComponents?.familyName
+                    let x1 = identity?.lookupInfo?.phoneNumber
+                    let x2 = identity?.lookupInfo?.emailAddress
+                    let y  = identity?.hasiCloudAccount
+                    
+                    
+                    
+                    print("halo name = \(name) \(x!) \(x1) \(x2)")
+                    print("yxx = \(y)")
+                    
+                    
+                    
+                }else{
+                    print("gak ada")
+                }
+            }
+        }
+    }
+    
     private init(){
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         container = appDelegate?.persistentContainer as? NSPersistentCloudKitContainer
         context = container.viewContext
         
         setupObserverForNotification()
+        
+        getUserInfoIcloud()
     }
     
     func batalkan(logToRemove: Log){

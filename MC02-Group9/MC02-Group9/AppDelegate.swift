@@ -7,10 +7,23 @@
 
 import UIKit
 import CoreData
+import CloudKit
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let gCloudKitContainerIdentifier = "iCloud.com.christophorusdavin.glucare"
+    
+    var _privatePersistentStore: NSPersistentStore?
+    var privatePersistentStore: NSPersistentStore {
+        return _privatePersistentStore!
+    }
+
+    var _sharedPersistentStore: NSPersistentStore?
+    var sharedPersistentStore: NSPersistentStore {
+        return _sharedPersistentStore!
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -19,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    static let sharedAppDelegate: AppDelegate = {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Check to make sure the app delegate class hasn't changed: \(String(describing: UIApplication.shared.delegate))")
+        }
+        return delegate
+    }()
 
     // MARK: UISceneSession Lifecycle
 
@@ -33,30 +53,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShare.Metadata) {
+        let sharedStore = sharedPersistentStore
+        let container = persistentContainer
+        
+        container.acceptShareInvitations(from: [cloudKitShareMetadata], into: sharedStore, completion: nil)
+    }
 
     // MARK: - Core Data stack
+    
+    lazy var allowCloudKitSync: Bool = {
+        let arguments = ProcessInfo.processInfo.arguments
+        var allow = true
+        for index in 0..<arguments.count - 1 where arguments[index] == "-CDCKDAllowCloudKitSync" {
+            allow = arguments.count >= (index + 1) ? arguments[index + 1] == "1" : true
+            break
+        }
+        return allow
+    }()
 
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         let container = NSPersistentCloudKitContainer(name: "MC02_Group9")
-        // turn on persistent history tracking
-        let description = container.persistentStoreDescriptions.first
+        let appDelegate = AppDelegate.sharedAppDelegate
+
         
-        description?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        let privateStoreDescription = container.persistentStoreDescriptions.first!
+        let storesURL = privateStoreDescription.url!.deletingLastPathComponent()
+        privateStoreDescription.url = storesURL.appendingPathComponent("private.sqlite")
+        privateStoreDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        privateStoreDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        //Add Shared Database
+        let sharedStoreURL = storesURL.appendingPathComponent("shared.sqlite")
+        guard let sharedStoreDescription = privateStoreDescription.copy() as? NSPersistentStoreDescription else {
+            fatalError("Copying the private store description returned an unexpected value.")
+        }
+        sharedStoreDescription.url = sharedStoreURL
         
-        // turn on remote change notifications
-        let remoteChangeKey="NSPersistentStoreRemoteChangeNotificationOptionKey"
-        description?.setOption(true as NSNumber, forKey: remoteChangeKey)
+        if appDelegate.allowCloudKitSync {
+            let containerIdentifier = privateStoreDescription.cloudKitContainerOptions!.containerIdentifier
+            let sharedStoreOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: containerIdentifier)
+            sharedStoreOptions.databaseScope = .shared
+            sharedStoreDescription.cloudKitContainerOptions = sharedStoreOptions
+        } else {
+            privateStoreDescription.cloudKitContainerOptions = nil
+            sharedStoreDescription.cloudKitContainerOptions = nil
+        }
         
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        
-        
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+        //Load the persistent stores.
+        container.persistentStoreDescriptions.append(sharedStoreDescription)
+        container.loadPersistentStores(completionHandler: { (loadedStoreDescription, error) in
+            if let loadError = error as NSError? {
+                fatalError("###\(#function): Failed to load persistent stores:\(loadError)")
+            } else if let cloudKitContainerOptions = loadedStoreDescription.cloudKitContainerOptions {
+                if .private == cloudKitContainerOptions.databaseScope {
+                    self._privatePersistentStore = container.persistentStoreCoordinator.persistentStore(for: loadedStoreDescription.url!)
+                } else if .shared == cloudKitContainerOptions.databaseScope {
+                    self._sharedPersistentStore = container.persistentStoreCoordinator.persistentStore(for: loadedStoreDescription.url!)
+                }
             }
         })
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.transactionAuthor = "app"
+        
+        // Pin the viewContext to the current generation token, and set it to keep itself up to date with local changes.
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        do {
+            try container.viewContext.setQueryGenerationFrom(.current)
+        } catch {
+            fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+        }
+        
+//        // Observe Core Data remote change notifications.
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(storeRemoteChange(_:)),
+//                                               name: .NSPersistentStoreRemoteChange,
+//                                               object: container.persistentStoreCoordinator)
+        
         return container
+        
     }()
+    
 
     // MARK: - Core Data Saving support
 

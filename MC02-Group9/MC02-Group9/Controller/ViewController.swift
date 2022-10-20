@@ -9,11 +9,20 @@ import UIKit
 import FSCalendar
 import CoreData
 import Gecco
+import CloudKit
 
 // var for logic
 var daySelected = Date()
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate, UICloudSharingControllerDelegate{
+    func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
+        fatalError("Failed to save share \(error)")
+    }
+    
+    func itemTitle(for csc: UICloudSharingController) -> String? {
+        return "hello"
+    }
+    
     
     let notificationCenter = UNUserNotificationCenter.current()
     //    let dismissNotfication = UNNotificationDismissActionIdentifier
@@ -21,16 +30,43 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let cellSpacingHeight:CGFloat = 10
     
     @IBAction func guideBtn(_ sender: Any) {
-        if(coreDataManager.items!.count > 0){
-            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
-            spotLight.alpha = 0.85
-            present(spotLight, animated: true, completion: nil)
+        
+        guard let barButtonItem = sender as? UIBarButtonItem else {
+            fatalError("Not a UI Bar Button item??")
         }
-        else if(coreDataManager.items!.count == 0){
-            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
-            spotLight.alpha = 0.85
-            present(spotLight, animated: true, completion: nil)
+        
+        
+        let container = coreDataManager.container
+        
+        let cloudSharingController = UICloudSharingController {
+            (controller, completion: @escaping (CKShare?, CKContainer?, Error?) -> Void) in
+            container!.share(self.coreDataManager.items!, to: nil) { objectIDs, share, container, error in
+                if let actualShare = share {
+                    self.coreDataManager.context.performAndWait {
+                        actualShare[CKShare.SystemFieldKey.title] = "Caregiver link"
+                    }
+                }
+                completion(share, container, error)
+            }
         }
+        cloudSharingController.delegate = self
+        
+        if let popover = cloudSharingController.popoverPresentationController {
+            popover.barButtonItem = barButtonItem
+        }
+        present(cloudSharingController, animated: true) {}
+        
+        
+//        if(coreDataManager.items!.count > 0){
+//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
+//            spotLight.alpha = 0.85
+//            present(spotLight, animated: true, completion: nil)
+//        }
+//        else if(coreDataManager.items!.count == 0){
+//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
+//            spotLight.alpha = 0.85
+//            present(spotLight, animated: true, completion: nil)
+//        }
     }
     
     func setup(){
@@ -98,8 +134,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
          }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         self.tabBarController?.delegate = self
 
@@ -187,6 +226,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         setNib()
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetHidden), name: NSNotification.Name(rawValue: "sheetOn"), object: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetunHidden), name: NSNotification.Name(rawValue: "sheetOff"), object: nil)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.coreDataManager.requestPermission()
+            
+        }
+        
+        
+        
+        
         
     }
     
