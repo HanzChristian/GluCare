@@ -53,7 +53,7 @@ class CoreDataManager{
 //            self,
 //            selector: #selector (fetchStreak),
 //            name: .NSPersistentStoreRemoteChange,
-//            object: persistentContainer?.persistentStoreCoordinator
+//            object: persistentContainer?.persistentStoreCoordinatorm
 //        )
 //        
 //        NotificationCenter.default.addObserver(
@@ -285,9 +285,19 @@ class CoreDataManager{
         do{
             let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
             
-            self.medicines = try context.fetch(request)
-    
-        }catch{
+            //self.medicines = try context.fetch(request)
+            
+            let controller = NSFetchedResultsController(fetchRequest: request,
+                                                        managedObjectContext: container.viewContext,
+                                                        sectionNameKeyPath: nil, cacheName: nil)
+            
+            do {
+                try controller.performFetch()
+            } catch {
+                fatalError("###\(#function): Failed to performFetch: \(error)")
+            }
+            
+            self.medicines = controller.fetchedObjects
             
         }
     }
@@ -305,12 +315,32 @@ class CoreDataManager{
     
     @objc func fetchMedicine(tableView: UITableView){
         do{
-            let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
+//            let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
+//
+//            let sort = NSSortDescriptor(key: "time", ascending: true)
+//            request.sortDescriptors = [sort]
+//
+//            self.items = try context.fetch(request)
             
+            let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
             let sort = NSSortDescriptor(key: "time", ascending: true)
             request.sortDescriptors = [sort]
             
-            self.items = try context.fetch(request)
+            //self.medicines = try context.fetch(request)
+            
+            let controller = NSFetchedResultsController(fetchRequest: request,
+                                                        managedObjectContext: container.viewContext,
+                                                        sectionNameKeyPath: nil, cacheName: nil)
+            
+            do {
+                try controller.performFetch()
+            } catch {
+                fatalError("###\(#function): Failed to performFetch: \(error)")
+            }
+            
+            self.items = controller.fetchedObjects
+            
+            
             
             DispatchQueue.main.async {
                 tableView.reloadData()
@@ -327,6 +357,8 @@ class CoreDataManager{
             logs?.removeAll()
             let request = Log.fetchRequest() as NSFetchRequest<Log>
             
+            
+            
             // Get the current calendar with local time zone
 
             // Get today's beginning & end
@@ -342,8 +374,20 @@ class CoreDataManager{
             let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
             
             request.predicate = datePredicate
-            
+             
             self.logs = try context.fetch(request)
+            // New
+//            let controller = NSFetchedResultsController(fetchRequest: request,
+//                                                        managedObjectContext: container.viewContext,
+//                                                        sectionNameKeyPath: nil, cacheName: nil)
+//
+//            do {
+//                try controller.performFetch()
+//            } catch {
+//                fatalError("###\(#function): Failed to performFetch: \(error)")
+//            }
+//
+//            self.logs = controller.fetchedObjects
             
             DispatchQueue.main.async {
                 tableView.reloadData()

@@ -704,6 +704,8 @@ extension ViewController:UITableViewDataSource{
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
         cell.indexPath = indexPath.row
         
+        
+        
         for (index, log) in coreDataManager.logs!.enumerated() {
             if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
                 
