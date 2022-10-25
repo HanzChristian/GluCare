@@ -113,6 +113,209 @@
             </objects>
             <point key="canvasLocation" x="1630.7692307692307" y="71.090047393364927"/>
         </scene>
+        <!--On BoardingVC-->
+        <scene sceneID="48E-D9-sJ4">
+            <objects>
+                <viewController storyboardIdentifier="OnBoardingVC" id="4iB-Lb-QsR" customClass="OnBoardingVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1dO-ZG-OPq">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-yo-9pA">
+                                <rect key="frame" x="300" y="68" width="74" height="35"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Lewati"/>
+                                <connections>
+                                    <action selector="skipBtnAction:" destination="4iB-Lb-QsR" eventType="touchUpInside" id="99T-wg-HYt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeP-vE-8ma">
+                                <rect key="frame" x="204" y="708" width="165" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Berikutnya"/>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Jl-98-c81">
+                                <rect key="frame" x="20" y="139" width="350" height="561"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6n-T9-OsR">
+                                    <size key="itemSize" width="345" height="555"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onBoardingCVCell" id="B1P-dt-TBJ" customClass="OnBoardingCVCell" customModule="MC02_Group9" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="3" width="345" height="555"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Nyn-vV-GYu">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="555"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="OFo-M0-e5j">
+                                                    <rect key="frame" x="12" y="34" width="320" height="320"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="OFo-M0-e5j" secondAttribute="height" multiplier="1:1" id="ze5-Xr-FpB"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GQ-eL-F0D">
+                                                    <rect key="frame" x="12" y="379" width="320" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOJ-FC-8c2">
+                                                    <rect key="frame" x="12" y="421" width="320" height="89"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="345" height="555"/>
+                                        <connections>
+                                            <outlet property="onboardImgView" destination="OFo-M0-e5j" id="QrE-Xd-1rS"/>
+                                            <outlet property="subtitleLbl" destination="sOJ-FC-8c2" id="T9F-3t-mXb"/>
+                                            <outlet property="titleLbl" destination="3GQ-eL-F0D" id="eLZ-Ku-8SN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MV6-Cy-SQU">
+                                <rect key="frame" x="20" y="671" width="350" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" systemColor="systemCyanColor"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemBlueColor"/>
+                                <connections>
+                                    <action selector="pageValueChanged:" destination="4iB-Lb-QsR" eventType="valueChanged" id="tcD-he-EkQ"/>
+                                </connections>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QI6-nN-DcK">
+                                <rect key="frame" x="19" y="708" width="165" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Kembali"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXk-AX-rZ3">
+                                <rect key="frame" x="19" y="751" width="351" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Mulai"/>
+                                <connections>
+                                    <action selector="signupBtnAction:" destination="4iB-Lb-QsR" eventType="touchUpInside" id="aUB-qZ-lY3"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="glucare-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Yuk-P2-KgO">
+                                <rect key="frame" x="20" y="68" width="45" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bkd-Rk-bx3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bkd-Rk-bx3" firstAttribute="trailing" secondItem="2Jl-98-c81" secondAttribute="trailing" constant="20" id="0sg-oi-Qkn"/>
+                            <constraint firstItem="2Jl-98-c81" firstAttribute="top" secondItem="Zbz-yo-9pA" secondAttribute="bottom" constant="20" id="Go4-ah-UcS"/>
+                            <constraint firstItem="2Jl-98-c81" firstAttribute="leading" secondItem="Bkd-Rk-bx3" secondAttribute="leading" constant="20" id="cEp-Kc-ehC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backBtn" destination="QI6-nN-DcK" id="WgC-D8-7Af"/>
+                        <outlet property="collectionView" destination="2Jl-98-c81" id="LkX-af-CeY"/>
+                        <outlet property="logoImg" destination="Yuk-P2-KgO" id="Anf-bd-Bxe"/>
+                        <outlet property="nextBtn" destination="oeP-vE-8ma" id="TYc-Br-12F"/>
+                        <outlet property="pageControl" destination="MV6-Cy-SQU" id="L5g-wN-KME"/>
+                        <outlet property="signupBtn" destination="JXk-AX-rZ3" id="ZxW-vI-GOj"/>
+                        <outlet property="skipBtn" destination="Zbz-yo-9pA" id="Q9S-Pd-ySi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa6-vG-qbh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1946.1538461538462" y="69.66824644549763"/>
+        </scene>
+        <!--Role ManagementVC-->
+        <scene sceneID="sYy-Uk-P5d">
+            <objects>
+                <viewController storyboardIdentifier="RoleManagementVC" id="oSz-iB-UEh" customClass="RoleManagementVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D7y-lu-U4U">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamu adalah ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-9R-uwq">
+                                <rect key="frame" x="20" y="127" width="187" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1b-Bg-wtz">
+                                <rect key="frame" x="20" y="189" width="351" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="card-patient"/>
+                                <connections>
+                                    <action selector="didTapCardPBtn:" destination="oSz-iB-UEh" eventType="touchUpInside" id="SqF-wv-CzS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="if1-IE-f4m">
+                                <rect key="frame" x="20" y="364" width="351" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="card-caregiver"/>
+                                <connections>
+                                    <action selector="didTapCardCBtn:" destination="oSz-iB-UEh" eventType="touchUpInside" id="CU6-pH-dXU"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="7Yt-qG-Po3">
+                                <rect key="frame" x="20" y="622" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bca-lE-1ZO">
+                                <rect key="frame" x="20" y="686" width="351" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="KONFIRMASI"/>
+                                <connections>
+                                    <action selector="didTapConfirmBtn:" destination="oSz-iB-UEh" eventType="touchUpInside" id="X3n-VD-OHf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Peranmu tidak dapat diubah setelah konfirmasi" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-LG-0gz">
+                                <rect key="frame" x="66" y="616" width="305" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jDi-p3-FZt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="caregiverCardBtn" destination="if1-IE-f4m" id="yIN-uu-5D7"/>
+                        <outlet property="confirmBtn" destination="bca-lE-1ZO" id="Z6e-Mg-Vi1"/>
+                        <outlet property="patientCardBtn" destination="A1b-Bg-wtz" id="gTx-od-XAR"/>
+                        <outlet property="warningImg" destination="7Yt-qG-Po3" id="SbN-WO-yLB"/>
+                        <outlet property="warningLbl" destination="MH4-LG-0gz" id="WyC-Pq-Blw"/>
+                        <outlet property="youAreLbl" destination="ROf-9R-uwq" id="J5q-xV-myW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgs-U4-hS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1110.7692307692307" y="69.66824644549763"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="mKz-HX-BJs">
+            <objects>
+                <viewControllerPlaceholder id="jSb-pp-LrS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6QV-R5-1Z9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1828" y="-437"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hUj-a1-HlK">
             <objects>
@@ -444,11 +647,28 @@
         </scene>
     </scenes>
     <resources>
+        <image name="card-caregiver" width="351" height="132"/>
+        <image name="card-patient" width="351" height="132"/>
         <image name="empty" width="386" height="546"/>
+        <image name="glucare-logo" width="45" height="36"/>
         <image name="med" width="20" height="19.333333969116211"/>
+        <image name="onboard1" width="320" height="320"/>
         <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <image name="warning" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
