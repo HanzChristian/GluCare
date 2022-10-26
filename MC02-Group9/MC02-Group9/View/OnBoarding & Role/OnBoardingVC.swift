@@ -104,7 +104,7 @@ extension OnBoardingVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "onBoardingCVCell", for: indexPath) as! OnBoardingCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnBoardingCVCell", for: indexPath) as! OnBoardingCVCell
 //        cell.onboardImageWidthConstraint.constant = normalize(value: 260.0)
         cell.onboardImgView.image = imageArray[indexPath.row]
         cell.titleLbl.text = titleArray[indexPath.row]

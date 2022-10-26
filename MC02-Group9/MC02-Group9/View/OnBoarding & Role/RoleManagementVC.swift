@@ -15,22 +15,32 @@ class RoleManagementVC: UIViewController {
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var confirmBtn: UIButton!
     
+    var roles = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        confirmBtn.layer.cornerRadius = 10
+        confirmBtn.backgroundColor = .gray
+        confirmBtn.isEnabled = false
+        validateForm()
     }
     
     @IBAction func didTapCardPBtn(_ sender: UIButton) {
         patientCardBtn.setImage(UIImage(named: "card-patient-click"), for: .normal)
         caregiverCardBtn.setImage(UIImage(named: "card-caregiver"), for: .normal)
+        confirmBtn.backgroundColor = .systemBlue
+        roles = 1
+        validateForm()
     }
     
     @IBAction func didTapCardCBtn(_ sender: UIButton) {
         patientCardBtn.setImage(UIImage(named: "card-patient"), for: .normal)
         caregiverCardBtn.setImage(UIImage(named: "card-caregiver-click"), for: .normal)
+        confirmBtn.backgroundColor = .systemBlue
+        roles = 2
+        validateForm()
     }
     
-    @IBAction func didTapConfirmBtn(_ sender: Any) {
+    @IBAction func didTapConfirmBtn(_ sender: UIButton) {
         showAlert()
     }
     
@@ -41,14 +51,25 @@ class RoleManagementVC: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { action in
-            print("tapped kembali")
+            print("tapped Ya")
+            print("self.roles ", self.roles)
+            userRoles.userRole = self.roles
+            print(userRoles.userRole, "user roles")
+            self.performSegue(withIdentifier: "goToMain", sender: self)
         }))
         
         present(alert, animated: true)
     }
     
-    
-    
+    @objc func validateForm(){
+        if (self.roles != 0) {
+            confirmBtn.isEnabled = true
+        }
+    }
+}
+
+struct userRoles {
+    static var userRole = 0
 }
 
 

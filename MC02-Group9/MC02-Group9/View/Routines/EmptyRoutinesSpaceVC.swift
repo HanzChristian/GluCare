@@ -24,6 +24,7 @@ class EmptyRoutinesSpaceVC: UIViewController {
         actionSheet.addAction(actJadwalCekGulaDarah)
         actionSheet.addAction(actInputHasilGulaDarah)
         actionSheet.addAction(actBatal)
+//        print("user roles", userRoles.userRole)
         present(actionSheet, animated: true, completion: nil)
     }
     

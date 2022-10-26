@@ -103,5 +103,4 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
 
 struct mealVars {
     static var mealPickedRow = 4
-    
 }

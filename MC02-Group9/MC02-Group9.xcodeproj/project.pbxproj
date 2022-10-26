@@ -74,6 +74,7 @@
 		1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCAEAC2863293500E97CBA /* MealTime.swift */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */; };
+		2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */; };
 		2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */; };
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
 		2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */; };
@@ -82,6 +83,7 @@
 		2C8A3D8A2907B92A00B0646A /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D892907B92A00B0646A /* ImageHelper.swift */; };
 		2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */; };
 		2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */; };
+		2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */; };
 		2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */; };
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
@@ -174,6 +176,7 @@
 		1F8813B82861E0DF009994F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Badge.storyboard; sourceTree = "<group>"; };
 		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
 		2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesBGTVC.swift; sourceTree = "<group>"; };
+		2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedDescTableViewCell.swift; sourceTree = "<group>"; };
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
 		2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -182,6 +185,7 @@
 		2C8A3D892907B92A00B0646A /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCVCell.swift; sourceTree = "<group>"; };
 		2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleManagementVC.swift; sourceTree = "<group>"; };
+		2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTextFieldTVC.swift; sourceTree = "<group>"; };
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -344,8 +348,10 @@
 			isa = PBXGroup;
 			children = (
 				2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */,
+				2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */,
 				2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */,
 				2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */,
+				2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */,
 			);
 			path = "OnBoarding & Role";
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
+				2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */,
@@ -649,6 +656,7 @@
 				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,
+				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
 				15D576D528EC02AA00603F1D /* Medicine+CoreDataProperties.swift in Sources */,
