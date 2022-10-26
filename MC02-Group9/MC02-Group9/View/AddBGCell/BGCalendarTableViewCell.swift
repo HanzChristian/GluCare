@@ -14,7 +14,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     var calendarMonthModel:[CalendarModel]?
     var calendarWiden:Bool = false
 
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         calendarCollectionView.delegate = self
@@ -31,10 +31,12 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     @objc func wideCalendarSelected(){
         calendarWiden = true
+        dateVars.datePickedRow.removeAll()
     }
     
     @objc func narrowCalendarSelected(){
         calendarWiden = false
+        dateVars.datePickedRow.removeAll()
     }
     
 
@@ -59,12 +61,6 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         cell?.configure(with: calendarModel[indexPath.row])
         let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
         
-        //belom kelar
-//        if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == true){
-//            cell!.backgroundColor = .systemGroupedBackground
-//            cell!.layer.cornerRadius = 20
-//        }
-        
         cell!.backgroundColor = .white
         cell!.layer.cornerRadius = 0
         cell!.calendarLbl.textColor = .black
@@ -74,22 +70,15 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
             if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == true){
                 cell!.backgroundColor = blue
                 cell!.calendarLbl.textColor = .white
-                cell!.calendarLbl.layer.cornerRadius = 20
-                cell!.layer.cornerRadius = 20
-                print("TESTESTESTESTES")
+                cell!.calendarLbl.layer.cornerRadius = 36 / 2
+                cell!.layer.cornerRadius = 36 / 2
             }
-//            }else{
-//                cell!.backgroundColor = .white
-//                cell!.layer.cornerRadius = 0
-//                print("TISTISTISTISTIS")
-//            }
         }else{
             if(CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected == true){
                 cell!.backgroundColor = blue
                 cell!.calendarLbl.textColor = .white
-                cell!.layer.cornerRadius = 20
-                cell!.calendarLbl.layer.cornerRadius = 20
-                print("TESTESTESTESTES")
+                cell!.layer.cornerRadius = 36 / 2
+                cell!.calendarLbl.layer.cornerRadius = 36 / 2
             }
             
             
@@ -115,29 +104,46 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        if(calendarWiden == false){
-            print("kontolodon megalodon \(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row])")
+        if(calendarWiden == false){ //minggu
             
+            let idx = CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].position+1
             if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == false){
                 CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected = true
+                
+                dateVars.datePickedRow.append(Int16(idx))
                 reloadCollectionView()
             }else{
                 CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected = false
                 reloadCollectionView()
+                
+                for i in stride(from: 0, to: dateVars.datePickedRow.count, by: 1) {
+                    if(dateVars.datePickedRow[i] == idx){
+                        dateVars.datePickedRow.remove(at: i)
+                        return
+                    }
+                }
+                
             }
+            print(dateVars.datePickedRow)
         }else{
-            print("kontolodon megalodon \(CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row])")
-            
+            let idx = CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].position+1
             if(CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected == false){
                 CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected = true
                 reloadCollectionView()
+                dateVars.datePickedRow.append(Int16(idx))
             }else{
                 CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected = false
                 reloadCollectionView()
+                
+                for i in stride(from: 0, to: dateVars.datePickedRow.count, by: 1) {
+                    if(dateVars.datePickedRow[i] == idx){
+                        dateVars.datePickedRow.remove(at: i)
+                        return
+                    }
+                }
             }
+            print(dateVars.datePickedRow)
         }
-        
-        
     }
     
     func collectionViewLayout(){
@@ -153,4 +159,8 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     
     
+}
+
+struct dateVars {
+    static var datePickedRow:[Int16] = []
 }

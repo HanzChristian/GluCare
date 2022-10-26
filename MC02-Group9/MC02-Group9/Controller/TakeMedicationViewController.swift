@@ -76,6 +76,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     @objc func saveSheet(){
 
         if(switchMode!.switchOnTime.isOn == true){
+            print("adadada \(daySelected)")
             //Tepat Waktu
             self.coreDataManager.tepatWaktu(daySelected: daySelected!, indexPath: indexPath!)
         }

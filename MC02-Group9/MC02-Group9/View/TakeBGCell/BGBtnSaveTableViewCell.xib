@@ -29,6 +29,9 @@
                             <color key="baseForegroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="baseBackgroundColor" red="0.7803921568627451" green="0.8784313725490196" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="pressedSkip:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="olc-fJ-tJ2"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTw-IB-uux">
                         <rect key="frame" x="186" y="3" width="152" height="45"/>
@@ -40,6 +43,9 @@
                         <buttonConfiguration key="configuration" style="filled" title="Simpan">
                             <color key="baseBackgroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="pressedSave:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2pi-Va-sGl"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

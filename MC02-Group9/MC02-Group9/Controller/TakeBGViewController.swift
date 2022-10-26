@@ -11,6 +11,13 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tblViewBG: UITableView!
     
+    var cellBGName: BGNameTableViewCell?
+    var cellBGResult: BGResultTableViewCell?
+    var indexPath:IndexPath?
+    var daySelected: Date?
+    let coreDataManager = CoreDataManager.coreDataManager
+    var jadwalVars = [JadwalVars]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +31,22 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         setNib()
         
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.), name: NSNotification.Name(rawValue: "saveSheet"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.saveSheet), name: NSNotification.Name(rawValue: "saveBG"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.skipSheet), name: NSNotification.Name(rawValue: "skipBG"), object: nil)
+        
+    }
+    
+    @objc func saveSheet(){
+        self.coreDataManager.simpanBG(daySelected: daySelected!, indexPath: indexPath!,bGResult: (cellBGResult?.BGInputLbl.text)!)
+        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: daySelected!)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func skipSheet(){
+        self.coreDataManager.lewatBG(daySelected: daySelected!, indexPath: indexPath!,bGResult: (cellBGResult?.BGInputLbl.text)!)
+        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: self.daySelected!)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func reloadTableView(){
@@ -36,8 +59,6 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         }
     }
     
-    @objc func saveSheet(){ //nanti buat simpen sheetnya tunggu si richard
-    }
     
     func setNav(){
         
@@ -86,19 +107,40 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let check = jadwalVars[indexPath.row]
+        let bg = self.coreDataManager.bg![check.idx]
         if(indexPath.section == 0){
             if(indexPath.row == 0){
-                let cell = tblViewBG.dequeueReusableCell(withIdentifier: "bgNameTableViewCell", for: indexPath) as! BGNameTableViewCell
-                cell.BGNameLbl.text = "Masih dummy"
-                return cell
+                print("ini selected idx \(coreDataManager.medicineSelectedIdx)")
+                
+                cellBGName = tblViewBG.dequeueReusableCell(withIdentifier: "bgNameTableViewCell", for: indexPath) as! BGNameTableViewCell
+                
+                if(bg.bg_type == 0){
+                    cellBGName!.BGNameLbl.text = "Gula Darah Puasa"
+                }else if(bg.bg_type == 1){
+                    cellBGName!.BGNameLbl.text = "Gula Darah Sesaat"
+                }else{
+                    cellBGName!.BGNameLbl.text = "HBA1C"
+                }
+                
+                print("INI NILAI DARI BG TYPE \(bg.bg_type)")
+                
+                return cellBGName!
             }
         }
         else if(indexPath.section == 1){
             if(indexPath.row == 0){
-                let cell = tblViewBG.dequeueReusableCell(withIdentifier: "bgResultTableViewCell", for:indexPath) as! BGResultTableViewCell
-                cell.BGInputLbl?.placeholder = "Misal: Metformin 250g"
-                cell.BGUnitLbl.text = "%"
-                return cell
+                cellBGResult = tblViewBG.dequeueReusableCell(withIdentifier: "bgResultTableViewCell", for:indexPath) as! BGResultTableViewCell
+                cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
+                
+                if(bg.bg_type == 0){
+                    cellBGResult!.BGUnitLbl.text = "mg/dL"
+                }else if(bg.bg_type == 1){
+                    cellBGResult!.BGUnitLbl.text = "mg/dL"
+                }else{
+                    cellBGResult!.BGUnitLbl.text = "%"
+                }
+                return cellBGResult!
             }
         }
         else if(indexPath.section == 2){

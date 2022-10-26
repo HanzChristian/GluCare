@@ -21,5 +21,6 @@ extension Log {
     @NSManaged public var medicine_name: String?
     @NSManaged public var time: String?
     @NSManaged public var dateTake: Date?
+    @NSManaged public var bg_check_result: String?
 
 }

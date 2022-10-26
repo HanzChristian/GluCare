@@ -12,6 +12,7 @@ class BGNameTableViewCell: UITableViewCell {
     @IBOutlet weak var BGNameLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        BGNameLbl.font = UIFont.boldSystemFont(ofSize: 16)
         // Initialization code
     }
 

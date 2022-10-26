@@ -54,8 +54,8 @@ class BGStartDateTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         bgStartDatePicker.text = dateFormatter.string(from: sender.date)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
+        print("BGSTARTDATEPICKER \(bgStartDatePicker.text)")
     }
   
     @objc func btnDoneClicked(){

@@ -65,8 +65,10 @@ class BGTypeTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         bgTypeLbl.textColor = .black
         bgTypeLbl.text = bgType[row]
+        typeVars.typePickedRow = row
         bgTypePicked = true
         bgTypeLbl.resignFirstResponder()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }
     
     @objc func doneTapped() {
@@ -86,4 +88,8 @@ class BGTypeTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
             pickerView.isHidden = false
         }
     }
+}
+
+struct typeVars {
+    static var typePickedRow = 3
 }

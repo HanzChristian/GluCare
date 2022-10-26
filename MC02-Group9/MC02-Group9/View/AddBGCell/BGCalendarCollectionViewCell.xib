@@ -17,8 +17,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY8-vO-lk5">
-                        <rect key="frame" x="16" y="12" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY8-vO-lk5">
+                        <rect key="frame" x="0.0" y="4" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="CXy-BG-I42"/>
+                            <constraint firstAttribute="height" constant="36" id="Uoi-7k-DeU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -28,9 +32,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="jY8-vO-lk5" secondAttribute="bottom" constant="11" id="D46-Zf-sts"/>
-                <constraint firstItem="jY8-vO-lk5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="E8W-Hh-gtq"/>
-                <constraint firstItem="jY8-vO-lk5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="hFA-7Z-3y4"/>
+                <constraint firstAttribute="bottom" secondItem="jY8-vO-lk5" secondAttribute="bottom" constant="4" id="8Nl-VJ-vK6"/>
+                <constraint firstItem="jY8-vO-lk5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="eDF-YS-0wR"/>
+                <constraint firstItem="jY8-vO-lk5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yyZ-m1-DV2"/>
             </constraints>
             <size key="customSize" width="290" height="43"/>
             <connections>

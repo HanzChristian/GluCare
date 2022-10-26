@@ -22,6 +22,8 @@ class CoreDataManager{
     var logs:[Log]?
     var streaks:[Streak]?
     var medicines:[Medicine]?
+    var bg:[BG]?
+    var bgTime:[BG_Time]?
     
     //takemed attribute
     var medicineSelectedIdx = 0
@@ -39,6 +41,83 @@ class CoreDataManager{
     func batalkan(logToRemove: Log){
         // remove log
         self.context.delete(logToRemove)
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+    }
+    
+    func lewatBG(daySelected: Date,indexPath: IndexPath,bGResult:String){
+        //change daySelected to String
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_gb")
+        formatter.dateFormat = "dd MMM yyyy"
+        let tanggal = formatter.string(from: daySelected)
+        // print(tanggal)
+        
+        // Create String
+        let time = self.items![indexPath.row].time!
+        let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+        let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+        print(string)
+        // 29 October 2019 20:15:55 +0200
+
+        
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+
+        // Set Date Format
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+        // Convert String to Date
+        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+        
+        let log = Log(context: self.context)
+        log.date = dateFormatter.date(from: string)
+        log.dateTake = dateFormatter.date(from: string)
+        log.action = "Skip"
+        log.bg_check_result = bGResult
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+    }
+    
+    func simpanBG(daySelected: Date,indexPath: IndexPath,bGResult:String){
+        //change daySelected to String
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_gb")
+        formatter.dateFormat = "dd MMM yyyy"
+        let tanggal = formatter.string(from: daySelected)
+        // print(tanggal)
+        
+        // Create String
+        let time = self.items![indexPath.row].time!
+        let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+        let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+        print(string)
+        // 29 October 2019 20:15:55 +0200
+
+        
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+
+        // Set Date Format
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+        // Convert String to Date
+        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+        
+        let log = Log(context: self.context)
+        log.date = dateFormatter.date(from: string)
+        log.dateTake = dateFormatter.date(from: string)
+        log.action = "Take"
+        log.bg_check_result = bGResult
+        print("INI BG RESULTNYA \(log.bg_check_result)")
         
         do{
             try self.context.save()
@@ -132,6 +211,34 @@ class CoreDataManager{
         }
     }
     
+    func checkBG(daySelected: Date, indexPath: IndexPath){
+        //change daySelected to String
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_gb")
+        formatter.dateFormat = "dd MMM yyyy"
+        let tanggal = formatter.string(from: daySelected)
+        // print(tanggal)
+        
+        // Create String
+        let time = self.items![indexPath.row].time!
+        let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+        let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
+        print(string)
+        // 29 October 2019 20:15:55 +0200
+
+        
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+
+        // Set Date Format
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+        // Convert String to Date
+        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+        
+        let bg_time = BG_Time(context: self.context)
+        
+    }
     
     func tepatWaktu(daySelected: Date, indexPath: IndexPath){
         //change daySelected to String
@@ -167,6 +274,33 @@ class CoreDataManager{
         
         do{
             try self.context.save()
+        }catch{
+            
+        }
+    }
+    
+    func fetchBG(){
+        do{
+            let request = BG.fetchRequest() as NSFetchRequest<BG>
+            
+            let sort = NSSortDescriptor(key: "bg_time", ascending: true)
+            request.sortDescriptors = [sort]
+            
+            self.bg = try context.fetch(request)
+            
+        }catch{
+            
+        }
+    }
+    
+    func fetchBGTime(daySelected:Date){
+        let f = DateFormatter()
+
+        do{
+            let request = BG_Time.fetchRequest() as NSFetchRequest<BG_Time>
+            
+            self.bgTime = try context.fetch(request)
+            
         }catch{
             
         }

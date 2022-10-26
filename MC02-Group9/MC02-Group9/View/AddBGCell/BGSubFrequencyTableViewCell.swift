@@ -86,6 +86,7 @@ class BGSubFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         daysVars.dayPickedRow = row
         bgSubFrequencyDay.resignFirstResponder()
         bgSubFrequencyDay.textColor = .systemBlue
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
         //melakukan validasi total
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }

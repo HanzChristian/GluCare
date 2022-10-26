@@ -6,23 +6,35 @@
 //
 
 import UIKit
+protocol checkBGForm {
+    func validateFormBG()
+}
 
-class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
+class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UITableViewDataSource {
+    
     @IBOutlet var tableView: UITableView!
     
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
     
     
-    var cellFrequencyPicker: BGFrequencyTableViewCell?
     var cellCalendar: BGCalendarTableViewCell?
     var bgFrequency: BGFrequencyTableViewCell?
+    
+    var cellBgTypeTV: BGTypeTableViewCell?
+    var cellBgStartDateTV: BGStartDateTableViewCell?
+    var cellBgTimeTV: BGTimeTableViewCell?
+    var cellBgSubFrequency: BGSubFrequencyTableViewCell?
+    var cellBgSubPicker = [BGSubFrequencyTableViewCell]()
+    var cellDateCV : BGCalendarCollectionViewCell?
     
     var calendarOff:Bool = true
     var calendarWiden:Bool = false
     
-
+    let currentTime = Date()
+    let dateFormatter = DateFormatter()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +42,10 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         view.backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
+        
+        scheduleVars.schedulePickedRow = 3
+        typeVars.typePickedRow = 3
+        daysVars.dayPickedRow = 31
         
         cellCalendar?.isHidden = true
         
@@ -44,14 +60,16 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
                 ]
         }
         setNavItem()
-        
         setNib()
+        validateFormBG()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableCalendar), name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableCalendar), name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.wideCalendar), name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.narrowCalendar), name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.validateFormBG), name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }
     
     @objc func wideCalendar(){
@@ -76,23 +94,81 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         reloadTableView()
     }
     
+    @objc func validateFormBG(){
+        if let txtType = cellBgTypeTV?.bgTypeLbl.text, txtType != "Pilih Jenis Cek Gula Darah", let txtDate = cellBgStartDateTV?.bgStartDatePicker.text, !txtDate.isEmpty, let txtTime = cellBgTimeTV?.bgTimePicker.text,!txtTime.isEmpty, let txtFreq = bgFrequency?.bgFrequencyScheduleLbl.text,!txtFreq.isEmpty, let txtEachFreq = cellBgSubFrequency?.bgSubFrequencyDay.text,!txtEachFreq.isEmpty{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }else{
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
     func reloadTableView(){
         do{
             DispatchQueue.main.async {
+                
+                let indexPath = IndexPath(item: 2, section: 1)
+                self.tableView.reloadRows(at: [indexPath], with: .top)
+                
                 self.tableView.reloadData()
             }
         }catch{
-
+            
         }
     }
-
+    
     @objc private func dismissSelf(){
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func saveItem(){
         //tunggu semuanya ke save dlu baru diupdate
-        dismiss(animated: true,completion: nil)
+    
+        let bg = BG(context: context)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.string(from: currentTime)
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        let bgStartDate = cellBgStartDateTV?.bgStartDatePicker.text
+        let bgDate = dateFormatter.date(from: bgStartDate!)
+        
+        bg.bg_type = Int16(typeVars.typePickedRow)
+        bg.bg_start_date = bgDate
+        bg.bg_time = cellBgTimeTV?.bgTimePicker.text
+        bg.bg_frequency = Int16(scheduleVars.schedulePickedRow)
+        bg.bg_each_frequency = Int16(daysVars.dayPickedRow)+1
+        
+        
+        
+        //        print("INI BG TYPE = \(bg.bg_type)")
+        //        print("INI BG START DATE = \(bg.bg_start_date)")
+        //        print("INI BG TIME = \(bg.bg_time)")
+        //        print("INI BG FREQ = \(bg.bg_frequency)")
+        //        print("INI BG EACH FREQ = \(bg.bg_each_frequency)")
+        
+        //save tanggal sesuai kondisinya
+        
+        //            bg_time.bg_date_item = Int16(days.bgSubFrequencyDay.text)
+        
+        if(scheduleVars.schedulePickedRow == 1 || scheduleVars.schedulePickedRow == 2){
+            for i in dateVars.datePickedRow{
+                var bg_time = BG_Time(context: context)
+                bg_time.bg_date_item = i
+                bg.addToTime(bg_time)
+                print("BG TIME \(i)")
+            }
+        }
+        
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)//nanti objectnya di viewcontroller buat fetch datanya Add BG
+        
+        dismiss(animated: true, completion: nil)
+        
+        //        dismiss(animated: true,completion: nil)
     }
     
     private func setNavItem(){
@@ -109,7 +185,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)]
         
         //tunggu kondisi
-//  navigationItem.rightBarButtonItem?.isEnabled = false
+        //  navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func setNib(){
@@ -143,32 +219,35 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         if(indexPath.section == 0){
             if(indexPath.row == 0){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "bgTypeTableViewCell", for: indexPath) as! BGTypeTableViewCell
-                cell.bgTypeLbl.text = "Pilih Jenis Cek Gula Darah"
-                return cell
+                cellBgTypeTV = tableView.dequeueReusableCell(withIdentifier: "bgTypeTableViewCell", for: indexPath) as! BGTypeTableViewCell
+                cellBgTypeTV!.bgTypeLbl.text = "Pilih Jenis Cek Gula Darah"
+                validateFormBG()
+                return cellBgTypeTV!
             }
         }
         else if(indexPath.section == 1){
             if(indexPath.row == 0){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "bgStartDateTableViewCell",for:indexPath) as! BGStartDateTableViewCell
-                cell.bgStartDateLbl.text = "Tanggal Mulai"
-                return cell
+                cellBgStartDateTV = tableView.dequeueReusableCell(withIdentifier: "bgStartDateTableViewCell",for:indexPath) as! BGStartDateTableViewCell
+                cellBgStartDateTV!.bgStartDateLbl.text = "Tanggal Mulai"
+                return cellBgStartDateTV!
             }
             else if(indexPath.row == 1){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "bgTimeTableViewCell",for:indexPath) as! BGTimeTableViewCell
-                cell.bgTimeLbl.text = "Waktu"
-                return cell
+                cellBgTimeTV = tableView.dequeueReusableCell(withIdentifier: "bgTimeTableViewCell",for:indexPath) as! BGTimeTableViewCell
+                cellBgTimeTV!.bgTimeLbl.text = "Waktu"
+                validateFormBG()
+                return cellBgTimeTV!
             }
             else if(indexPath.row == 2){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "bgFrequencyTableViewCell",for:indexPath) as! BGFrequencyTableViewCell
-                cell.bgFrequencyLbl.text = "Frekuensi"
-                cellFrequencyPicker = cell
-                return cell
+                bgFrequency = tableView.dequeueReusableCell(withIdentifier: "bgFrequencyTableViewCell",for:indexPath) as! BGFrequencyTableViewCell
+                bgFrequency!.bgFrequencyLbl.text = "Frekuensi"
+                validateFormBG()
+                return bgFrequency!
             }
             else if(indexPath.row == 3){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "bgSubFrequencyTableViewCell",for:indexPath) as! BGSubFrequencyTableViewCell
-                cell.bgSubFrequencyEveryLbl.text = "Setiap"
-                return cell
+                cellBgSubFrequency = tableView.dequeueReusableCell(withIdentifier: "bgSubFrequencyTableViewCell",for:indexPath) as! BGSubFrequencyTableViewCell
+                cellBgSubFrequency!.bgSubFrequencyEveryLbl.text = "Setiap"
+                validateFormBG()
+                return cellBgSubFrequency!
             }
             else if(indexPath.row == 4){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "bgCalendarTableViewCell",for: indexPath) as! BGCalendarTableViewCell
@@ -191,9 +270,9 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
             return 0
         }
         else if(indexPath.section == 1 && indexPath.row == 4 && calendarWiden){
-            return 250
+            return 230
         }
-            return height
+        return height
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -224,29 +303,32 @@ class AddBGViewController: UIViewController,UITableViewDelegate, UITableViewData
         if let cell = tableView.cellForRow(at: indexPath) as? BGTypeTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
+                validateFormBG()
             }
         }
         else if let cell = tableView.cellForRow(at: indexPath) as? BGFrequencyTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
+                validateFormBG()
             }
         }
         else if let cell = tableView.cellForRow(at: indexPath) as? BGSubFrequencyTableViewCell{
             if !cell.isFirstResponder{
                 _ = cell.becomeFirstResponder()
+                validateFormBG()
             }
         }
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BG" representedClassName="BG" syncable="YES">
+        <attribute name="bg_each_frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bg_frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bg_start_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="bg_time" optional="YES" attributeType="String"/>
+        <attribute name="bg_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="time" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BG_Time" inverseName="bg" inverseEntity="BG_Time"/>
+    </entity>
+    <entity name="BG_Time" representedClassName="BG_Time" syncable="YES">
+        <attribute name="bg_date_item" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="bg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BG" inverseName="time" inverseEntity="BG"/>
+    </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String"/>
+        <attribute name="bg_check_result" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateTake" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="medicine_name" optional="YES" attributeType="String"/>
@@ -20,10 +34,4 @@
     <entity name="Streak" representedClassName="Streak" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <elements>
-        <element name="Log" positionX="-36" positionY="27" width="128" height="104"/>
-        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="Medicine_Time" positionX="-54" positionY="18" width="128" height="59"/>
-        <element name="Streak" positionX="-36" positionY="54" width="128" height="44"/>
-    </elements>
 </model>

@@ -23,4 +23,15 @@ class BGBtnSaveTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    @IBAction func pressedSkip(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "skipBG"), object: nil)
+    }
+    
+    @IBAction func pressedSave(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveBG"), object: nil)
+    }
+   
+    
+ 
 }

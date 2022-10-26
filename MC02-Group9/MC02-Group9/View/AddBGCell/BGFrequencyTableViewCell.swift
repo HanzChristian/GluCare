@@ -72,6 +72,7 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
         bgFrequencyScheduleLbl.resignFirstResponder()
         //ngubah label di sub frequency
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeSub"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
         if(bgFrequencyScheduleLbl.text == "Hari"){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
         }

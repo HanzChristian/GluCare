@@ -44,7 +44,7 @@ class BGTimeTableViewCell: UITableViewCell {
         formatter.dateFormat = "HH:mm"
         
         bgTimePicker.text = formatter.string(from: sender.date)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
     }
     @objc func btnDoneClicked(){
         self.endEditing(true)

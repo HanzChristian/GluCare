@@ -14,6 +14,7 @@ class BGResultTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        BGUnitLbl.font = UIFont.boldSystemFont(ofSize: 16)
         // Initialization code
     }
 

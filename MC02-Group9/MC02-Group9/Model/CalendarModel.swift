@@ -10,9 +10,12 @@ import Foundation
 struct CalendarModel{
     var text:String
     var isSelected:Bool
-    init(text:String,isSelected:Bool){
+    var position:Int
+    
+    init(text:String,isSelected:Bool,position:Int){
         self.text = text
         self.isSelected = isSelected
+        self.position = position
     }
 }
 
