@@ -18,6 +18,8 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     let coreDataManager = CoreDataManager.coreDataManager
     var jadwalVars = [JadwalVars]()
     
+    var bg = BG()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,14 +109,12 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let check = jadwalVars[indexPath.row]
-        let bg = self.coreDataManager.bg![check.idx]
         if(indexPath.section == 0){
             if(indexPath.row == 0){
                 print("ini selected idx \(coreDataManager.medicineSelectedIdx)")
-                
+
                 cellBGName = tblViewBG.dequeueReusableCell(withIdentifier: "bgNameTableViewCell", for: indexPath) as! BGNameTableViewCell
-                
+
                 if(bg.bg_type == 0){
                     cellBGName!.BGNameLbl.text = "Gula Darah Puasa"
                 }else if(bg.bg_type == 1){
@@ -122,9 +122,9 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
                 }else{
                     cellBGName!.BGNameLbl.text = "HBA1C"
                 }
-                
+
                 print("INI NILAI DARI BG TYPE \(bg.bg_type)")
-                
+
                 return cellBGName!
             }
         }
@@ -132,7 +132,7 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
             if(indexPath.row == 0){
                 cellBGResult = tblViewBG.dequeueReusableCell(withIdentifier: "bgResultTableViewCell", for:indexPath) as! BGResultTableViewCell
                 cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
-                
+
                 if(bg.bg_type == 0){
                     cellBGResult!.BGUnitLbl.text = "mg/dL"
                 }else if(bg.bg_type == 1){

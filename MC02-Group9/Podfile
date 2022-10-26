@@ -8,5 +8,7 @@ target 'MC02-Group9' do
   # Pods for MC02-Group9
 pod 'FSCalendar'
 pod 'Gecco'
+pod 'RxSwift'
+pod 'RxCocoa'
 
 end

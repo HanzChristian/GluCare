@@ -62,6 +62,7 @@
                 <outlet property="cellView" destination="H2p-sc-9uM" id="qLO-0q-Uut"/>
                 <outlet property="freqLbl" destination="pNd-x2-yZm" id="c6h-fS-u5G"/>
                 <outlet property="medLbl" destination="sFb-7i-Wlw" id="PIL-lR-kvS"/>
+                <outlet property="takeBtn" destination="zG0-nN-XFJ" id="cpg-Mn-cEp"/>
                 <outlet property="timeLbl" destination="A07-y0-leK" id="1rZ-8f-2qh"/>
             </connections>
             <point key="canvasLocation" x="47.692307692307693" y="19.549763033175356"/>

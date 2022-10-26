@@ -8,10 +8,15 @@
 import Foundation
 import CoreData
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CoreDataManager{
     //singleton
     static let coreDataManager = CoreDataManager()
+    
+    //Rx
+    var jadwal = BehaviorRelay<[JadwalVars]>(value: [])
     
     //attribute
     var undoIdx = Array(0...100)

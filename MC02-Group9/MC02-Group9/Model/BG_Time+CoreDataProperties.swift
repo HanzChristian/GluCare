@@ -2,7 +2,7 @@
 //  BG_Time+CoreDataProperties.swift
 //  
 //
-//  Created by Hanz Christian on 18/10/22.
+//  Created by Christophorus Davin on 26/10/22.
 //
 //
 
@@ -16,8 +16,7 @@ extension BG_Time {
         return NSFetchRequest<BG_Time>(entityName: "BG_Time")
     }
 
-    @NSManaged public var bg_week: Date?
-    @NSManaged public var bg_month: Date?
+    @NSManaged public var bg_date_item: Int16
     @NSManaged public var bg: BG?
 
 }

@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class TakeMedTableViewCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var idx = -1
+    var identity = JadwalVars(type: "BG", idx: 0)
     
     var indexPath:Int = 0
     var isSkipped:Bool = false
@@ -31,19 +37,21 @@ class TakeMedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var takeBtn: UIButton!
+    
     @IBAction func takeBtn(_ sender: Any) {
         
-        var isSkippedd:Int = 0
-        if(self.isSkipped == false){
-            isSkippedd = 0
-        }else{
-            isSkippedd = 1
-        }
-        print("INI TVC \(self.indexPath)")
-        print("INI TVC SKIP\(self.isSkipped)")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "takeMed"),
-                                        object: nil,
-                                        userInfo:["indexPath": self.indexPath, "isSkipped": isSkippedd])
+//        var isSkippedd:Int = 0
+//        if(self.isSkipped == false){
+//            isSkippedd = 0
+//        }else{
+//            isSkippedd = 1
+//        }
+//        print("INI TVC \(self.indexPath)")
+//        print("INI TVC SKIP\(self.isSkipped)")
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "takeMed"),
+//                                        object: nil,
+//                                        userInfo:["indexPath": self.indexPath, "isSkipped": isSkippedd])
     }
     
 }

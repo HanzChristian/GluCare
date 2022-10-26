@@ -86,18 +86,19 @@ extension ViewController:UITableViewDelegate{
            return cellSpacingHeight
        }
     
-    @objc func makeSheet(_ notification:Notification){
+    @objc func makeSheet(index: Int){
         
+        let idx = index
         
-        let idx = notification.userInfo!["indexPath"] as! Int
+        print("rx - \(index)")
 //
 //        print("debug1: idx \(idx)")
         self.isSkipped = false
-
-        if (coreDataManager.undoIdx[idx] >= 0){
-            coreDataManager.keTake[idx] = -1
-            self.isSkipped = true
-        }
+//
+//        if (coreDataManager.undoIdx[idx] >= 0){
+//            coreDataManager.keTake[idx] = -1
+//            self.isSkipped = true
+//        }
         
         let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
@@ -116,6 +117,7 @@ extension ViewController:UITableViewDelegate{
         vc.daySelected = daySelected
 //        vc.tblViewBG = self.tableView
         vc.indexPath = IndexPath(row: idx,section : 0)
+        vc.bg = coreDataManager.bg![idx]
 //
         if(isSkipped){
             //isi dari untake action

@@ -9,11 +9,15 @@ import UIKit
 import FSCalendar
 import CoreData
 import Gecco
+import RxSwift
+import RxCocoa
 
 // var for logic
 var daySelected = Date()
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
+    
+    let disposeBag = DisposeBag()
     
     let notificationCenter = UNUserNotificationCenter.current()
     //    let dismissNotfication = UNNotificationDismissActionIdentifier
@@ -187,13 +191,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         coreDataManager.resetArray()
         
         tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.dataSource = self
         
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .systemGroupedBackground
         
         mergeTV()
+        bindDataToTableView()
         refresh()
         
         
@@ -383,9 +388,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         mergeTV()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        
+        print("rx here \(coreDataManager.jadwal.value)")
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
 
         
     }
