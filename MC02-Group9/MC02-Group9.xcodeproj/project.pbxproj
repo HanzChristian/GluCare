@@ -19,6 +19,8 @@
 		1547608F290AAB1500D56835 /* ViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547608E290AAB1500D56835 /* ViewController+Delegate.swift */; };
 		15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476090290AAB4700D56835 /* ViewController+DataSource.swift */; };
 		15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476092290AAB5F00D56835 /* ViewController+Rx.swift */; };
+		15476096290AB24700D56835 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476094290AB24700D56835 /* User+CoreDataProperties.swift */; };
+		15476097290AB24700D56835 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476095290AB24700D56835 /* User+CoreDataClass.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
 		155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */; };
 		155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70B028ED4714003A844B /* BGResultTableViewCell.swift */; };
@@ -135,6 +137,8 @@
 		1547608E290AAB1500D56835 /* ViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Delegate.swift"; sourceTree = "<group>"; };
 		15476090290AAB4700D56835 /* ViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DataSource.swift"; sourceTree = "<group>"; };
 		15476092290AAB5F00D56835 /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
+		15476094290AB24700D56835 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/hanzchristian/Documents/GluCare-Fixed-Hanzed/MC02-Group9/MC02-Group9/Model/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		15476095290AB24700D56835 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/hanzchristian/Documents/GluCare-Fixed-Hanzed/MC02-Group9/MC02-Group9/Model/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTableViewCell.swift; sourceTree = "<group>"; };
 		155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TakeMedTableViewCell.xib; path = ../../Controller/TakeMedTableViewCell.xib; sourceTree = "<group>"; };
 		155F70B028ED4714003A844B /* BGResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -538,6 +542,8 @@
 				15476084290AAA2400D56835 /* BG+CoreDataProperties.swift */,
 				15476086290AAA2400D56835 /* BG_Time+CoreDataClass.swift */,
 				15476085290AAA2400D56835 /* BG_Time+CoreDataProperties.swift */,
+				15476095290AB24700D56835 /* User+CoreDataClass.swift */,
+				15476094290AB24700D56835 /* User+CoreDataProperties.swift */,
 				15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */,
 				15CAFD2228F7E991009A7686 /* CalendarModel.swift */,
 				15CAFD2628F7F939009A7686 /* CalendarViewModel.swift */,
@@ -704,6 +710,7 @@
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
 				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
+				15476096290AB24700D56835 /* User+CoreDataProperties.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				1547608A290AAA2400D56835 /* BG+CoreDataProperties.swift in Sources */,
 				15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */,
@@ -734,6 +741,7 @@
 				15D576D528EC02AA00603F1D /* Medicine+CoreDataProperties.swift in Sources */,
 				155F70B628ED47A8003A844B /* TakeBGTableViewCell.swift in Sources */,
 				2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */,
+				15476097290AB24700D56835 /* User+CoreDataClass.swift in Sources */,
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,

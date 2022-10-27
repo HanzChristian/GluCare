@@ -12,7 +12,6 @@
         <attribute name="bg_date_item" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="bg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BG" inverseName="time" inverseEntity="BG"/>
     </entity>
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String"/>
         <attribute name="bg_check_result" optional="YES" attributeType="String"/>
@@ -33,5 +32,8 @@
     </entity>
     <entity name="Streak" representedClassName="Streak" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="user_role" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
 </model>

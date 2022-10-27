@@ -15,35 +15,42 @@ extension ViewController{
     
     
     func bindDataToTableView(){
-        
+       
         coreDataManager.jadwal.asObservable()
             .bind(to: tableView.rx
                 .items(cellIdentifier: "cell", cellType: TakeMedTableViewCell.self))
         {
             [weak self] index, element, cell in
-                cell.idx = index
-                cell.identity = element
-
+            cell.idx = index
+            cell.identity = element
             
-                if(element.type == "MED"){
-                    self!.setupCellMed(cell: cell, element: element)
-                }else{
-                    self!.setupCellBG(cell: cell, element: element)
-                }
+            let user = self!.coreDataManager.user?[element.idx]
+            
+            if(element.type == "MED"){
+                self!.setupCellMed(cell: cell, element: element)
+            }else{
+                self!.setupCellBG(cell: cell, element: element)
+            }
             cell.takeBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
                     print("take btn on click rx \(cell.medLbl!.text) index: \(cell.idx)")
-                    let realIdx = cell.identity.idx
                     
-                    if(cell.identity.type == "BG"){
+                    if(user?.user_role == 1){
+                        let realIdx = cell.identity.idx
                         
-                        self!.makeSheet(index: realIdx)
-                    }else{
-                        print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
-//                        self!.makeSheet(index: realIdx)
-                        self!.makeSheetMed(index: realIdx)
+                        if(cell.identity.type == "BG"){
+                            
+                            self!.makeSheet(index: realIdx)
+                        }else{
+                            print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
+                            //                        self!.makeSheet(index: realIdx)
+                            self!.makeSheetMed(index: realIdx)
+                        }
                     }
-                    
+                    //                    }else{
+                    //                        let realIdx = cell.identity.idx
+                    //                        self!.makeSheetShare(index: realIdx)
+                    //                    }
                     
                     
                 }).disposed(by: cell.disposeBag)
@@ -56,7 +63,8 @@ extension ViewController{
     
     func setupCellBG(cell: TakeMedTableViewCell, element: JadwalVars){
         let bg = self.coreDataManager.bg?[element.idx]
-
+        let user = self.coreDataManager.user?[element.idx]
+        
         if(bg?.bg_type == 0){
             cell.freqLbl.text = "Gula Darah Puasa"
         }else if(bg?.bg_type == 1){
@@ -64,19 +72,19 @@ extension ViewController{
         }else{
             cell.freqLbl.text = "HBA1C"
         }
-
+        
+        cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
+        
+        if(user?.user_role == 1){
+            cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
+        }
+        else if(user?.user_role == 2){
+            cell.cellBtn.setImage(UIImage(named:"RemindTake"), for: UIControl.State.normal)
+        }
+        
         cell.medLbl.text = "Cek Gula Darah"
-
+        
         cell.timeLbl.text = bg?.bg_time
-
-//        if(coreDataManager.bg!.count > 0){
-//            view.frame = self.view.bounds
-//            view.isHidden = true
-//        }
-//        else if(coreDataManager.bg!.count == 0){
-//            view.frame = self.view.bounds
-//            view.isHidden = true
-//        }
         
         for (i, log) in self.coreDataManager.logs!.enumerated() {
             if(log.bg_check_result != nil){
@@ -97,11 +105,10 @@ extension ViewController{
     
     
     func setupCellMed(cell: TakeMedTableViewCell, element: JadwalVars){
-//        let emptyVC = EmptySpaceViewController()
-//        addChild(emptyVC)
-//        self.view.addSubview(emptyVC.view)
         
         let medicine_time = self.coreDataManager.items![element.idx]
+        let user = self.coreDataManager.user?[element.idx]
+        
         cell.medLbl.text = medicine_time.medicine?.name
         if(medicine_time.medicine?.eat_time == 2){
             cell.freqLbl.text = "Sesudah makan"
@@ -116,38 +123,46 @@ extension ViewController{
         }
         cell.timeLbl.text = medicine_time.time
         cell.tintColor = UIColor.blue
+        
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
-
+        
+        if(user?.user_role == 1){
+            cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
+        }
+        else if(user?.user_role == 2){
+            cell.cellBtn.setImage(UIImage(named:"RemindTake"), for: UIControl.State.normal)
+        }
+        
         
         for (index, log) in self.coreDataManager.logs!.enumerated() {
             if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
-
+                
                 self.coreDataManager.undoIdx[element.idx] = index
                 self.coreDataManager.keTake[element.idx] = 1
-
+                
                 if(log.action == "Skip"){
                     cell.tintColor = UIColor.red
                     cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
                 }else{
                     // Create Date Formatter
                     let dateFormatter = DateFormatter()
-
+                    
                     // Set Date/Time Style
                     dateFormatter.dateStyle = .long
                     dateFormatter.timeStyle = .short
                     dateFormatter.dateFormat = "HH:mm"
-
+                    
                     // Convert Date to String
                     var date = dateFormatter.string(from: log.dateTake!)
-
+                    
                     cell.tintColor = UIColor.green
                     cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
-
+                    
                     cell.freqLbl.text = "Diminum pada \(date)"
                 }
                 break
             }
-
+            
         }
     }
     

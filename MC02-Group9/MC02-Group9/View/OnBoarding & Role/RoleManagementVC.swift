@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RoleManagementVC: UIViewController {
     @IBOutlet weak var youAreLbl: UILabel!
@@ -14,6 +15,8 @@ class RoleManagementVC: UIViewController {
     @IBOutlet weak var warningImg: UIImageView!
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var confirmBtn: UIButton!
+    
+    let coreDataManager = CoreDataManager.coreDataManager
     
     var roles = 0
     override func viewDidLoad() {
@@ -55,6 +58,8 @@ class RoleManagementVC: UIViewController {
             print("self.roles ", self.roles)
             userRoles.userRole = self.roles
             print(userRoles.userRole, "user roles")
+            self.coreDataManager.saveUser(user_role: Int16(userRoles.userRole))
+            
             self.performSegue(withIdentifier: "goToMain", sender: self)
         }))
         

@@ -29,7 +29,7 @@ class CoreDataManager{
     var medicines:[Medicine]?
     var bg:[BG]?
     var bgTime:[BG_Time]?
-    
+    var user:[User]?
     
     //takemed attribute
     var medicineSelectedIdx = 0
@@ -47,6 +47,17 @@ class CoreDataManager{
     func batalkan(logToRemove: Log){
         // remove log
         self.context.delete(logToRemove)
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+    }
+    
+    func saveUser(user_role:Int16){
+        let user = User(context: self.context)
+        user.user_role = user_role
         
         do{
             try self.context.save()
@@ -293,6 +304,17 @@ class CoreDataManager{
             request.sortDescriptors = [sort]
             
             self.bg = try context.fetch(request)
+            
+        }catch{
+            
+        }
+    }
+    
+    func fetchUser(){
+        do{
+            let request = User.fetchRequest() as NSFetchRequest<User>
+            
+            self.user = try context.fetch(request)
             
         }catch{
             
