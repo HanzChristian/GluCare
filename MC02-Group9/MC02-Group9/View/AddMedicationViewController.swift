@@ -23,12 +23,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
     let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
-//    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
-//    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
-//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
-//                        "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
-//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
-//                        "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
+    //    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
+    //    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
+    //                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
+    //                        "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
+    //                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
+    //                        "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
     var newMealVars = 4
     var currentCell: IndexPath?
     var height = 60.0
@@ -165,15 +165,15 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // MARK : BUG!!
-//        tableView.deselectRow(at: indexPath, animated: false)
-//        print("didSelectRowAt: ", indexPath)
-//        currentCell = indexPath
-//        updateMealDesc()
-//        let ipMealDebug = [1,0] as IndexPath
-//        if (indexPath == ipMealDebug) {} else {
-//            tableView.reloadRows(at: [indexPath], with: .none)
-//        }
-//        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+        //        tableView.deselectRow(at: indexPath, animated: false)
+        //        print("didSelectRowAt: ", indexPath)
+        //        currentCell = indexPath
+        //        updateMealDesc()
+        //        let ipMealDebug = [1,0] as IndexPath
+        //        if (indexPath == ipMealDebug) {} else {
+        //            tableView.reloadRows(at: [indexPath], with: .none)
+        //        }
+        //        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
         
         if let cell = tableView.cellForRow(at: indexPath) as? MealTimePickerTableViewCell {
             if !cell.isFirstResponder {
@@ -255,7 +255,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             for cell in cellTimePicker{
                 timeSet.insert(cell.btnTimePicker.text!)
             }
-          
+            
             if (timeSet.count == cellTimePicker.count) {
                 navigationItem.rightBarButtonItem?.isEnabled = true
             } else {
@@ -351,7 +351,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         }
                         let clearAction = UNNotificationAction(identifier: "ClearNotif", title: "Clear", options: [])
                         let category = UNNotificationCategory(identifier: "ClearNotifCategory", actions: [clearAction], intentIdentifiers: [], options: [])
-                         center.setNotificationCategories([category])
+                        center.setNotificationCategories([category])
                         
                         
                         //content of notification before & after
@@ -360,14 +360,14 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         //notif belum didelete
                         
                         if(medicine.eat_time == 0){
-                                content.title = "Yuk Minum Obat!"
-                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
-                                newDate.addTimeInterval(-1800)
+                            content.title = "Yuk Minum Obat!"
+                            content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
+                            newDate.addTimeInterval(-1800)
                         }
                         else if(medicine.eat_time == 1){
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa makan setelah itu!"
-                                newDate.addTimeInterval(-1800)
+                            newDate.addTimeInterval(-1800)
                         }
                         else if(medicine.eat_time == 1){
                             content.title = "Yuk Minum Obat!"
@@ -420,36 +420,36 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         dateComp2.minute = Int(newMinutes2)
                         
                         let uuidString = medicine.id
-
+                        
                         
                         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: true)
                         let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComp2, repeats: true)
                         let request = UNNotificationRequest(identifier: uuidString!, content: content, trigger: trigger)
-                                        UNUserNotificationCenter.current().add(request) { (error : Error?) in
-                                            if let theError = error {
-                                                print(theError.localizedDescription)
-                                            }
-                                        }
+                        UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                            if let theError = error {
+                                print(theError.localizedDescription)
+                            }
+                        }
                         let request2 = UNNotificationRequest(identifier: uuidString!, content: content2, trigger: trigger2)
-                                        UNUserNotificationCenter.current().add(request2) { (error : Error?) in
-                                            if let theError = error {
-                                                print(theError.localizedDescription)
-                                            }
-                                        }
+                        UNUserNotificationCenter.current().add(request2) { (error : Error?) in
+                            if let theError = error {
+                                print(theError.localizedDescription)
+                            }
+                        }
                     }
                 }
             }
         }
         
-//        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-//           var identifiers: [String] = []
-//           for notification:UNNotificationRequest in notificationRequests {
-//               if notification.identifier == "identifierCancel" {
-//                  identifiers.append(notification.identifier)
-//               }
-//           }
-//           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
-//        }
+        //        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+        //           var identifiers: [String] = []
+        //           for notification:UNNotificationRequest in notificationRequests {
+        //               if notification.identifier == "identifierCancel" {
+        //                  identifiers.append(notification.identifier)
+        //               }
+        //           }
+        //           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        //        }
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         do{
@@ -458,7 +458,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
         
-//        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: uuidString)
+        //        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: uuidString)
         
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
@@ -475,13 +475,13 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-//    func didReceive(_ response: UNNotificationResponse, completionHandler completion: @escaping (UN) -> Void) {
-//        if response.actionIdentifier == "ClearNotif" {
-//            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-//            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-//        }
-//        completion(.dismiss)
-//    }
+    //    func didReceive(_ response: UNNotificationResponse, completionHandler completion: @escaping (UN) -> Void) {
+    //        if response.actionIdentifier == "ClearNotif" {
+    //            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    //            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    //        }
+    //        completion(.dismiss)
+    //    }
     
     @objc func dismissView() {
         view.endEditing(true)
