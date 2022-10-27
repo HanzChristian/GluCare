@@ -91,6 +91,14 @@
 		2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */; };
 		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
 		2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */; };
+		2CEE5948290A62F200AE7C84 /* MedAdheranceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */; };
+		2CEE5949290A62F200AE7C84 /* MedAdheranceTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */; };
+		2CEE594C290A631F00AE7C84 /* HbA1CBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */; };
+		2CEE594D290A631F00AE7C84 /* HbA1CBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */; };
+		2CEE5950290A633B00AE7C84 /* FastingBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */; };
+		2CEE5951290A633B00AE7C84 /* FastingBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */; };
+		2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDD290A5D8C0060A995 /* profile.storyboard */; };
+		2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDF290A5DD10060A995 /* profileViewController.swift */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
 		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
@@ -193,6 +201,14 @@
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
 		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyRoutinesSpaceVC.swift; path = Routines/EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
 		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutinesMedsTVC.swift; path = Routines/RoutinesMedsTVC.swift; sourceTree = "<group>"; };
+		2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedAdheranceTVC.swift; sourceTree = "<group>"; };
+		2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedAdheranceTVC.xib; sourceTree = "<group>"; };
+		2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HbA1CBGTVC.swift; sourceTree = "<group>"; };
+		2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HbA1CBGTVC.xib; sourceTree = "<group>"; };
+		2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingBGTVC.swift; sourceTree = "<group>"; };
+		2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastingBGTVC.xib; sourceTree = "<group>"; };
+		2CFEFFDD290A5D8C0060A995 /* profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
+		2CFEFFDF290A5DD10060A995 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
 		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +385,19 @@
 			path = AddMedCell;
 			sourceTree = "<group>";
 		};
+		2CEE5945290A625700AE7C84 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */,
+				2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */,
+				2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */,
+				2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */,
+				2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */,
+				2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */,
+			);
+			path = ProfileCell;
+			sourceTree = "<group>";
+		};
 		7E2D94B0B3A17586F1FB5E4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,11 +429,13 @@
 				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
 				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
 				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
+				2CFEFFDD290A5D8C0060A995 /* profile.storyboard */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
 				15CAFCEF28F54038009A7686 /* AddBGViewController.swift */,
 				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
 				2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */,
 				2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */,
+				2CEE5945290A625700AE7C84 /* ProfileCell */,
 				2C1F2E5728FC62CF00FC2950 /* RoutinesTVC */,
 				155F70BC28ED47E6003A844B /* TakeBGCell */,
 				1F4EF3C02873385E0056E693 /* TakeMedCell */,
@@ -422,6 +453,7 @@
 				155F70A728ED466A003A844B /* TakeBloodGlucose */,
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
 				6EDAF414285878900099213F /* profilePageViewController.swift */,
+				2CFEFFDF290A5DD10060A995 /* profileViewController.swift */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
@@ -544,6 +576,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CEE594D290A631F00AE7C84 /* HbA1CBGTVC.xib in Resources */,
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
@@ -565,7 +598,9 @@
 				156E789428EEAB780072615F /* BGBtnSaveTableViewCell.xib in Resources */,
 				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
 				15CAFD2128F7E521009A7686 /* BGCalendarTableViewCell.xib in Resources */,
+				2CEE5949290A62F200AE7C84 /* MedAdheranceTVC.xib in Resources */,
 				15CAFCF628F54619009A7686 /* BGTypeTableViewCell.xib in Resources */,
+				2CEE5951290A633B00AE7C84 /* FastingBGTVC.xib in Resources */,
 				1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
@@ -574,6 +609,7 @@
 				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
 				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
+				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
 				15CAFCFB28F54662009A7686 /* BGStartDateTableViewCell.xib in Resources */,
 				15CAFD0728F546F3009A7686 /* BGSubFrequencyTableViewCell.xib in Resources */,
@@ -642,6 +678,7 @@
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
+				2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
@@ -650,6 +687,7 @@
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
+				2CEE5948290A62F200AE7C84 /* MedAdheranceTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
@@ -657,6 +695,7 @@
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,
 				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
+				2CEE594C290A631F00AE7C84 /* HbA1CBGTVC.swift in Sources */,
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
 				15D576D528EC02AA00603F1D /* Medicine+CoreDataProperties.swift in Sources */,
@@ -681,6 +720,7 @@
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
+				2CEE5950290A633B00AE7C84 /* FastingBGTVC.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
