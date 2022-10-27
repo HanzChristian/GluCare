@@ -30,6 +30,7 @@ class CoreDataManager{
     var bg:[BG]?
     var bgTime:[BG_Time]?
     
+    
     //takemed attribute
     var medicineSelectedIdx = 0
     
@@ -54,7 +55,7 @@ class CoreDataManager{
         }
     }
     
-    func lewatBG(daySelected: Date,indexPath: IndexPath,bGResult:String){
+    func lewatBG(daySelected: Date,bGResult:String,bg:BG){
         //change daySelected to String
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_gb")
@@ -63,7 +64,7 @@ class CoreDataManager{
         // print(tanggal)
         
         // Create String
-        let time = self.items![indexPath.row].time!
+        let time = bg.bg_time!
         let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
         let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
         let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
@@ -92,7 +93,7 @@ class CoreDataManager{
         }
     }
     
-    func simpanBG(daySelected: Date,indexPath: IndexPath,bGResult:String){
+    func simpanBG(daySelected: Date,bGResult:String,bg:BG){
         //change daySelected to String
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_gb")
@@ -101,7 +102,7 @@ class CoreDataManager{
         // print(tanggal)
         
         // Create String
-        let time = self.items![indexPath.row].time!
+        let time = bg.bg_time!
         let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
         let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
         let string = ("\(tanggal) \(hour):\(minutes):00 +0700")

@@ -91,14 +91,12 @@ extension ViewController:UITableViewDelegate{
         let idx = index
         
         print("rx - \(index)")
-//
-//        print("debug1: idx \(idx)")
         self.isSkipped = false
-//
-//        if (coreDataManager.undoIdx[idx] >= 0){
-//            coreDataManager.keTake[idx] = -1
-//            self.isSkipped = true
-//        }
+
+        if (coreDataManager.undoIdx[idx] >= 0){
+            coreDataManager.keTake[idx] = -1
+            self.isSkipped = true
+        }
         
         let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
@@ -112,13 +110,53 @@ extension ViewController:UITableViewDelegate{
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
 
         }
-//
-//        //nanti dinyalain lagi tunggu code dari richard
         vc.daySelected = daySelected
-//        vc.tblViewBG = self.tableView
         vc.indexPath = IndexPath(row: idx,section : 0)
         vc.bg = coreDataManager.bg![idx]
+        vc.tblViewBG = self.tableView
+        if(isSkipped){
+            //isi dari untake action
+            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
+            coreDataManager.batalkan(logToRemove: logToRemove)
+
+            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
+        }
+        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
+        print("INI IDX NYA \(vc.indexPath)")
+        print(self.isSkipped)
+        self.present(nav, animated: true,completion: nil)
+
+    }
+    
+    func makeSheetMed(index: Int){
+        let idx = index
+        
+        print("rx - \(index)")
 //
+//        print("debug1: idx \(idx)")
+        self.isSkipped = false
+//
+        if (coreDataManager.undoIdx[idx] >= 0){
+            coreDataManager.keTake[idx] = -1
+            self.isSkipped = true
+        }
+        
+        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
+
+        let nav =  UINavigationController(rootViewController: vc)
+        //        nav.modalPresentationStyle = .overCurrentContext
+
+        if let sheet = nav.presentationController as? UISheetPresentationController{
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 30
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+
+        }
+
+        vc.daySelected = daySelected
+        vc.indexPath = IndexPath(row: idx,section : 0)
+        vc.tableView = self.tableView
         if(isSkipped){
             //isi dari untake action
             let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
@@ -126,26 +164,26 @@ extension ViewController:UITableViewDelegate{
 
             self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
 
-//            coreDataManager.fetchStreak()
-//            if(coreDataManager.streaks!.isEmpty == true){
-//                return
-//            }
-            // Streak Logic
-//            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-//            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-//
-//            if(lastDate == dateFrom){
-//                // Streak nya udah ketambah di hari yg sama
-//
-//                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-//                coreDataManager.fetchStreak()
-//            }
+            coreDataManager.fetchStreak()
+            if(coreDataManager.streaks!.isEmpty == true){
+                return
+            }
+//             Streak Logic
+            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
+            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
+
+            if(lastDate == dateFrom){
+                // Streak nya udah ketambah di hari yg sama
+
+                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
+                coreDataManager.fetchStreak()
+            }
 
         }
         coreDataManager.medicineSelectedIdx = vc.indexPath!.row
         print("INI IDX NYA \(vc.indexPath)")
         print(self.isSkipped)
         self.present(nav, animated: true,completion: nil)
-
+        
     }
 }

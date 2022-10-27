@@ -39,7 +39,7 @@ extension ViewController{
                     }else{
                         print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
 //                        self!.makeSheet(index: realIdx)
-                        
+                        self!.makeSheetMed(index: realIdx)
                     }
                     
                     

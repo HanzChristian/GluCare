@@ -22,6 +22,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     var cellTakeMed: TakeMedTimeTableViewCell? //cell
     var switchMode: OnTimeTableViewCell? //triger
     
+    
     @IBOutlet weak var tblView: UITableView!
     
     override func viewDidLoad() {

@@ -204,7 +204,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.makeSheet), name: NSNotification.Name(rawValue: "takeMed"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.), name: NSNotification.Name(rawValue: "takeMed"), object: nil)
         setNib()
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetHidden), name: NSNotification.Name(rawValue: "sheetOn"), object: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetunHidden), name: NSNotification.Name(rawValue: "sheetOff"), object: nil)

@@ -40,13 +40,13 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     @objc func saveSheet(){
-        self.coreDataManager.simpanBG(daySelected: daySelected!, indexPath: indexPath!,bGResult: (cellBGResult?.BGInputLbl.text)!)
-        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: daySelected!)
+        self.coreDataManager.simpanBG(daySelected: daySelected!,bGResult: (cellBGResult?.BGInputLbl.text)!,bg: bg)
+        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: daySelected!) //fetch lognya diubah datanya
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func skipSheet(){
-        self.coreDataManager.lewatBG(daySelected: daySelected!, indexPath: indexPath!,bGResult: (cellBGResult?.BGInputLbl.text)!)
+    @objc func skipSheet(){ //lewatbg belom diganti coredatamanagernya
+        self.coreDataManager.lewatBG(daySelected: daySelected!,bGResult: (cellBGResult?.BGInputLbl.text)!,bg:bg)
         self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: self.daySelected!)
         self.dismiss(animated: true, completion: nil)
     }
@@ -146,6 +146,9 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         else if(indexPath.section == 2){
             if(indexPath.row == 0){
                 let cell = tblViewBG.dequeueReusableCell(withIdentifier: "bgBtnSaveTableViewCell", for:indexPath) as! BGBtnSaveTableViewCell
+                if(cellBGResult!.BGUnitLbl?.text == nil){
+                    cell.BGBtnSave.isEnabled = false
+                }
                 return cell
             }
         }
