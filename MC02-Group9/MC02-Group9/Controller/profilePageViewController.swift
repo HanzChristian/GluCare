@@ -44,10 +44,8 @@ class profilePageViewController: UIViewController {
         
         daftarRutinitasTableView.delegate = self
         daftarRutinitasTableView.delegate = self
-        view.backgroundColor = .systemGroupedBackground
+        daftarRutinitasTableView.backgroundColor = .systemGroupedBackground
         
-//        let nibMedsName = UINib(nibName: "RoutinesMedsTVC", bundle: nil)
-//        daftarRutinitasTableView.register(nibMedsName, forCellReuseIdentifier: "routinesMedsTVC")
         let nibBGName = UINib(nibName: "RoutinesBGTVC", bundle: nil)
         daftarRutinitasTableView.register(nibBGName, forCellReuseIdentifier: "routinesBGTVC")
 

@@ -95,6 +95,8 @@
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
 		2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */; };
+		2CC7FD8B290AEA7E0087E6ED /* UsernameTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7FD89290AEA7E0087E6ED /* UsernameTVC.swift */; };
+		2CC7FD8C290AEA7E0087E6ED /* UsernameTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CC7FD8A290AEA7E0087E6ED /* UsernameTVC.xib */; };
 		2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */; };
 		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
 		2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */; };
@@ -212,6 +214,8 @@
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTimePickerTableViewCell.xib; sourceTree = "<group>"; };
+		2CC7FD89290AEA7E0087E6ED /* UsernameTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTVC.swift; sourceTree = "<group>"; };
+		2CC7FD8A290AEA7E0087E6ED /* UsernameTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsernameTVC.xib; sourceTree = "<group>"; };
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
 		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyRoutinesSpaceVC.swift; path = Routines/EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
 		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutinesMedsTVC.swift; path = Routines/RoutinesMedsTVC.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 		2CEE5945290A625700AE7C84 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
+				2CC7FD89290AEA7E0087E6ED /* UsernameTVC.swift */,
+				2CC7FD8A290AEA7E0087E6ED /* UsernameTVC.xib */,
 				2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */,
 				2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */,
 				2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */,
@@ -640,6 +646,7 @@
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
 				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
+				2CC7FD8C290AEA7E0087E6ED /* UsernameTVC.xib in Resources */,
 				15CAFCFB28F54662009A7686 /* BGStartDateTableViewCell.xib in Resources */,
 				15CAFD0728F546F3009A7686 /* BGSubFrequencyTableViewCell.xib in Resources */,
 			);
@@ -755,6 +762,7 @@
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				1547608B290AAA2400D56835 /* BG_Time+CoreDataClass.swift in Sources */,
 				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
+				2CC7FD8B290AEA7E0087E6ED /* UsernameTVC.swift in Sources */,
 				2CEE5950290A633B00AE7C84 /* FastingBGTVC.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
