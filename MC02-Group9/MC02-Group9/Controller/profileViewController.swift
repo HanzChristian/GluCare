@@ -124,13 +124,16 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (section == 0) {
+            return 24
+        }
         return 35
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
-        sectionLabel.font = .rounded(ofSize: 16, weight: .regular)
+        sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
         sectionLabel.textColor = UIColor.black
         sectionLabel.text = profileSection[section].profileSectionTitle
         sectionLabel.sizeToFit()

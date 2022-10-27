@@ -27,25 +27,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let dataType = "BG"
     var jadwalVars = [JadwalVars]()
     
-    @IBAction func guideBtn(_ sender: Any) {
-//        if(coreDataManager.items!.count > 0){
-//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
-//            spotLight.alpha = 0.85
-//            present(spotLight, animated: true, completion: nil)
-//        }
-//        else if(coreDataManager.items!.count == 0){
-//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
-//            spotLight.alpha = 0.85
-//            present(spotLight, animated: true, completion: nil)
-//        }
-        coreDataManager.fetchBGTime(daySelected: daySelected)
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        
-        print("CORE DATA FETCH BG \(coreDataManager.bg)")
-        print("CORE DATA FETCH BT_TIME \(coreDataManager.bgTime)")
-        print("CORE DATA LOGS \(coreDataManager.logs)")
-        
-    }
+    //    @IBAction func guideBtn(_ sender: Any) {
+    //        if(coreDataManager.items!.count > 0){
+    //            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
+    //            spotLight.alpha = 0.85
+    //            present(spotLight, animated: true, completion: nil)
+    //        }
+    //        else if(coreDataManager.items!.count == 0){
+    //            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
+    //            spotLight.alpha = 0.85
+    //            present(spotLight, animated: true, completion: nil)
+    //        }
+    //        coreDataManager.fetchBGTime(daySelected: daySelected)
+    //        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+    //
+    //        print("CORE DATA FETCH BG \(coreDataManager.bg)")
+    //        print("CORE DATA FETCH BT_TIME \(coreDataManager.bgTime)")
+    //        print("CORE DATA LOGS \(coreDataManager.logs)")
+    //
+    //    }
     
     func setup(){
         let emptyVC = EmptySpaceViewController()
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let nibTakeMed = UINib(nibName: "TakeMedTableViewCell", bundle: nil)
         tableView.register(nibTakeMed, forCellReuseIdentifier: "cell")
     }
-
+    
     // Manager
     let calendarManager = CalendarManager.calendarManager
     let coreDataManager = CoreDataManager.coreDataManager
@@ -99,27 +99,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-         let tabBarIndex = tabBarController.selectedIndex
-         if tabBarIndex == 0 {
-             DispatchQueue.main.async {
-                 self.navigationItem.title = "Today"
-                 daySelected = Date()
-                 
-                 self.setWeekView()
-                 self.refresh()
-                 self.collectionView.scrollToItem(at: IndexPath(row: self.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
-             }
-         }
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            DispatchQueue.main.async {
+                self.navigationItem.title = "Today"
+                daySelected = Date()
+                
+                self.setWeekView()
+                self.refresh()
+                self.collectionView.scrollToItem(at: IndexPath(row: self.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.coreDataManager.fetchBGTime(daySelected: daySelected)
-
+        //        self.coreDataManager.fetchBGTime(daySelected: daySelected)
+        
         self.tabBarController?.delegate = self
-
+        
         // dapong
         self.tabBarController?.title = "Jadwal"
         self.navigationItem.title = "Today"
@@ -185,7 +185,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         coreDataManager.resetArray()
         
         tableView.delegate = self
-//        tableView.dataSource = self
+        //        tableView.dataSource = self
         
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -238,11 +238,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             
         }
-    
+        
         collectionView.reloadData()
         
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         print("dapong \(totalSquares.count)")
@@ -251,7 +251,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
-
+        
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
         let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
@@ -286,10 +286,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }else{
                 cell.dayOfMonth.layer.borderWidth = 0
             }
-
+            
         }
-         
-         
+        
+        
         
         return cell
     }
@@ -373,10 +373,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         mergeTV()
         
         print("rx here \(coreDataManager.jadwal.value)")
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-
+        //        DispatchQueue.main.async {
+        //            self.tableView.reloadData()
+        //        }
+        
         
     }
     
@@ -387,9 +387,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         daySelected = date
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
     }
-    
-    
-    
 }
 
 

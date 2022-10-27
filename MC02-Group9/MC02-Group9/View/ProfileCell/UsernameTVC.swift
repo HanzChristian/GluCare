@@ -16,6 +16,7 @@ class UsernameTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        userNameLbl.font = .rounded(ofSize: 16, weight: .semibold)
         // Initialization code
     }
 

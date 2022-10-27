@@ -42,7 +42,6 @@ class OnBoardingViewController: UIViewController {
     }
     
     var currPage = 0
-    
     let titleArray = ["Bantu kamu ingat minum obat",
                            "Buat target diabetes kamu",
                            "Kelola bersama keluarga"
@@ -56,6 +55,7 @@ class OnBoardingViewController: UIViewController {
         ImageHelper.onboard2,
         ImageHelper.onboard3
     ]
+    
 }
 
 class Core{
@@ -76,6 +76,7 @@ extension OnBoardingViewController {
         nextBtn.layer.cornerRadius = 12
         signupBtn.layer.cornerRadius = 12
         signupBtn.isHidden = true
+        titleLbl.font = .rounded(ofSize: 20, weight: .semibold)
     }
     
     override func viewWillAppear(_ animated: Bool) {

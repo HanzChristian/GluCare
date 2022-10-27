@@ -95,13 +95,7 @@
                             <constraint firstItem="UBT-jF-w6S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tWD-PQ-csb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Hari ini" id="kry-s1-Xhi">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="questionmark.app" catalog="system" id="lDH-6j-OxT">
-                            <connections>
-                                <action selector="guideBtn:" destination="BYZ-38-t0r" id="JCw-dX-qOv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Hari ini" id="kry-s1-Xhi"/>
                     <connections>
                         <outlet property="collectionView" destination="UBT-jF-w6S" id="mYV-Db-6yx"/>
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
@@ -761,7 +755,6 @@
         <image name="glucare-logo" width="45" height="36"/>
         <image name="med" width="20" height="19.333333969116211"/>
         <image name="onboard1" width="320" height="320"/>
-        <image name="questionmark.app" catalog="system" width="128" height="114"/>
         <image name="warning" width="24" height="24"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

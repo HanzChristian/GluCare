@@ -22,6 +22,7 @@ class RoleManagementVC: UIViewController {
         confirmBtn.backgroundColor = .gray
         confirmBtn.isEnabled = false
         validateForm()
+        youAreLbl.font = .rounded(ofSize: 28, weight: .semibold)
     }
     
     @IBAction func didTapCardPBtn(_ sender: UIButton) {
