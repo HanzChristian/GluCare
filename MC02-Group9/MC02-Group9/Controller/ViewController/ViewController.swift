@@ -116,7 +116,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        self.coreDataManager.fetchBGTime(daySelected: daySelected)
 
         self.tabBarController?.delegate = self
@@ -183,11 +182,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 ]
         }
         
-        // dapong delete
-        //calendar.delegate = self
-        //self.calendar.select(Date())
-        //self.calendar.scope = .week
-        
         coreDataManager.resetArray()
         
         tableView.delegate = self
@@ -203,11 +197,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.), name: NSNotification.Name(rawValue: "takeMed"), object: nil)
         setNib()
-        //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetHidden), name: NSNotification.Name(rawValue: "sheetOn"), object: nil)
-        //        NotificationCenter.default.addObserver(self, selector: #selector(self.sheetunHidden), name: NSNotification.Name(rawValue: "sheetOff"), object: nil)
         
     }
     
