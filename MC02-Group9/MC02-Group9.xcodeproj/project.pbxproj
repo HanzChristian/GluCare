@@ -11,10 +11,6 @@
 		1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331A2868A8B100606068 /* GuideViewController2.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
 		153AFA6528EEBDEE00395648 /* Take BG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153AFA6428EEBDEE00395648 /* Take BG.storyboard */; };
-		15476078290981FE00D56835 /* BG_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476076290981FE00D56835 /* BG_Time+CoreDataClass.swift */; };
-		15476079290981FE00D56835 /* BG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476077290981FE00D56835 /* BG+CoreDataProperties.swift */; };
-		1547607A290981FE00D56835 /* BG_Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476074290981FD00D56835 /* BG_Time+CoreDataProperties.swift */; };
-		1547607B290981FE00D56835 /* BG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476075290981FE00D56835 /* BG+CoreDataClass.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
 		155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */; };
 		155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70B028ED4714003A844B /* BGResultTableViewCell.swift */; };
@@ -26,8 +22,6 @@
 		155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70BD28EEA9E9003A844B /* TakeBGViewController.swift */; };
 		156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156E789128EEAB780072615F /* BGBtnSaveTableViewCell.swift */; };
 		156E789428EEAB780072615F /* BGBtnSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156E789228EEAB780072615F /* BGBtnSaveTableViewCell.xib */; };
-		157F70CF2906E5CD000C7B07 /* ViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F70CE2906E5CD000C7B07 /* ViewController+TableViewDelegate.swift */; };
-		157F70D12906E61A000C7B07 /* ViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F70D02906E61A000C7B07 /* ViewController+TableViewDataSource.swift */; };
 		158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D3284FAD0D005254A0 /* AppDelegate.swift */; };
 		158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B02D5284FAD0D005254A0 /* SceneDelegate.swift */; };
 		158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B02D9284FAD0D005254A0 /* Main.storyboard */; };
@@ -80,10 +74,16 @@
 		1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCAEAC2863293500E97CBA /* MealTime.swift */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */; };
+		2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */; };
 		2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */; };
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
 		2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */; };
 		2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */; };
+		2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */; };
+		2C8A3D8A2907B92A00B0646A /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D892907B92A00B0646A /* ImageHelper.swift */; };
+		2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */; };
+		2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */; };
+		2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */; };
 		2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */; };
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
@@ -91,6 +91,14 @@
 		2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */; };
 		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
 		2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */; };
+		2CEE5948290A62F200AE7C84 /* MedAdheranceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */; };
+		2CEE5949290A62F200AE7C84 /* MedAdheranceTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */; };
+		2CEE594C290A631F00AE7C84 /* HbA1CBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */; };
+		2CEE594D290A631F00AE7C84 /* HbA1CBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */; };
+		2CEE5950290A633B00AE7C84 /* FastingBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */; };
+		2CEE5951290A633B00AE7C84 /* FastingBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */; };
+		2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDD290A5D8C0060A995 /* profile.storyboard */; };
+		2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDF290A5DD10060A995 /* profileViewController.swift */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
 		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
@@ -183,10 +191,16 @@
 		1F8813B82861E0DF009994F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Badge.storyboard; sourceTree = "<group>"; };
 		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
 		2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesBGTVC.swift; sourceTree = "<group>"; };
+		2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedDescTableViewCell.swift; sourceTree = "<group>"; };
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
 		2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
+		2C8A3D892907B92A00B0646A /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCVCell.swift; sourceTree = "<group>"; };
+		2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleManagementVC.swift; sourceTree = "<group>"; };
+		2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		2C8E9B712853E03A0026FDF5 /* MedNameTextFieldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedNameTextFieldTVC.swift; sourceTree = "<group>"; };
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +208,14 @@
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
 		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyRoutinesSpaceVC.swift; path = Routines/EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
 		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutinesMedsTVC.swift; path = Routines/RoutinesMedsTVC.swift; sourceTree = "<group>"; };
+		2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedAdheranceTVC.swift; sourceTree = "<group>"; };
+		2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedAdheranceTVC.xib; sourceTree = "<group>"; };
+		2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HbA1CBGTVC.swift; sourceTree = "<group>"; };
+		2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HbA1CBGTVC.xib; sourceTree = "<group>"; };
+		2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingBGTVC.swift; sourceTree = "<group>"; };
+		2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastingBGTVC.xib; sourceTree = "<group>"; };
+		2CFEFFDD290A5D8C0060A995 /* profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
+		2CFEFFDF290A5DD10060A995 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
 		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +379,18 @@
 			path = RoutinesTVC;
 			sourceTree = "<group>";
 		};
+		2C8A3D802907ABB500B0646A /* OnBoarding & Role */ = {
+			isa = PBXGroup;
+			children = (
+				2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */,
+				2C8A3D8F29088EA800B0646A /* OnBoardingViewController.swift */,
+				2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */,
+				2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */,
+				2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */,
+			);
+			path = "OnBoarding & Role";
+			sourceTree = "<group>";
+		};
 		2C8E9B702853E0220026FDF5 /* AddMedCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +402,19 @@
 				1F8813AD285B37AB009994F9 /* AddNewScheduleTableViewCell.xib */,
 			);
 			path = AddMedCell;
+			sourceTree = "<group>";
+		};
+		2CEE5945290A625700AE7C84 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CEE5946290A62F200AE7C84 /* MedAdheranceTVC.swift */,
+				2CEE5947290A62F200AE7C84 /* MedAdheranceTVC.xib */,
+				2CEE594A290A631F00AE7C84 /* HbA1CBGTVC.swift */,
+				2CEE594B290A631F00AE7C84 /* HbA1CBGTVC.xib */,
+				2CEE594E290A633B00AE7C84 /* FastingBGTVC.swift */,
+				2CEE594F290A633B00AE7C84 /* FastingBGTVC.xib */,
+			);
+			path = ProfileCell;
 			sourceTree = "<group>";
 		};
 		7E2D94B0B3A17586F1FB5E4E /* Frameworks */ = {
@@ -392,6 +439,7 @@
 		F02A60D92869A6F900441781 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C8A3D802907ABB500B0646A /* OnBoarding & Role */,
 				1F4EF3B42872E3250056E693 /* Take Medication.storyboard */,
 				153AFA6428EEBDEE00395648 /* Take BG.storyboard */,
 				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
@@ -400,11 +448,13 @@
 				1F8813B72861E0DF009994F9 /* Badge.storyboard */,
 				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
 				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
+				2CFEFFDD290A5D8C0060A995 /* profile.storyboard */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
 				15CAFCEF28F54038009A7686 /* AddBGViewController.swift */,
 				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
 				2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */,
 				2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */,
+				2CEE5945290A625700AE7C84 /* ProfileCell */,
 				2C1F2E5728FC62CF00FC2950 /* RoutinesTVC */,
 				155F70BC28ED47E6003A844B /* TakeBGCell */,
 				1F4EF3C02873385E0056E693 /* TakeMedCell */,
@@ -422,6 +472,7 @@
 				155F70A728ED466A003A844B /* TakeBloodGlucose */,
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
 				6EDAF414285878900099213F /* profilePageViewController.swift */,
+				2CFEFFDF290A5DD10060A995 /* profileViewController.swift */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
@@ -451,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				F05616A728EED4BD00F61C4C /* CalendarHelper.swift */,
+				2C8A3D892907B92A00B0646A /* ImageHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -547,9 +599,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CEE594D290A631F00AE7C84 /* HbA1CBGTVC.xib in Resources */,
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
+				2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */,
@@ -567,7 +621,9 @@
 				156E789428EEAB780072615F /* BGBtnSaveTableViewCell.xib in Resources */,
 				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
 				15CAFD2128F7E521009A7686 /* BGCalendarTableViewCell.xib in Resources */,
+				2CEE5949290A62F200AE7C84 /* MedAdheranceTVC.xib in Resources */,
 				15CAFCF628F54619009A7686 /* BGTypeTableViewCell.xib in Resources */,
+				2CEE5951290A633B00AE7C84 /* FastingBGTVC.xib in Resources */,
 				1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
@@ -576,6 +632,7 @@
 				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
 				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
+				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
 				15CAFCFB28F54662009A7686 /* BGStartDateTableViewCell.xib in Resources */,
 				15CAFD0728F546F3009A7686 /* BGSubFrequencyTableViewCell.xib in Resources */,
@@ -640,6 +697,7 @@
 				15CAFD2028F7E521009A7686 /* BGCalendarTableViewCell.swift in Sources */,
 				157F70CF2906E5CD000C7B07 /* ViewController+TableViewDelegate.swift in Sources */,
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
+				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				F0B487632909713E0080DA29 /* ViewController+Rx.swift in Sources */,
 				1547607A290981FE00D56835 /* BG_Time+CoreDataProperties.swift in Sources */,
@@ -647,6 +705,7 @@
 				15476078290981FE00D56835 /* BG_Time+CoreDataClass.swift in Sources */,
 				15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
+				2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
@@ -654,6 +713,8 @@
 				F0394EFF286AFC780009215C /* CodeReview.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
+				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
+				2CEE5948290A62F200AE7C84 /* MedAdheranceTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
@@ -661,10 +722,13 @@
 				15476079290981FE00D56835 /* BG+CoreDataProperties.swift in Sources */,
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,
+				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
+				2CEE594C290A631F00AE7C84 /* HbA1CBGTVC.swift in Sources */,
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
 				15D576D528EC02AA00603F1D /* Medicine+CoreDataProperties.swift in Sources */,
 				155F70B628ED47A8003A844B /* TakeBGTableViewCell.swift in Sources */,
+				2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
@@ -685,6 +749,7 @@
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
+				2CEE5950290A633B00AE7C84 /* FastingBGTVC.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
