@@ -24,6 +24,7 @@ class profilePageViewController: UIViewController {
     var items:[Medicine]?
     var indexPath:IndexPath?
     var tableView:UITableView?
+    let coreDataManager = CoreDataManager.coreDataManager
     
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
     
@@ -67,12 +68,13 @@ class profilePageViewController: UIViewController {
     
     @objc func refresh() {
         fetchMedicine()
-//        if(coreDataMedicine.items!.count > 0){
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
-//        }
-//        else if(coreDataMedicine.items!.count == 0){
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
-//        }
+
+        if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0 ){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+        }
+        else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+        }
     }
     
     func fetchMedicine(){

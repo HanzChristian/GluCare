@@ -373,17 +373,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //sini
         
-        if(coreDataManager.items!.count > 0){
+        if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0 ){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
         }
-        else if(coreDataManager.items!.count == 0){
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
-        }
-        
-        if(coreDataManager.bg!.count > 0){
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
-        }
-        else if(coreDataManager.bg!.count == 0){
+        else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
         

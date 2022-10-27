@@ -106,8 +106,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         do{
             DispatchQueue.main.async {
                 
-                let indexPath = IndexPath(item: 2, section: 1)
-                self.tableView.reloadRows(at: [indexPath], with: .top)
+//                let indexPath = IndexPath(item: 2, section: 1)
+//                self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 
                 self.tableView.reloadData()
             }

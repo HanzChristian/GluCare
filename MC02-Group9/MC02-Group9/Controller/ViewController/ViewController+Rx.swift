@@ -23,6 +23,8 @@ extension ViewController{
             [weak self] index, element, cell in
                 cell.idx = index
                 cell.identity = element
+
+            
                 if(element.type == "MED"){
                     self!.setupCellMed(cell: cell, element: element)
                 }else{
@@ -67,10 +69,19 @@ extension ViewController{
 
         cell.timeLbl.text = bg?.bg_time
 
+//        if(coreDataManager.bg!.count > 0){
+//            view.frame = self.view.bounds
+//            view.isHidden = true
+//        }
+//        else if(coreDataManager.bg!.count == 0){
+//            view.frame = self.view.bounds
+//            view.isHidden = true
+//        }
+        
         for (i, log) in self.coreDataManager.logs!.enumerated() {
             if(log.bg_check_result != nil){
                 self.coreDataManager.undoIdx[element.idx] = i
-//                        self!.coreDataManager.keTake[element.idx] = 1
+                self.coreDataManager.keTake[element.idx] = 1
                 if(log.action == "Skip"){
                     cell.tintColor = UIColor.red
                     cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
@@ -86,6 +97,10 @@ extension ViewController{
     
     
     func setupCellMed(cell: TakeMedTableViewCell, element: JadwalVars){
+//        let emptyVC = EmptySpaceViewController()
+//        addChild(emptyVC)
+//        self.view.addSubview(emptyVC.view)
+        
         let medicine_time = self.coreDataManager.items![element.idx]
         cell.medLbl.text = medicine_time.medicine?.name
         if(medicine_time.medicine?.eat_time == 2){
@@ -103,6 +118,7 @@ extension ViewController{
         cell.tintColor = UIColor.blue
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
 
+        
         for (index, log) in self.coreDataManager.logs!.enumerated() {
             if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
 
@@ -112,8 +128,6 @@ extension ViewController{
                 if(log.action == "Skip"){
                     cell.tintColor = UIColor.red
                     cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
-                    //                        cell.cellImgView.layer.opacity = 0.3
-                    //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
                 }else{
                     // Create Date Formatter
                     let dateFormatter = DateFormatter()
