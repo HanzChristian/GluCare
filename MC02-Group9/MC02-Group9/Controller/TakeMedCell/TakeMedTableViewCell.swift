@@ -10,7 +10,7 @@ import RxSwift
 
 class TakeMedTableViewCell: UITableViewCell {
     
-    let disposeBag = DisposeBag()
+    private(set) var disposeBag = DisposeBag()
     
     var idx = -1
     var identity = JadwalVars(type: "BG", idx: 0)
@@ -23,6 +23,11 @@ class TakeMedTableViewCell: UITableViewCell {
     @IBOutlet weak var medLbl: UILabel!
     @IBOutlet weak var freqLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

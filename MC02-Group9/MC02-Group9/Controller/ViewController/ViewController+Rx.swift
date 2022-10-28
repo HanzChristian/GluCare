@@ -32,6 +32,7 @@ extension ViewController{
             }else{
                 self!.setupCellBG(cell: cell, element: element)
             }
+            
             cell.takeBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
                     print("take btn on click rx \(cell.medLbl!.text) index: \(cell.idx)")
@@ -41,16 +42,11 @@ extension ViewController{
                         let realIdx = cell.identity.idx
                         
                         if(cell.identity.type == "BG"){
-                            
                             self!.makeSheet(index: realIdx)
                         }else{
                             print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
                             
-                            if(cell.cellBtn.currentImage == UIImage(named: "Take")){
-                                self!.makeSheetMed(index: realIdx)
-                            }else{
-                                cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
-                            }
+                            self!.makeSheetMed(index: realIdx)
                             
                         }
                     }
