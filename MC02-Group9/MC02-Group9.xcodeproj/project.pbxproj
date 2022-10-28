@@ -128,6 +128,7 @@
 		F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */; };
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
+		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +256,7 @@
 		F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateFirestoreToCoreData.swift; sourceTree = "<group>"; };
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -530,6 +532,7 @@
 				F054B0DB290BDE0C00287D06 /* LoginViewController.swift */,
 				F054B0DD290BDE2000287D06 /* StructFirebase.swift */,
 				F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */,
+				F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */,
 				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
+				F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */,
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,
 				F054B0DE290BDE2000287D06 /* StructFirebase.swift in Sources */,
 				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
@@ -980,7 +984,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BX9VA5G2BF;
+				DEVELOPMENT_TEAM = 784J694B86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1009,7 +1013,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BX9VA5G2BF;
+				DEVELOPMENT_TEAM = 784J694B86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

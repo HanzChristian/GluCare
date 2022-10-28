@@ -35,11 +35,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
+        print("register tapped")
         if let email = email.text, let pass = pass.text {
             Auth.auth().createUser(withEmail: email, password: pass){ [weak self] authResult, error in
                 if let e = error{
                     print(e)
                     self!.msg.text = "\(e.localizedDescription)"
+                    print("gagal buat akun")
                 }else{
                     self!.msg.text = "register berhasil"
                     
@@ -70,7 +72,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hideKeyboardWhenTappedAround()
+        
         // Do any additional setup after loading the view.
     }
 

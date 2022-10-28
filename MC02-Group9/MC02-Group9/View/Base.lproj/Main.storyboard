@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YCm-RV-gWL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -790,7 +790,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Register"/>
                                 <connections>
-                                    <action selector="register:" destination="KmU-Z3-mmk" eventType="touchDragInside" id="val-lr-htP"/>
+                                    <action selector="register:" destination="KmU-Z3-mmk" eventType="touchUpInside" id="eH7-ul-KNU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTi-py-2q6">
@@ -947,7 +947,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zfi-mU-pX6">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="sfO-nv-FJQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="sfO-nv-FJQ">
+                            <connections>
+                                <action selector="logoutPressed:" destination="vFR-7d-T80" id="gQS-0S-n7b"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="caregiverInviteButton" destination="hH7-YX-hXi" id="AMo-3U-ASo"/>
