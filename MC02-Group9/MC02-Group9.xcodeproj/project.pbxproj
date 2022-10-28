@@ -21,6 +21,7 @@
 		15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476092290AAB5F00D56835 /* ViewController+Rx.swift */; };
 		15476096290AB24700D56835 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476094290AB24700D56835 /* User+CoreDataProperties.swift */; };
 		15476097290AB24700D56835 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476095290AB24700D56835 /* User+CoreDataClass.swift */; };
+		15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476098290B6D9D00D56835 /* ShareSheet.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
 		155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */; };
 		155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70B028ED4714003A844B /* BGResultTableViewCell.swift */; };
@@ -139,6 +140,7 @@
 		15476092290AAB5F00D56835 /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
 		15476094290AB24700D56835 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/hanzchristian/Documents/GluCare-Fixed-Hanzed/MC02-Group9/MC02-Group9/Model/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		15476095290AB24700D56835 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/hanzchristian/Documents/GluCare-Fixed-Hanzed/MC02-Group9/MC02-Group9/Model/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		15476098290B6D9D00D56835 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTableViewCell.swift; sourceTree = "<group>"; };
 		155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TakeMedTableViewCell.xib; path = ../../Controller/TakeMedTableViewCell.xib; sourceTree = "<group>"; };
 		155F70B028ED4714003A844B /* BGResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */,
 				155F70BD28EEA9E9003A844B /* TakeBGViewController.swift */,
 				F02A60DB2869A73900441781 /* AddMedCell */,
+				15476098290B6D9D00D56835 /* ShareSheet.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				15476088290AAA2400D56835 /* BG_Time+CoreDataProperties.swift in Sources */,
+				15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */,
 				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,

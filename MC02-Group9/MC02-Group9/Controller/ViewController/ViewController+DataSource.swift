@@ -15,7 +15,7 @@ extension ViewController{
         self.coreDataManager.fetchMedicine(tableView: tableView)
         self.coreDataManager.fetchBGTime(daySelected: daySelected)
         self.coreDataManager.fetchBG()
-        self.coreDataManager.fetchUser()
+//        self.coreDataManager.fetchUser()
         
         var lowest = "24:00"
         var medIdx = 0

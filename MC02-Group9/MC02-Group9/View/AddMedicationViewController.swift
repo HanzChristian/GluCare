@@ -464,6 +464,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
         dismiss(animated: true, completion: nil)
+        
     }
     
 }

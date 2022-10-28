@@ -81,10 +81,9 @@ extension OnBoardingViewController {
     override func viewWillAppear(_ animated: Bool) {
         if Core.shared.isNewUser(){
             Core.shared.notNewUser()
-            print("new user", userRoles.userRole)
         }
         else{
-            print("existing user", userRoles.userRole)
+
             let mainAppViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "main")
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate,

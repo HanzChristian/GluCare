@@ -55,16 +55,18 @@ class CoreDataManager{
         }
     }
     
-    func saveUser(user_role:Int16){
-        let user = User(context: self.context)
-        user.user_role = user_role
-        
-        do{
-            try self.context.save()
-        }catch{
-            
-        }
-    }
+//    func saveUser(user_role:Int16){
+//        let user = User(context: self.context)
+//        user.user_role = user_role
+//
+//        userRoles.userRole = Int(user.user_role)
+//
+//        do{
+//            try self.context.save()
+//        }catch{
+//
+//        }
+//    }
     
     func lewatBG(daySelected: Date,bGResult:String,bg:BG){
         //change daySelected to String
@@ -310,16 +312,16 @@ class CoreDataManager{
         }
     }
     
-    func fetchUser(){
-        do{
-            let request = User.fetchRequest() as NSFetchRequest<User>
-            
-            self.user = try context.fetch(request)
-            
-        }catch{
-            
-        }
-    }
+//    func fetchUser(){
+//        do{
+//            let request = User.fetchRequest() as NSFetchRequest<User>
+//
+//            self.user = try context.fetch(request)
+//
+//        }catch{
+//
+//        }
+//    }
     
     func fetchBGTime(daySelected:Date){
         let f = DateFormatter()

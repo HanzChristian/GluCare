@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class RoleManagementVC: UIViewController {
     @IBOutlet weak var youAreLbl: UILabel!
@@ -19,6 +18,7 @@ class RoleManagementVC: UIViewController {
     let coreDataManager = CoreDataManager.coreDataManager
     
     var roles = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmBtn.layer.cornerRadius = 10
@@ -55,10 +55,7 @@ class RoleManagementVC: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { action in
             print("tapped Ya")
-            print("self.roles ", self.roles)
-            userRoles.userRole = self.roles
-            print(userRoles.userRole, "user roles")
-            self.coreDataManager.saveUser(user_role: Int16(userRoles.userRole))
+            UserDefaults.standard.set(self.roles, forKey: "role")
             
             self.performSegue(withIdentifier: "goToMain", sender: self)
         }))
@@ -71,10 +68,6 @@ class RoleManagementVC: UIViewController {
             confirmBtn.isEnabled = true
         }
     }
-}
-
-struct userRoles {
-    static var userRole = 0
 }
 
 

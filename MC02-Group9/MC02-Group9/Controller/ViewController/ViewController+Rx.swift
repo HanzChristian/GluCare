@@ -16,6 +16,7 @@ extension ViewController{
     
     func bindDataToTableView(){
        
+
         coreDataManager.jadwal.asObservable()
             .bind(to: tableView.rx
                 .items(cellIdentifier: "cell", cellType: TakeMedTableViewCell.self))
@@ -35,7 +36,8 @@ extension ViewController{
                 .subscribe(onNext: { [weak self] in
                     print("take btn on click rx \(cell.medLbl!.text) index: \(cell.idx)")
                     
-                    if(user?.user_role == 1){
+                    
+                    if(self!.role == 1){
                         let realIdx = cell.identity.idx
                         
                         if(cell.identity.type == "BG"){
@@ -43,14 +45,19 @@ extension ViewController{
                             self!.makeSheet(index: realIdx)
                         }else{
                             print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
-                            //                        self!.makeSheet(index: realIdx)
-                            self!.makeSheetMed(index: realIdx)
+                            
+                            if(cell.cellBtn.currentImage == UIImage(named: "Take")){
+                                self!.makeSheetMed(index: realIdx)
+                            }else{
+                                cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
+                            }
+                            
                         }
                     }
-                    //                    }else{
-                    //                        let realIdx = cell.identity.idx
-                    //                        self!.makeSheetShare(index: realIdx)
-                    //                    }
+                    else{
+                        let realIdx = cell.identity.idx
+                        self!.makeSheetShare(index: realIdx,jadwalVars: cell.identity)
+                    }
                     
                     
                 }).disposed(by: cell.disposeBag)
@@ -75,10 +82,10 @@ extension ViewController{
         
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
         
-        if(user?.user_role == 1){
+        if(role == 1){
             cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
         }
-        else if(user?.user_role == 2){
+        else if(role  == 2){
             cell.cellBtn.setImage(UIImage(named:"RemindTake"), for: UIControl.State.normal)
         }
         
@@ -126,10 +133,11 @@ extension ViewController{
         
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
         
-        if(user?.user_role == 1){
+        print("INI USER ROLENYA \(role)")
+        if(role == 1){
             cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
         }
-        else if(user?.user_role == 2){
+        else if(role  == 2){
             cell.cellBtn.setImage(UIImage(named:"RemindTake"), for: UIControl.State.normal)
         }
         

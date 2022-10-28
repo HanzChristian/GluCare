@@ -26,6 +26,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let dataType = "BG"
     var jadwalVars = [JadwalVars]()
+    let role = UserDefaults.standard.integer(forKey: "role")
     
     @IBAction func guideBtn(_ sender: Any) {
 //        if(coreDataManager.items!.count > 0){
@@ -116,7 +117,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.coreDataManager.fetchBGTime(daySelected: daySelected)
 
         self.tabBarController?.delegate = self
 
@@ -191,6 +191,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .systemGroupedBackground
         
+//        self.coreDataManager.fetchUser()
         mergeTV()
         bindDataToTableView()
         refresh()
@@ -360,6 +361,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         coreDataManager.fetchBG()
         coreDataManager.fetchBGTime(daySelected: daySelected)
+//        coreDataManager.fetchUser()
         
         //sini
         
