@@ -232,20 +232,27 @@ extension ViewController:UITableViewDelegate{
         
         var title = "ini title"
         var text = "GluCare"
-        var content = "Hi, Kamu belum mengonsumsi \(title) nih! Minum dong anjir, pake disuruh suruh!"
+        var content = "ini content"
         
         if(jadwalVars.type == "MED"){
             let med = coreDataManager.items![jadwalVars.idx]
             title = "\(med.medicine!.name!)"
+            content = "Hi, Kamu belum mengonsumsi \(med.medicine!.name!) nih! Minum dong anjir, pake disuruh suruh! Blokkk"
+            
         }else{
             let bg = coreDataManager.bg![jadwalVars.idx]
             if(bg.bg_type == 0){
                 title = "Gula Darah Puasa"
+                content = "Hi, Kamu belum cek Gula Darah Puasa nih! Cek buruan blokk!"
             }else if(bg.bg_type == 1){
                 title = "Gula Darah Sesaat"
+                content = "Hi, Kamu belum cek Gula Darah Sesaat nih! Cek buruan blokk!"
             }else{
                 title = "HBA1C"
+                content = "Hi, Kamu belum cek HBA1C nih! Cek buruan blokk!"
             }
+            
+            
         }
 
         
