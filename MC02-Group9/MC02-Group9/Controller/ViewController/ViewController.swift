@@ -361,9 +361,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         coreDataManager.fetchBG()
         coreDataManager.fetchBGTime(daySelected: daySelected)
-//        coreDataManager.fetchUser()
-        
-        //sini
         
         if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0 ){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
@@ -375,11 +372,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         mergeTV()
         
         print("rx here \(coreDataManager.jadwal.value)")
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-
-        
     }
     
     

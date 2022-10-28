@@ -42,6 +42,8 @@ class profilePageViewController: UIViewController {
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Minum Obat"))
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
+        refresh()
+        
         daftarRutinitasTableView.delegate = self
         daftarRutinitasTableView.delegate = self
         view.backgroundColor = .systemGroupedBackground
@@ -63,6 +65,7 @@ class profilePageViewController: UIViewController {
               ]
         }
         
+    
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
     }
     
