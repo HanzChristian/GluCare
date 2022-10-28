@@ -212,7 +212,13 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             //REMOVE FROM CORE DATA HERE!
             // dummyModel.remove(at: indexPath.row)
+            
             let medicine = self.items![indexPath.row]
+            let id = medicine.id
+            
+            // delete on firebase
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
+            
             self.context.delete(medicine)
             let deletedId: [String] = [medicine.id!]
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
@@ -224,15 +230,17 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.fetchMedicine()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            
+            return
 //            context.delete(Medicine[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             tableView.endUpdates()
-            do{
-                try self.context.save()
-            }catch{
-                
-            }
+//            do{
+//                try self.context.save()
+//            }catch{
+//
+//            }
 //            self.saveData()
         }
     }

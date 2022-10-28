@@ -11,4 +11,8 @@ pod 'Gecco'
 pod 'RxSwift'
 pod 'RxCocoa'
 
+pod 'Firebase/Firestore'
+pod 'Firebase/Auth'
+pod 'FirebaseFirestoreSwift'
+
 end

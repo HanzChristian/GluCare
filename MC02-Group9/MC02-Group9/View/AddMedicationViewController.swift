@@ -452,6 +452,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
 //        }
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
         do{
             try self.context.save()
         }catch{
