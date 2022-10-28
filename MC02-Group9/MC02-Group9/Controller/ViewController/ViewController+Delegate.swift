@@ -232,6 +232,7 @@ extension ViewController:UITableViewDelegate{
         
         var title = "ini title"
         var text = "GluCare"
+        var content = "Hi, Kamu belum mengonsumsi \(title) nih! Minum dong anjir, pake disuruh suruh!"
         
         if(jadwalVars.type == "MED"){
             let med = coreDataManager.items![jadwalVars.idx]
@@ -250,8 +251,10 @@ extension ViewController:UITableViewDelegate{
         
         // set up activity view controller
         let textToShare: [Any] = [
-            MyActivityItemSource(title: title, text: text)
+            MyActivityItemSource(content:content,title: title, text: text)
         ]
+        
+
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         

@@ -1,21 +1,23 @@
 import LinkPresentation
 
 class MyActivityItemSource: NSObject, UIActivityItemSource {
+    var content: String
     var title: String
     var text: String
     
-    init(title: String, text: String) {
+    init(content:String,title: String, text: String) {
+        self.content = content
         self.title = title
         self.text = text
         super.init()
     }
     
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return text
+        return content
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return text
+        return content
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
