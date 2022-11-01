@@ -2,7 +2,7 @@
 //  BG+CoreDataClass.swift
 //  
 //
-//  Created by Christophorus Davin on 26/10/22.
+//  Created by Christophorus Davin on 01/11/22.
 //
 //
 

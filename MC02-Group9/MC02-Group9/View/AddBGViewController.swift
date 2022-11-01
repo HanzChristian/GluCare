@@ -136,6 +136,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         bg.bg_time = cellBgTimeTV?.bgTimePicker.text
         bg.bg_frequency = Int16(scheduleVars.schedulePickedRow)
         bg.bg_each_frequency = Int16(daysVars.dayPickedRow)+1
+        bg.bg_id = UUID().uuidString
         
         
         

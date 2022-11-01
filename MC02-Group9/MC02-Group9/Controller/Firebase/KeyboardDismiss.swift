@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 // Put this piece of code anywhere you like
-extension LoginViewController {
+extension RegisterViewController {
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

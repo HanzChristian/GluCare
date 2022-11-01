@@ -10,28 +10,36 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FastingBGTVC" customModule="MC02_Group9" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fastingBGTVC" id="xSK-Io-q6m" customClass="FastingBGTVC" customModule="MC02_Group9" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xSK-Io-q6m" id="9xe-6a-jwW">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kadar Gula Puasa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNM-xa-Qu4">
-                        <rect key="frame" x="20" y="39" width="183" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kadar Gula Puasa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNM-xa-Qu4">
+                        <rect key="frame" x="24.000000000000007" y="17" width="113.66666666666669" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14m-ph-xeP">
-                        <rect key="frame" x="211" y="39" width="169" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00006%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14m-ph-xeP">
+                        <rect key="frame" x="308" y="17" width="68" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="oNM-xa-Qu4" firstAttribute="top" secondItem="9xe-6a-jwW" secondAttribute="top" constant="17" id="Mt4-hi-JvG"/>
+                    <constraint firstItem="oNM-xa-Qu4" firstAttribute="leading" secondItem="9xe-6a-jwW" secondAttribute="leading" constant="24" id="oBd-yd-fxh"/>
+                    <constraint firstItem="14m-ph-xeP" firstAttribute="top" secondItem="9xe-6a-jwW" secondAttribute="top" constant="17" id="wCz-yz-lLn"/>
+                    <constraint firstAttribute="trailing" secondItem="14m-ph-xeP" secondAttribute="trailing" constant="24" id="xgW-bq-hC3"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="fastingDataLbl" destination="14m-ph-xeP" id="33h-1N-dpm"/>
+                <outlet property="fastingTitleLbl" destination="oNM-xa-Qu4" id="WrX-9O-Vm0"/>
+            </connections>
             <point key="canvasLocation" x="135.38461538461539" y="25.592417061611375"/>
         </tableViewCell>
     </objects>

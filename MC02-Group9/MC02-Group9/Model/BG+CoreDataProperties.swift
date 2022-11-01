@@ -2,7 +2,7 @@
 //  BG+CoreDataProperties.swift
 //  
 //
-//  Created by Christophorus Davin on 26/10/22.
+//  Created by Christophorus Davin on 01/11/22.
 //
 //
 
@@ -21,6 +21,7 @@ extension BG {
     @NSManaged public var bg_start_date: Date?
     @NSManaged public var bg_time: String?
     @NSManaged public var bg_type: Int16
+    @NSManaged public var bg_id: String?
     @NSManaged public var time: NSSet?
 
 }

@@ -67,6 +67,7 @@ class TestingViewController: UIViewController {
     }
     
     @IBAction func connectToPatient (_ sender: Any){
+        print("pressed")
         if  let user = Auth.auth().currentUser?.email,
             let emailPatient = patientEmailToConnect.text{
             print(user)
@@ -112,7 +113,7 @@ class TestingViewController: UIViewController {
     
     func getRole() {
         if let user = Auth.auth().currentUser?.email {
-            db.collection("role").whereField("owner", isEqualTo: "\(user)")
+            db.collection("account").whereField("owner", isEqualTo: "\(user)")
                 .getDocuments { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")

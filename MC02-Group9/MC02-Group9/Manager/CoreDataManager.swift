@@ -68,6 +68,15 @@ class CoreDataManager{
 //        }
 //    }
     
+    func makeLogInit() -> Log {
+        
+        let newLog = Log(context: self.context)
+        newLog.log_id = UUID().uuidString
+        
+        return newLog
+        
+    }
+    
     func lewatBG(daySelected: Date,bGResult:String,bg:BG){
         //change daySelected to String
         let formatter = DateFormatter()
@@ -93,7 +102,7 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = Log(context: self.context)
+        let log = makeLogInit()
         log.date = dateFormatter.date(from: string)
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Skip"
@@ -131,7 +140,7 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = Log(context: self.context)
+        let log = makeLogInit()
         log.date = dateFormatter.date(from: string)
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Take"
@@ -170,7 +179,7 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = Log(context: self.context)
+        let log = makeLogInit()
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Skip"
@@ -215,7 +224,7 @@ class CoreDataManager{
         // time.addTimeInterval(25200)
         print("Selected Date: \(time)")
         
-        let log = Log(context: self.context)
+        let log = makeLogInit()
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = time
         log.action = "Take"
@@ -284,7 +293,7 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = Log(context: self.context)
+        let log = makeLogInit()
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Take"
