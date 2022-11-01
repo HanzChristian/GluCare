@@ -25,7 +25,6 @@ class MigrateFirestoreToCoreData {
     }
     
     func removeMedToFirestore(id: String) {
-        
         if let user = Auth.auth().currentUser?.email {
             db.collection("medicine").whereField("id", isEqualTo: "\(id)")
                 .getDocuments { [weak self] (querySnapshot, err) in
@@ -38,7 +37,6 @@ class MigrateFirestoreToCoreData {
                     }
                 }
         }
-        
     }
     
     func addNewMedToFirestore(medicine: Medicine) {
@@ -61,7 +59,6 @@ class MigrateFirestoreToCoreData {
     }
     
     func migrateMedicineFromFirestoreToCoredata(medicines: [MedicineFire]) {
-        
         for med in medicines {
             var findSame = false
             // Filter
@@ -100,7 +97,6 @@ class MigrateFirestoreToCoreData {
                 
             }
         }
-        
     }
     
 }

@@ -160,6 +160,9 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         }
         
         
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewBGToFirestore(bg: bg)
+        
+        
         do{
             try self.context.save()
         }catch{

@@ -28,6 +28,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var jadwalVars = [JadwalVars]()
     let role = UserDefaults.standard.integer(forKey: "role")
     
+    let firebaseManager = FirebaseManager.firebaseManager
+    
     @IBAction func guideBtn(_ sender: Any) {
 //        if(coreDataManager.items!.count > 0){
 //            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
@@ -192,6 +194,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tableView.backgroundColor = .systemGroupedBackground
         
 //        self.coreDataManager.fetchUser()
+        firebaseManager.loadFirebase()
+        
         mergeTV()
         bindDataToTableView()
         refresh()

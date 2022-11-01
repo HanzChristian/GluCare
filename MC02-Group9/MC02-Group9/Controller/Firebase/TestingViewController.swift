@@ -139,7 +139,7 @@ class TestingViewController: UIViewController {
                                 self!.fetchInvitationFromCaregiver()
                                 
                                 if self!.role == 0 {
-                                    self!.loadMedicine()
+                                    //self!.loadMedicine()
                                 }else{
                                     self!.getPatientEmail()
                                 }
@@ -226,9 +226,10 @@ class TestingViewController: UIViewController {
                             if  let patientEmail = data["patient"] as? String
                             {
                                 print(patientEmail)
+                                UserDefaults.standard.set("\(patientEmail)", forKey: "patient")
                                 self!.patientEmail = patientEmail
                                 self!.errorMsg.text = "Connected with patient \(patientEmail)"
-                                self!.loadMedicine()
+//                                self!.loadMedicine()
                                 
                                 return
                             }
@@ -238,35 +239,7 @@ class TestingViewController: UIViewController {
         }
     }
     
-    func loadMedicine() {
-        if var user = Auth.auth().currentUser?.email {
-            
-            if role == 1 {
-                user = patientEmail
-                print("email fetch \(user)")
-            }
-            
-            
-            db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
-                .addSnapshotListener() { [weak self] (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    } else if let querySnapshot = querySnapshot{
-                        self!.dataLabel.text = ""
-                        let medicine: [MedicineFire] = querySnapshot.documents.compactMap{
-                            return try? $0.data(as: MedicineFire.self)
-                        }
-                        
-                        if medicine != nil {
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
-                        }
-                    }
-                }
-        }
-        
-        
-       
-    }
+    
     
 
     /*

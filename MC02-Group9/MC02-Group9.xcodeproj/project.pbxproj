@@ -122,6 +122,9 @@
 		F054782D2910C6D100DB4503 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054782C2910C6D100DB4503 /* LoginViewController.swift */; };
 		F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054782E2910D8A900DB4503 /* UsernameTVC.swift */; };
 		F05478312910D8A900DB4503 /* UsernameTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F054782F2910D8A900DB4503 /* UsernameTVC.xib */; };
+		F05478332910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478322910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift */; };
+		F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478342910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift */; };
+		F054783729110E7900DB4503 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054783629110E7900DB4503 /* FirebaseManager.swift */; };
 		F054B0D4290BDC5100287D06 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0D2290BDC5100287D06 /* User+CoreDataProperties.swift */; };
 		F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0D3290BDC5100287D06 /* User+CoreDataClass.swift */; };
 		F054B0D7290BDCEB00287D06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F054B0D6290BDCEB00287D06 /* GoogleService-Info.plist */; };
@@ -253,6 +256,9 @@
 		F054782C2910C6D100DB4503 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F054782E2910D8A900DB4503 /* UsernameTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameTVC.swift; sourceTree = "<group>"; };
 		F054782F2910D8A900DB4503 /* UsernameTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsernameTVC.xib; sourceTree = "<group>"; };
+		F05478322910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MigrateFirestoreToCoreData+BG.swift"; sourceTree = "<group>"; };
+		F05478342910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MigrateFireStoreToCoreData+Log.swift"; sourceTree = "<group>"; };
+		F054783629110E7900DB4503 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		F054B0D2290BDC5100287D06 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F054B0D3290BDC5100287D06 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F054B0D6290BDCEB00287D06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -536,11 +542,14 @@
 		F054B0D8290BDDE700287D06 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				F054783629110E7900DB4503 /* FirebaseManager.swift */,
 				F054B0D9290BDDFE00287D06 /* TestingViewController.swift */,
 				F054B0DB290BDE0C00287D06 /* RegisterViewController.swift */,
 				F054782C2910C6D100DB4503 /* LoginViewController.swift */,
 				F054B0DD290BDE2000287D06 /* StructFirebase.swift */,
 				F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */,
+				F05478322910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift */,
+				F05478342910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift */,
 				F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */,
 			);
 			path = Firebase;
@@ -744,8 +753,10 @@
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
+				F054783729110E7900DB4503 /* FirebaseManager.swift in Sources */,
 				2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */,
 				15CAFCFA28F54662009A7686 /* BGStartDateTableViewCell.swift in Sources */,
+				F05478332910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift in Sources */,
 				15CAFD2028F7E521009A7686 /* BGCalendarTableViewCell.swift in Sources */,
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
 				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
@@ -798,6 +809,7 @@
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
+				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
 				15CAFD0228F5469C009A7686 /* BGFrequencyTableViewCell.swift in Sources */,
 				1547608F290AAB1500D56835 /* ViewController+Delegate.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
