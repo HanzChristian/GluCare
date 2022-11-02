@@ -347,7 +347,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.reloadData()
         
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+//        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+        refresh()
     }
     
     override open var shouldAutorotate: Bool

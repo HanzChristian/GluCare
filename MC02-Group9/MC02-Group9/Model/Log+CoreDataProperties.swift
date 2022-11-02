@@ -2,7 +2,7 @@
 //  Log+CoreDataProperties.swift
 //  
 //
-//  Created by Christophorus Davin on 01/11/22.
+//  Created by Hanz Christian on 02/11/22.
 //
 //
 
@@ -20,8 +20,9 @@ extension Log {
     @NSManaged public var bg_check_result: String?
     @NSManaged public var date: Date?
     @NSManaged public var dateTake: Date?
+    @NSManaged public var log_id: String?
     @NSManaged public var medicine_name: String?
     @NSManaged public var time: String?
-    @NSManaged public var log_id: String?
+    @NSManaged public var type: Int16
 
 }

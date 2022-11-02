@@ -35,6 +35,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     let dateFormatter = DateFormatter()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let calendarHelper = CalendarHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,8 +107,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         do{
             DispatchQueue.main.async {
                 
-//                let indexPath = IndexPath(item: 2, section: 1)
-//                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                //                let indexPath = IndexPath(item: 2, section: 1)
+                //                self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 
                 self.tableView.reloadData()
             }
@@ -122,7 +123,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     @objc private func saveItem(){
         //tunggu semuanya ke save dlu baru diupdate
-    
+        
         let bg = BG(context: context)
         
         let dateFormatter = DateFormatter()
@@ -156,12 +157,72 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 bg_time.bg_date_item = i
                 bg.addToTime(bg_time)
                 print("BG TIME \(i)")
+                
             }
         }
         
         
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewBGToFirestore(bg: bg)
         
+        var lastDate = bg.bg_start_date
+        
+        print("BG FREQNYA ADALAH \(bg.bg_frequency)")
+        
+        guard var bg_times = bg.time else{
+            return
+        }
+        
+        
+        if(bg.bg_frequency == 0){
+            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!)
+            
+            for i in 1...100 { //loop dari hari 1 - 100
+                let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
+                lastDate = date
+                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!)
+            }
+        }
+        else if(bg.bg_frequency == 1){
+            
+            for i in 1...20 { //loop dari hari 1 - 100
+                for t in bg_times{
+                    let oneWeekAgo = calendarHelper.addDays(date: lastDate!, days: 7)
+                    var currentDate = lastDate
+                    
+                    while(currentDate! < oneWeekAgo){
+                        let currentWeekDay = calendarHelper.calendar.dateComponents([.weekday], from: currentDate!).weekday!+1
+                        
+                        if(currentWeekDay == (t as! BG_Time).bg_date_item){
+                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!)
+                        }
+                        currentDate = calendarHelper.addDays(date: currentDate!, days: 1)
+                    }
+                }
+                lastDate = calendarHelper.addDays(date: lastDate!, days: 7*Int(bg.bg_each_frequency))
+                
+            }
+            
+        }
+        else{
+            for i in 1...20 { //loop dari hari 1 - 100
+                for t in bg_times{
+                    let date = (t as! BG_Time).bg_date_item
+                    let calendar = Calendar.current
+                    
+                    var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: lastDate!)
+                    
+                    dateComponents?.day = Int(date)
+                    
+                    let dates: Date? = calendar.date(from: dateComponents!)
+                    
+                    if(bg.bg_start_date! <= dates!){
+                        CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!)
+                    }
+                }
+                lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
+                
+            }
+        }
         
         do{
             try self.context.save()

@@ -15,7 +15,9 @@ extension ViewController{
         self.coreDataManager.fetchMedicine(tableView: tableView)
         self.coreDataManager.fetchBGTime(daySelected: daySelected)
         self.coreDataManager.fetchBG()
+        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         
+        var bgLog = [Log]()
         var lowest = "24:00"
         var medIdx = 0
         var bgIdx = 0
@@ -31,20 +33,43 @@ extension ViewController{
         }
         
         print("INI MEDCOPY \(medCopy.count)")
+        
+        guard var logs = self.coreDataManager.logs else{
+            return
+        }
+
+        for log in logs{ //menentukan log bg atau med
+            if log.type == 1{
+                bgLog.append(log)
+                print("INI LOG AWAL \(log)")
+            }
+            print("INI LOG AWAL-- \(log.type)")
+        }
+        
         while(medCopy.count != 0){
             
             var idxBg = 0
             var idxLowestBg = -1
             var lowestBg = "24:00"
+            var idxLog = 0
+            var idxLogLowestBg = -1
             
             
             for bg in bgCopy{
-                if((bg.bg_time)! < medCopy[0].time! && (bg.bg_time)! < lowestBg){
-                    lowestBg = (bg.bg_time)!
-                    idxLowestBg = idxBg
+                idxLog = 0
+                for log in bgLog{ //menentukan log bg atau med
+                    if log.time == bg.bg_time{
+                        if((bg.bg_time)! < medCopy[0].time! && (bg.bg_time)! < lowestBg){
+                            lowestBg = (bg.bg_time)!
+                            idxLowestBg = idxBg
+                            idxLogLowestBg = idxLog
+                        }
+                    idxLog += 1
+                    
+                    }
+                    
                 }
                 idxBg += 1
-               
             }
             
             if(idxLowestBg == -1){ //med lebih kecil
@@ -54,14 +79,21 @@ extension ViewController{
             }else{ //bg lebih kecil
                 jadwalVars.append(JadwalVars(type: "BG", idx: getBgIdx(bG: bgCopy[idxLowestBg])))
                 bgCopy.remove(at: idxLowestBg)
+                bgLog.remove(at: idxLogLowestBg)
             }
         }
-        //cari bg terkecil masuk ke jadwalVar
+//        cari bg terkecil masuk ke jadwalVar
         for bg in bgCopy{
-            jadwalVars.append(JadwalVars(type: "BG", idx: getBgIdx(bG: bg)))
-            bgIdx += 1
-        }
+            for log in bgLog{
+                if log.time == bg.bg_time{
+                    jadwalVars.append(JadwalVars(type: "BG", idx: getBgIdx(bG: bg)))
+                }
+                print("ini lognya \(log)")
+            }
+            print("ini bgnya \(bg)")
         
+        }
+
         for bg in coreDataManager.bg!{
             print("BGTIME \(bg.bg_time)")
         }
@@ -83,16 +115,16 @@ extension ViewController{
     
     
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-////        if(dataType == "BG"){
-////            return self.coreDataManager.bgTime?.count ?? 0
-////        }else{
-////            return self.coreDataManager.items?.count ?? 0
-////        }
-//        return jadwalVars.count ?? 0
-//
-//    }
+    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //
+    ////        if(dataType == "BG"){
+    ////            return self.coreDataManager.bgTime?.count ?? 0
+    ////        }else{
+    ////            return self.coreDataManager.items?.count ?? 0
+    ////        }
+    //        return jadwalVars.count ?? 0
+    //
+    //    }
     
     func showToastSkip(message : String, font: UIFont) {
         let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
@@ -149,5 +181,5 @@ extension ViewController{
             toastLabel.removeFromSuperview()
         })
     }
-
+    
 }

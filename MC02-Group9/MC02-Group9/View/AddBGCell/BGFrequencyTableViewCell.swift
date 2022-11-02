@@ -69,6 +69,8 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
         schedulePicked = true
         scheduleVars.schedulePickedRow = row
         scheduleTimeVar.row = row
+        print("INI BG FREQNYA = \(scheduleVars.schedulePickedRow)")
+        
         bgFrequencyScheduleLbl.resignFirstResponder()
         //ngubah label di sub frequency
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeSub"), object: nil)
