@@ -22,6 +22,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var profileSection = [ProfileSection]()
     var currentCell: IndexPath?
     var height = 56.0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileSection.append(ProfileSection.init(profileSectionTitle: ""))
         profileSection.append(ProfileSection.init(profileSectionTitle: "Target"))
         profileSection.append(ProfileSection.init(profileSectionTitle: "Keluarga"))
+        profileSection.append(ProfileSection.init(profileSectionTitle: ""))
         
         let nibUsername = UINib(nibName: "UsernameTVC", bundle: nil)
         tableView.register(nibUsername, forCellReuseIdentifier: "usernameTVC")
@@ -44,6 +46,12 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.register(nibHbA1C, forCellReuseIdentifier: "hbA1CBGTVC")
         let nibFasting = UINib(nibName: "FastingBGTVC", bundle: nil)
         tableView.register(nibFasting, forCellReuseIdentifier: "fastingBGTVC")
+        let nibInvitesText = UINib(nibName: "InvitesTextTVC", bundle: nil)
+        tableView.register(nibInvitesText, forCellReuseIdentifier: "invitesTextTVC")
+        let nibListCaregiver = UINib(nibName: "ListCaregiverTVC", bundle: nil)
+        tableView.register(nibListCaregiver, forCellReuseIdentifier: "listCaregiverTVC")
+        let nibExit = UINib(nibName: "ExitTVC", bundle: nil)
+        tableView.register(nibExit, forCellReuseIdentifier: "exitTVC")
         
         //view.backgroundColor = .systemGroupedBackground
         setNavItem()
@@ -52,21 +60,25 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let countCaregiver = listCaregiver.caregiverList.count
         if (section == 0) {
             return 1
         } else if (section == 1){
             return 3
+        } else if (section == 2){
+            return countCaregiver+1
         } else {
             return 1
-            //            return jadwal.count+1
         }
+            //            return jadwal.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let countCaregiver = listCaregiver.caregiverList.count
         if(indexPath.section == 0){
             if (indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
@@ -83,6 +95,18 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
                 return cell
             }
+        } else if (indexPath.section == 2) {
+            if (indexPath.row == (countCaregiver)) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
+                cell.caregiverNameLbl?.text = listCaregiver.caregiverList[indexPath.row]
+                return cell
+            }
+        } else if (indexPath.section == 3) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
+            return cell
         }
         return UITableViewCell()
     }
@@ -104,9 +128,16 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let countCaregiver = listCaregiver.caregiverList.count
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
                 height = 80
+            }
+        } else if (indexPath.section == 2) {
+            if (indexPath.row == countCaregiver) {
+                height = 180
+            } else if (indexPath.row != countCaregiver) {
+                height = 56
             }
         } else {
             height = 56.0
@@ -126,6 +157,8 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) {
             return 24
+        } else if (section == 3) {
+            return 14
         }
         return 35
     }
@@ -176,4 +209,9 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc private func saveItem() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+struct listCaregiver {
+    static var caregiverList = ["Brandon Math", "Noah Syan"]
+    
 }

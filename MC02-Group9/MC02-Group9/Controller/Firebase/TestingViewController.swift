@@ -158,7 +158,6 @@ class TestingViewController: UIViewController {
         
         caregiverInviteLabel.text = ""
         caregiverInviteButton.isHidden = true
-        
         patientEmailToConnect.isHidden = true
         patientConnectButton.isHidden = true
         

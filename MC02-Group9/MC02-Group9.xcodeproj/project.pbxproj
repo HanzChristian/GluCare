@@ -81,6 +81,12 @@
 		1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCAEAC2863293500E97CBA /* MealTime.swift */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
 		2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */; };
+		2C23DEFD2913D4DE0074AFB3 /* InvitesTextTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */; };
+		2C23DEFE2913D4DE0074AFB3 /* InvitesTextTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */; };
+		2C23DF012913DD550074AFB3 /* ListCaregiverTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C23DEFF2913DD550074AFB3 /* ListCaregiverTVC.swift */; };
+		2C23DF022913DD550074AFB3 /* ListCaregiverTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C23DF002913DD550074AFB3 /* ListCaregiverTVC.xib */; };
+		2C23DF052913F55F0074AFB3 /* ExitTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C23DF032913F55F0074AFB3 /* ExitTVC.swift */; };
+		2C23DF062913F55F0074AFB3 /* ExitTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C23DF042913F55F0074AFB3 /* ExitTVC.xib */; };
 		2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */; };
 		2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */; };
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
@@ -213,6 +219,12 @@
 		1F8813B82861E0DF009994F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Badge.storyboard; sourceTree = "<group>"; };
 		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
 		2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesBGTVC.swift; sourceTree = "<group>"; };
+		2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesTextTVC.swift; sourceTree = "<group>"; };
+		2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitesTextTVC.xib; sourceTree = "<group>"; };
+		2C23DEFF2913DD550074AFB3 /* ListCaregiverTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCaregiverTVC.swift; sourceTree = "<group>"; };
+		2C23DF002913DD550074AFB3 /* ListCaregiverTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCaregiverTVC.xib; sourceTree = "<group>"; };
+		2C23DF032913F55F0074AFB3 /* ExitTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTVC.swift; sourceTree = "<group>"; };
+		2C23DF042913F55F0074AFB3 /* ExitTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitTVC.xib; sourceTree = "<group>"; };
 		2C336FE22909D35B00F37A36 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		2C3D935A2859AE430017DCB6 /* MedDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedDescTableViewCell.swift; sourceTree = "<group>"; };
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
@@ -452,6 +464,12 @@
 				F05478112910B44600DB4503 /* FastingBGTVC.xib */,
 				F05478102910B44600DB4503 /* HbA1CBGTVC.swift */,
 				F054780D2910B44600DB4503 /* HbA1CBGTVC.xib */,
+				2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */,
+				2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */,
+				2C23DEFF2913DD550074AFB3 /* ListCaregiverTVC.swift */,
+				2C23DF002913DD550074AFB3 /* ListCaregiverTVC.xib */,
+				2C23DF032913F55F0074AFB3 /* ExitTVC.swift */,
+				2C23DF042913F55F0074AFB3 /* ExitTVC.xib */,
 			);
 			path = ProfileCell;
 			sourceTree = "<group>";
@@ -669,10 +687,12 @@
 				15CAFCFF28F54684009A7686 /* BGTimeTableViewCell.xib in Resources */,
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
+				2C23DF062913F55F0074AFB3 /* ExitTVC.xib in Resources */,
 				F054B0D7290BDCEB00287D06 /* GoogleService-Info.plist in Resources */,
 				2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */,
 				F054781E2910B70200DB4503 /* MedAdheranceTVC.xib in Resources */,
 				1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */,
+				2C23DEFE2913D4DE0074AFB3 /* InvitesTextTVC.xib in Resources */,
 				15CAFD0328F5469C009A7686 /* BGFrequencyTableViewCell.xib in Resources */,
 				6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */,
 				2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */,
@@ -693,6 +713,7 @@
 				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
 				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
+				2C23DF022913DD550074AFB3 /* ListCaregiverTVC.xib in Resources */,
 				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
 				15CAFCFB28F54662009A7686 /* BGStartDateTableViewCell.xib in Resources */,
@@ -773,6 +794,7 @@
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F0394EFF286AFC780009215C /* CodeReview.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
+				2C23DF052913F55F0074AFB3 /* ExitTVC.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
 				F054B0DA290BDDFE00287D06 /* TestingViewController.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
@@ -827,6 +849,7 @@
 				F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */,
 				155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */,
 				15D576D328EC029500603F1D /* Medicine+CoreDataClass.swift in Sources */,
+				2C23DF012913DD550074AFB3 /* ListCaregiverTVC.swift in Sources */,
 				15CAFD2328F7E991009A7686 /* CalendarModel.swift in Sources */,
 				2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */,
 				F054782A2910BD3300DB4503 /* BG_Time+CoreDataClass.swift in Sources */,
@@ -837,6 +860,7 @@
 				1547608D290AAA7300D56835 /* ImageHelper.swift in Sources */,
 				15CAFD2728F7F939009A7686 /* CalendarViewModel.swift in Sources */,
 				15CAFD1C28F7DB8B009A7686 /* BGCalendarCollectionViewCell.swift in Sources */,
+				2C23DEFD2913D4DE0074AFB3 /* InvitesTextTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
