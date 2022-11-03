@@ -15,7 +15,7 @@ class BGSubFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     
     let scheduleTime = ["Hari","Minggu","Bulan"]
     var days = [String]()
-    
+    var pickedEachFreq = 0
 
     let pickerView = UIPickerView()
     
@@ -30,8 +30,9 @@ class BGSubFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         super.awakeFromNib()
         bgFrequencyLbl.textColor = .systemBlue
         bgSubFrequencyDay.textColor = .systemBlue
-        giveArrayNumber()
+        bgSubFrequencyDay.font = UIFont.boldSystemFont(ofSize: 16)
         
+        giveArrayNumber()
         pickerView.dataSource = self
         pickerView.delegate = self
 
@@ -80,12 +81,15 @@ class BGSubFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        bgSubFrequencyDay.textColor = .black
+        bgSubFrequencyDay.textColor = .systemBlue
+        bgSubFrequencyDay.font = UIFont.boldSystemFont(ofSize: 16)
+        
         bgSubFrequencyDay.text = days[row]
+        pickedEachFreq = row
+    
         schedulePicked = true
         daysVars.dayPickedRow = row
         bgSubFrequencyDay.resignFirstResponder()
-        bgSubFrequencyDay.textColor = .systemBlue
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
         //melakukan validasi total
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)

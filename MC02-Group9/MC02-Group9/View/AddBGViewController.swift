@@ -35,6 +35,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     let dateFormatter = DateFormatter()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let calendarHelper = CalendarHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,10 +105,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     func reloadTableView(){
         do{
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 
-//                let indexPath = IndexPath(item: 2, section: 1)
-//                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+//                UIView.performWithoutAnimation {
+//                    let loc = tableView.contentOffset
+//                    tableView.reloadSections(IndexSet(integer: 1), with: .none)
+//                    tableView.setContentOffset(loc, animated: false)
+//                }
                 
                 self.tableView.reloadData()
             }
@@ -122,29 +126,32 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     @objc private func saveItem(){
         //tunggu semuanya ke save dlu baru diupdate
-    
+        
         let bg = BG(context: context)
         
         let dateFormatter = DateFormatter()
         dateFormatter.string(from: currentTime)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let bgStartDate = cellBgStartDateTV?.bgStartDatePicker.text
-        let bgDate = dateFormatter.date(from: bgStartDate!)
+        var bgDate = dateFormatter.date(from: bgStartDate!)
         
+        bgDate = calendarHelper.calendar.date(byAdding: .hour, value: 7, to: bgDate!)
+
         bg.bg_type = Int16(typeVars.typePickedRow)
         bg.bg_start_date = bgDate
         bg.bg_time = cellBgTimeTV?.bgTimePicker.text
-        bg.bg_frequency = Int16(scheduleVars.schedulePickedRow)
-        bg.bg_each_frequency = Int16(daysVars.dayPickedRow)+1
+
+        bg.bg_frequency = Int16(bgFrequency!.pickedFreq)
+        bg.bg_each_frequency = Int16(cellBgSubFrequency!.pickedEachFreq)+1
         bg.bg_id = UUID().uuidString
         
         
-        
-        //        print("INI BG TYPE = \(bg.bg_type)")
-        //        print("INI BG START DATE = \(bg.bg_start_date)")
-        //        print("INI BG TIME = \(bg.bg_time)")
-        //        print("INI BG FREQ = \(bg.bg_frequency)")
-        //        print("INI BG EACH FREQ = \(bg.bg_each_frequency)")
+                print("INI BG")
+                print("INI BG TYPE = \(bg.bg_type)")
+                print("INI BG START DATE = \(bg.bg_start_date)")
+                print("INI BG TIME = \(bg.bg_time)")
+                print("INI BG FREQ = \(bg.bg_frequency)")
+                print("INI BG EACH FREQ = \(bg.bg_each_frequency)")
         
         //save tanggal sesuai kondisinya
         
@@ -156,12 +163,79 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 bg_time.bg_date_item = i
                 bg.addToTime(bg_time)
                 print("BG TIME \(i)")
+                
             }
         }
         
         
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewBGToFirestore(bg: bg)
         
+        var lastDate = bg.bg_start_date
+        
+        print("BG FREQNYA ADALAH \(bg.bg_frequency)")
+        
+        guard var bg_times = bg.time else{
+            return
+        }
+        
+        
+        if(bg.bg_frequency == 0){
+            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!)
+            
+            for i in 1...20 { //loop dari hari 1 - 100
+                let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
+                lastDate = date
+                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!)
+            }
+        }
+        else if(bg.bg_frequency == 1){
+            
+            for i in 1...20 { //loop dari hari 1 - 20
+                let oneWeekAgo = calendarHelper.addDays(date: lastDate!, days: 7)
+                var currentDate = lastDate
+                
+                while(currentDate! < oneWeekAgo){
+                    let currentWeekDay = calendarHelper.calendar.dateComponents([.weekday], from: currentDate!).weekday!
+                    
+                    for t in bg_times{
+                        if(currentWeekDay == (t as! BG_Time).bg_date_item){
+                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!)
+                            
+                            print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
+                            print("Tete \((t as! BG_Time).bg_date_item)")
+                            
+                        }
+                    }
+                    print(" CURRENT WEEK \(currentDate) \(currentWeekDay)")
+                
+                    currentDate = calendarHelper.addDays(date: currentDate!, days: 1)
+                }
+
+                lastDate = calendarHelper.addDays(date: lastDate!, days: 7*Int(bg.bg_each_frequency))
+                
+            }
+            
+        }
+        else if (bg.bg_frequency == 2){
+            for i in 1...20 { //loop dari hari 1 - 100
+                for t in bg_times{
+                    let date = (t as! BG_Time).bg_date_item
+                    let calendar = Calendar.current
+                    
+                    var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: lastDate!)
+                    
+                    dateComponents?.day = Int(date)
+                    
+                    let dates: Date? = calendar.date(from: dateComponents!)
+                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
+                    if(bg.bg_start_date! <= dates!){
+                        CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!)
+                    }
+                }
+                lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
+                
+            }
+        }
         
         do{
             try self.context.save()
@@ -315,6 +389,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 _ = cell.becomeFirstResponder()
                 validateFormBG()
             }
+           
         }
         else if let cell = tableView.cellForRow(at: indexPath) as? BGSubFrequencyTableViewCell{
             if !cell.isFirstResponder{

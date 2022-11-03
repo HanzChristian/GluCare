@@ -15,13 +15,13 @@ class CalendarViewModel{
     
     private init(){
         calendarModel = [
-            CalendarModel(text: "M", isSelected: false,position: 0),
-            CalendarModel(text: "T", isSelected: false,position: 1),
-            CalendarModel(text: "W", isSelected: false,position: 2),
-            CalendarModel(text: "T", isSelected: false,position: 3),
-            CalendarModel(text: "F", isSelected: false,position: 4),
-            CalendarModel(text: "S", isSelected: false,position: 5),
-            CalendarModel(text: "S", isSelected: false,position: 6)
+            CalendarModel(text: "S", isSelected: false,position: 2),
+            CalendarModel(text: "S", isSelected: false,position: 3),
+            CalendarModel(text: "R", isSelected: false,position: 4),
+            CalendarModel(text: "K", isSelected: false,position: 5),
+            CalendarModel(text: "J", isSelected: false,position: 6),
+            CalendarModel(text: "S", isSelected: false,position: 7),
+            CalendarModel(text: "M", isSelected: false,position: 1)
         ]
         
         calendarMonthModel = [

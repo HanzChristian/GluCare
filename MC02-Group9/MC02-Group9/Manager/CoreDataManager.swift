@@ -72,6 +72,7 @@ class CoreDataManager{
         
         let newLog = Log(context: self.context)
         newLog.log_id = UUID().uuidString
+        newLog.type = 0 //med
         
         return newLog
         
@@ -107,6 +108,7 @@ class CoreDataManager{
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Skip"
         log.bg_check_result = bGResult
+        log.type = 1
         
         do{
             try self.context.save()
@@ -145,6 +147,7 @@ class CoreDataManager{
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Take"
         log.bg_check_result = bGResult
+        log.type = 1
         print("INI BG RESULTNYA \(log.bg_check_result)")
         
         do{
@@ -231,6 +234,21 @@ class CoreDataManager{
         log.time = self.items![indexPath.row].time
         log.medicine_name = self.items![indexPath.row].medicine?.name
         
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
+    }
+    
+    func bgLog(bgDate:Date,bgTime:String){
+        
+        let log = makeLogInit()
+        log.date = bgDate
+        log.time = bgTime
+        log.bg_check_result = "-1"
+        log.type = 1
         
         do{
             try self.context.save()
@@ -425,6 +443,28 @@ class CoreDataManager{
         }catch{
             
         }
+        
+    }
+    
+    func fetchDateBG(){
+        
+        let request = BG.fetchRequest() as NSFetchRequest<BG>
+        
+        // Get the current calendar with local time zone
+
+        // Get today's beginning & end
+        let dateFrom = calendarManager.calendar.startOfDay(for: daySelected) // eg. 2016-10-10 00:00:00
+        let dateTo = calendarManager.calendar.date(byAdding: .day, value: 1, to: dateFrom)
+        
+
+        // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
+
+        // Set predicate as date being today's date
+        let fromPredicate = NSPredicate(format: "%@ <= %K", dateFrom as NSDate, #keyPath(BG.bg_start_date))
+
+        let toPredicate = NSPredicate(format: "%K < %@", #keyPath(BG.bg_start_date), dateTo! as NSDate)
+                                        
+        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
         
     }
     

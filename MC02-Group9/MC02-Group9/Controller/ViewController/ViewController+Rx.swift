@@ -98,7 +98,8 @@ extension ViewController{
                     cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
                     //                        cell.cellImgView.layer.opacity = 0.3
                     //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
-                }else{
+                }
+                else if(log.action == "Taken"){
                     cell.tintColor = UIColor.green
                     cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
                 }

@@ -65,20 +65,21 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         cell!.layer.cornerRadius = 0
         cell!.calendarLbl.textColor = .black
         cell!.calendarLbl.layer.cornerRadius = 0
+        cell!.calendarLbl.textAlignment = .center
         
         if(calendarWiden == false){
             if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == true){
                 cell!.backgroundColor = blue
                 cell!.calendarLbl.textColor = .white
-                cell!.calendarLbl.layer.cornerRadius = 36 / 2
-                cell!.layer.cornerRadius = 36 / 2
+                cell!.calendarLbl.layer.cornerRadius = cell!.frame.height / 2
+                cell!.layer.cornerRadius = cell!.frame.height / 2
             }
         }else{
             if(CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected == true){
                 cell!.backgroundColor = blue
                 cell!.calendarLbl.textColor = .white
-                cell!.layer.cornerRadius = 36 / 2
-                cell!.calendarLbl.layer.cornerRadius = 36 / 2
+                cell!.layer.cornerRadius = cell!.frame.height / 2
+                cell!.calendarLbl.layer.cornerRadius = cell!.frame.height / 2
             }
             
             
@@ -106,7 +107,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         
         if(calendarWiden == false){ //minggu
             
-            let idx = CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].position+1
+            let idx = CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].position
             if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == false){
                 CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected = true
                 
@@ -126,7 +127,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
             }
             print(dateVars.datePickedRow)
         }else{
-            let idx = CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].position+1
+            let idx = CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].position
             if(CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected == false){
                 CalendarViewModel.calendarViewModel.calendarMonthModel![indexPath.row].isSelected = true
                 reloadCollectionView()

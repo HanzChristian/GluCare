@@ -16,6 +16,8 @@
 		15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476090290AAB4700D56835 /* ViewController+DataSource.swift */; };
 		15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476092290AAB5F00D56835 /* ViewController+Rx.swift */; };
 		15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476098290B6D9D00D56835 /* ShareSheet.swift */; };
+		155E521F291263BE00A221E6 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */; };
+		155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
 		155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */; };
 		155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70B028ED4714003A844B /* BGResultTableViewCell.swift */; };
@@ -121,8 +123,6 @@
 		F054781F2910B70200DB4503 /* MedAdheranceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054781D2910B70200DB4503 /* MedAdheranceTVC.swift */; };
 		F05478222910BD1D00DB4503 /* BG+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478202910BD1D00DB4503 /* BG+CoreDataClass.swift */; };
 		F05478232910BD1D00DB4503 /* BG+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478212910BD1D00DB4503 /* BG+CoreDataProperties.swift */; };
-		F05478262910BD2B00DB4503 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478242910BD2A00DB4503 /* Log+CoreDataClass.swift */; };
-		F05478272910BD2B00DB4503 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478252910BD2B00DB4503 /* Log+CoreDataProperties.swift */; };
 		F054782A2910BD3300DB4503 /* BG_Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478282910BD3300DB4503 /* BG_Time+CoreDataClass.swift */; };
 		F054782B2910BD3300DB4503 /* BG_Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05478292910BD3300DB4503 /* BG_Time+CoreDataProperties.swift */; };
 		F054782D2910C6D100DB4503 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054782C2910C6D100DB4503 /* LoginViewController.swift */; };
@@ -153,6 +153,8 @@
 		15476090290AAB4700D56835 /* ViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DataSource.swift"; sourceTree = "<group>"; };
 		15476092290AAB5F00D56835 /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
 		15476098290B6D9D00D56835 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
+		155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTableViewCell.swift; sourceTree = "<group>"; };
 		155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TakeMedTableViewCell.xib; path = ../../Controller/TakeMedTableViewCell.xib; sourceTree = "<group>"; };
 		155F70B028ED4714003A844B /* BGResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,8 +263,6 @@
 		F054781D2910B70200DB4503 /* MedAdheranceTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedAdheranceTVC.swift; sourceTree = "<group>"; };
 		F05478202910BD1D00DB4503 /* BG+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BG+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F05478212910BD1D00DB4503 /* BG+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BG+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F05478242910BD2A00DB4503 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F05478252910BD2B00DB4503 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F05478282910BD3300DB4503 /* BG_Time+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BG_Time+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F05478292910BD3300DB4503 /* BG_Time+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BG_Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F054782C2910C6D100DB4503 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -595,8 +595,6 @@
 			children = (
 				F05478282910BD3300DB4503 /* BG_Time+CoreDataClass.swift */,
 				F05478292910BD3300DB4503 /* BG_Time+CoreDataProperties.swift */,
-				F05478242910BD2A00DB4503 /* Log+CoreDataClass.swift */,
-				F05478252910BD2B00DB4503 /* Log+CoreDataProperties.swift */,
 				F05478202910BD1D00DB4503 /* BG+CoreDataClass.swift */,
 				F05478212910BD1D00DB4503 /* BG+CoreDataProperties.swift */,
 				F033B158285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift */,
@@ -607,6 +605,8 @@
 				F04D4276287EC2070051C9F9 /* MedicineApi.swift */,
 				15D576D228EC029500603F1D /* Medicine+CoreDataClass.swift */,
 				15D576D428EC02AA00603F1D /* Medicine+CoreDataProperties.swift */,
+				155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */,
+				155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */,
 				F054B0D3290BDC5100287D06 /* User+CoreDataClass.swift */,
 				F054B0D2290BDC5100287D06 /* User+CoreDataProperties.swift */,
 				15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */,
@@ -802,6 +802,7 @@
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				F054B0DC290BDE0C00287D06 /* RegisterViewController.swift in Sources */,
+				155E521F291263BE00A221E6 /* Log+CoreDataClass.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */,
@@ -821,13 +822,11 @@
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
 				F054781F2910B70200DB4503 /* MedAdheranceTVC.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
-				F05478262910BD2B00DB4503 /* Log+CoreDataClass.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				155F70BA28ED47C8003A844B /* BGNameTableViewCell.swift in Sources */,
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
-				F05478272910BD2B00DB4503 /* Log+CoreDataProperties.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
@@ -848,6 +847,7 @@
 				15CAFCFE28F54684009A7686 /* BGTimeTableViewCell.swift in Sources */,
 				156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */,
 				F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */,
+				155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */,
 				15D576D328EC029500603F1D /* Medicine+CoreDataClass.swift in Sources */,
 				2C23DF012913DD550074AFB3 /* ListCaregiverTVC.swift in Sources */,
 				15CAFD2328F7E991009A7686 /* CalendarModel.swift in Sources */,
