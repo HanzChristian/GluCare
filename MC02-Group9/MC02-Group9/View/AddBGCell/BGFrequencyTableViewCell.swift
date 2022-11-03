@@ -14,11 +14,14 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
     
     let scheduleTime = ["Hari","Minggu","Bulan"]
     let pickerView = UIPickerView()
+    var pickedFreq = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
+        pickerView.selectRow(0, inComponent: 0, animated: false)
+        bgFrequencyScheduleLbl.textColor = UIColor.gray
     }
     
     var schedulePickerView = UIPickerView()
@@ -66,6 +69,16 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         bgFrequencyScheduleLbl.textColor = .black
         bgFrequencyScheduleLbl.text = scheduleTime[row]
+        
+        if(bgFrequencyScheduleLbl.text == "Hari"){
+            pickedFreq = 0
+        }
+        else if(bgFrequencyScheduleLbl.text == "Minggu"){
+            pickedFreq = 1
+        }else{
+            pickedFreq = 2
+        }
+        bgFrequencyScheduleLbl.textColor = UIColor.gray
         schedulePicked = true
         scheduleVars.schedulePickedRow = row
         scheduleTimeVar.row = row
