@@ -12,6 +12,7 @@ extension ViewController{
     
     func mergeTV(){
         jadwalVars.removeAll()
+        print("MASUK 666 KE REMOVE")
         self.coreDataManager.fetchMedicine(tableView: tableView)
         self.coreDataManager.fetchBGTime(daySelected: daySelected)
         self.coreDataManager.fetchBG()
@@ -43,7 +44,7 @@ extension ViewController{
                 bgLog.append(log)
                 print("INI LOG AWAL \(log)")
             }
-            print("INI LOG AWAL-- \(log.type)")
+            print("INI LOG DUA \(log.type) \(log.time)")
         }
         
         while(medCopy.count != 0){
@@ -73,11 +74,20 @@ extension ViewController{
             }
             
             if(idxLowestBg == -1){ //med lebih kecil
-                jadwalVars.append(JadwalVars(type: "MED", idx: medIdx))
+                var j = JadwalVars(type: "MED", idx: medIdx)
+                
+                let logIdx = coreDataManager.getLogRealIdx(med: medCopy[0])
+                if logIdx != -1 {
+                    j.logIdx = logIdx
+                }
+                
+                jadwalVars.append(j)
                 medCopy.remove(at: 0)
                 medIdx += 1
             }else{ //bg lebih kecil
-                jadwalVars.append(JadwalVars(type: "BG", idx: getBgIdx(bG: bgCopy[idxLowestBg])))
+                var j = JadwalVars(type: "BG", idx: getBgIdx(bG: bgCopy[idxLowestBg]))
+                j.logIdx = coreDataManager.getLogRealIdx(log: bgLog[idxLogLowestBg])
+                jadwalVars.append(j)
                 bgCopy.remove(at: idxLowestBg)
                 bgLog.remove(at: idxLogLowestBg)
             }
@@ -86,7 +96,10 @@ extension ViewController{
         for bg in bgCopy{
             for log in bgLog{
                 if log.time == bg.bg_time{
-                    jadwalVars.append(JadwalVars(type: "BG", idx: getBgIdx(bG: bg)))
+                    
+                    var j = JadwalVars(type: "BG", idx: getBgIdx(bG: bg))
+                    j.logIdx = coreDataManager.getLogRealIdx(log: log)
+                    jadwalVars.append(j)
                 }
                 print("ini lognya \(log)")
             }

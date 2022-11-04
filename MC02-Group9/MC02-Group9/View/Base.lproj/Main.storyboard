@@ -100,7 +100,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="USQ-P3-NFF">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Nt2-9V-138">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
                                 <rect key="frame" x="288" y="0.0" width="86" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>

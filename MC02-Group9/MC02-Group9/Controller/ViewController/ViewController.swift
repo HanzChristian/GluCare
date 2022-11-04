@@ -89,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let networkManager = NetworkManager.shared
     
     // SheetPresentation
-    var isSkipped:Bool = false
+    //var isSkipped:Bool = false
     //var indexPath:Int = 0
     
     override func viewDidAppear(_ animated: Bool)
@@ -432,9 +432,12 @@ struct JadwalVars {
     var type:String
     var idx:Int
     
+    var logIdx: Int
+    
     init(type:String,idx:Int){
         self.type = type
         self.idx = idx
+        self.logIdx = -1
     }
     
 }

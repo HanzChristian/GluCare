@@ -70,7 +70,9 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         
         self.coreDataManager.resetStreak()
         self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
-        self.coreDataManager.fetchLogs(tableView: self.tableView!, daySelected: self.daySelected!)
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -86,8 +88,11 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
             self.coreDataManager.pilihWaktu(daySelected: daySelected!, indexPath: indexPath!, myDatePicker: cellTakeMed!.timePicker)
         }
 
+        
         self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
-
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        
         self.coreDataManager.fetchLogs(tableView: self.tableView!, daySelected: daySelected!)
 
         self.streakManager.validateNewStreak(daySelected: daySelected!, tableView: self.tableView!)

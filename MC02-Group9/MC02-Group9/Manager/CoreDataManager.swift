@@ -68,11 +68,50 @@ class CoreDataManager{
 //        }
 //    }
     
+    func getLogRealIdx(med: Medicine_Time) -> Int {
+        
+        guard let getLogs = logs else{
+            return -1
+        }
+        
+        var idx = 0
+
+        for l in getLogs{ //menentukan log bg atau med
+            if l.type == 0 && med.time == l.time && med.medicine!.name == l.medicine_name {
+                return idx
+            }
+            
+            idx += 1
+        }
+        
+        return -1
+    }
+    
+    func getLogRealIdx(log: Log) -> Int {
+        
+        guard let getLogs = logs else{
+            return -1
+        }
+        
+        var idx = 0
+
+        for l in getLogs{ //menentukan log bg atau med
+            if log.type == l.type && log.time == l.time{
+                return idx
+            }
+            
+            idx += 1
+        }
+        
+        return -1
+    }
+    
     func makeLogInit() -> Log {
         
         let newLog = Log(context: self.context)
         newLog.log_id = UUID().uuidString
         newLog.type = 0 //med
+        newLog.bg_check_result = "-1"
         
         return newLog
         
@@ -117,38 +156,18 @@ class CoreDataManager{
         }
     }
     
-    func simpanBG(daySelected: Date,bGResult:String,bg:BG){
-        //change daySelected to String
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_gb")
-        formatter.dateFormat = "dd MMM yyyy"
-        let tanggal = formatter.string(from: daySelected)
-        // print(tanggal)
+    func simpanBG(date: Date, time: String ,bGResult:String){
+        // New
         
-        // Create String
-        let time = bg.bg_time!
-        let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
-        let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
-        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-        print(string)
-        // 29 October 2019 20:15:55 +0200
-
+        let newLog = makeLogInit()
+        newLog.date = date
+        newLog.time = time
+        newLog.bg_check_result = bGResult
+        newLog.type = 1
+        newLog.action = "Take"
         
-        // Create Date Formatter
-        let dateFormatter = DateFormatter()
-
-        // Set Date Format
-        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-        // Convert String to Date
-        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = makeLogInit()
-        log.date = dateFormatter.date(from: string)
-        log.dateTake = dateFormatter.date(from: string)
-        log.action = "Take"
-        log.bg_check_result = bGResult
-        log.type = 1
-        print("INI BG RESULTNYA \(log.bg_check_result)")
+        print("log baru \(newLog.bg_check_result!)")
         
         do{
             try self.context.save()

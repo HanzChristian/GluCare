@@ -18,6 +18,10 @@ class UsernameTVC: UITableViewCell {
         super.awakeFromNib()
         userNameLbl.font = .rounded(ofSize: 16, weight: .semibold)
         // Initialization code
+        
+        
+        userNameLbl.text = FirebaseManager.firebaseManager.name
+        userEmailLbl.text = FirebaseManager.firebaseManager.email
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

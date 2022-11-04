@@ -9,12 +9,12 @@ import UIKit
 
 class InvitesTextTVC: UITableViewCell {
     
-    
     @IBOutlet weak var invitesTitleLbl: UILabel!
     @IBOutlet weak var invitesDescLbl: UILabel!
     @IBOutlet weak var invitesCapsuleView: UIView!
-    @IBOutlet weak var invitesCodeBtn: UIButton!
     @IBOutlet weak var invitesAddBtn: UIButton!
+    @IBOutlet weak var inviteTextField: UITextField!
+    
     let capsuleView = UIView()
     
     override func awakeFromNib() {
@@ -26,7 +26,27 @@ class InvitesTextTVC: UITableViewCell {
         invitesAddBtn.layer.borderWidth = 2
         invitesAddBtn.layer.borderColor = UIColor.lightGray.cgColor
         
-//        invitesCapsuleView.layer.masksToBounds = true;
-        // Initialization code
     }
+    
+    @IBAction func invite(_ sender: Any) {
+        if self.inviteTextField.text == ""{return}
+        
+        let firebaseManager = FirebaseManager.firebaseManager
+        
+        if firebaseManager.role == 1{
+            // patient
+            let invite = firebaseManager.sendInvitationToCaregiver(emailCaregiver: self.inviteTextField.text!)
+            print(invite)
+                        
+        }else if firebaseManager.role == 2{
+            // caregiver
+            let invite = firebaseManager.sendInvitationToPatient(emailPatient: self.inviteTextField.text!)
+            print(invite)
+            
+        }
+        self.inviteTextField.text = ""
+        
+    }
+    
+    
 }
