@@ -32,6 +32,8 @@ class EmptyRoutinesSpaceVC: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableHidden), name: NSNotification.Name(rawValue: "hidden"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+        view.backgroundColor = .systemGroupedBackground
+        
     }
     
     @objc func enableHidden(){

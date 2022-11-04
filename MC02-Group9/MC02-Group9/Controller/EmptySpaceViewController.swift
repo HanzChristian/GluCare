@@ -9,11 +9,18 @@ import UIKit
 
 class EmptySpaceViewController: UIViewController {
     
-    
+    let role = UserDefaults.standard.integer(forKey: "role")
 
     @IBAction func addMedBtn(_ sender: UIButton) {
-        performSegue(withIdentifier: "addMedicationViewController", sender: nil)
+        if (role == 1){
+            performSegue(withIdentifier: "addMedicationViewController", sender: nil)
+        }else if (role == 2){ //nanti kasih kondisi && jika belum konek
+            
+        }
     }
+    
+    @IBOutlet weak var textLbl: UILabel!
+    @IBOutlet weak var textBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +28,16 @@ class EmptySpaceViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "unhidden"), object: nil)
 //        view.isHidden = true
         // Do any additional setup after loading the view.
+        
+        if(role == 1){
+            textLbl.text = "Belum ada rutinitas."
+            textBtn.setTitle("Tambah Rutinitas", for: .normal)
+            textLbl.textAlignment = .center
+        }else if (role == 2){ //nanti kasih kondisi && jika belum konek
+            textLbl.text = "Anda belum tersambung dengan keluarga."
+            textBtn.setTitle("Hubungkan Keluarga", for: .normal)
+            textLbl.textAlignment = .center
+        }
     }
     
     @objc func enableHidden(){

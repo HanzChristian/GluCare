@@ -30,25 +30,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let firebaseManager = FirebaseManager.firebaseManager
     
-    @IBAction func guideBtn(_ sender: Any) {
-//        if(coreDataManager.items!.count > 0){
-//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
-//            spotLight.alpha = 0.85
-//            present(spotLight, animated: true, completion: nil)
-//        }
-//        else if(coreDataManager.items!.count == 0){
-//            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
-//            spotLight.alpha = 0.85
-//            present(spotLight, animated: true, completion: nil)
-//        }
-        coreDataManager.fetchBGTime(daySelected: daySelected)
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        
-        print("CORE DATA FETCH BG \(coreDataManager.bg)")
-        print("CORE DATA FETCH BT_TIME \(coreDataManager.bgTime)")
-        print("CORE DATA LOGS \(coreDataManager.logs)")
-        
+    @IBAction func segueBtn(_ sender: Any){
+        performSegue(withIdentifier: "addMedicationViewController", sender: self)
     }
+//    @IBAction func guideBtn(_ sender: Any) {
+////        if(coreDataManager.items!.count > 0){
+////            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
+////            spotLight.alpha = 0.85
+////            present(spotLight, animated: true, completion: nil)
+////        }
+////        else if(coreDataManager.items!.count == 0){
+////            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
+////            spotLight.alpha = 0.85
+////            present(spotLight, animated: true, completion: nil)
+////        }
+//        coreDataManager.fetchBGTime(daySelected: daySelected)
+//        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+//
+//        print("CORE DATA FETCH BG \(coreDataManager.bg)")
+//        print("CORE DATA FETCH BT_TIME \(coreDataManager.bgTime)")
+//        print("CORE DATA LOGS \(coreDataManager.logs)")
+//
+//    }
     
     func setup(){
         let emptyVC = EmptySpaceViewController()
@@ -127,6 +130,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.navigationItem.title = "Today"
         collectionView.delegate = self
         collectionView.dataSource = self
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //Buat disable tab bar routine kalo belom konek
+        let tabBarControllerItems = self.tabBarController?.tabBar.items
+
+          if let tabArray = tabBarControllerItems {
+              var tabBarItem = tabArray[1]
+              
+              if(role == 2){ //belom kasih kondisi konek
+                  tabBarItem.isEnabled = false
+              }
+          }
+        
         
         setCellsView()
         setWeekView()
@@ -269,7 +285,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.dayOfWeek.textColor = blue
         
         cell.dayOfMonth.backgroundColor = UIColor.white
-        cell.dayOfMonth.layer.cornerRadius = 34/2
+        cell.dayOfMonth.layer.cornerRadius = 32/2
         cell.dayOfMonth.layer.masksToBounds = true
         
         if(date == daySelected)
