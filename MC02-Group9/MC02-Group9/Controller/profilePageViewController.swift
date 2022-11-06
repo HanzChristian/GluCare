@@ -44,9 +44,13 @@ class profilePageViewController: UIViewController {
         
         refresh()
         
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        
         daftarRutinitasTableView.delegate = self
         daftarRutinitasTableView.delegate = self
-        view.backgroundColor = .systemGroupedBackground
+        
+        tableView?.backgroundColor = .systemGroupedBackground
         
 //        let nibMedsName = UINib(nibName: "RoutinesMedsTVC", bundle: nil)
 //        daftarRutinitasTableView.register(nibMedsName, forCellReuseIdentifier: "routinesMedsTVC")
@@ -72,10 +76,10 @@ class profilePageViewController: UIViewController {
     @objc func refresh() {
         fetchMedicine()
 
-        if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0 ){
+        if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
         }
-        else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){
+        else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){ //kasih kondisi kalo udah konek baru di unhidden
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
     }
