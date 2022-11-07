@@ -86,17 +86,18 @@ extension ViewController:UITableViewDelegate{
         return cellSpacingHeight
     }
     
-    @objc func makeSheet(index: Int){
+    func makeSheet(index: Int, jadwalVars: JadwalVars){
         
         let idx = index
+        var isSkipped = false
+        
+        let log = coreDataManager.logs![jadwalVars.logIdx]
+        
+        if(log.bg_check_result != "-1"){
+            isSkipped = true
+        }
         
         print("rx - \(index)")
-        self.isSkipped = false
-        
-        if (coreDataManager.undoIdx[idx] >= 0){
-            coreDataManager.keTake[idx] = -1
-            self.isSkipped = true
-        }
         
         let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
@@ -114,27 +115,39 @@ extension ViewController:UITableViewDelegate{
         vc.indexPath = IndexPath(row: idx,section : 0)
         vc.bg = coreDataManager.bg![idx]
         vc.tblViewBG = self.tableView
+        
+        // New
+        vc.log = log
+        
         if(isSkipped){
-            //isi dari untake action
-            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
-            coreDataManager.batalkan(logToRemove: logToRemove)
+            log.bg_check_result = "-1"
+            do{
+                try coreDataManager.context.save()
+            }
+            catch {
+                
+            }
             
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            
+            return
         }
         coreDataManager.medicineSelectedIdx = vc.indexPath!.row
         print("INI IDX NYA \(vc.indexPath)")
-        print(self.isSkipped)
+        print(isSkipped)
         self.present(nav, animated: true,completion: nil)
         
     }
     
 //    func untakeMedSheet(index: Int){
 //        let idx = index
-//        self.isSkipped = false
+//        isSkipped = false
 //        //
 //        if (coreDataManager.undoIdx[idx] >= 0){
 //            coreDataManager.keTake[idx] = -1
-//            self.isSkipped = true
+//            isSkipped = true
 //        }
 //        
 //        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
@@ -169,18 +182,19 @@ extension ViewController:UITableViewDelegate{
 //        }
 //    }
     
-    func makeSheetMed(index: Int){
+    func makeSheetMed(index: Int, jadwalVars: JadwalVars){
         let idx = index
         
         print("rx - \(index)")
-        //
-        //        print("debug1: idx \(idx)")
-        self.isSkipped = false
-        //
-        if (coreDataManager.undoIdx[idx] >= 0){
-            coreDataManager.keTake[idx] = -1
-            self.isSkipped = true
+        
+        var isSkipped = false
+        
+        if(jadwalVars.logIdx != -1){
+            isSkipped = true
         }
+        
+        print("MASUK 666 \(jadwalVars.logIdx)")
+        
         
         let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
@@ -200,15 +214,18 @@ extension ViewController:UITableViewDelegate{
         vc.tableView = self.tableView
         if(isSkipped){
             //isi dari untake action
-            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
+            let logToRemove = self.coreDataManager.logs![jadwalVars.logIdx]
             coreDataManager.batalkan(logToRemove: logToRemove)
             
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
+            mergeTV()
             
-            coreDataManager.fetchStreak()
+            return
+            
             if(coreDataManager.streaks!.isEmpty == true){
                 return
             }
+            
+    
             //             Streak Logic
             let dateFrom = calendarManager.calendar.startOfDay(for: Date())
             let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
@@ -223,7 +240,7 @@ extension ViewController:UITableViewDelegate{
         }
         coreDataManager.medicineSelectedIdx = vc.indexPath!.row
         print("INI IDX NYA \(vc.indexPath)")
-        print(self.isSkipped)
+        print(isSkipped)
         self.present(nav, animated: true,completion: nil)
         
     }

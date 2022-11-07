@@ -15,6 +15,8 @@ class TakeMedTableViewCell: UITableViewCell {
     var idx = -1
     var identity = JadwalVars(type: "BG", idx: 0)
     
+    var log = Log()
+    
     var indexPath:Int = 0
     var isSkipped:Bool = false
     

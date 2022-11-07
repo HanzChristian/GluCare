@@ -18,9 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Undang Anggota Keluarga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi8-Tt-zL0">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Undang Anggota Keluarga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi8-Tt-zL0">
                         <rect key="frame" x="18" y="19" width="170" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,12 +37,12 @@ kode unik ini untuk bisa monitor perkembanganmu.</string>
                         <rect key="frame" x="13" y="91" width="263" height="56"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-cH-5bB">
-                                <rect key="frame" x="8" y="11" width="261" height="35"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMX-VS-JMS">
+                                <rect key="frame" x="8" y="11" width="247" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Masukkan email anggota keluarga.." buttonSize="mini"/>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" systemColor="linkColor"/>
@@ -53,14 +52,21 @@ kode unik ini untuk bisa monitor perkembanganmu.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title="" cornerStyle="capsule"/>
+                        <connections>
+                            <action selector="invite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qfB-CT-PeA"/>
+                        </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Pi8-Tt-zL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="DDx-vx-C7P"/>
+                    <constraint firstItem="Pi8-Tt-zL0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="n8e-Nb-qzU"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="inviteTextField" destination="uMX-VS-JMS" id="UnL-Cx-eMc"/>
                 <outlet property="invitesAddBtn" destination="9ft-W0-HYt" id="44r-fh-whA"/>
                 <outlet property="invitesCapsuleView" destination="RAo-xt-aAe" id="llv-F8-F9w"/>
-                <outlet property="invitesCodeBtn" destination="1MZ-cH-5bB" id="B7g-Lf-xJW"/>
                 <outlet property="invitesDescLbl" destination="esy-Ig-peW" id="qku-Zq-lI9"/>
                 <outlet property="invitesTitleLbl" destination="Pi8-Tt-zL0" id="VbI-sw-a1S"/>
             </connections>

@@ -16,7 +16,6 @@ extension ViewController{
     
     func bindDataToTableView(){
        
-
         coreDataManager.jadwal.asObservable()
             .bind(to: tableView.rx
                 .items(cellIdentifier: "cell", cellType: TakeMedTableViewCell.self))
@@ -37,16 +36,15 @@ extension ViewController{
                 .subscribe(onNext: { [weak self] in
                     print("take btn on click rx \(cell.medLbl!.text) index: \(cell.idx)")
                     
-                    
                     if(self!.role == 1){
                         let realIdx = cell.identity.idx
                         
                         if(cell.identity.type == "BG"){
-                            self!.makeSheet(index: realIdx)
+                            self!.makeSheet(index: realIdx, jadwalVars: cell.identity)
                         }else{
                             print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
                             
-                            self!.makeSheetMed(index: realIdx)
+                            self!.makeSheetMed(index: realIdx, jadwalVars: cell.identity)
                             
                         }
                     }
@@ -90,7 +88,7 @@ extension ViewController{
         cell.timeLbl.text = bg?.bg_time
         
         for (i, log) in self.coreDataManager.logs!.enumerated() {
-            if(log.bg_check_result != nil){
+            if(log.bg_check_result != "-1"){
                 self.coreDataManager.undoIdx[element.idx] = i
                 self.coreDataManager.keTake[element.idx] = 1
                 if(log.action == "Skip"){
@@ -99,9 +97,17 @@ extension ViewController{
                     //                        cell.cellImgView.layer.opacity = 0.3
                     //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
                 }
-                else if(log.action == "Taken"){
+                else if(log.action == "Take"){
                     cell.tintColor = UIColor.green
                     cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
+                    
+                    cell.freqLbl.text! += " (\(log.bg_check_result!)"
+                    
+                    if(bg?.bg_type == 0 || bg?.bg_type == 1){
+                        cell.freqLbl.text! += " mg/dL)"
+                    }else{
+                        cell.freqLbl.text! += " %)"
+                    }
                 }
             }
         }

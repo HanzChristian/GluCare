@@ -16,7 +16,8 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     var indexPath:IndexPath?
     var daySelected: Date?
     let coreDataManager = CoreDataManager.coreDataManager
-    var jadwalVars = [JadwalVars]()
+    
+    var log: Log?
     
     var bg = BG()
     
@@ -40,14 +41,45 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     @objc func saveSheet(){
-        self.coreDataManager.simpanBG(daySelected: daySelected!,bGResult: (cellBGResult?.BGInputLbl.text)!,bg: bg)
-        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: daySelected!) //fetch lognya diubah datanya
+        
+        let result = (cellBGResult?.BGInputLbl.text)!
+        log!.action = "Take"
+        log!.bg_check_result = result
+        
+        do{
+            try coreDataManager.context.save()
+        }
+        catch {
+            
+        }
+        
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log!.log_id!, newLog: log!)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func skipSheet(){ //lewatbg belom diganti coredatamanagernya
-        self.coreDataManager.lewatBG(daySelected: daySelected!,bGResult: (cellBGResult?.BGInputLbl.text)!,bg:bg)
-        self.coreDataManager.fetchLogs(tableView: self.tblViewBG!, daySelected: self.daySelected!)
+    @objc func skipSheet(){  //lewatbg belom diganti coredatamanagernya
+        log!.action = "Skip"
+        log!.bg_check_result = "-100"
+     
+        
+        do{
+            try coreDataManager.context.save()
+        }
+        catch {
+            
+        }
+        
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log!.log_id!, newLog: log!)
+        
+        print("nDJASND \(log!.action)")
+        print("GA MASUK BANG")
+        
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     

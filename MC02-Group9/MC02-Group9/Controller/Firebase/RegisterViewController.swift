@@ -62,7 +62,12 @@ class RegisterViewController: UIViewController {
                             }else{
                                 print("success saved data")
                                 // make segue
-                                self!.performSegue(withIdentifier: "daftar", sender: self)
+                                FirebaseManager.firebaseManager.getAccountInfo()
+                                DispatchQueue.main.asyncAfter(deadline: .now()){
+                                    self!.performSegue(withIdentifier: "daftar", sender: self)
+                                    print("Already Login")
+                                }
+                                
                             }
                         }
                     }
@@ -72,16 +77,27 @@ class RegisterViewController: UIViewController {
             }
         }
         
-        
-        
-        
-        
+    }
+    
+    func alreadyLogin(){
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                
+                // User is signed in. Show home screen
+                FirebaseManager.firebaseManager.getAccountInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    self.performSegue(withIdentifier: "masuk2", sender: self)
+                    print("Already Login")
+                }
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-        
+        alreadyLogin()
         // Do any additional setup after loading the view.
     }
 

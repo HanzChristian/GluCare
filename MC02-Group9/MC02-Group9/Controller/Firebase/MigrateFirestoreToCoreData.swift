@@ -58,6 +58,45 @@ class MigrateFirestoreToCoreData {
         }
     }
     
+    func syncCoredataMedToFirestore(fireMeds: [MedicineFire]){
+        
+        do {
+            let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
+            let meds = try coreDataManager.context.fetch(request)
+            
+            var logsToDelete = [Log]()
+
+            for med in meds {
+                
+                var findSame = false
+                var bgSame = true
+                var tempLog: LogFire?
+                
+                for fireMed in fireMeds {
+                    if fireMed.id == med.id{
+                        findSame = true
+                    }
+                }
+                
+                if findSame == false {
+                    // removing in coredata
+                    self.context.delete(med)
+                    
+                    do{
+                        try self.context.save()
+                    }catch{
+                    }
+                }
+                
+            }
+        }catch{
+            
+        }
+        
+        
+        
+    }
+    
     func migrateMedicineFromFirestoreToCoredata(medicines: [MedicineFire]) {
         for med in medicines {
             var findSame = false
@@ -74,7 +113,6 @@ class MigrateFirestoreToCoreData {
             }catch {
                 
             }
-            
             if findSame {
                 continue
             }

@@ -18,11 +18,11 @@ class EmptyRoutinesSpaceVC: UIViewController {
         let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default){ _ in
             self.performSegue(withIdentifier: "addBGViewController", sender: nil)
         }
-        let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
+//        let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
         let actBatal = UIAlertAction(title: "Batal", style: .cancel)
         actionSheet.addAction(actJadwalMinumObat)
         actionSheet.addAction(actJadwalCekGulaDarah)
-        actionSheet.addAction(actInputHasilGulaDarah)
+//        actionSheet.addAction(actInputHasilGulaDarah)
         actionSheet.addAction(actBatal)
 //        print("user roles", userRoles.userRole)
         present(actionSheet, animated: true, completion: nil)

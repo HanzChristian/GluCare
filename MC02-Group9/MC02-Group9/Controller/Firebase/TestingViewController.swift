@@ -172,7 +172,6 @@ class TestingViewController: UIViewController {
     }
     
     func fetchInvitationFromCaregiver() {
-        
         if let user = Auth.auth().currentUser?.email {
             db.collection("link")
                 .whereField("patient", isEqualTo: "\(user)")
@@ -198,8 +197,6 @@ class TestingViewController: UIViewController {
                     }
                 }
         }
-        
-        
     }
     
     func setupCaregiverView(){
@@ -211,7 +208,6 @@ class TestingViewController: UIViewController {
     }
     
     func getPatientEmail(){
-        
         if let user = Auth.auth().currentUser?.email {
             db.collection("link")
                 .whereField("owner", isEqualTo: "\(user)")

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileSection {
     var profileSectionTitle: String?
@@ -22,10 +23,23 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var profileSection = [ProfileSection]()
     var currentCell: IndexPath?
     var height = 56.0
-
+    
+    var isLogin = false
+    
+    func alreadyLogin(){
+        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            if user != nil {
+                self!.isLogin = true
+                self!.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        getRole()
+        
         self.tabBarController?.title = "Profil"
         self.navigationItem.title = "Profile2"
         tableView.delegate = self
@@ -52,35 +66,70 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.register(nibListCaregiver, forCellReuseIdentifier: "listCaregiverTVC")
         let nibExit = UINib(nibName: "ExitTVC", bundle: nil)
         tableView.register(nibExit, forCellReuseIdentifier: "exitTVC")
+        let nibIntro = UINib(nibName: "IntroTVC", bundle: nil)
+        tableView.register(nibIntro, forCellReuseIdentifier: "introTVC")
         
         //view.backgroundColor = .systemGroupedBackground
         setNavItem()
         roundedTitle()
         
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(toLogin), name: NSNotification.Name(rawValue: "passLogin"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
+        
+        alreadyLogin()
     }
+    
+    
+    @objc func refresh(){
+        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func toLogin(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+        let navController = UINavigationController(rootViewController: vc)
+//        vc.navigationController?.pushViewController(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+        navController.modalPresentationStyle = .fullScreen
+        navController.navigationBar.prefersLargeTitles = true
+        present(navController, animated: true, completion: nil)
+    
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countCaregiver = listCaregiver.caregiverList.count
-        if (section == 0) {
-            return 1
-        } else if (section == 1){
+        
+        if (section == 0){
+            return 2
+        }
+        else if (section == 1){
             return 3
         } else if (section == 2){
             return countCaregiver+1
         } else {
             return 1
         }
-            //            return jadwal.count+1
+        //            return jadwal.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countCaregiver = listCaregiver.caregiverList.count
+        
         if(indexPath.section == 0){
             if (indexPath.row == 0) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
+                return cell
+            }
+            else if (indexPath.row == 1){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
                 return cell
             }
@@ -101,7 +150,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
-                cell.caregiverNameLbl?.text = listCaregiver.caregiverList[indexPath.row]
+                cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
                 return cell
             }
         } else if (indexPath.section == 3) {
@@ -109,6 +158,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
         return UITableViewCell()
+        
     }
     //
     //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,25 +179,43 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let countCaregiver = listCaregiver.caregiverList.count
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0) {
-                height = 80
+        
+        if(isLogin == true){
+            if(indexPath.section == 0){
+                if(indexPath.row == 0){
+                    height = 0
+                }
+                else if(indexPath.row == 1){
+                    height = 80
+                }
             }
-        } else if (indexPath.section == 2) {
-            if (indexPath.row == countCaregiver) {
-                height = 180
-            } else if (indexPath.row != countCaregiver) {
-                height = 56
+            else if (indexPath.section == 2) {
+                if (indexPath.row == countCaregiver) {
+                    height = 180
+                } else if (indexPath.row != countCaregiver) {
+                    height = 56
+                }
+            } else {
+                height = 56.0
             }
-        } else {
-            height = 56.0
+            
+        }else{
+            if(indexPath.section == 0){
+                if(indexPath.row == 0){
+                    height = 509
+                }else if(indexPath.row == 1){
+                    height = 0
+                }
+            }else{
+                height = 0
+            }
         }
         return height
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if (indexPath.section == 0) {
-            if (indexPath.row == 0) {
+            if (indexPath.row == 1) {
                 return true
             }
         }
@@ -155,24 +223,34 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section == 0) {
-            return 24
-        } else if (section == 3) {
-            return 14
+        if(isLogin == false){
+            return 0
         }
-        return 35
+        else{
+            if (section == 0) {
+                return 24
+            } else if (section == 3) {
+                return 14
+            }
+            return 35
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      
         let headerView = UIView()
-        let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
-        sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
-        sectionLabel.textColor = UIColor.black
-        sectionLabel.text = profileSection[section].profileSectionTitle
-        sectionLabel.sizeToFit()
-        headerView.addSubview(sectionLabel)
-        
-        return headerView
+        if(isLogin == false){
+            return headerView
+        }else{
+            let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
+            sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
+            sectionLabel.textColor = UIColor.black
+            sectionLabel.text = profileSection[section].profileSectionTitle
+            sectionLabel.sizeToFit()
+            headerView.addSubview(sectionLabel)
+            
+            return headerView
+        }
     }
     
     func roundedTitle() {
@@ -212,6 +290,15 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 struct listCaregiver {
-    static var caregiverList = ["Brandon Math", "Noah Syan"]
+    
+    var name: String
+    var status: Int
+    
+    init(name: String, status: Int) {
+        self.name = name
+        self.status = status
+    }
+    
+    static var caregiverList = [listCaregiver]()
     
 }

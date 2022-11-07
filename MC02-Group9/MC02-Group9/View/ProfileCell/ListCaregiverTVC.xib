@@ -31,6 +31,9 @@
                         <buttonConfiguration key="configuration" style="filled" title="Konfirmasi" buttonSize="small">
                             <color key="baseBackgroundColor" red="0.1176470518" green="0.50980395079999996" blue="0.76470589639999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mih-wJ-BXr"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-OZ-E6s">
                         <rect key="frame" x="154" y="21" width="183" height="18"/>
@@ -43,7 +46,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="caregiverNameLbl" destination="twR-TO-w5E" id="tkq-hE-M6S"/>
-                <outlet property="confirmCaregiverBtn" destination="g3u-bc-siL" id="cDN-eI-HGo"/>
+                <outlet property="confirmCaregiverBtn" destination="g3u-bc-siL" id="zjq-cd-JHB"/>
                 <outlet property="waitingConfirmBtn" destination="nc4-OZ-E6s" id="9Ed-QD-Qs1"/>
             </connections>
             <point key="canvasLocation" x="130.76923076923077" y="-12.085308056872037"/>

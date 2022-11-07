@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YCm-RV-gWL">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,13 +14,13 @@
         <!--Jadwal Obat-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Jadwal Obat" id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="Jadwal Obat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UBT-jF-w6S">
-                                <rect key="frame" x="0.0" y="91" width="390" height="97"/>
+                                <rect key="frame" x="0.0" y="143" width="390" height="97"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="G6E-hP-0JZ"/>
@@ -71,7 +72,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
-                                <rect key="frame" x="0.0" y="188" width="390" height="573"/>
+                                <rect key="frame" x="0.0" y="240" width="390" height="521"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="573" id="Rzn-J1-l4B"/>
@@ -100,15 +101,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="USQ-P3-NFF">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Nt2-9V-138">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
                                 <rect key="frame" x="288" y="0.0" width="86" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="segueBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CNv-0O-iW9"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="segueBtn:" destination="BYZ-38-t0r" id="Cao-Bg-51o"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -116,6 +117,7 @@
                         <outlet property="tableView" destination="GYL-rF-G8m" id="0Xg-da-B0J"/>
                         <segue destination="KPE-ud-t8b" kind="presentation" identifier="takeMedicationViewController" id="UBa-f7-4Lr"/>
                         <segue destination="FiD-NL-f0c" kind="presentation" identifier="takeBGViewController" id="DG7-nQ-4uQ"/>
+                        <segue destination="ICF-wt-PbB" kind="show" identifier="toProfile" id="jwW-Lo-OLj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -434,7 +436,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="GcJ-tA-QlO" kind="relationship" relationship="viewControllers" id="2bW-9X-6p2"/>
-                        <segue destination="psE-Xi-dPC" kind="relationship" relationship="viewControllers" id="S6Z-5u-y9E"/>
                         <segue destination="yPK-Nn-lpy" kind="relationship" relationship="viewControllers" id="ovq-cz-Wh0"/>
                     </connections>
                 </tabBarController>
@@ -462,18 +463,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBG-Jc-Wak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721.73913043478262" y="71.651785714285708"/>
-        </scene>
-        <!--profilePage-->
-        <scene sceneID="mcr-ge-HIP">
-            <objects>
-                <viewControllerPlaceholder storyboardName="profilePage" id="psE-Xi-dPC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="IWB-N1-gkg"/>
-                    <navigationItem key="navigationItem" id="E3O-pF-KL0"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qeK-Ti-h87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="538" y="562"/>
+            <point key="canvasLocation" x="722" y="70"/>
         </scene>
         <!--profile-->
         <scene sceneID="cSi-sX-2PD">
@@ -584,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGf-aT-gIW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3432.3076923076924" y="-256.6350710900474"/>
+            <point key="canvasLocation" x="4509" y="-257"/>
         </scene>
         <!--Empty Space View Controller-->
         <scene sceneID="biJ-SM-Fnl">
@@ -608,7 +598,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Tambah Obat"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Lihat Rutinitas"/>
                                 <connections>
                                     <action selector="addMedBtn:" destination="rai-jm-7bR" eventType="touchUpInside" id="jn7-0x-410"/>
                                 </connections>
@@ -638,6 +628,7 @@
                         <outlet property="textBtn" destination="crx-pL-myd" id="YNo-OI-WbP"/>
                         <outlet property="textLbl" destination="fwY-Js-Wvi" id="Ibu-x9-jjK"/>
                         <segue destination="LQM-PY-pKD" kind="presentation" identifier="addMedicationViewController" id="f8Y-W9-w9f"/>
+                        <segue destination="SNY-rz-FTm" kind="presentation" identifier="addBGViewController" id="EnK-XL-bnQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Idw-LW-tAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -651,6 +642,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R71-Ui-JYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3196" y="252"/>
+        </scene>
+        <!--Add BG-->
+        <scene sceneID="Gne-F5-hnL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add BG" id="SNY-rz-FTm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ukg-Ww-bcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3196" y="319"/>
         </scene>
         <!--Guide View Controller2-->
         <scene sceneID="6J3-Mj-OCK">
@@ -741,7 +740,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47g-Be-Fkt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4186.1538461538457" y="-257.34597156398104"/>
+            <point key="canvasLocation" x="5214" y="-257"/>
         </scene>
         <!--Take BG-->
         <scene sceneID="kL5-dX-NTi">
@@ -762,7 +761,7 @@
         <!--Daftar-->
         <scene sceneID="Z79-o3-vvH">
             <objects>
-                <viewController id="KmU-Z3-mmk" customClass="RegisterViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KmU-Z3-mmk" customClass="RegisterViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vla-bd-teA">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,6 +791,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Daftar"/>
                                 <connections>
                                     <action selector="register:" destination="KmU-Z3-mmk" eventType="touchUpInside" id="eH7-ul-KNU"/>
+                                    <segue destination="k0n-Oj-qNT" kind="presentation" identifier="daftar" modalPresentationStyle="fullScreen" id="MQw-f7-5CK"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jane Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fp-Rz-k8I">
@@ -902,7 +902,7 @@
                         <outlet property="nama" destination="3fp-Rz-k8I" id="ibQ-kM-Urq"/>
                         <outlet property="pass" destination="RfP-79-dWR" id="hUj-Oi-t7u"/>
                         <outlet property="role" destination="8rA-XM-5XC" id="kr2-jY-vy6"/>
-                        <segue destination="vFR-7d-T80" kind="show" identifier="daftar" id="3cL-5a-3W3"/>
+                        <segue destination="k0n-Oj-qNT" kind="presentation" identifier="masuk2" modalPresentationStyle="fullScreen" id="ssc-TL-B4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9d6-nP-Wcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -955,6 +955,7 @@
                                 <connections>
                                     <action selector="masukBtn:" destination="4JW-Xf-aQ8" eventType="touchUpInside" id="MFg-gN-jOu"/>
                                     <action selector="register:" destination="KmU-Z3-mmk" eventType="touchUpInside" id="e6t-wG-QaU"/>
+                                    <segue destination="k0n-Oj-qNT" kind="presentation" identifier="masuk" modalPresentationStyle="fullScreen" id="FPa-k7-75b"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtH-NI-Wvn">
@@ -992,12 +993,11 @@
                         <outlet property="emailTextField" destination="diX-CK-foj" id="LYm-od-DCr"/>
                         <outlet property="msgLabel" destination="xtH-NI-Wvn" id="Yyb-nF-ILk"/>
                         <outlet property="passwordTextField" destination="F9y-Wn-PLq" id="BoW-6L-ENA"/>
-                        <segue destination="vFR-7d-T80" kind="show" identifier="masuk" id="Clb-qq-Sw0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9t-tw-TA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="-1366"/>
+            <point key="canvasLocation" x="772" y="-805"/>
         </scene>
         <!--Testing View Controller-->
         <scene sceneID="21M-f9-9nL">
@@ -1022,12 +1022,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4R-xP-5wv">
-                                <rect key="frame" x="16" y="155" width="358" height="34"/>
+                                <rect key="frame" x="16" y="59" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyv-l2-pes">
-                                <rect key="frame" x="151" y="218" width="89" height="34.333333333333343"/>
+                                <rect key="frame" x="151" y="121.99999999999999" width="89" height="34.333333333333329"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Connect"/>
                                 <connections>
@@ -1035,7 +1035,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sample Data" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hc0-Lb-10Z">
-                                <rect key="frame" x="16" y="391" width="358" height="34"/>
+                                <rect key="frame" x="16" y="295" width="358" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="358" id="tFn-wC-1dh"/>
                                 </constraints>
@@ -1043,7 +1043,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH7-YX-hXi">
-                                <rect key="frame" x="295" y="297" width="79" height="35"/>
+                                <rect key="frame" x="295" y="201" width="79" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="accept"/>
                                 <connections>
@@ -1051,7 +1051,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJo-LW-LNx">
-                                <rect key="frame" x="16" y="307.33333333333331" width="239" height="20.333333333333314"/>
+                                <rect key="frame" x="16" y="211.33333333333334" width="239" height="20.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="239" id="SGZ-Y0-6xN"/>
                                 </constraints>
@@ -1060,12 +1060,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHK-Be-cR7">
-                                <rect key="frame" x="255" y="218" width="119" height="35"/>
+                                <rect key="frame" x="255" y="122" width="119" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Go To Home"/>
-                                <connections>
-                                    <segue destination="k0n-Oj-qNT" kind="presentation" modalPresentationStyle="fullScreen" id="p3u-e5-Dbw"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-lP-uUP">
                                 <rect key="frame" x="117" y="451" width="156" height="34.333333333333314"/>
@@ -1118,7 +1115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Irw-HD-snd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="-643"/>
+            <point key="canvasLocation" x="2568" y="-1583"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q7I-se-T0W">
@@ -1138,20 +1135,217 @@
             </objects>
             <point key="canvasLocation" x="-1086" y="-954"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="UAW-IG-Czf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ONU-5U-6gZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnh-8z-zRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3504" y="-941"/>
+        </scene>
+        <!--Daftar Rutinitas-->
+        <scene sceneID="VC9-Vt-3dH">
+            <objects>
+                <viewController storyboardIdentifier="profilePageViewController" title="Daftar Rutinitas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ICF-wt-PbB" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KFR-pG-k6C">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
+                                <rect key="frame" x="0.0" y="144" width="414" height="620"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
+                                    <rect key="frame" x="0.0" y="151" width="414" height="467"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <connections>
+                                        <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
+                                    </connections>
+                                </containerView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="q6k-qP-5sC" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="38" width="374" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q6k-qP-5sC" id="y1Q-vg-Esv" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y01-TF-nt8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-jW-Ci6">
+                                                            <rect key="frame" x="8" y="41" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSc-k8-YbV">
+                                                            <rect key="frame" x="8" y="10" width="318" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP8-R1-hFo">
+                                                            <rect key="frame" x="8" y="64" width="358" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-Ax-ffz">
+                                                            <rect key="frame" x="324" y="10" width="21" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-gg-JoN">
+                                                            <rect key="frame" x="31" y="41" width="290" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                            </subviews>
+                                            <connections>
+                                                <outlet property="routinesView" destination="y01-TF-nt8" id="ztn-k3-Ncb"/>
+                                            </connections>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="routinesArrowImgView" destination="fVz-Ax-ffz" id="I9t-n2-1ji"/>
+                                            <outlet property="routinesClockImgView" destination="Qyp-jW-Ci6" id="YJD-WK-50E"/>
+                                            <outlet property="routinesDescCellLbl" destination="TP8-R1-hFo" id="wsQ-SB-I3i"/>
+                                            <outlet property="routinesTimeDescLbl" destination="Psx-gg-JoN" id="udb-4p-JiT"/>
+                                            <outlet property="routinesTitleCellLbl" destination="uSc-k8-YbV" id="WHA-X2-sjj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ICF-wt-PbB" id="MNI-xN-udz"/>
+                                    <outlet property="delegate" destination="ICF-wt-PbB" id="1Yg-bf-Pl8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OE7-Xy-BXY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Daftar Rutinitas" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="wid-CE-zZW">
+                        <barButtonItem key="rightBarButtonItem" id="x67-FB-dQW">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <action selector="didTapAddMed:" destination="ICF-wt-PbB" id="jXC-rm-v7M"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="daftarRutinitasTableView" destination="qQC-xi-IZE" id="dEI-ov-R2z"/>
+                        <segue destination="eF4-VK-IrW" kind="presentation" identifier="addMedicationViewController" id="Efi-nT-MCB"/>
+                        <segue destination="WfE-vh-jJj" kind="presentation" identifier="addBGViewController" id="sPl-H0-eu2"/>
+                        <segue destination="ONU-5U-6gZ" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="f0Z-kH-IDg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpQ-yW-5X5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2786" y="-805"/>
+        </scene>
+        <!--Add Medication-->
+        <scene sceneID="hTC-fb-om8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add Medication" id="eF4-VK-IrW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Lv-Th-q6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3583" y="-790"/>
+        </scene>
+        <!--Add BG-->
+        <scene sceneID="YY4-np-zG8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add BG" id="WfE-vh-jJj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1y-Pq-zG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3584" y="-631"/>
+        </scene>
+        <!--Empty Routines SpaceVC-->
+        <scene sceneID="EQo-N4-Ra7">
+            <objects>
+                <viewController id="S5d-OC-bWY" customClass="EmptyRoutinesSpaceVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="04s-nq-Y55">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada rutinitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKF-cb-Jnv">
+                                <rect key="frame" x="122" y="279" width="146" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="Adv-xU-4Sy"/>
+                                    <constraint firstAttribute="height" constant="21" id="v82-27-QKw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="ntA-Ci-Asg">
+                                <rect key="frame" x="2" y="66" width="386" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="EI1-HV-Spz"/>
+                                    <constraint firstAttribute="width" constant="386" id="Sit-en-n0a"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtx-hO-W5Y">
+                                <rect key="frame" x="72" y="324" width="247" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="4qt-sC-Cae"/>
+                                    <constraint firstAttribute="height" constant="52" id="BkT-Vm-K42"/>
+                                </constraints>
+                                <color key="tintColor" red="0.1176470588" green="0.51764705879999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Tambah Rutinitas"/>
+                                <connections>
+                                    <action selector="addRoutinesBtn:" destination="S5d-OC-bWY" eventType="touchUpInside" id="TtT-MJ-D4r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ucT-II-Rji"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rtx-hO-W5Y" firstAttribute="top" secondItem="zKF-cb-Jnv" secondAttribute="bottom" constant="24" id="1P4-Rp-8et"/>
+                            <constraint firstItem="ucT-II-Rji" firstAttribute="trailing" secondItem="rtx-hO-W5Y" secondAttribute="trailing" constant="71" id="JVT-3f-iwi"/>
+                            <constraint firstItem="zKF-cb-Jnv" firstAttribute="top" secondItem="ntA-Ci-Asg" secondAttribute="bottom" constant="24" id="g9L-Mq-Mr3"/>
+                            <constraint firstItem="ucT-II-Rji" firstAttribute="trailing" secondItem="zKF-cb-Jnv" secondAttribute="trailing" constant="122" id="hAJ-eU-WN7"/>
+                            <constraint firstItem="ucT-II-Rji" firstAttribute="trailing" secondItem="ntA-Ci-Asg" secondAttribute="trailing" constant="2" id="j9q-lq-LFp"/>
+                            <constraint firstItem="rtx-hO-W5Y" firstAttribute="leading" secondItem="ucT-II-Rji" secondAttribute="leading" constant="72" id="jR6-Yi-adA"/>
+                            <constraint firstItem="zKF-cb-Jnv" firstAttribute="leading" secondItem="ucT-II-Rji" secondAttribute="leading" constant="122" id="ol7-0B-a4H"/>
+                            <constraint firstItem="ntA-Ci-Asg" firstAttribute="top" secondItem="ucT-II-Rji" secondAttribute="top" constant="19" id="rvZ-Ij-eQ8"/>
+                            <constraint firstItem="ntA-Ci-Asg" firstAttribute="leading" secondItem="ucT-II-Rji" secondAttribute="leading" constant="2" id="ybY-g4-P4U"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="390" height="446"/>
+                    <connections>
+                        <segue destination="eF4-VK-IrW" kind="presentation" identifier="addMedicationViewController" id="FrA-CF-765"/>
+                        <segue destination="WfE-vh-jJj" kind="presentation" identifier="addBGViewController" id="NRd-8N-AW9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOV-Ie-v5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2786" y="-209"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3cL-5a-3W3"/>
-        <segue reference="kOP-r9-bA2"/>
+        <segue reference="sPl-H0-eu2"/>
+        <segue reference="Efi-nT-MCB"/>
+        <segue reference="ssc-TL-B4K"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="card-caregiver" width="351" height="132"/>
         <image name="card-patient" width="351" height="132"/>
+        <image name="clock" width="17.333333969116211" height="17.333333969116211"/>
         <image name="ctrl-page-1" width="77" height="12"/>
         <image name="empty" width="386" height="546"/>
         <image name="glucare-logo" width="45" height="36"/>
         <image name="med" width="20" height="19.333333969116211"/>
         <image name="onboard1" width="320" height="320"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="right-arrow" width="10.666666984558105" height="10.666666984558105"/>
         <image name="warning" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

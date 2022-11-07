@@ -6,12 +6,26 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ExitTVC: UITableViewCell {
     
-    @IBOutlet weak var exitBtn: UIButton!
     
-    
+    @IBAction func logoutPress(_ sender: UIButton){
+        print("hello")
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
+            
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+            
+        }
+    }
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

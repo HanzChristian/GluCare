@@ -24,14 +24,30 @@ class LoginViewController: UIViewController {
                 }else{
                     self!.msgLabel.text = "login berhasil"
                     // make segue
-                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }
+            }
+        }
+    }
+    
+    func alreadyLogin(){
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                
+                // User is signed in. Show home screen
+                FirebaseManager.firebaseManager.getAccountInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    self.performSegue(withIdentifier: "masuk", sender: self)
+                    print("Already Login")
+                }
+                
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        alreadyLogin()
     }
     
 }
