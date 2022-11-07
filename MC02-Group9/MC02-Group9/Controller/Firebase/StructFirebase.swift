@@ -7,6 +7,33 @@
 
 import Foundation
 
+
+struct LogFire: Codable {
+    var action: String
+    var bg_check_result: String
+    var date: Date
+    var dateTake: Date
+    var log_id: String
+    var medicine_name: String
+    var time: String
+    var type: Int
+    var owner: String
+    
+    init(action: String, bg_check_result: String, date: Date, dateTake: Date, log_id: String, medicine_name: String, time: String, type: Int, owner: String) {
+        self.action = action
+        self.bg_check_result = bg_check_result
+        self.date = date
+        self.dateTake = dateTake
+        self.log_id = log_id
+        self.medicine_name = medicine_name
+        self.time = time
+        self.type = type
+        self.owner = owner
+    }
+
+}
+
+
 struct MedicineFire: Codable {
     var medicine_name: String
     var medicine_time: [MedicineTimeFire]
@@ -59,8 +86,4 @@ struct BGTimeFire: Codable {
     init(time: Int16) {
         self.time = time
     }
-}
-
-struct LogFire{
-    
 }

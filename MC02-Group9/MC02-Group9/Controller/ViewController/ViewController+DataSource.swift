@@ -11,6 +11,7 @@ import UIKit
 extension ViewController{
     
     func mergeTV(){
+
         jadwalVars.removeAll()
         print("MASUK 666 KE REMOVE")
         self.coreDataManager.fetchMedicine(tableView: tableView)

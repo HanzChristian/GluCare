@@ -140,6 +140,7 @@
 		F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */; };
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
+		F0AB0D4C29187AC600D13250 /* profileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 /* End PBXBuildFile section */
 
@@ -280,6 +281,7 @@
 		F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateFirestoreToCoreData.swift; sourceTree = "<group>"; };
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "profileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -531,6 +533,7 @@
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
 				6EDAF414285878900099213F /* profilePageViewController.swift */,
 				2CFEFFDF290A5DD10060A995 /* profileViewController.swift */,
+				F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */,
 				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
 				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
@@ -845,6 +848,7 @@
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
 				15CAFCFE28F54684009A7686 /* BGTimeTableViewCell.swift in Sources */,
+				F0AB0D4C29187AC600D13250 /* profileViewController+Firebase.swift in Sources */,
 				156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */,
 				F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */,
 				155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */,

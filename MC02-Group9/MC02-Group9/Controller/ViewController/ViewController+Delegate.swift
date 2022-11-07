@@ -127,6 +127,9 @@ extension ViewController:UITableViewDelegate{
             catch {
                 
             }
+            
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             
             return

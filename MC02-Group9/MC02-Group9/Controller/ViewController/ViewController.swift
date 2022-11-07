@@ -210,7 +210,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tableView.backgroundColor = .systemGroupedBackground
         
 //        self.coreDataManager.fetchUser()
-        firebaseManager.loadFirebase()
+//        firebaseManager.loadFirebase()
+        FirebaseManager.firebaseManager.getAccountInfo()
         
         mergeTV()
         bindDataToTableView()

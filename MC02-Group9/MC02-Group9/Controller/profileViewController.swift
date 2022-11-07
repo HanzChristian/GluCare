@@ -26,6 +26,8 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchInvitationFromCaregiver()
         self.tabBarController?.title = "Profil"
         self.navigationItem.title = "Profile2"
         tableView.delegate = self
@@ -101,7 +103,8 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
-                cell.caregiverNameLbl?.text = listCaregiver.caregiverList[indexPath.row]
+                
+                cell.setupView(care: listCaregiver.caregiverList[indexPath.row]) 
                 return cell
             }
         } else if (indexPath.section == 3) {
@@ -212,6 +215,15 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 struct listCaregiver {
-    static var caregiverList = ["Brandon Math", "Noah Syan"]
+    
+    var name: String
+    var status: Int
+    
+    init(name: String, status: Int) {
+        self.name = name
+        self.status = status
+    }
+    
+    static var caregiverList = [listCaregiver]()
     
 }

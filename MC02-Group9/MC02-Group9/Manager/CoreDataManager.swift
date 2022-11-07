@@ -44,7 +44,35 @@ class CoreDataManager{
         
     }
     
+    func updateLog(log: Log, logFire:LogFire){
+        log.bg_check_result = logFire.bg_check_result
+        log.action = logFire.action
+        
+        do{
+            try self.context.save()
+        }
+        catch {
+            
+        }
+        
+    }
+    
     func batalkan(logToRemove: Log){
+        if logToRemove.type == 1 {
+            // BG Logic
+//            logToRemove.bg_check_result = "-1"
+            do{
+                try self.context.save()
+            }
+            catch {
+                
+            }
+            
+            return
+        }
+        
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: logToRemove.log_id!)
+        
         // remove log
         self.context.delete(logToRemove)
         
@@ -53,6 +81,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        
+        
     }
     
 //    func saveUser(user_role:Int16){
@@ -109,9 +140,16 @@ class CoreDataManager{
     func makeLogInit() -> Log {
         
         let newLog = Log(context: self.context)
-        newLog.log_id = UUID().uuidString
-        newLog.type = 0 //med
+        newLog.action = ""
         newLog.bg_check_result = "-1"
+        newLog.date = Date()
+        newLog.dateTake = Date()
+        newLog.log_id = UUID().uuidString
+        newLog.medicine_name = ""
+        newLog.time = ""
+        newLog.type = 0 //med
+        
+        
         
         return newLog
         
@@ -154,6 +192,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
     func simpanBG(date: Date, time: String ,bGResult:String){
@@ -174,6 +215,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: newLog)
     }
     
     func lewati(daySelected: Date, indexPath: IndexPath){
@@ -213,6 +257,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
     func pilihWaktu(daySelected: Date, indexPath: IndexPath, myDatePicker: UIDatePicker){
@@ -259,6 +306,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
     func bgLog(bgDate:Date,bgTime:String){
@@ -274,6 +324,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
     func checkBG(daySelected: Date, indexPath: IndexPath){
@@ -342,6 +395,9 @@ class CoreDataManager{
         }catch{
             
         }
+        
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
     func fetchBG(){
@@ -420,6 +476,21 @@ class CoreDataManager{
         }catch{
             
         }
+    }
+    
+    func fetchAllLogs() -> [Log]{
+        
+        do {
+            let request = Log.fetchRequest() as NSFetchRequest<Log>
+            let logs = try context.fetch(request)
+            
+            return logs
+        }catch{
+            
+            
+        }
+        
+        return [Log]()
     }
     
     func fetchLogs(tableView: UITableView, daySelected: Date){

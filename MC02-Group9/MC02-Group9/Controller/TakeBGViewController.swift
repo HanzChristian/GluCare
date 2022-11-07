@@ -53,6 +53,8 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
             
         }
         
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log!.log_id!, newLog: log!)
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
         self.dismiss(animated: true, completion: nil)
@@ -69,6 +71,8 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         catch {
             
         }
+        
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log!.log_id!, newLog: log!)
         
         print("nDJASND \(log!.action)")
         print("GA MASUK BANG")

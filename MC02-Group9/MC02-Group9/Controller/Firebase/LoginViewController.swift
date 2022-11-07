@@ -33,11 +33,12 @@ class LoginViewController: UIViewController {
     func alreadyLogin(){
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
+                
                 // User is signed in. Show home screen
                 self.performSegue(withIdentifier: "masuk", sender: self)
                 print("Already Login")
                 
-                FirebaseManager.firebaseManager.getAccountInfo()
+                
             }
         }
     }
