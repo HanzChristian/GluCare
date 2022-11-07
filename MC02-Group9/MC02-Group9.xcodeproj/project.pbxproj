@@ -16,6 +16,8 @@
 		15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476090290AAB4700D56835 /* ViewController+DataSource.swift */; };
 		15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476092290AAB5F00D56835 /* ViewController+Rx.swift */; };
 		15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476098290B6D9D00D56835 /* ShareSheet.swift */; };
+		1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548D0712918B15C0087D8AE /* IntroTVC.swift */; };
+		1548D0742918B15C0087D8AE /* IntroTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1548D0722918B15C0087D8AE /* IntroTVC.xib */; };
 		155E521F291263BE00A221E6 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */; };
 		155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
@@ -154,6 +156,8 @@
 		15476090290AAB4700D56835 /* ViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DataSource.swift"; sourceTree = "<group>"; };
 		15476092290AAB5F00D56835 /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
 		15476098290B6D9D00D56835 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		1548D0712918B15C0087D8AE /* IntroTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTVC.swift; sourceTree = "<group>"; };
+		1548D0722918B15C0087D8AE /* IntroTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroTVC.xib; sourceTree = "<group>"; };
 		155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
 		155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTableViewCell.swift; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 				2C23DF002913DD550074AFB3 /* ListCaregiverTVC.xib */,
 				2C23DF032913F55F0074AFB3 /* ExitTVC.swift */,
 				2C23DF042913F55F0074AFB3 /* ExitTVC.xib */,
+				1548D0712918B15C0087D8AE /* IntroTVC.swift */,
+				1548D0722918B15C0087D8AE /* IntroTVC.xib */,
 			);
 			path = ProfileCell;
 			sourceTree = "<group>";
@@ -692,6 +698,7 @@
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
 				2C23DF062913F55F0074AFB3 /* ExitTVC.xib in Resources */,
 				F054B0D7290BDCEB00287D06 /* GoogleService-Info.plist in Resources */,
+				1548D0742918B15C0087D8AE /* IntroTVC.xib in Resources */,
 				2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */,
 				F054781E2910B70200DB4503 /* MedAdheranceTVC.xib in Resources */,
 				1F4EF3D028736AEF0056E693 /* BtnSaveTableViewCell.xib in Resources */,
@@ -800,6 +807,7 @@
 				2C23DF052913F55F0074AFB3 /* ExitTVC.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
 				F054B0DA290BDDFE00287D06 /* TestingViewController.swift in Sources */,
+				1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
@@ -1036,7 +1044,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 784J694B86;
+				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1065,7 +1073,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 784J694B86;
+				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

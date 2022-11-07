@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,20 +18,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Qj-FdN">
-                        <rect key="frame" x="13" y="6" width="358" height="44"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KWa-Qj-FdN">
+                        <rect key="frame" x="21" y="6" width="358" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system" title=" Keluar" buttonSize="small">
                             <color key="baseForegroundColor" systemColor="labelColor"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="logoutPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tbT-we-rYk"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="exitBtn" destination="KWa-Qj-FdN" id="hwD-pv-YXQ"/>
-            </connections>
             <point key="canvasLocation" x="24.615384615384613" y="-12.085308056872037"/>
         </tableViewCell>
     </objects>

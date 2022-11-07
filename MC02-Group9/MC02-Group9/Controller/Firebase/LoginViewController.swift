@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
                 }else{
                     self!.msgLabel.text = "login berhasil"
                     // make segue
-                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }
             }
         }
@@ -35,9 +34,11 @@ class LoginViewController: UIViewController {
             if user != nil {
                 
                 // User is signed in. Show home screen
-                self.performSegue(withIdentifier: "masuk", sender: self)
-                print("Already Login")
-                
+                FirebaseManager.firebaseManager.getAccountInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    self.performSegue(withIdentifier: "masuk", sender: self)
+                    print("Already Login")
+                }
                 
             }
         }

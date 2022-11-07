@@ -161,7 +161,11 @@ class FirebaseManager {
                                     
                                     self!.role = 2
                                     self!.getUserData()
+                                
+                                    
                                 }
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                             }
                         }
                     }
@@ -191,6 +195,8 @@ class FirebaseManager {
                                         UserDefaults.standard.set("\(patient)", forKey: "patient")
                                     }
                                     self!.loadFirebase()
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                                 }
                             }
                         }
@@ -208,10 +214,10 @@ class FirebaseManager {
                 if let p = UserDefaults.standard.string(forKey: "patient"){
                     user = p
                 }
-                print("email fetch \(user)")
+                
             }
             
-            
+            print("email fetch \(user)")
             db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {

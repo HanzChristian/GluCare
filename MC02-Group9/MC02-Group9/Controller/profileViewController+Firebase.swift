@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 
 extension profileViewController{
@@ -29,8 +30,39 @@ extension profileViewController{
         return false
     }
     
+    func getRole() {
+        if let user = Auth.auth().currentUser?.email {
+            FirebaseManager.firebaseManager.db.collection("account").whereField("owner", isEqualTo: "\(user)")
+                .getDocuments { [weak self] (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            if  let roleId = data["roleId"] as? Int{
+                                
+                                if(roleId == 0){
+                                    UserDefaults.standard.set(1, forKey: "role")
+                                  
+                                }else{
+                                    UserDefaults.standard.set(2, forKey: "role")
+                                }
+                                self!.fetchInvitationFromCaregiver()
+                            }
+                        }
+                    }
+                }
+        }
+    }
+    
     
     func fetchInvitationFromCaregiver() {
+        
+        if UserDefaults.standard.value(forKey: "role") == nil{
+            print("GAADA USERDEFAULTNYA")
+            return
+        }
+        
         let role = UserDefaults.standard.integer(forKey: "role")
         var roleString = ""
         var role2String = ""

@@ -11,6 +11,7 @@ import CoreData
 import Gecco
 import RxSwift
 import RxCocoa
+import FirebaseAuth
 
 // var for logic
 var daySelected = Date()
@@ -31,7 +32,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let firebaseManager = FirebaseManager.firebaseManager
     
     @IBAction func segueBtn(_ sender: Any){
-        performSegue(withIdentifier: "addMedicationViewController", sender: self)
+        performSegue(withIdentifier: "toProfile", sender: self)
     }
 //    @IBAction func guideBtn(_ sender: Any) {
 ////        if(coreDataManager.items!.count > 0){
@@ -135,13 +136,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //Buat disable tab bar routine kalo belom konek
         let tabBarControllerItems = self.tabBarController?.tabBar.items
 
-          if let tabArray = tabBarControllerItems {
-              var tabBarItem = tabArray[1]
-              
-              if(role == 2){ //belom kasih kondisi konek
-                  tabBarItem.isEnabled = false
-              }
-          }
+//          if let tabArray = tabBarControllerItems {
+//              var tabBarItem = tabArray[1]
+//
+//              if(role == 2){ //belom kasih kondisi konek
+//                  tabBarItem.isEnabled = false
+//              }
+//          }
         
         
         setCellsView()
@@ -213,14 +214,42 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        firebaseManager.loadFirebase()
         FirebaseManager.firebaseManager.getAccountInfo()
         
+        getRole()
+        
         mergeTV()
-        bindDataToTableView()
+    
+        
         refresh()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         setNib()
         
+    }
+    
+    func getRole(){
+        if let user = Auth.auth().currentUser?.email {
+            FirebaseManager.firebaseManager.db.collection("account").whereField("owner", isEqualTo: "\(user)")
+                .getDocuments { [weak self] (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            if  let roleId = data["roleId"] as? Int{
+                                
+                                if(roleId == 0){
+                                    UserDefaults.standard.set(1, forKey: "role")
+                                  
+                                }else{
+                                    UserDefaults.standard.set(2, forKey: "role")
+                                }
+                                self!.bindDataToTableView()
+                            }
+                        }
+                    }
+                }
+        }
     }
     
     func setCellsView()
@@ -391,6 +420,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
         
+        print("CORE DATA MANAGERMYA MED \(coreDataManager.items?.count)")
+        print("CORE DATA MANAGERMYA BG \(coreDataManager.medicines?.count)")
         mergeTV()
         
         print("rx here \(coreDataManager.jadwal.value)")

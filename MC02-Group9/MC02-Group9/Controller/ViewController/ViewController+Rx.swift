@@ -16,7 +16,6 @@ extension ViewController{
     
     func bindDataToTableView(){
        
-
         coreDataManager.jadwal.asObservable()
             .bind(to: tableView.rx
                 .items(cellIdentifier: "cell", cellType: TakeMedTableViewCell.self))

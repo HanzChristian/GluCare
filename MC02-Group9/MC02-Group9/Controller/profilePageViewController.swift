@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+
 class RutinitasSection {
     var rutinitasSectionTitle: String?
     init(rutinitasSectionTitle: String) {
@@ -16,6 +17,7 @@ class RutinitasSection {
 }
 
 class profilePageViewController: UIViewController {
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //    let coreDataMeds = CoreDataManager.fetchMeds
@@ -43,6 +45,7 @@ class profilePageViewController: UIViewController {
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
         refresh()
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -111,11 +114,11 @@ class profilePageViewController: UIViewController {
         let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default){ _ in
             self.performSegue(withIdentifier: "addBGViewController", sender: nil)
         }
-        let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
+//        let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
         let actBatal = UIAlertAction(title: "Batal", style: .cancel)
         actionSheet.addAction(actJadwalMinumObat)
         actionSheet.addAction(actJadwalCekGulaDarah)
-        actionSheet.addAction(actInputHasilGulaDarah)
+//        actionSheet.addAction(actInputHasilGulaDarah)
         actionSheet.addAction(actBatal)
         present(actionSheet, animated: true, completion: nil)
     }

@@ -22,6 +22,14 @@ class UsernameTVC: UITableViewCell {
         
         userNameLbl.text = FirebaseManager.firebaseManager.name
         userEmailLbl.text = FirebaseManager.firebaseManager.email
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshUser), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
+        
+    }
+    
+    @objc func refreshUser(){
+        userNameLbl.text = FirebaseManager.firebaseManager.name
+        userEmailLbl.text = FirebaseManager.firebaseManager.email
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
