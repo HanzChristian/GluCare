@@ -24,9 +24,14 @@ class profilePageViewController: UIViewController {
 //    let coreDataMedicine = CoreDataManager.fetchMedicine
     var rutinitasSection = [RutinitasSection]()
     var items:[Medicine]?
+    var itemsBG:[BG]?
     var indexPath:IndexPath?
     var tableView:UITableView?
     let coreDataManager = CoreDataManager.coreDataManager
+    
+    var medsTypeArr = ["Waktu Spesifik","Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
+    var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
+    var bgFreqArr = ["Hari", "Minggu", "Bulan"]
     
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
     
@@ -41,6 +46,8 @@ class profilePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMedicine()
+        fetchBG()
+        
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Minum Obat"))
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
@@ -78,6 +85,7 @@ class profilePageViewController: UIViewController {
     
     @objc func refresh() {
         fetchMedicine()
+        fetchBG()
 
         if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
@@ -93,6 +101,22 @@ class profilePageViewController: UIViewController {
             
             
             self.items = try context.fetch(request)
+            
+            DispatchQueue.main.async {
+                self.daftarRutinitasTableView.reloadData()
+            }
+            
+        }catch{
+            
+        }
+    }
+    
+    func fetchBG(){
+        do{
+            let request = BG.fetchRequest() as NSFetchRequest<BG>
+            
+            
+            self.itemsBG = try context.fetch(request)
             
             DispatchQueue.main.async {
                 self.daftarRutinitasTableView.reloadData()
@@ -146,11 +170,20 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
 //  LOGICNYA BELUM BS JALAN KARENA GAADA CORE DATA BG-NYA //
 //  Kalau mau lihat cell ubah return = 2, tp kalau dihapus crash //
 //        1
-        if self.items?.count == 0 {
+        if (self.items?.count == 0) && (self.itemsBG?.count == 0) {
             return 0
         }
-        else {
+        else if (self.items?.count != 0) && (self.itemsBG?.count == 0) {
+            return 1
+        }
+        else if (self.items?.count == 0) && (self.itemsBG?.count != 0) {
+            return 1
+        }
+        else if (self.items?.count != 0) && (self.itemsBG?.count != 0) {
             return 2
+        }
+        else {
+            return 0
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -171,14 +204,27 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items?.count ?? 0
+        if (section == 0) {
+            // cari tahu BG atau meds
+            if (self.itemsBG?.count != 0 && self.items?.count != 0) {
+                return items!.count
+            } else if (self.itemsBG?.count != 0 && self.items?.count == 0) {
+                return itemsBG!.count
+            } else if (self.itemsBG?.count == 0 && self.items?.count != 0) {
+                return items!.count
+            }
+            return 0
+        } else if (section == 1){
+            return itemsBG!.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesMedsTVC
             cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
-            cell.routinesDescCellLbl?.text = "Ini keterangan Meds"
+            cell.routinesDescCellLbl?.text = medsTypeArr[Int(self.items![indexPath.row].eat_time)]
             let times = self.items![indexPath.row].time!
             cell.routinesTimeDescLbl?.text = ""
             for t in times {
@@ -190,12 +236,14 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
         }
         else if (indexPath.section == 1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "routinesBGTVC", for: indexPath) as! RoutinesBGTVC
-            cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
-            cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
-            let times = self.items![indexPath.row].time!
+            cell.routinesTitleCellLbl?.text = bgTypeArr[Int(self.itemsBG![indexPath.row].bg_type)]
+           // cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
+            cell.routinesDescCellLbl?.text = "Setiap \(self.itemsBG![indexPath.row].bg_each_frequency) \(bgFreqArr[Int(self.itemsBG![indexPath.row].bg_frequency)]) "
+            let times = self.itemsBG![indexPath.row].time!
             cell.routinesTimeDescLbl?.text = ""
+            print(BG_Time.self)
             for t in times {
-                cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
             }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
             cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
@@ -216,40 +264,80 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            
-            //REMOVE FROM CORE DATA HERE!
-            // dummyModel.remove(at: indexPath.row)
-            
-            let medicine = self.items![indexPath.row]
-            let id = medicine.id
-            
-            // delete on firebase
-            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
-            
-            self.context.delete(medicine)
-            let deletedId: [String] = [medicine.id!]
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
-            
-            do{
-                try self.context.save()
-            }catch{
+
+            if (indexPath.section == 0) {
+                if (self.itemsBG?.count != 0 && self.items?.count != 0) {
+                    let medicine = self.items![indexPath.row]
+                    let id = medicine.id
+                    
+                    // delete on firebase
+                    MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
+                    
+                    self.context.delete(medicine)
+                    let deletedId: [String] = [medicine.id!]
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
+                    do{
+                        try self.context.save()
+                    }catch{
+                    }
+                    self.fetchMedicine()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    
+                } else if (self.itemsBG?.count != 0 && self.items?.count == 0) {
+                    let bg = self.itemsBG![indexPath.row]
+                    let idBG = bg.bg_id
+                    
+                    // delete on firebase
+                    MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: idBG!)
+                    
+                    self.context.delete(bg)
+                    let deletedIdBG: [String] = [bg.bg_id!]
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedIdBG)
+                    do{
+                        try self.context.save()
+                    }catch{
+                    }
+                    self.fetchBG()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    
+                } else if (self.itemsBG?.count == 0 && self.items?.count != 0) {
+                    let medicine = self.items![indexPath.row]
+                    let id = medicine.id
+                    
+                    // delete on firebase
+                    MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
+                    
+                    self.context.delete(medicine)
+                    let deletedId: [String] = [medicine.id!]
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
+                    do{
+                        try self.context.save()
+                    }catch{
+                    }
+                    self.fetchMedicine()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    
+                }
+            } else if (indexPath.section == 1){
+                let bg = self.itemsBG![indexPath.row]
+                let idBG = bg.bg_id
+                
+                // delete on firebase
+
+                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: idBG!)
+                
+                self.context.delete(bg)
+                let deletedIdBG: [String] = [bg.bg_id!]
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedIdBG)
+                do{
+                    try self.context.save()
+                }catch{
+                }
+                self.fetchBG()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             }
-            
-            self.fetchMedicine()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-            
-            return
-//            context.delete(Medicine[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
             tableView.endUpdates()
-//            do{
-//                try self.context.save()
-//            }catch{
-//
-//            }
-//            self.saveData()
         }
     }
-    
 }
