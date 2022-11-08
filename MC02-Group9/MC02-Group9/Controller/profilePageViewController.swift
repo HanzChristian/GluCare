@@ -207,7 +207,11 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 tableView.bounds.size.width, height: tableView.bounds.size.height))
             sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
             sectionLabel.textColor = UIColor.black
+        if (self.items?.count == 0) {
+            sectionLabel.text = rutinitasSection[section+1].rutinitasSectionTitle
+        } else {
             sectionLabel.text = rutinitasSection[section].rutinitasSectionTitle
+        }
             sectionLabel.sizeToFit()
             headerView.addSubview(sectionLabel)
 
@@ -253,11 +257,10 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
            // cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
             cell.routinesDescCellLbl?.text = "Setiap \(self.itemsBG![indexPath.row].bg_each_frequency) \(bgFreqArr[Int(self.itemsBG![indexPath.row].bg_frequency)]) "
             let times = self.itemsBG![indexPath.row].time!
-            cell.routinesTimeDescLbl?.text = ""
-            print(BG_Time.self)
-            for t in times {
-                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
-            }
+            cell.routinesTimeDescLbl?.text = self.itemsBG![indexPath.row].bg_time
+//            for t in times {
+//                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
+//            }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
             cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
             return cell
@@ -268,11 +271,10 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
            // cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
             cell.routinesDescCellLbl?.text = "Setiap \(self.itemsBG![indexPath.row].bg_each_frequency) \(bgFreqArr[Int(self.itemsBG![indexPath.row].bg_frequency)]) "
             let times = self.itemsBG![indexPath.row].time!
-            cell.routinesTimeDescLbl?.text = ""
-            print(BG_Time.self)
-            for t in times {
-                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
-            }
+            cell.routinesTimeDescLbl?.text = self.itemsBG![indexPath.row].bg_time
+//            for t in times {
+//                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
+//            }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
             cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
             return cell
@@ -293,8 +295,6 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            
-
             if (indexPath.section == 0) {
                 if (self.itemsBG?.count != 0 && self.items?.count != 0) {
                     let medicine = self.items![indexPath.row]
@@ -328,7 +328,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     }catch{
                     }
                     self.fetchBG()
-
+                    
                     
                 } else if (self.itemsBG?.count == 0 && self.items?.count != 0) {
                     let medicine = self.items![indexPath.row]
@@ -345,14 +345,14 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     }catch{
                     }
                     self.fetchMedicine()
-  
+                    
                 }
             } else if (indexPath.section == 1){
                 let bg = self.itemsBG![indexPath.row]
                 let idBG = bg.bg_id
                 
                 // delete on firebase
-
+                
                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: idBG!)
                 
                 self.context.delete(bg)
@@ -363,11 +363,20 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 }catch{
                 }
                 self.fetchBG()
- 
+                
             }
             
+            
 //            tableView.deleteRows(at: [indexPath], with: .fade)
-//            tableView.endUpdates()
+//            if (indexPath.section == 0) && (self.items?.count == 1) {
+//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
+//            } else if (indexPath.section == 0) && (self.itemsBG?.count == 1){
+//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
+//            } else if (indexPath.section == 1) && (self.itemsBG?.count == 1){
+//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
+//            }
+            
+//        tableView.endUpdates()
 
 //            tableView.reloadData()
             
