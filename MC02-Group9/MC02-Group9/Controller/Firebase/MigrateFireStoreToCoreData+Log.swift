@@ -43,9 +43,22 @@ extension MigrateFirestoreToCoreData {
     }
     
     func updateLogFirestore(id: String, newLog: Log){
-        
-        removeLogToFirestore(id: id)
-        addNewLogToFirestore(log: newLog)
+        FirebaseManager.firebaseManager.db.collection("log")
+            .whereField("log_id", isEqualTo: "\(id)")
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                    
+                        document.reference.updateData([
+                            "action": newLog.action,
+                            "bg_check_result": newLog.bg_check_result
+                        ])
+
+                    }
+                }
+            }
         
     }
     
@@ -64,7 +77,7 @@ extension MigrateFirestoreToCoreData {
                 if fireLog.log_id == log.log_id{
                     findSame = true
                 }
-                if fireLog.bg_check_result != log.bg_check_result{
+                if fireLog.log_id == log.log_id && fireLog.bg_check_result != log.bg_check_result{
                     bgSame = false
                     tempLog = fireLog
                 }
@@ -74,12 +87,13 @@ extension MigrateFirestoreToCoreData {
                 coreDataManager.batalkan(logToRemove: log)
             }
             
-            if findSame == true && bgSame == false{
+            if bgSame == false{
                 coreDataManager.updateLog(log: log, logFire: tempLog!)
             }
             
             
         }
+        
     }
     
     func migrateLogFromFirestoreToCoredata(logs: [LogFire]) {

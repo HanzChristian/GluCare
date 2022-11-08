@@ -88,7 +88,7 @@ extension ViewController{
         cell.timeLbl.text = bg?.bg_time
         
         for (i, log) in self.coreDataManager.logs!.enumerated() {
-            if(log.bg_check_result != "-1"){
+            if(log.bg_check_result != "-1" && log.time == bg!.bg_time){
                 self.coreDataManager.undoIdx[element.idx] = i
                 self.coreDataManager.keTake[element.idx] = 1
                 if(log.action == "Skip"){

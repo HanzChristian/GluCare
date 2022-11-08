@@ -45,13 +45,18 @@ class profilePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMedicine()
-        fetchBG()
+//        fetchMedicine()
+//        fetchBG()
+        
+        itemsBG = [BG]()
+        items = [Medicine]()
+        
+        
+        refresh()
         
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Minum Obat"))
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
-        refresh()
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView?.delegate = self
@@ -79,7 +84,7 @@ class profilePageViewController: UIViewController {
               ]
         }
         
-    
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
     }
     
@@ -93,6 +98,7 @@ class profilePageViewController: UIViewController {
         else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){ //kasih kondisi kalo udah konek baru di unhidden
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
+        
     }
     
     func fetchMedicine(){
@@ -170,16 +176,22 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
 //  LOGICNYA BELUM BS JALAN KARENA GAADA CORE DATA BG-NYA //
 //  Kalau mau lihat cell ubah return = 2, tp kalau dihapus crash //
 //        1
+        
         if (self.items?.count == 0) && (self.itemsBG?.count == 0) {
+            print("dapong - no bg + med")
             return 0
         }
         else if (self.items?.count != 0) && (self.itemsBG?.count == 0) {
+            print("dapong - med")
             return 1
         }
         else if (self.items?.count == 0) && (self.itemsBG?.count != 0) {
+            print("dapong - bg")
             return 1
+            
         }
         else if (self.items?.count != 0) && (self.itemsBG?.count != 0) {
+            print("dapong - bg + med")
             return 2
         }
         else {
@@ -209,8 +221,10 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             if (self.itemsBG?.count != 0 && self.items?.count != 0) {
                 return items!.count
             } else if (self.itemsBG?.count != 0 && self.items?.count == 0) {
+                print("dapong - bg count \(self.itemsBG?.count)")
                 return itemsBG!.count
             } else if (self.itemsBG?.count == 0 && self.items?.count != 0) {
+                print("dapong - med count \(self.items?.count)")
                 return items!.count
             }
             return 0
@@ -221,7 +235,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.section == 0) {
+        if(indexPath.section == 0 && self.items?.count != 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesMedsTVC
             cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
             cell.routinesDescCellLbl?.text = medsTypeArr[Int(self.items![indexPath.row].eat_time)]
@@ -229,6 +243,20 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             cell.routinesTimeDescLbl?.text = ""
             for t in times {
                 cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+            }
+            cell.routinesClockImgView?.image = UIImage(named: "clock")
+            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+            return cell
+        }else if (indexPath.section == 0 && self.itemsBG?.count != 0 && self.items?.count == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "routinesBGTVC", for: indexPath) as! RoutinesBGTVC
+            cell.routinesTitleCellLbl?.text = bgTypeArr[Int(self.itemsBG![indexPath.row].bg_type)]
+           // cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
+            cell.routinesDescCellLbl?.text = "Setiap \(self.itemsBG![indexPath.row].bg_each_frequency) \(bgFreqArr[Int(self.itemsBG![indexPath.row].bg_frequency)]) "
+            let times = self.itemsBG![indexPath.row].time!
+            cell.routinesTimeDescLbl?.text = ""
+            print(BG_Time.self)
+            for t in times {
+                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
             }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
             cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
@@ -264,6 +292,8 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
+            
+            
 
             if (indexPath.section == 0) {
                 if (self.itemsBG?.count != 0 && self.items?.count != 0) {
@@ -281,7 +311,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     }catch{
                     }
                     self.fetchMedicine()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+                    
                     
                 } else if (self.itemsBG?.count != 0 && self.items?.count == 0) {
                     let bg = self.itemsBG![indexPath.row]
@@ -298,7 +328,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     }catch{
                     }
                     self.fetchBG()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+
                     
                 } else if (self.itemsBG?.count == 0 && self.items?.count != 0) {
                     let medicine = self.items![indexPath.row]
@@ -315,8 +345,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     }catch{
                     }
                     self.fetchMedicine()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-                    
+  
                 }
             } else if (indexPath.section == 1){
                 let bg = self.itemsBG![indexPath.row]
@@ -334,10 +363,19 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 }catch{
                 }
                 self.fetchBG()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+ 
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
+            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.endUpdates()
+
+//            tableView.reloadData()
+            
+//            tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+//            tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+//            tableView.reloadSections(IndexSet(integer: 2), with: .fade)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     }
 }

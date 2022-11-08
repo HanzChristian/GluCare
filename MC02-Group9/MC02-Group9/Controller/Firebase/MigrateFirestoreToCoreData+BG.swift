@@ -16,7 +16,7 @@ extension MigrateFirestoreToCoreData {
     
     func removeBGToFirestore(id: String) {
         if let user = Auth.auth().currentUser?.email {
-            db.collection("bg").whereField("id", isEqualTo: "\(id)")
+            db.collection("bg").whereField("bg_id", isEqualTo: "\(id)")
                 .getDocuments { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")

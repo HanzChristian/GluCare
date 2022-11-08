@@ -12,7 +12,7 @@ class BGFrequencyTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
     @IBOutlet var bgFrequencyLbl:UILabel!
     @IBOutlet var bgFrequencyScheduleLbl:UILabel!
     
-    let scheduleTime = ["Hari","Minggu","Bulan"]
+    let scheduleTime = ["Hari","Minggu"]
     let pickerView = UIPickerView()
     var pickedFreq = 0
     
