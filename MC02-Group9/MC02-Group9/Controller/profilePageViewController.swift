@@ -293,7 +293,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        return
+       // return
         
         if editingStyle == .delete {
             tableView.beginUpdates()
@@ -321,6 +321,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     let idBG = bg.bg_id
                     
                     // delete on firebase
+                    coreDataManager.removeAllLogBGAfter(bg: bg, date: Date())
                     MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: idBG!)
                     
                     self.context.delete(bg)
@@ -355,7 +356,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 let idBG = bg.bg_id
                 
                 // delete on firebase
-                
+                coreDataManager.removeAllLogBGAfter(bg: bg, date: Date())
                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: idBG!)
                 
                 self.context.delete(bg)
@@ -365,27 +366,23 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     try self.context.save()
                 }catch{
                 }
+                
                 self.fetchBG()
                 
             }
             
             
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            if (indexPath.section == 0) && (self.items?.count == 1) {
-//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
-//            } else if (indexPath.section == 0) && (self.itemsBG?.count == 1){
-//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
-//            } else if (indexPath.section == 1) && (self.itemsBG?.count == 1){
-//                tableView.deleteSections(<#T##sections: IndexSet##IndexSet#>, with: .fade)
-//            }
+            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print("Ini nilai indexpathsection dan items count" ,indexPath.section, self.items!.count)
+            if (indexPath.section == 0 && self.items!.count == 0) {
+                tableView.deleteSections(IndexSet(integer: 0), with: .fade)
+            } else if (indexPath.section == 1 && self.itemsBG!.count == 0 && self.items!.count != 0) {
+                tableView.deleteSections(IndexSet(integer: 1), with: .fade)
+            }
             
-//        tableView.endUpdates()
-
-//            tableView.reloadData()
-            
-//            tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-//            tableView.reloadSections(IndexSet(integer: 1), with: .fade)
-//            tableView.reloadSections(IndexSet(integer: 2), with: .fade)
+//            tableView.deleteSections(IndexSet(integer: 0), with: .fade)
+            tableView.endUpdates()
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }

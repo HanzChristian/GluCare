@@ -658,4 +658,40 @@ class CoreDataManager{
         }
     }
     
+    func removeAllLogBGAfter(bg: BG, date: Date){
+
+            var logToRemove = [Log]()
+            let request = Log.fetchRequest() as NSFetchRequest<Log>
+
+            // Get the current calendar with local time zone
+            // Get today's beginning & end
+            let dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
+
+            // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
+
+            // Set predicate as date being today's date
+
+            let fromPredicate = NSPredicate(format: "%K >= %@",#keyPath(Log.date), dateFrom as NSDate)
+            let typePredicate = NSPredicate(format: "type == 1")
+            let timePredicate = NSPredicate(format: "%K == %@",#keyPath(Log.time), bg.bg_time! as String)
+
+            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, typePredicate, timePredicate])
+
+            request.predicate = datePredicate
+
+            do{
+                logToRemove = try context.fetch(request)
+            }catch{
+
+            }
+
+            print("logtoremove : Date \(date)")
+
+            for log in logToRemove {
+                print("logtoremove \(log.log_id!) \(log.date!) \(log.type)")
+                batalkan(logToRemove: log)
+            }
+
+        }
+
 }
