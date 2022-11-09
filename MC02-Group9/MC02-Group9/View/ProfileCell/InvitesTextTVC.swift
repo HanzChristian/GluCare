@@ -25,7 +25,7 @@ class InvitesTextTVC: UITableViewCell {
         invitesAddBtn.layer.cornerRadius = 24
         invitesAddBtn.layer.borderWidth = 2
         invitesAddBtn.layer.borderColor = UIColor.lightGray.cgColor
-        
+        inviteTextField.placeholder = "Masukkan email anggota keluarga..."
     }
     
     @IBAction func invite(_ sender: Any) {

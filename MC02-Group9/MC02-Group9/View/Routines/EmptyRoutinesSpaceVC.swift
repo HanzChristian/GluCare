@@ -9,6 +9,7 @@
 import UIKit
 
 class EmptyRoutinesSpaceVC: UIViewController {
+    @IBOutlet weak var routineBtn: UIButton!
     
     @IBAction func addRoutinesBtn(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "Apa yang ingin kamu tambahkan?", message: nil, preferredStyle: .actionSheet)
@@ -33,6 +34,7 @@ class EmptyRoutinesSpaceVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableHidden), name: NSNotification.Name(rawValue: "hidden"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         view.backgroundColor = .systemGroupedBackground
+        routineBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         
     }
     
@@ -44,6 +46,28 @@ class EmptyRoutinesSpaceVC: UIViewController {
     @objc func unableHidden(){
         view.frame = self.view.bounds
         view.isHidden = false
+    }
+    
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
 

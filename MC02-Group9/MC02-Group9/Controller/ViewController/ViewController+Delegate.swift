@@ -254,21 +254,20 @@ extension ViewController:UITableViewDelegate{
         if(jadwalVars.type == "MED"){
             let med = coreDataManager.items![jadwalVars.idx]
             title = "\(med.medicine!.name!)"
-            content = "Hi, Kamu belum mengonsumsi \(med.medicine!.name!) nih! Minum segera ya!"
+            content = "Halo, jangan lupa untuk minum obat \(med.medicine!.name!) ya pukul \(med.medicine!.eat_time)."
             
         }else{
             let bg = coreDataManager.bg![jadwalVars.idx]
             if(bg.bg_type == 0){
                 title = "Gula Darah Puasa"
-                content = "Hi, Kamu belum cek Gula Darah Puasa nih! Cepat di cek ya!"
+                content = "Halo, jangan lupa untuk periksa gula darah puasa kamu ya jam \(bg.bg_time!) hari ini."
             }else if(bg.bg_type == 1){
                 title = "Gula Darah Sesaat"
-                content = "Hi, Kamu belum cek Gula Darah Sesaat nih! Cepat di cek ya!"
+                content = "Jangan lupa untuk memeriksa gula darah sesaat kamu pukul \(bg.bg_time!) hari ini, ya."
             }else{
-                title = "HBA1C"
-                content = "Hi, Kamu belum cek HBA1C nih! Cepat di cek ya!"
+                title = "HbA1c"
+                content = "Hai, kamu ada jadwal untuk memeriksa HbA1c di jam \(bg.bg_time!) hari ini."
             }
-            
             
         }
 

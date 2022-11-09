@@ -58,6 +58,7 @@ class profilePageViewController: UIViewController {
         rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Daftar Rutinitas"
         
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -294,6 +295,8 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
        // return
+        var medDeleted = false
+        var bgDeleted = false
         
         if editingStyle == .delete {
             tableView.beginUpdates()
@@ -309,6 +312,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     self.context.delete(medicine)
                     let deletedId: [String] = [medicine.id!]
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
+                    medDeleted = true
                     do{
                         try self.context.save()
                     }catch{
@@ -327,6 +331,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     self.context.delete(bg)
                     let deletedIdBG: [String] = [bg.bg_id!]
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedIdBG)
+                    bgDeleted = true
                     do{
                         try self.context.save()
                     }catch{
@@ -344,6 +349,7 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                     self.context.delete(medicine)
                     let deletedId: [String] = [medicine.id!]
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
+                    medDeleted = true
                     do{
                         try self.context.save()
                     }catch{
@@ -362,6 +368,8 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 self.context.delete(bg)
                 let deletedIdBG: [String] = [bg.bg_id!]
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedIdBG)
+                bgDeleted = true
+                
                 do{
                     try self.context.save()
                 }catch{
@@ -375,12 +383,16 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
             tableView.reloadData()
             tableView.deleteRows(at: [indexPath], with: .fade)
             print("Ini nilai indexpathsection dan items count" ,indexPath.section, self.items!.count)
-            if (indexPath.section == 0 && self.items!.count == 0) {
-                tableView.deleteSections(IndexSet(integer: 0), with: .fade)
-            } else if (indexPath.section == 1 && self.itemsBG!.count == 0 && self.items!.count != 0) {
-                tableView.deleteSections(IndexSet(integer: 1), with: .fade)
+            if((indexPath.section == 0 && self.items!.count > 0 && self.itemsBG!.count > 0 && bgDeleted == false) || (indexPath.section == 0 && self.items!.count == 0  && self.itemsBG!.count > 0 && medDeleted == false)){
+                print("JUMLAH MED \(self.items!.count)")
+            }else{
+                if (indexPath.section == 0 && self.items!.count == 0) {
+                    tableView.deleteSections(IndexSet(integer: 0), with: .fade)
+                } else if (indexPath.section == 1 && self.itemsBG!.count == 0 && self.items!.count != 0) {
+                    tableView.deleteSections(IndexSet(integer: 1), with: .fade)
+                }
             }
-            
+                
 //            tableView.deleteSections(IndexSet(integer: 0), with: .fade)
             tableView.endUpdates()
             

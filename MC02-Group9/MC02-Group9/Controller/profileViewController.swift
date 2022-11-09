@@ -270,7 +270,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
             DispatchQueue.main.async {
-                self.navigationItem.title = "Today"
+                self.navigationItem.title = "Hari ini"
             }
         }
     }

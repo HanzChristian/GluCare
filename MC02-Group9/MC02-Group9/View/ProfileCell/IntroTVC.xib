@@ -115,6 +115,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="gabungLbl" destination="pel-Yf-ybZ" id="5ER-aX-jSm"/>
+                <outlet property="joinBtn" destination="xed-RN-BhU" id="Hyn-nM-KLp"/>
             </connections>
             <point key="canvasLocation" x="101.53846153846153" y="20.971563981042653"/>
         </tableViewCell>

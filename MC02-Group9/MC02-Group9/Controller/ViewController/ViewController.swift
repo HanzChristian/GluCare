@@ -111,7 +111,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
          let tabBarIndex = tabBarController.selectedIndex
          if tabBarIndex == 0 {
              DispatchQueue.main.async {
-                 self.navigationItem.title = "Today"
+                 self.navigationItem.title = "Hari ini"
                  daySelected = Date()
                  
                  self.setWeekView()
@@ -128,7 +128,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         // dapong
         self.tabBarController?.title = "Jadwal"
-        self.navigationItem.title = "Today"
+        self.navigationItem.title = "Hari ini"
         collectionView.delegate = self
         collectionView.dataSource = self
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -383,11 +383,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if(strDate == strToday)
         {
-            self.navigationItem.title = "Today"
+            self.navigationItem.title = "Hari ini"
         }else if(numberOfDays == -1){
-            self.navigationItem.title = "Yesterday"
+            self.navigationItem.title = "Kemarin"
         }else if(numberOfDays == 1){
-            self.navigationItem.title = "Tomorrow"
+            self.navigationItem.title = "Besok"
         }else{
             self.navigationItem.title = strDate
         }

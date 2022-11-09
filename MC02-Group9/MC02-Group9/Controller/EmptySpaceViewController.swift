@@ -10,7 +10,8 @@ import UIKit
 class EmptySpaceViewController: UIViewController {
     
     let role = UserDefaults.standard.integer(forKey: "role")
-
+    @IBOutlet weak var medBtn:UIButton!
+    
     @IBAction func addMedBtn(_ sender: UIButton) {
         if (role == 1){
             let actionSheet = UIAlertController(title: "Apa yang ingin kamu tambahkan?", message: nil, preferredStyle: .actionSheet)
@@ -50,6 +51,8 @@ class EmptySpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        medBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableHidden), name: NSNotification.Name(rawValue: "hidden"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.unableHidden), name: NSNotification.Name(rawValue: "unhidden"), object: nil)
 //        view.isHidden = true
@@ -76,6 +79,27 @@ class EmptySpaceViewController: UIViewController {
         view.isHidden = false
     }
     
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 
     /*
     // MARK: - Navigation
