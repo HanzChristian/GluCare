@@ -52,8 +52,11 @@ class RegisterViewController: UIViewController {
                         let nama = self!.nama.text, nama != ""
                         {
                         print(user)
+                        
+                        let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
+//                        "roleId": self!.role.selectedSegmentIndex
                         self!.db.collection("account").addDocument(data: [
-                            "roleId": self!.role.selectedSegmentIndex,
+                            "roleId": roleUserDefault,
                             "nama": "\(nama)",
                             "owner": "\(user)"
                         ]){ (error) in
@@ -64,8 +67,13 @@ class RegisterViewController: UIViewController {
                                 // make segue
                                 FirebaseManager.firebaseManager.getAccountInfo()
                                 DispatchQueue.main.asyncAfter(deadline: .now()){
+                                    if email.count > 5 && pass.count > 5 {
+                                        
+                                    }
+                                    
                                     self!.performSegue(withIdentifier: "daftar", sender: self)
                                     print("Already Login")
+
                                 }
                                 
                             }

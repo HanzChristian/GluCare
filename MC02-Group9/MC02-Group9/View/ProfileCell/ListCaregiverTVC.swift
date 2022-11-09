@@ -44,6 +44,8 @@ class ListCaregiverTVC: UITableViewCell {
                                 document.reference.updateData([
                                     "status": true
                                 ])
+                                
+                                FirebaseManager.firebaseManager.getAccountInfo()
                             }
                         }
                     }

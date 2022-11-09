@@ -17,6 +17,9 @@ class ExitTVC: UITableViewCell {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            
+            CoreDataManager.coreDataManager.resetAllCoreData()
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
             
         } catch let signOutError as NSError {

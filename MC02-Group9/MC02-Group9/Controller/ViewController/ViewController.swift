@@ -217,7 +217,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         getRole()
         
         mergeTV()
-    
+        
+        bindDataToTableView()
         
         refresh()
         
@@ -244,7 +245,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                 }else{
                                     UserDefaults.standard.set(2, forKey: "role")
                                 }
-                                self!.bindDataToTableView()
+                                
                             }
                         }
                     }

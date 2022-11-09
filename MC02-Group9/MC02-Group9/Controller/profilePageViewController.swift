@@ -292,6 +292,9 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        return
+        
         if editingStyle == .delete {
             tableView.beginUpdates()
             

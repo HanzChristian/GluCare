@@ -44,6 +44,23 @@ class CoreDataManager{
         
     }
     
+    func resetAllCoreData() {
+
+         // get all entities and loop over them
+         let entityNames = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.managedObjectModel.entities.map({ $0.name!})
+         entityNames.forEach { [weak self] entityName in
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+            do {
+                try self?.context.execute(deleteRequest)
+                try self?.context.save()
+            } catch {
+                // error
+            }
+        }
+    }
+    
     func updateLog(log: Log, logFire:LogFire){
         log.bg_check_result = logFire.bg_check_result
         log.action = logFire.action

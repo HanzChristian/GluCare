@@ -204,6 +204,33 @@ class FirebaseManager {
                 }
         }
         
+        if let user = Auth.auth().currentUser?.email {
+            db.collection("link")
+                .whereField("owner", isEqualTo: "\(user)")
+                .addSnapshotListener { [weak self] (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            if  let status = data["status"] as? Bool,
+                                let owner = data["owner"] as? String,
+                                let patient = data["patient"] as? String
+                            {
+                                if status == true{
+                                    if patient.count > 0 {
+                                        UserDefaults.standard.set("\(patient)", forKey: "patient")
+                                    }
+                                    self!.loadFirebase()
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        
         
     }
     
