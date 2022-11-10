@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         alreadyLogin()
     }
