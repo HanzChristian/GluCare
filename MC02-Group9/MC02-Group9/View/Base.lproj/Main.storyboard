@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UBT-jF-w6S">
-                                <rect key="frame" x="0.0" y="91" width="390" height="97"/>
+                                <rect key="frame" x="0.0" y="143" width="390" height="97"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="G6E-hP-0JZ"/>
@@ -72,7 +72,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
-                                <rect key="frame" x="0.0" y="188" width="390" height="573"/>
+                                <rect key="frame" x="0.0" y="240" width="390" height="521"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="573" id="Rzn-J1-l4B"/>
@@ -959,7 +959,6 @@
                                 <connections>
                                     <action selector="masukBtn:" destination="4JW-Xf-aQ8" eventType="touchUpInside" id="MFg-gN-jOu"/>
                                     <action selector="register:" destination="KmU-Z3-mmk" eventType="touchUpInside" id="e6t-wG-QaU"/>
-                                    <segue destination="k0n-Oj-qNT" kind="presentation" identifier="masuk" modalPresentationStyle="fullScreen" id="FPa-k7-75b"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtH-NI-Wvn">
@@ -998,6 +997,7 @@
                         <outlet property="loginBtn" destination="0yR-Dc-bDH" id="t2h-HW-eWS"/>
                         <outlet property="msgLabel" destination="xtH-NI-Wvn" id="Yyb-nF-ILk"/>
                         <outlet property="passwordTextField" destination="F9y-Wn-PLq" id="BoW-6L-ENA"/>
+                        <segue destination="k0n-Oj-qNT" kind="presentation" identifier="masuk" modalPresentationStyle="fullScreen" id="KoF-Bm-9Lp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9t-tw-TA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1339,7 +1339,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="NRd-8N-AW9"/>
         <segue reference="FrA-CF-765"/>
-        <segue reference="FPa-k7-75b"/>
+        <segue reference="KoF-Bm-9Lp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>

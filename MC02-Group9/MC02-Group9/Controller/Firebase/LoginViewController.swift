@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
                 }else{
                     self!.msgLabel.text = "login berhasil"
                     // make segue
+                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }
             }
         }
