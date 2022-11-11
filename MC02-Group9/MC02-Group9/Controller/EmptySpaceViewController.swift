@@ -28,21 +28,6 @@ class EmptySpaceViewController: UIViewController {
 //            actionSheet.addAction(actInputHasilGulaDarah)
             actionSheet.addAction(actBatal)
             present(actionSheet, animated: true, completion: nil)
-        }else if (role == 2){ //nanti kasih kondisi && jika belum konek
-            let actionSheet = UIAlertController(title: "Apa yang ingin kamu tambahkan?", message: nil, preferredStyle: .actionSheet)
-            let actJadwalMinumObat = UIAlertAction(title: "Jadwal Minum Obat", style: .default) { _ in
-                self.performSegue(withIdentifier: "addMedicationViewController", sender: nil)
-            }
-            let actJadwalCekGulaDarah = UIAlertAction(title: "Jadwal Cek Gula Darah", style: .default){ _ in
-                self.performSegue(withIdentifier: "addBGViewController", sender: nil)
-            }
-//            let actInputHasilGulaDarah = UIAlertAction(title: "Input Hasil Gula Darah", style: .default)
-            let actBatal = UIAlertAction(title: "Batal", style: .cancel)
-            actionSheet.addAction(actJadwalMinumObat)
-            actionSheet.addAction(actJadwalCekGulaDarah)
-//            actionSheet.addAction(actInputHasilGulaDarah)
-            actionSheet.addAction(actBatal)
-            present(actionSheet, animated: true, completion: nil)
         }
     }
     
@@ -51,6 +36,7 @@ class EmptySpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         medBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         NotificationCenter.default.addObserver(self, selector: #selector(self.enableHidden), name: NSNotification.Name(rawValue: "hidden"), object: nil)
@@ -63,8 +49,9 @@ class EmptySpaceViewController: UIViewController {
             textBtn.setTitle("Tambah Rutinitas", for: .normal)
             textLbl.textAlignment = .center
         }else if (role == 2){ //nanti kasih kondisi && jika belum konek
-            textLbl.text = "Anda belum tersambung dengan keluarga."
-            textBtn.setTitle("Hubungkan Keluarga", for: .normal)
+            textLbl.text = "Anda belum tersambung dengan keluarga\natau\nbelum ada rutinitas."
+            textBtn.isHidden = true
+//            textBtn.setTitle("Hubungkan Keluarga", for: .normal)
             textLbl.textAlignment = .center
         }
     }

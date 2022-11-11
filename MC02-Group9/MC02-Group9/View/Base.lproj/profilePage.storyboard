@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,11 +25,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVG-mw-Bbb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9" userLabel="Daftar Rutinitas Table View">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a10-JW-pM9" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="132" width="414" height="632"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="EIo-O9-sdb">
                                     <rect key="frame" x="0.0" y="168.5" width="414" height="467"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -46,8 +43,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-Hg-SXG">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-Hg-SXG">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="95"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-Ox-OXC">
                                                             <rect key="frame" x="8" y="41" width="20" height="20"/>
@@ -79,15 +77,8 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="95" id="2Tx-X4-dv5"/>
-                                                        <constraint firstAttribute="width" constant="374" id="QkY-5c-LJB"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="z3V-Hg-SXG" firstAttribute="top" secondItem="7i5-s0-bQl" secondAttribute="top" id="Gis-oh-AiB"/>
-                                            </constraints>
                                             <connections>
                                                 <outlet property="routinesView" destination="z3V-Hg-SXG" id="cT5-QN-Wf9"/>
                                             </connections>
@@ -112,18 +103,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HTv-7d-E2s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="top" secondItem="bVG-mw-Bbb" secondAttribute="bottom" id="4lb-K6-Arz"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="centerY" secondItem="WiY-Ou-T0A" secondAttribute="centerY" id="AhP-Qy-W5l"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="centerX" secondItem="WiY-Ou-T0A" secondAttribute="centerX" id="Jes-vt-MU7"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="bottom" secondItem="HTv-7d-E2s" secondAttribute="bottom" id="agm-x8-K26"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="trailing" secondItem="HTv-7d-E2s" secondAttribute="trailing" id="hpX-wc-VTN"/>
-                            <constraint firstItem="a10-JW-pM9" firstAttribute="leading" secondItem="HTv-7d-E2s" secondAttribute="leading" id="kSN-GN-lZb"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="fnS-C8-PER">
-                        <barButtonItem key="rightBarButtonItem" id="zPc-c2-DDG">
-                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                    <navigationItem key="navigationItem" title="Rutinitas" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="fnS-C8-PER">
+                        <barButtonItem key="rightBarButtonItem" title="Tambah" id="zPc-c2-DDG">
                             <connections>
                                 <action selector="didTapAddMed:" destination="ZlH-Jp-9ts" id="I5q-up-SnW"/>
                             </connections>
@@ -160,11 +142,10 @@
         <scene sceneID="WbI-tm-Rp3">
             <objects>
                 <navigationController storyboardIdentifier="profilePage" title="Profile" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zoA-Gj-THi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rutinitas" id="KQE-HH-g7E"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6b5-VE-XJn">
-                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6b5-VE-XJn">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -250,7 +231,6 @@
     <resources>
         <image name="clock" width="26" height="26"/>
         <image name="empty" width="386" height="546"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="right-arrow" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

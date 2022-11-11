@@ -43,13 +43,13 @@ class OnBoardingViewController: UIViewController {
     
     var currPage = 0
     
-    let titleArray = ["Bantu kamu ingat minum obat",
-                           "Buat target diabetes kamu",
+    let titleArray = ["Bantu kamu jaga pengobatanmu",
+                           "Ketahui target dan dapatkan laporan",
                            "Kelola bersama keluarga"
     ]
-    let subtitleArray = ["Catat seluruh jadwal obat kamu di satu aplikasi, GluCare siap bantu kamu ingatkan minum obat",
-                              "Kelola diabetesmu dengan target yang jelas! Studi menunjukkan bahwa target dapat membantu kamu lebih termotivasi.",
-                              "Ajak keluarga kamu untuk mencapai target pengelolaan diabetes kamu di dalam satu aplikasi!"
+    let subtitleArray = ["Catat seluruh jadwal obat dan jadwal cek gula darahmu di satu aplikasi, GluCare siap bantu kamu ingatkan minum obat!",
+                              "Glucare bantu kamu mendefinisikan target dan menjadikannya acuan agar kamu lebih semangat. Kamu dapat melihat perkembanganmu setiap bulan!",
+                              "Libatkan keluargamu untuk bantu memantau perkembangan diabetesmu dan mengingatkan saat kamu lupa minum obat!"
     ]
     let imageArray = [
         ImageHelper.onboard1,

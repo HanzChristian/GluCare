@@ -52,8 +52,6 @@ class RoutinesViewController: UIViewController {
         
 //        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Minum Obat"))
 //        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Daftar Rutinitas"
         
         tableView?.delegate = self
@@ -70,16 +68,16 @@ class RoutinesViewController: UIViewController {
         daftarRutinitasTableView.register(nibBGName, forCellReuseIdentifier: "routinesBGTVC")
 
     //make navbar title rounded
-        if let roundedTitleDescriptor = UIFontDescriptor
-          .preferredFontDescriptor(withTextStyle: .largeTitle)
-          .withDesign(.rounded)?
-          .withSymbolicTraits(.traitBold) {
-            self.navigationController? // Assumes a navigationController exists on the current view
-              .navigationBar
-              .largeTitleTextAttributes = [
-                .font: UIFont(descriptor: roundedTitleDescriptor, size: 0) // Note that 'size: 0' maintains the system size class
-              ]
-        }
+//        if let roundedTitleDescriptor = UIFontDescriptor
+//          .preferredFontDescriptor(withTextStyle: .largeTitle)
+//          .withDesign(.rounded)?
+//          .withSymbolicTraits(.traitBold) {
+//            self.navigationController? // Assumes a navigationController exists on the current view
+//              .navigationBar
+//              .largeTitleTextAttributes = [
+//                .font: UIFont(descriptor: roundedTitleDescriptor, size: 0) // Note that 'size: 0' maintains the system size class
+//              ]
+//        }
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)

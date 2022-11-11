@@ -32,7 +32,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let firebaseManager = FirebaseManager.firebaseManager
     
     @IBAction func segueBtn(_ sender: Any){
-        performSegue(withIdentifier: "toProfile", sender: self)
+        if(role == 1){
+            performSegue(withIdentifier: "toProfile", sender: self)
+        }
+        else if(role == 2){
+            
+        }
+    
     }
 //    @IBAction func guideBtn(_ sender: Any) {
 ////        if(coreDataManager.items!.count > 0){
@@ -133,6 +139,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.dataSource = self
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        if(role == 1){
+            if #available(iOS 16.0, *) {
+                navigationItem.rightBarButtonItem?.isHidden = false
+            } else {
+                // Fallback on earlier versions
+            }
+        }else if (role == 2){
+            if #available(iOS 16.0, *) {
+                navigationItem.rightBarButtonItem?.isHidden = true
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    
         //Buat disable tab bar routine kalo belom konek
         let tabBarControllerItems = self.tabBarController?.tabBar.items
 

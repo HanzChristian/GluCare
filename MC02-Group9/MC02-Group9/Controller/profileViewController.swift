@@ -105,12 +105,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func toLogin(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "roleManagementVC") as! RoleManagementVC
         let navController = UINavigationController(rootViewController: vc)
 //        vc.navigationController?.pushViewController(vc, animated: true)
 //        vc.modalPresentationStyle = .fullScreen
         navController.modalPresentationStyle = .fullScreen
-        navController.navigationBar.prefersLargeTitles = true
+//        navController.navigationBar.prefersLargeTitles = true
         present(navController, animated: true, completion: nil)
     
     }
