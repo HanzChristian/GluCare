@@ -241,7 +241,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (indexPath.section == 3) {
             if (indexPath.row == 0) {
                 print("alert exit done")
-                let alert = UIAlertController(title: "Yakin mau keluar", message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
                 alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
                     action in
