@@ -254,7 +254,7 @@ extension ViewController:UITableViewDelegate{
         if(jadwalVars.type == "MED"){
             let med = coreDataManager.items![jadwalVars.idx]
             title = "\(med.medicine!.name!)"
-            content = "Halo, jangan lupa untuk minum obat \(med.medicine!.name!) ya pukul \(med.medicine!.eat_time)."
+            content = "Halo, jangan lupa untuk minum obat \(med.medicine!.name!) ya pukul \(med.time!)."
             
         }else{
             let bg = coreDataManager.bg![jadwalVars.idx]
