@@ -222,6 +222,32 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return false
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 3) {
+            if (indexPath.row == 0) {
+                print("alert exit")
+                let alert = UIAlertController(title: "Yakin mau keluar", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
+                    action in
+                    let firebaseAuth = Auth.auth()
+                    do {
+                        try firebaseAuth.signOut()
+
+                        CoreDataManager.coreDataManager.resetAllCoreData()
+
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
+
+                    } catch let signOutError as NSError {
+                        print("Error signing out: %@", signOutError)
+
+                    }
+                }))
+                present(alert, animated: true, completion: nil)
+            }
+        }
+   }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(isLogin == false){
             return 0
@@ -274,6 +300,8 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    
     
     private func setNavItem(){
         navigationController?.navigationBar.prefersLargeTitles = true

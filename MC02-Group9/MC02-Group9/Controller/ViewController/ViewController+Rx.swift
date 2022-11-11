@@ -71,7 +71,7 @@ extension ViewController{
         }else if(bg?.bg_type == 1){
             cell.freqLbl.text = "Gula Darah Sesaat"
         }else{
-            cell.freqLbl.text = "HBA1C"
+            cell.freqLbl.text = "HbA1c"
         }
         
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)

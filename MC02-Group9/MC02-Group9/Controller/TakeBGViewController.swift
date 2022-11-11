@@ -152,7 +152,7 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
                 }else if(bg.bg_type == 1){
                     cellBGName!.BGNameLbl.text = "Gula Darah Sesaat"
                 }else{
-                    cellBGName!.BGNameLbl.text = "HBA1C"
+                    cellBGName!.BGNameLbl.text = "HbA1c"
                 }
 
                 print("INI NILAI DARI BG TYPE \(bg.bg_type)")

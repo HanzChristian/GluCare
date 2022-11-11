@@ -10,27 +10,28 @@ import FirebaseAuth
 
 class ExitTVC: UITableViewCell {
     
+    @IBOutlet weak var exitLbl: UILabel!
     
     @IBAction func logoutPress(_ sender: UIButton){
-        print("hello")
-        
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            
-            CoreDataManager.coreDataManager.resetAllCoreData()
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
-            
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-            
-        }
     }
+        
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//
+//            CoreDataManager.coreDataManager.resetAllCoreData()
+//
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
+//
+//        } catch let signOutError as NSError {
+//            print("Error signing out: %@", signOutError)
+//
+//        }
 
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        //exitLbl.inputAccessoryView =
         // Initialization code
     }
 
@@ -39,5 +40,4 @@ class ExitTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

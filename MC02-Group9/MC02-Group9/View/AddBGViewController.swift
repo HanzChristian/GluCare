@@ -112,8 +112,9 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
 //                    tableView.reloadSections(IndexSet(integer: 1), with: .none)
 //                    tableView.setContentOffset(loc, animated: false)
 //                }
-                
-                self.tableView.reloadData()
+                UIView.performWithoutAnimation {
+                    self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                }
             }
         }catch{
             

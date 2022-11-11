@@ -22,7 +22,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
-    let textFieldShadow = ["Misal: Metformin 250g", "Pilih Waktu Minum", "", ""]
+    let textFieldShadow = ["Misal: Metformin 500 mg", "Pilih Waktu Minum", "", ""]
 //    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
 //    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
 //                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
@@ -103,7 +103,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             if (indexPath.row == 0) {
                 // SECTION 1 ROW 1
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medNameTextFieldTVC", for: indexPath) as! MedNameTextFieldTVC
-                cell.medNameTextField?.placeholder = "Misal: Metformin 250g"
+                cell.medNameTextField?.placeholder = "Misal: Metformin 500 mg"
                 cellMedNameTV = cell
                 validateForm()
                 //            cell.backgroundColor = hexStringToUIColor(hex: "#FAFAFA")
