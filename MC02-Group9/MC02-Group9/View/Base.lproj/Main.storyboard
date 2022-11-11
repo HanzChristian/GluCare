@@ -653,6 +653,14 @@
             </objects>
             <point key="canvasLocation" x="3196" y="319"/>
         </scene>
+        <!--Take BG-->
+        <scene sceneID="kL5-dX-NTi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Take BG" id="FiD-NL-f0c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yx-O1-6iu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="889"/>
+        </scene>
         <!--Guide View Controller2-->
         <scene sceneID="6J3-Mj-OCK">
             <objects>
@@ -743,14 +751,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47g-Be-Fkt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5214" y="-257"/>
-        </scene>
-        <!--Take BG-->
-        <scene sceneID="kL5-dX-NTi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Take BG" id="FiD-NL-f0c" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yx-O1-6iu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2030" y="889"/>
         </scene>
         <!--Take Medication-->
         <scene sceneID="Lus-HP-r14">
@@ -1152,7 +1152,7 @@
         <!--Daftar Rutinitas-->
         <scene sceneID="VC9-Vt-3dH">
             <objects>
-                <viewController storyboardIdentifier="profilePageViewController" title="Daftar Rutinitas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ICF-wt-PbB" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoutinesViewController" title="Daftar Rutinitas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ICF-wt-PbB" customClass="RoutinesViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KFR-pG-k6C">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1161,7 +1161,7 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="620"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="151" width="414" height="467"/>
+                                    <rect key="frame" x="0.0" y="150.99999999999994" width="414" height="467.00000000000006"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1337,8 +1337,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NRd-8N-AW9"/>
-        <segue reference="FrA-CF-765"/>
+        <segue reference="sPl-H0-eu2"/>
+        <segue reference="Efi-nT-MCB"/>
         <segue reference="KoF-Bm-9Lp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>

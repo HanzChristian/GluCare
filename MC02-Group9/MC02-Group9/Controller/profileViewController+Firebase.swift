@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 
-extension profileViewController{
+extension ProfileViewController{
     
     func filterNewCaregiver(newList: listCaregiver) -> Bool{
         var i = 0

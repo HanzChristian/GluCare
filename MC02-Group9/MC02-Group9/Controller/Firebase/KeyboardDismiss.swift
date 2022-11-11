@@ -34,9 +34,9 @@ extension LoginViewController {
     }
 }
 
-extension profileViewController {
+extension ProfileViewController {
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(profileViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

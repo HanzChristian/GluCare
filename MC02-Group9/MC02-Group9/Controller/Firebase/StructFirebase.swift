@@ -14,17 +14,19 @@ struct LogFire: Codable {
     var date: Date
     var dateTake: Date
     var log_id: String
+    var log_ref: String
     var medicine_name: String
     var time: String
     var type: Int
     var owner: String
     
-    init(action: String, bg_check_result: String, date: Date, dateTake: Date, log_id: String, medicine_name: String, time: String, type: Int, owner: String) {
+    init(action: String, bg_check_result: String, date: Date, dateTake: Date, log_id: String, log_ref: String, medicine_name: String, time: String, type: Int, owner: String) {
         self.action = action
         self.bg_check_result = bg_check_result
         self.date = date
         self.dateTake = dateTake
         self.log_id = log_id
+        self.log_ref = log_ref
         self.medicine_name = medicine_name
         self.time = time
         self.type = type

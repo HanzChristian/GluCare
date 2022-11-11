@@ -60,7 +60,7 @@ extension ViewController{
             for bg in bgCopy{
                 idxLog = 0
                 for log in bgLog{ //menentukan log bg atau med
-                    if log.time == bg.bg_time{
+                    if log.time == bg.bg_time && log.ref_id == bg.bg_id{
                         if((bg.bg_time)! < medCopy[0].time! && (bg.bg_time)! < lowestBg){
                             lowestBg = (bg.bg_time)!
                             idxLowestBg = idxBg
@@ -96,7 +96,7 @@ extension ViewController{
 //        cari bg terkecil masuk ke jadwalVar
         for bg in bgCopy{
             for log in bgLog{
-                if log.time == bg.bg_time{
+                if log.time == bg.bg_time && log.ref_id == bg.bg_id{
                     
                     var j = JadwalVars(type: "BG", idx: getBgIdx(bG: bg))
                     j.logIdx = coreDataManager.getLogRealIdx(log: log)

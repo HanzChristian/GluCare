@@ -16,7 +16,7 @@ extension MigrateFirestoreToCoreData {
     
     func addNewLogToFirestore(log: Log) {
         if let user = Auth.auth().currentUser?.email{
-            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user)
+            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, log_ref: log.ref_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user)
             
             do{
                 try db.collection("log").document().setData(from: newLog)
@@ -63,6 +63,12 @@ extension MigrateFirestoreToCoreData {
     }
     
     func syncCoredataLogToFirestore(fireLogs: [LogFire]){
+        
+//        let role = UserDefaults.standard.integer(forKey: "role")
+//        if role == 0{
+//            return
+//        }
+        
         let logs = coreDataManager.fetchAllLogs()
         
         var logsToDelete = [Log]()
@@ -74,16 +80,20 @@ extension MigrateFirestoreToCoreData {
             var tempLog: LogFire?
             
             for fireLog in fireLogs {
-                if fireLog.log_id == log.log_id{
+ 
+                print("tes22 -- \(fireLog.log_id) \(log.log_id!) ")
+                
+                if fireLog.log_id == log.log_id!{
                     findSame = true
                 }
-                if fireLog.log_id == log.log_id && fireLog.bg_check_result != log.bg_check_result{
+                if fireLog.log_id == log.log_id! && fireLog.bg_check_result != log.bg_check_result{
                     bgSame = false
                     tempLog = fireLog
                 }
             }
             
             if findSame == false {
+                print("tes22 -- apus")
                 coreDataManager.batalkan(logToRemove: log)
             }
             
@@ -127,6 +137,7 @@ extension MigrateFirestoreToCoreData {
             newLog.medicine_name = log.medicine_name
             newLog.time = log.time
             newLog.type = Int16(log.type)
+            newLog.ref_id = log.log_ref
             
             do{
                 try self.context.save()

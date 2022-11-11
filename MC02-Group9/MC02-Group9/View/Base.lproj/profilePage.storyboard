@@ -21,7 +21,7 @@
         <!--Daftar Rutinitas-->
         <scene sceneID="FPJ-Td-AgY">
             <objects>
-                <viewController storyboardIdentifier="profilePageViewController" title="Daftar Rutinitas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZlH-Jp-9ts" customClass="profilePageViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoutinesViewController" title="Daftar Rutinitas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZlH-Jp-9ts" customClass="RoutinesViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WiY-Ou-T0A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,8 +244,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OYa-JF-vxI"/>
-        <segue reference="An5-dY-bv8"/>
+        <segue reference="7w2-2s-ND6"/>
+        <segue reference="xms-jq-6he"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clock" width="26" height="26"/>

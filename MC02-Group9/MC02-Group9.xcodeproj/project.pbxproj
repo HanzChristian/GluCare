@@ -18,8 +18,6 @@
 		15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15476098290B6D9D00D56835 /* ShareSheet.swift */; };
 		1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548D0712918B15C0087D8AE /* IntroTVC.swift */; };
 		1548D0742918B15C0087D8AE /* IntroTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1548D0722918B15C0087D8AE /* IntroTVC.xib */; };
-		155E521F291263BE00A221E6 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */; };
-		155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */; };
 		155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */; };
 		155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */; };
 		155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155F70B028ED4714003A844B /* BGResultTableViewCell.swift */; };
@@ -106,9 +104,9 @@
 		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
 		2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */; };
 		2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDD290A5D8C0060A995 /* profile.storyboard */; };
-		2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDF290A5DD10060A995 /* profileViewController.swift */; };
+		2CFEFFE0290A5DD10060A995 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDF290A5DD10060A995 /* ProfileViewController.swift */; };
 		6EDAF4112858779F0099213F /* profilePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDAF40F2858779F0099213F /* profilePage.storyboard */; };
-		6EDAF415285878900099213F /* profilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* profilePageViewController.swift */; };
+		6EDAF415285878900099213F /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* RoutinesViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
 		F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D5286996A500441781 /* CoreDataManager.swift */; };
 		F02A60D82869A31100441781 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D72869A31100441781 /* StreakManager.swift */; };
@@ -142,8 +140,14 @@
 		F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */; };
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
-		F0AB0D4C29187AC600D13250 /* profileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */; };
+		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
+		F0DFE2BA291E236100993B0D /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2B8291E236100993B0D /* Log+CoreDataProperties.swift */; };
+		F0DFE2BB291E236100993B0D /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2B9291E236100993B0D /* Log+CoreDataClass.swift */; };
+		F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */; };
+		F0DFE2C1291E243300993B0D /* CoreDataManager+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */; };
+		F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */; };
+		F0DFE2C5291E252D00993B0D /* CoreDataManager+Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,8 +162,6 @@
 		15476098290B6D9D00D56835 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		1548D0712918B15C0087D8AE /* IntroTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTVC.swift; sourceTree = "<group>"; };
 		1548D0722918B15C0087D8AE /* IntroTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroTVC.xib; sourceTree = "<group>"; };
-		155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
-		155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMedTableViewCell.swift; sourceTree = "<group>"; };
 		155F70A428ED274E003A844B /* TakeMedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TakeMedTableViewCell.xib; path = ../../Controller/TakeMedTableViewCell.xib; sourceTree = "<group>"; };
 		155F70B028ED4714003A844B /* BGResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,13 +246,13 @@
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTimePickerTableViewCell.xib; sourceTree = "<group>"; };
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
-		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyRoutinesSpaceVC.swift; path = Routines/EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
-		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutinesMedsTVC.swift; path = Routines/RoutinesMedsTVC.swift; sourceTree = "<group>"; };
+		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
+		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesMedsTVC.swift; sourceTree = "<group>"; };
 		2CFEFFDD290A5D8C0060A995 /* profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
-		2CFEFFDF290A5DD10060A995 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		2CFEFFDF290A5DD10060A995 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MC02_Group9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDAF4102858779F0099213F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profilePage.storyboard; sourceTree = "<group>"; };
-		6EDAF414285878900099213F /* profilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePageViewController.swift; sourceTree = "<group>"; };
+		6EDAF414285878900099213F /* RoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesViewController.swift; sourceTree = "<group>"; };
 		B9515898A981067C365B3647 /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
 		F02A60D328698FA100441781 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F02A60D5286996A500441781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -285,8 +287,14 @@
 		F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateFirestoreToCoreData.swift; sourceTree = "<group>"; };
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "profileViewController+Firebase.swift"; sourceTree = "<group>"; };
+		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
+		F0DFE2B8291E236100993B0D /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0DFE2B9291E236100993B0D /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Med.swift"; sourceTree = "<group>"; };
+		F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Log.swift"; sourceTree = "<group>"; };
+		F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+BG.swift"; sourceTree = "<group>"; };
+		F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Streak.swift"; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,6 +322,7 @@
 		155F70A728ED466A003A844B /* TakeBloodGlucose */ = {
 			isa = PBXGroup;
 			children = (
+				155F70BD28EEA9E9003A844B /* TakeBGViewController.swift */,
 				155F70B428ED47A8003A844B /* TakeBGTableViewCell.swift */,
 				155F70B828ED47C8003A844B /* BGNameTableViewCell.swift */,
 				155F70B028ED4714003A844B /* BGResultTableViewCell.swift */,
@@ -405,6 +414,7 @@
 		1F4EF3B9287331580056E693 /* TakeMedCell */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */,
 				155F70A328ED274E003A844B /* TakeMedTableViewCell.swift */,
 				1F4EF3BC2873384A0056E693 /* MedNameTableViewCell.swift */,
 				1F4EF3C528733BCE0056E693 /* OnTimeTableViewCell.swift */,
@@ -493,8 +503,8 @@
 		F02A60D228698F8F00441781 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F0DFE2BF291E23D000993B0D /* CoreDataManager */,
 				F02A60D328698FA100441781 /* CalendarManager.swift */,
-				F02A60D5286996A500441781 /* CoreDataManager.swift */,
 				F02A60D72869A31100441781 /* StreakManager.swift */,
 				F04D4278287EC2250051C9F9 /* NetworkManager.swift */,
 			);
@@ -514,11 +524,6 @@
 				6EDAF40F2858779F0099213F /* profilePage.storyboard */,
 				158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */,
 				2CFEFFDD290A5D8C0060A995 /* profile.storyboard */,
-				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
-				15CAFCEF28F54038009A7686 /* AddBGViewController.swift */,
-				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
-				2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */,
-				2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */,
 				2CEE5945290A625700AE7C84 /* ProfileCell */,
 				2C1F2E5728FC62CF00FC2950 /* RoutinesTVC */,
 				155F70BC28ED47E6003A844B /* TakeBGCell */,
@@ -537,18 +542,18 @@
 				F05616A928EED6F400F61C4C /* CalendarCell */,
 				155F70A728ED466A003A844B /* TakeBloodGlucose */,
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
-				6EDAF414285878900099213F /* profilePageViewController.swift */,
-				2CFEFFDF290A5DD10060A995 /* profileViewController.swift */,
-				F0AB0D4B29187AC600D13250 /* profileViewController+Firebase.swift */,
-				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
-				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
-				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
-				1515331828687EA600606068 /* GuideViewController.swift */,
-				1515331A2868A8B100606068 /* GuideViewController2.swift */,
-				1F4EF3B72872E37A0056E693 /* TakeMedicationViewController.swift */,
-				155F70BD28EEA9E9003A844B /* TakeBGViewController.swift */,
 				F02A60DB2869A73900441781 /* AddMedCell */,
+				6EDAF414285878900099213F /* RoutinesViewController.swift */,
+				2CFEFFDF290A5DD10060A995 /* ProfileViewController.swift */,
+				F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */,
+				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
+				15CAFCEF28F54038009A7686 /* AddBGViewController.swift */,
+				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
+				2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */,
+				2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */,
+				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
 				15476098290B6D9D00D56835 /* ShareSheet.swift */,
+				F0DFE2C6291E25CE00993B0D /* Stash */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -602,6 +607,8 @@
 		F0CBC5352851F6E800D638F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F0DFE2B9291E236100993B0D /* Log+CoreDataClass.swift */,
+				F0DFE2B8291E236100993B0D /* Log+CoreDataProperties.swift */,
 				F05478282910BD3300DB4503 /* BG_Time+CoreDataClass.swift */,
 				F05478292910BD3300DB4503 /* BG_Time+CoreDataProperties.swift */,
 				F05478202910BD1D00DB4503 /* BG+CoreDataClass.swift */,
@@ -614,8 +621,6 @@
 				F04D4276287EC2070051C9F9 /* MedicineApi.swift */,
 				15D576D228EC029500603F1D /* Medicine+CoreDataClass.swift */,
 				15D576D428EC02AA00603F1D /* Medicine+CoreDataProperties.swift */,
-				155E521D291263BD00A221E6 /* Log+CoreDataClass.swift */,
-				155E521E291263BD00A221E6 /* Log+CoreDataProperties.swift */,
 				F054B0D3290BDC5100287D06 /* User+CoreDataClass.swift */,
 				F054B0D2290BDC5100287D06 /* User+CoreDataProperties.swift */,
 				15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */,
@@ -623,6 +628,29 @@
 				15CAFD2628F7F939009A7686 /* CalendarViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F0DFE2BF291E23D000993B0D /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				F02A60D5286996A500441781 /* CoreDataManager.swift */,
+				F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */,
+				F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */,
+				F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */,
+				F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		F0DFE2C6291E25CE00993B0D /* Stash */ = {
+			isa = PBXGroup;
+			children = (
+				1F8813B52861E01A009994F9 /* BadgeViewController.swift */,
+				15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */,
+				1515331828687EA600606068 /* GuideViewController.swift */,
+				1515331A2868A8B100606068 /* GuideViewController2.swift */,
+			);
+			path = Stash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -784,7 +812,9 @@
 				1F8813AA285B14D0009994F9 /* SchedulePickerTableViewCell.swift in Sources */,
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
+				F0DFE2C5291E252D00993B0D /* CoreDataManager+Streak.swift in Sources */,
 				F054783729110E7900DB4503 /* FirebaseManager.swift in Sources */,
+				F0DFE2C1291E243300993B0D /* CoreDataManager+Log.swift in Sources */,
 				2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */,
 				15CAFCFA28F54662009A7686 /* BGStartDateTableViewCell.swift in Sources */,
 				F05478332910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift in Sources */,
@@ -798,7 +828,7 @@
 				F054782D2910C6D100DB4503 /* LoginViewController.swift in Sources */,
 				F05478182910B44600DB4503 /* HbA1CBGTVC.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
-				2CFEFFE0290A5DD10060A995 /* profileViewController.swift in Sources */,
+				2CFEFFE0290A5DD10060A995 /* ProfileViewController.swift in Sources */,
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
@@ -813,7 +843,6 @@
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				F054B0DC290BDE0C00287D06 /* RegisterViewController.swift in Sources */,
-				155E521F291263BE00A221E6 /* Log+CoreDataClass.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */,
@@ -841,14 +870,17 @@
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
+				F0DFE2BA291E236100993B0D /* Log+CoreDataProperties.swift in Sources */,
 				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
 				15CAFD0228F5469C009A7686 /* BGFrequencyTableViewCell.swift in Sources */,
 				1547608F290AAB1500D56835 /* ViewController+Delegate.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
-				6EDAF415285878900099213F /* profilePageViewController.swift in Sources */,
+				6EDAF415285878900099213F /* RoutinesViewController.swift in Sources */,
 				1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */,
 				2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */,
+				F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
+				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
 				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
@@ -856,10 +888,10 @@
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,
 				15CAFCFE28F54684009A7686 /* BGTimeTableViewCell.swift in Sources */,
-				F0AB0D4C29187AC600D13250 /* profileViewController+Firebase.swift in Sources */,
+				F0DFE2BB291E236100993B0D /* Log+CoreDataClass.swift in Sources */,
+				F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */,
 				156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */,
 				F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */,
-				155E5220291263BE00A221E6 /* Log+CoreDataProperties.swift in Sources */,
 				15D576D328EC029500603F1D /* Medicine+CoreDataClass.swift in Sources */,
 				2C23DF012913DD550074AFB3 /* ListCaregiverTVC.swift in Sources */,
 				15CAFD2328F7E991009A7686 /* CalendarModel.swift in Sources */,

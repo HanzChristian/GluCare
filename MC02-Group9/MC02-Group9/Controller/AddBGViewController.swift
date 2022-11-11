@@ -181,12 +181,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         
         
         if(bg.bg_frequency == 0){
-            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!)
+            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
             
             for i in 1...20 { //loop dari hari 1 - 100
                 let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
                 lastDate = date
-                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!)
+                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
             }
         }
         else if(bg.bg_frequency == 1){
@@ -200,7 +200,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     
                     for t in bg_times{
                         if(currentWeekDay == (t as! BG_Time).bg_date_item){
-                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!)
+                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
                             
                             print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
                             print("Tete \((t as! BG_Time).bg_date_item)")
@@ -230,7 +230,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     let dates: Date? = calendar.date(from: dateComponents!)
                     print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
                     if(bg.bg_start_date! <= dates!){
-                        CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!)
+                        CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
                     }
                 }
                 lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)

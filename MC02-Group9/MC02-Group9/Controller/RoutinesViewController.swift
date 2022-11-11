@@ -9,20 +9,11 @@ import UIKit
 import CoreData
 
 
-class RutinitasSection {
-    var rutinitasSectionTitle: String?
-    init(rutinitasSectionTitle: String) {
-        self.rutinitasSectionTitle = rutinitasSectionTitle
-    }
-}
-
-class profilePageViewController: UIViewController {
+class RoutinesViewController: UIViewController {
     
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    let coreDataMeds = CoreDataManager.fetchMeds
-//    let coreDataMedicine = CoreDataManager.fetchMedicine
-    var rutinitasSection = [RutinitasSection]()
+    
     var items:[Medicine]?
     var itemsBG:[BG]?
     var indexPath:IndexPath?
@@ -32,6 +23,8 @@ class profilePageViewController: UIViewController {
     var medsTypeArr = ["Waktu Spesifik","Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
     var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
     var bgFreqArr = ["Hari", "Minggu", "Bulan"]
+    
+    var rutinitasSections = ["Jadwal Minum Obat","Jadwal Cek Gula Darah"]
     
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
     
@@ -57,8 +50,8 @@ class profilePageViewController: UIViewController {
         
         refresh()
         
-        rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Minum Obat"))
-        rutinitasSection.append(RutinitasSection.init(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
+//        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Minum Obat"))
+//        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Daftar Rutinitas"
@@ -175,7 +168,7 @@ extension UIFont {
     }
 }
 
-extension profilePageViewController: UITableViewDelegate, UITableViewDataSource {
+extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
 //  LOGICNYA BELUM BS JALAN KARENA GAADA CORE DATA BG-NYA //
 //  Kalau mau lihat cell ubah return = 2, tp kalau dihapus crash //
@@ -211,13 +204,14 @@ extension profilePageViewController: UITableViewDelegate, UITableViewDataSource 
                 tableView.bounds.size.width, height: tableView.bounds.size.height))
             sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
             sectionLabel.textColor = UIColor.black
-        if (self.items?.count == 0) {
-            sectionLabel.text = rutinitasSection[section+1].rutinitasSectionTitle
+        if ( self.items?.count == 0) {
+            sectionLabel.text = rutinitasSections[section+1] // BG
         } else {
-            sectionLabel.text = rutinitasSection[section].rutinitasSectionTitle
+            sectionLabel.text = rutinitasSections[section] // MED
         }
-            sectionLabel.sizeToFit()
-            headerView.addSubview(sectionLabel)
+        
+        sectionLabel.sizeToFit()
+        headerView.addSubview(sectionLabel)
 
             return headerView
         }

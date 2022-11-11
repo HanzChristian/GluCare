@@ -88,7 +88,14 @@ extension ViewController{
         cell.timeLbl.text = bg?.bg_time
         
         for (i, log) in self.coreDataManager.logs!.enumerated() {
-            if(log.bg_check_result != "-1" && log.time == bg!.bg_time){
+            
+            
+            if(log.ref_id == bg!.bg_id && bg!.bg_type == 2){
+                print("tes44 \(log.ref_id) \(bg?.bg_id)")
+                print("tes44 check result \(log.bg_check_result)")
+            }
+            
+            if(log.bg_check_result != "-1" && log.ref_id! == bg!.bg_id){
                 self.coreDataManager.undoIdx[element.idx] = i
                 self.coreDataManager.keTake[element.idx] = 1
                 if(log.action == "Skip"){
@@ -146,7 +153,9 @@ extension ViewController{
         
         
         for (index, log) in self.coreDataManager.logs!.enumerated() {
-            if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text){
+            if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text && log.ref_id == medicine_time.medicine?.id){
+                
+//                print("tes33 \(log.ref_id) == \(medicine_time.medicine!.id)")
                 
                 self.coreDataManager.undoIdx[element.idx] = index
                 self.coreDataManager.keTake[element.idx] = 1
