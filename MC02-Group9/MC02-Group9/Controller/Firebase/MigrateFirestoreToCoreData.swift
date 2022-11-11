@@ -92,9 +92,6 @@ class MigrateFirestoreToCoreData {
         }catch{
             
         }
-        
-        
-        
     }
     
     func migrateMedicineFromFirestoreToCoredata(medicines: [MedicineFire]) {

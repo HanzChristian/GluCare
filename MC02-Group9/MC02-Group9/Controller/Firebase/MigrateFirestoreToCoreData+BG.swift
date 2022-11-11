@@ -48,6 +48,38 @@ extension MigrateFirestoreToCoreData {
         }
     }
     
+    func syncCoredataBGToFirestore(fireBGs: [BGFire]){
+        
+        do {
+            let request = BG.fetchRequest() as NSFetchRequest<BG>
+            let bgs = try coreDataManager.context.fetch(request)
+
+            for bg in bgs {
+                
+                var findSame = false
+                
+                for fireBG in fireBGs {
+                    if fireBG.bg_id == bg.bg_id{
+                        findSame = true
+                    }
+                }
+                
+                if findSame == false {
+                    // removing in coredata
+                    self.context.delete(bg)
+                    
+                    do{
+                        try self.context.save()
+                    }catch{
+                    }
+                }
+                
+            }
+        }catch{
+            
+        }
+    }
+    
     func migrateBGFromFirestoreToCoredata(bgs: [BGFire]) {
         for bg in bgs {
             var findSame = false

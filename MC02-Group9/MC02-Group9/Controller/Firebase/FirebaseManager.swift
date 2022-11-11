@@ -276,6 +276,8 @@ class FirebaseManager {
                         if bgs != nil {
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
                             
+                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
+                            
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
                         }
                     }

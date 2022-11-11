@@ -64,10 +64,10 @@ extension MigrateFirestoreToCoreData {
     
     func syncCoredataLogToFirestore(fireLogs: [LogFire]){
         
-//        let role = UserDefaults.standard.integer(forKey: "role")
-//        if role == 0{
-//            return
-//        }
+        let role = UserDefaults.standard.integer(forKey: "role")
+        if role == 0{
+            return
+        }
         
         let logs = coreDataManager.fetchAllLogs()
         
