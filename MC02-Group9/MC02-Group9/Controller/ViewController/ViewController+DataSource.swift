@@ -40,14 +40,16 @@ extension ViewController{
             return
         }
 
+        print("INI LOG AWAL Begin")
         for log in logs{ //menentukan log bg atau med
             if log.type == 1{
                 bgLog.append(log)
-                print("INI LOG AWAL \(log)")
+                print("INI LOG AWAL \(log.time) \(log.log_id)")
             }
             print("INI LOG DUA \(log.type) \(log.time)")
         }
         
+        print("INI LOG AWAL END")
         while(medCopy.count != 0){
             
             var idxBg = 0
@@ -66,9 +68,8 @@ extension ViewController{
                             idxLowestBg = idxBg
                             idxLogLowestBg = idxLog
                         }
-                    idxLog += 1
-                    
                     }
+                    idxLog += 1
                     
                 }
                 idxBg += 1
