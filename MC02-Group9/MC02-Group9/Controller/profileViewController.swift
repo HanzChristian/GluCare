@@ -38,6 +38,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         getRole()
         
         self.tabBarController?.title = "Profil"

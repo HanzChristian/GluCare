@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
                 }else{
                     self!.msgLabel.text = "login berhasil"
                     // make segue
+                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }
             }
         }
@@ -49,6 +50,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         alreadyLogin()
     }

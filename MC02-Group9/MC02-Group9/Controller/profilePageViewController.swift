@@ -45,6 +45,9 @@ class profilePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
 //        fetchMedicine()
 //        fetchBG()
         
