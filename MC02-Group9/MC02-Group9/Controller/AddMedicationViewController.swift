@@ -182,11 +182,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         } else if tableView.cellForRow(at: indexPath) is AddNewScheduleTableViewCell{
             jadwal.append("Jadwal \(jadwal.count+1)")
             //tableView.reloadSections(IndexSet(integer: 2), with: .none)
-            UIView.performWithoutAnimation {
-                let loc = tableView.contentOffset
-                tableView.reloadSections(IndexSet(integer: 2), with: .none)
-                tableView.setContentOffset(loc, animated: false)
-            }
+//            UIView.performWithoutAnimation {
+//                let loc = tableView.contentOffset
+//                tableView.reloadSections(IndexSet(integer: 2), with: .none)
+//                tableView.setContentOffset(loc, animated: false)
+//            }
+            reloadTableView()
             validateForm()
             
         }
@@ -228,6 +229,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         return headerView
     }
     
+    func reloadTableView(){
+        do{
+            DispatchQueue.main.async { [self] in
+                tableView.reloadData()
+//                UIView.performWithoutAnimation {
+//                    let loc = tableView.contentOffset
+//                    let indexPath = IndexPath.init(row: 4, section: 1)
+//                    tableView.reloadRows(at: [indexPath], with: .none)
+//                    tableView.setContentOffset(loc, animated: false)
+//                }
+            }
+        }catch{
+            
+        }
+    }
     
     
     //end of tableview function
