@@ -249,6 +249,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     do {
                         try firebaseAuth.signOut()
 
+                        listCaregiver.caregiverList.removeAll()
                         CoreDataManager.coreDataManager.resetAllCoreData()
 
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)

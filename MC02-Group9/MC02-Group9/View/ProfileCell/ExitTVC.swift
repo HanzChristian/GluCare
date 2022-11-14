@@ -13,6 +13,7 @@ class ExitTVC: UITableViewCell {
     @IBOutlet weak var exitLbl: UILabel!
     
     @IBAction func logoutPress(_ sender: UIButton){
+        
     }
         
 //        let firebaseAuth = Auth.auth()
