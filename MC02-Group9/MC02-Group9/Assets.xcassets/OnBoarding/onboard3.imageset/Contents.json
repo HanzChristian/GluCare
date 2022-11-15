@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "onboard3-2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "onboard3-3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
