@@ -1230,7 +1230,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168.33333015441889" width="390" height="485.00000000000006"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1394,9 +1394,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sPl-H0-eu2"/>
-        <segue reference="Efi-nT-MCB"/>
-        <segue reference="KoF-Bm-9Lp"/>
+        <segue reference="NRd-8N-AW9"/>
+        <segue reference="FrA-CF-765"/>
+        <segue reference="kOP-r9-bA2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>

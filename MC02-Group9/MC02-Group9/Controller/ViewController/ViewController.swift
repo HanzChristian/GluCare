@@ -31,6 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let firebaseManager = FirebaseManager.firebaseManager
     
+    
     @IBAction func segueBtn(_ sender: Any){
         if(role == 1){
             performSegue(withIdentifier: "toProfile", sender: self)
@@ -168,6 +169,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         setCellsView()
         setWeekView()
         
+        
         networkManager.getMedicationListName { (medicineApi, error) -> (Void) in
             if let _ = error {
                 print("Error")
@@ -245,6 +247,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         setNib()
+        UserDefaults.standard.set(false, forKey: "edit")
         
     }
     

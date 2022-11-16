@@ -216,7 +216,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
                 let medicine_time = self.coreDataManager.items![coreDataManager.medicineSelectedIdx]
                 cell.lblMedname.text = medicine_time.medicine?.name
                 if(medicine_time.medicine?.eat_time == 2){
-                    cell.lblMedTime.text = "Sesudah makan"
+                    cell.lblMedTime.text = "Setelah makan"
                 }
                 else if(medicine_time.medicine?.eat_time == 1){
                     cell.lblMedTime.text = "Sebelum makan"

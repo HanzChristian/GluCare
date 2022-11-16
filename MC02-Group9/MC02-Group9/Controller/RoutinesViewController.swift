@@ -26,6 +26,7 @@ class RoutinesViewController: UIViewController {
     
     var rutinitasSections = ["Jadwal Minum Obat","Jadwal Cek Gula Darah"]
     
+    
     @IBOutlet weak var daftarRutinitasTableView: UITableView!
     
     func setup(){
@@ -49,6 +50,7 @@ class RoutinesViewController: UIViewController {
         
         
         refresh()
+        UserDefaults.standard.set(false, forKey: "edit")
         
 //        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Minum Obat"))
 //        rutinitasSection.append(RutinitasSection(rutinitasSectionTitle: "Jadwal Cek Gula Darah"))
@@ -394,4 +396,32 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == 0 && self.items?.count != 0){
+            makeEditMed(idx: indexPath)
+        }else if (indexPath.section == 0 && self.itemsBG?.count != 0 && self.items?.count == 0){
+            makeEditBG(idx: indexPath)
+        }else if (indexPath.section == 1){
+            makeEditBG(idx: indexPath)
+        }
+    }
+    
+    func makeEditBG(idx: IndexPath){
+        SelectedIdx.selectedIdx.indexPath = idx
+        UserDefaults.standard.set(true, forKey: "edit")
+        self.performSegue(withIdentifier: "addBGViewController", sender: nil)
+    }
+    
+    func makeEditMed(idx: IndexPath){
+        SelectedIdx.selectedIdx.indexPath = idx
+        UserDefaults.standard.set(true, forKey: "edit")
+        self.performSegue(withIdentifier: "addMedicationViewController", sender: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
+    }
+}
+
+struct SelectedIdx{
+    var indexPath: IndexPath
+    static var selectedIdx = SelectedIdx(indexPath: IndexPath(row: 0, section: 0))
 }

@@ -128,7 +128,7 @@ extension ViewController{
         
         cell.medLbl.text = medicine_time.medicine?.name
         if(medicine_time.medicine?.eat_time == 2){
-            cell.freqLbl.text = "Sesudah makan"
+            cell.freqLbl.text = "Setelah makan"
         }
         else if(medicine_time.medicine?.eat_time == 1){
             cell.freqLbl.text = "Sebelum makan"

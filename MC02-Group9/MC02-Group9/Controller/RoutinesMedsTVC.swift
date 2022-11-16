@@ -17,6 +17,7 @@ class RoutinesMedsTVC: UITableViewCell {
     @IBOutlet weak var routinesTimeDescLbl: UILabel!
     
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

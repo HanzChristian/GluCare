@@ -16,6 +16,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
+    var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
     
     
     var cellCalendar: BGCalendarTableViewCell?
@@ -28,12 +29,16 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     var cellBgSubPicker = [BGSubFrequencyTableViewCell]()
     var cellDateCV : BGCalendarCollectionViewCell?
     
+    var itemsBG:[BG]?
+    
     var calendarOff:Bool = true
     var calendarWiden:Bool = false
+    var edit = UserDefaults.standard.bool(forKey: "edit")
     
     let currentTime = Date()
     let dateFormatter = DateFormatter()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager.coreDataManager
     
     let calendarHelper = CalendarHelper()
     
@@ -43,6 +48,10 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         tableView.dataSource = self
         view.backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
+        
+        if(edit == true){
+            UserDefaults.standard.set(false, forKey: "edit")
+        }
         
         scheduleVars.schedulePickedRow = 3
         typeVars.typePickedRow = 3
@@ -125,11 +134,17 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     }
     
     @objc private func dismissSelf(){
+        if(edit == true){
+            UserDefaults.standard.set(false, forKey: "edit")
+        }
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func saveItem(){
         //tunggu semuanya ke save dlu baru diupdate
+        if(edit == true){
+            UserDefaults.standard.set(false, forKey: "edit")
+        }
         
         let bg = BG(context: context)
         
@@ -257,8 +272,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationItem.title = "Tambah Cek Gula Darah"
-        
+        if(edit == true){
+            navigationItem.title = "Edit Cek Gula Darah"
+        }else{
+            navigationItem.title = "Tambah Cek Gula Darah"
+        }
+  
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
@@ -298,23 +317,63 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var bg:BG?
+        var row: Int?
         
+        if(edit == true){
+             row = SelectedIdx.selectedIdx.indexPath.row
+             bg = self.coreDataManager.bg![row!]
+        }
+        
+  
+    
         if(indexPath.section == 0){
             if(indexPath.row == 0){
                 cellBgTypeTV = tableView.dequeueReusableCell(withIdentifier: "bgTypeTableViewCell", for: indexPath) as! BGTypeTableViewCell
-                cellBgTypeTV!.bgTypeLbl.text = "Pilih Jenis Cek Gula Darah"
+                
+                if(edit == true){
+                    if(bg!.bg_type == 0){
+                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Puasa"
+                        title = "Cek Gula Darah Puasa"
+                    }else if(bg!.bg_type == 1){
+                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sesaat"
+                        title = "Cek Gula Darah Sesaat"
+                    }else{
+                        cellBgTypeTV!.bgTypeLbl.text = "HbA1c"
+                        title = "Cek HbA1c"
+                    }
+                }else{
+                    cellBgTypeTV!.bgTypeLbl.text = "Pilih Jenis Cek Gula Darah"
+                }
                 validateFormBG()
                 return cellBgTypeTV!
             }
         }
         else if(indexPath.section == 1){
             if(indexPath.row == 0){
+                
                 cellBgStartDateTV = tableView.dequeueReusableCell(withIdentifier: "bgStartDateTableViewCell",for:indexPath) as! BGStartDateTableViewCell
+                
+        
+                
+                if(edit == true){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd MMM yyyy"
+                    var bgDate =
+                    dateFormatter.string(from: bg!.bg_start_date!)
+                    
+                    cellBgStartDateTV!.bgStartDatePicker.text = bgDate
+                }
                 cellBgStartDateTV!.bgStartDateLbl.text = "Tanggal Mulai"
+              
                 return cellBgStartDateTV!
             }
             else if(indexPath.row == 1){
                 cellBgTimeTV = tableView.dequeueReusableCell(withIdentifier: "bgTimeTableViewCell",for:indexPath) as! BGTimeTableViewCell
+                
+                if(edit == true){
+                    cellBgTimeTV!.bgTimePicker.text = bg!.bg_time
+                }
                 cellBgTimeTV!.bgTimeLbl.text = "Waktu"
                 validateFormBG()
                 return cellBgTimeTV!
@@ -322,11 +381,37 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             else if(indexPath.row == 2){
                 bgFrequency = tableView.dequeueReusableCell(withIdentifier: "bgFrequencyTableViewCell",for:indexPath) as! BGFrequencyTableViewCell
                 bgFrequency!.bgFrequencyLbl.text = "Frekuensi"
+                
+                if(edit == true){
+                    if(bg!.bg_frequency == 0){
+                        bgFrequency!.bgFrequencyScheduleLbl.text = "Hari"
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+                    }
+                    else if(bg!.bg_frequency == 1){
+                        bgFrequency!.bgFrequencyScheduleLbl.text = "Minggu"
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+                    }else{
+                        bgFrequency!.bgFrequencyScheduleLbl.text = "Bulan"
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
+                    }
+                    
+                }
                 validateFormBG()
                 return bgFrequency!
             }
             else if(indexPath.row == 3){
                 cellBgSubFrequency = tableView.dequeueReusableCell(withIdentifier: "bgSubFrequencyTableViewCell",for:indexPath) as! BGSubFrequencyTableViewCell
+                if(edit == true){
+                    if(bg!.bg_frequency == 0){
+                        cellBgSubFrequency!.bgFrequencyLbl.text = "Hari"
+                    }else if(bg!.bg_frequency == 1){
+                        cellBgSubFrequency!.bgFrequencyLbl.text = "Minggu"
+                    }else{
+                        cellBgSubFrequency!.bgFrequencyLbl.text = "Bulan"
+                    }
+                }
                 cellBgSubFrequency!.bgSubFrequencyEveryLbl.text = "Setiap"
                 validateFormBG()
                 return cellBgSubFrequency!
