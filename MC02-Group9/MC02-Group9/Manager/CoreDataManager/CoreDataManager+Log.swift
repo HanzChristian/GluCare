@@ -177,6 +177,184 @@ extension CoreDataManager{
         }
         
     }
+    
+    func checkBGLogAvailable(logs: [Log], bgs: [BG], daySelected: Date){
+        for bg in bgs {
+            var isLog = false
+            
+            for log in logs {
+                if bg.bg_id == log.ref_id{
+                    isLog = true
+                }
+            }
+            
+            if isLog == false {
+                populateBGLog(bg: bg, daySelected: daySelected)
+            }
+        }
+    }
+    
+    func populateBGLog(bg: BG, daySelected: Date){
+        let logs = getLogBGWithSameRefID(bg: bg)
+        
+        print("tes69 -- masuk")
+        if logs.count == 0 {
+            return
+        }
+        var beginDate = logs.last!.date!
+        beginDate = calendarManager.calendar.startOfDay(for: beginDate)
+        
+        if bg.bg_frequency == 0{
+            // Hari
+        
+            // beginDate + setiap
+            beginDate = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: beginDate)!
+            populateLogBGHari(bg: bg, beginDate: beginDate , untilDate: daySelected)
+        }else if bg.bg_frequency == 1{
+            // Minggu
+            
+            guard let bg_times = bg.time else{
+                return
+            }
+            /*
+            The date component weekday is a Int value: 1...7 starting with sunday.
+            sunday = 1
+            monday = 2
+            tuesday = 3
+            wednesday = 4
+            thursday = 5
+            friday = 6
+            saturday = 7
+            
+            */
+            var maxWeekday = -100
+            var minWeekday = 100
+            for bg_time in bg_times {
+                let currentWeekDay = (bg_time as! BG_Time).bg_date_item
+                if currentWeekDay == 1 {
+                    maxWeekday = Int(currentWeekDay + 7)
+                }
+
+                if maxWeekday < currentWeekDay{
+                    maxWeekday = Int(currentWeekDay)
+                }
+
+                if minWeekday > currentWeekDay{
+                    minWeekday = Int(currentWeekDay)
+                }
+            }
+
+            let compareWeekday = maxWeekday - minWeekday
+            
+            beginDate = calendarHelper.addDays(date: beginDate, days: 7*Int(bg.bg_each_frequency))
+            beginDate = calendarHelper.addDays(date: beginDate, days: -compareWeekday)
+            
+            populateLogBGMinggu(bg: bg, beginDate: beginDate, untilDate: daySelected)
+            
+        }else if bg.bg_frequency == 2{
+            // Bulan
+        }
+        
+    }
+
+    func getLogBGWithSameRefID(bg: BG) -> [Log]{
+        // Filter
+        var logs = [Log]()
+        let fetch = Log.fetchRequest() as! NSFetchRequest<Log>
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Log.ref_id), bg.bg_id!)
+        let sort = NSSortDescriptor(key: #keyPath(Log.date), ascending: true)
+        fetch.sortDescriptors = [sort]
+        
+        
+        do {
+            logs =  try context.fetch(fetch)
+        }catch {
+            
+        }
+        
+        return logs
+    }
+    
+    func populateLogBGHari(bg: BG, beginDate:Date, untilDate: Date){
+        var lastDate = beginDate
+        
+        repeat {
+            CoreDataManager.coreDataManager.bgLog(bgDate: lastDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+            
+            let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate)
+            lastDate = date!
+            
+        } while lastDate < untilDate
+    }
+    
+    func populateLogBGMinggu(bg: BG, beginDate:Date, untilDate: Date){
+        var lastDate = beginDate
+        
+        guard let bg_times = bg.time else{
+            return
+        }
+        
+        while lastDate < untilDate{
+            let oneWeekAgo = calendarHelper.addDays(date: lastDate, days: 7)
+            var currentDate = lastDate
+            
+            while(currentDate < oneWeekAgo){
+                let currentWeekDay = calendarHelper.calendar.dateComponents([.weekday], from: currentDate).weekday!
+                
+                for t in bg_times{
+                    if(currentWeekDay == (t as! BG_Time).bg_date_item){
+                        
+                        let isSameBGLog = isSameBGLog(currentDate: currentDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                        
+                        if isSameBGLog == 1{
+                            continue
+                        }
+                        
+                        CoreDataManager.coreDataManager.bgLog(bgDate: currentDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                        
+                        print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
+                        print("Tete \((t as! BG_Time).bg_date_item)")
+                        
+                    }
+                }
+                print(" CURRENT WEEK \(currentDate) \(currentWeekDay)")
+            
+                currentDate = calendarHelper.addDays(date: currentDate, days: 1)
+            }
+
+            lastDate = calendarHelper.addDays(date: lastDate, days: 7*Int(bg.bg_each_frequency))
+        }
+        
+        
+    }
+    
+    func isSameBGLog(currentDate: Date, bgTime: String, bg_id: String) -> Int{
+        let request = Log.fetchRequest() as NSFetchRequest<Log>
+        var logToRemove = [Log]()
+        
+        // Get the current calendar with local time zone
+        // Get today's beginning & end
+        let dateFrom = calendarManager.calendar.startOfDay(for: currentDate) // eg. 2016-10-10
+        let fromPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.date), dateFrom as NSDate)
+        let typePredicate = NSPredicate(format: "type == 1")
+        let timePredicate = NSPredicate(format: "%K == %@",#keyPath(Log.time), bgTime as String)
+        let bgIdPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), bg_id as String)
+
+        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, typePredicate, timePredicate, bgIdPredicate])
+
+        request.predicate = datePredicate
+
+        do{
+            logToRemove = try context.fetch(request)
+        }catch{
+
+        }
+        
+        if logToRemove.count == 0{
+            return 0
+        }
+        return 1
+    }
 
     
     

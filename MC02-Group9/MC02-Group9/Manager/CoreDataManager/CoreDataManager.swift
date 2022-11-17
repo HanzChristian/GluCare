@@ -39,6 +39,7 @@ class CoreDataManager{
     
     //helper
     let calendarManager = CalendarManager.calendarManager
+    let calendarHelper = CalendarHelper()
     
     private init(){
         
