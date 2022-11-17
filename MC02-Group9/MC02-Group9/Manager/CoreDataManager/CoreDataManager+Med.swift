@@ -43,4 +43,18 @@ extension CoreDataManager{
         }
     }
     
+    func fetchMedicine(){
+        do{
+            let request = Medicine_Time.fetchRequest() as NSFetchRequest<Medicine_Time>
+            
+            let sort = NSSortDescriptor(key: "time", ascending: true)
+            request.sortDescriptors = [sort]
+            
+            self.items = try context.fetch(request)
+            
+        }catch{
+            
+        }
+    }
+    
 }

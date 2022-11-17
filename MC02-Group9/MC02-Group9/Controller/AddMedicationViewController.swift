@@ -18,9 +18,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items:[Medicine_Time]?
     
-    var itemsEdit:[Medicine]?
+    var items = CoreDataManager.coreDataManager.items
+    var itemsEdit = CoreDataManager.coreDataManager.medicines
+    
     
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
@@ -147,13 +148,13 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 if(edit == true){
                     if(medicine_time!.medicine?.eat_time == 2){
-                        cell.mealTimeLabel.text = "Setelah makan"
+                        cell.mealTimeLabel.text = "Setelah Makan"
                     }
                     else if(medicine_time!.medicine?.eat_time == 1){
-                        cell.mealTimeLabel.text = "Sebelum makan"
+                        cell.mealTimeLabel.text = "Sebelum Makan"
                     }
                     else if(medicine_time!.medicine?.eat_time == 3){
-                        cell.mealTimeLabel.text = "Bersamaan dengan makan"
+                        cell.mealTimeLabel.text = "Bersamaan dengan Makan"
                     }else{
                         cell.mealTimeLabel.text = "Waktu Spesifik"
                     }
@@ -174,18 +175,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
                 if(edit == true){
                     if(medicine_time!.medicine?.eat_time == 2){
-                        cell.mealDescTitle.text = "Setelah makan"
+                        cell.mealDescTitle.text = "Setelah Makan"
                         cell.mealDesc.text = "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat"
                         cell.mealImage.image = UIImage(named: "MealDesc2")
                         
                     }
                     else if(medicine_time!.medicine?.eat_time == 1){
-                        cell.mealDescTitle.text = "Sebelum makan"
+                        cell.mealDescTitle.text = "Sebelum Makan"
                         cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan"
                         cell.mealImage.image = UIImage(named: "MealDesc1")
                     }
                     else if(medicine_time!.medicine?.eat_time == 3){
-                        cell.mealDescTitle.text = "Bersamaan dengan makan"
+                        cell.mealDescTitle.text = "Bersamaan dengan Makan"
                         cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan"
                         cell.mealImage.image = UIImage(named: "MealDesc3")
                     }else{
@@ -222,7 +223,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 }else{
                     tableView.setEditing(true, animated: true)
                 }
-              
+                
                 
                 return cell
                 
@@ -240,29 +241,30 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-          
-          if (editingStyle == .delete) {
-              tableView.beginUpdates()
-              if(indexPath.section == 2){
-                  
-                  var jadwalIdx = 0
-//                  self.cellTimePicker.remove(at: indexPath.row)
-                  self.jadwal.remove(at: indexPath.row)
-                  
-                  for j in jadwal{
-                      jadwal[jadwalIdx] = "Jadwal \(jadwalIdx+1)"
-                      jadwalIdx += 1
-                  }
-                  
-                  self.tableView.reloadData()
-                  self.tableView.deleteRows(at: [indexPath], with: .automatic)
-             
-                  
-              }
-              tableView.endUpdates()
-          }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == .delete) {
+            tableView.beginUpdates()
+            if(indexPath.section == 2){
+                
+                var jadwalIdx = 0
+                //                  self.cellTimePicker.remove(at: indexPath.row)
+                self.jadwal.remove(at: indexPath.row)
+                self.cellTimePicker.remove(at: indexPath.row)
+                
+                for j in jadwal{
+                    jadwal[jadwalIdx] = "Jadwal \(jadwalIdx+1)"
+                    jadwalIdx += 1
+                }
+                
+                self.tableView.reloadData()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                
+            }
+            tableView.endUpdates()
         }
+    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -341,7 +343,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         
         return headerView
     }
-
+    
     
     @objc func reloadTableView(){
         do{
@@ -373,7 +375,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
+        if(edit == true){
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Perbaharui", style: .plain, target: self, action: #selector(updateItem))
+        }else if(edit == false){
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
+        }
+      
         
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
@@ -428,6 +435,186 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             UserDefaults.standard.set(false, forKey: "edit")
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func updateItem(){
+        
+        CoreDataManager.coreDataManager.fetchMeds()
+        CoreDataManager.coreDataManager.fetchMedicine()
+        
+        items = CoreDataManager.coreDataManager.items
+        itemsEdit = CoreDataManager.coreDataManager.medicines
+        
+        
+        if(edit == true){
+            var row: Int?
+            row = SelectedIdx.selectedIdx.indexPath.row
+            
+            let medicine = self.itemsEdit![row!]
+            var medicine_time = self.items![row!]
+            
+
+//            let med = medicine.medicine
+            
+            UserDefaults.standard.set(false, forKey: "edit")
+    
+            medicine.name = cellMedNameTV!.medNameTextField.text!
+            
+            if(mealVars.mealPickedRow == 4){
+                medicine.eat_time = Int16(medicine_time.medicine!.eat_time)
+            }else{
+                medicine.eat_time = Int16(mealVars.mealPickedRow)
+            }
+            
+            medicine.id = UUID().uuidString
+            
+            context.delete(medicine_time)
+            do{
+                try self.context.save()
+            }catch{
+                
+            }
+            
+            for time in cellTimePicker{
+                var med_time = Medicine_Time(context: context)
+                print("INI MED_TIMENYA \(med_time)")
+                
+                print("MASUK KE CELLTIMEPICKER")
+                med_time.time = time.btnTimePicker.text
+                print("INI btnTimePicker \(time.btnTimePicker.text)")
+                medicine.addToTime(med_time)
+
+                medicine_time = med_time
+                //Get notification info
+                notificationCenter.getNotificationSettings { (settings) in
+                    if(settings.authorizationStatus == .authorized){
+                        DispatchQueue.main.async {
+                            //create trigger
+                            let time = medicine_time.time!
+                            let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
+                            let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
+                            let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
+                            print(string)
+                            
+                            let dateFormatter = DateFormatter()
+                            
+                            // Set Date Format
+                            dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                            // Convert String to Date
+                            print("\(dateFormatter.date(from: string)!) ubah ke UTC")
+                            
+                            var newDate = dateFormatter.date(from: string)!
+                            var newDate2 = dateFormatter.date(from: string)!
+                            
+                            //dismiss notif
+                            let center = UNUserNotificationCenter.current()
+                            center.delegate = self
+                            center.requestAuthorization (options: [.alert, .sound]) {(_, _) in
+                            }
+                            let clearAction = UNNotificationAction(identifier: "ClearNotif", title: "Clear", options: [])
+                            let category = UNNotificationCategory(identifier: "ClearNotifCategory", actions: [clearAction], intentIdentifiers: [], options: [])
+                            center.setNotificationCategories([category])
+                            
+                            
+                            //content of notification before & after
+                            var content = UNMutableNotificationContent()
+                            
+                            //notif belum didelete
+                        
+                            if(medicine.eat_time == 0){
+                                content.title = "Yuk Minum Obat!"
+                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
+                                newDate.addTimeInterval(-1800)
+                            }
+                            else if(medicine.eat_time == 1){
+                                content.title = "Yuk Minum Obat!"
+                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa makan setelah itu!"
+                                newDate.addTimeInterval(-1800)
+                            }
+                            else if(medicine.eat_time == 1){
+                                content.title = "Yuk Minum Obat!"
+                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Yuk makan sekarang!"
+                                newDate.addTimeInterval(-3600)
+                            }
+                            else{
+                                content.title = "Yuk Minum Obat!"
+                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa disertakan dengan makan!"
+                                newDate.addTimeInterval(-1800)
+                            }
+                            
+                            //content of notification on time
+                            var content2 = UNMutableNotificationContent()
+                            if(medicine.eat_time == 0){
+                                content2.title = "Yuk Minum Obatmu Sekarang!"
+                                content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            }
+                            else if(medicine.eat_time == 1){
+                                content2.title = "Yuk Minum Obatmu Sekarang!"
+                                content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            }
+                            else if(medicine.eat_time == 2){
+                                content2.title = "Yuk Minum Obatmu Sekarang!"
+                                content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            }
+                            else{
+                                content2.title = "Yuk Minum Obatmu Sekarang!"
+                                content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            }
+                            
+                            
+                            dateFormatter.dateFormat = "HH:mm"
+                            let newTime = dateFormatter.string(from: newDate)
+                            let newHour = newTime[..<newTime.index(newTime.startIndex, offsetBy: 2)]
+                            let newMinutes = newTime[newTime.index(newTime.startIndex, offsetBy: 3)...]
+                            
+                            let newTime2 = dateFormatter.string(from: newDate2)
+                            let newHour2 = newTime2[..<newTime2.index(newTime2.startIndex, offsetBy: 2)]
+                            let newMinutes2 = newTime2[newTime2.index(newTime2.startIndex, offsetBy: 3)...]
+                            
+                            var dateComp = DateComponents()
+                            var dateComp2 = DateComponents()
+                            
+                            //String to int
+                            dateComp.hour = Int(newHour)
+                            dateComp.minute = Int(newMinutes)
+                            
+                            dateComp2.hour = Int(newHour2)
+                            dateComp2.minute = Int(newMinutes2)
+                            
+                            let uuidString = medicine.id
+                            
+                            
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: true)
+                            let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComp2, repeats: true)
+                            let request = UNNotificationRequest(identifier: uuidString!, content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                                if let theError = error {
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            let request2 = UNNotificationRequest(identifier: uuidString!, content: content2, trigger: trigger2)
+                            UNUserNotificationCenter.current().add(request2) { (error : Error?) in
+                                if let theError = error {
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
+            do{
+                try self.context.save()
+            }catch{
+                
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+            
+            dismiss(animated: true, completion: nil)
+        }
+
     }
     
     @objc private func saveItem(){
