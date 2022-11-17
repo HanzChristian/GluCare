@@ -186,7 +186,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         if(bg.bg_frequency == 0){
             CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
             
-            for i in 1...20 { //loop dari hari 1 - 100
+            for i in 1...5 { //loop dari hari 1 - 100
                 let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
                 lastDate = date
                 CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
@@ -194,7 +194,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         }
         else if(bg.bg_frequency == 1){
             
-            for i in 1...20 { //loop dari hari 1 - 20
+            for i in 1...3 { //loop dari hari 1 - 20
                 let oneWeekAgo = calendarHelper.addDays(date: lastDate!, days: 7)
                 var currentDate = lastDate
                 
