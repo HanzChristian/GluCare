@@ -140,6 +140,7 @@
 		F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */; };
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
+		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
 		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 		F0DFE2BA291E236100993B0D /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2B8291E236100993B0D /* Log+CoreDataProperties.swift */; };
@@ -287,6 +288,7 @@
 		F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateFirestoreToCoreData.swift; sourceTree = "<group>"; };
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
 		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F0DFE2B8291E236100993B0D /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F05B1C1829273817009BA2CB /* Statistik */,
 				F054B0D8290BDDE700287D06 /* Firebase */,
 				157F70D22906E63C000C7B07 /* ViewController */,
 				F05616A928EED6F400F61C4C /* CalendarCell */,
@@ -602,6 +605,14 @@
 				F05616AA28EED70200F61C4C /* CalendarCell.swift */,
 			);
 			path = CalendarCell;
+			sourceTree = "<group>";
+		};
+		F05B1C1829273817009BA2CB /* Statistik */ = {
+			isa = PBXGroup;
+			children = (
+				F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */,
+			);
+			path = Statistik;
 			sourceTree = "<group>";
 		};
 		F0CBC5352851F6E800D638F7 /* Model */ = {
@@ -837,6 +848,7 @@
 				2C23DF052913F55F0074AFB3 /* ExitTVC.swift in Sources */,
 				F02A60D428698FA100441781 /* CalendarManager.swift in Sources */,
 				F054B0DA290BDDFE00287D06 /* TestingViewController.swift in Sources */,
+				F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */,
 				1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
