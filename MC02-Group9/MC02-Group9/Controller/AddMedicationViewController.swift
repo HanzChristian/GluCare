@@ -114,8 +114,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     
                 }
-                
-                return count + 1
+                return count
             }else{
                 return jadwal.count+1
             }
@@ -294,9 +293,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     jadwalIdx += 1
                 }
                 
-                reloadTableView()
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
                 
+//                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
+                self.tableView.deleteRows(at: [indexPath], with: .none)
+                
+
                 
             }
             tableView.endUpdates()
