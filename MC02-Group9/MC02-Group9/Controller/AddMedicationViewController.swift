@@ -213,6 +213,24 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 // buat simpen waktu yg nya
                 
+                if(edit == true){
+//                    for time in cellTimePicker{
+//                        cellTimePicker.append(time)
+//                        let medicine_time = Medicine_Time(context: context)
+//                        cell.mealTimeLabel.text = medicine_time.time
+////                        medicine_time.time = time.btnTimePicker.text
+//                    }
+                    
+//                    let times = self.items![indexPath.row].time!
+//                    for t in times {
+//                        cell.btnTimePicker.text = (" \((t as! Medicine_Time).time!) ")
+//                    }
+                    
+                    for time in cellTimePicker{
+                        cellTimePicker.append(time)
+                    }
+                    cell.btnTimePicker.text = medicine_time?.time
+                }
                 if(indexPath.row == cellTimePicker.count){
                     cellTimePicker.append(cell)
                 }else{

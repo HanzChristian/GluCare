@@ -541,15 +541,21 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     if(bg!.bg_frequency == 0){
                         bgFrequency!.bgFrequencyScheduleLbl.text = "Hari"
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+                        bgFrequency!.pickedFreq = 0
+                        scheduleVars.schedulePickedRow = 0
                     }
                     else if(bg!.bg_frequency == 1){
                         bgFrequency!.bgFrequencyScheduleLbl.text = "Minggu"
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+                        bgFrequency!.pickedFreq = 1
+                        scheduleVars.schedulePickedRow = 1
                     }else{
                         bgFrequency!.bgFrequencyScheduleLbl.text = "Bulan"
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
+                        bgFrequency!.pickedFreq = 2
+                        scheduleVars.schedulePickedRow = 2
                     }
                     
                 }
