@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class RoleManagementVC: UIViewController {
+    let db = Firestore.firestore()
+    
     @IBOutlet weak var youAreLbl: UILabel!
     @IBOutlet weak var patientCardBtn: UIButton!
     @IBOutlet weak var caregiverCardBtn: UIButton!
@@ -81,14 +85,40 @@ class RoleManagementVC: UIViewController {
             print("tapped kembali")
         }))
         
-        alert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { [weak self] action in
             print("tapped Ya")
-            UserDefaults.standard.set(self.roles, forKey: "role")
+            UserDefaults.standard.set(self!.roles, forKey: "role")
             
-            self.performSegue(withIdentifier: "goToMain", sender: self)
+            // add role to firebase
+            self!.addRoleDataToFirebase()
+    
         }))
         
         present(alert, animated: true)
+    }
+    
+    func addRoleDataToFirebase(){
+        
+        if  let user = Auth.auth().currentUser?.email{
+    
+            let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
+            let nama = UserDefaults.standard.string(forKey: "nama")
+            
+            self.db.collection("account").addDocument(data: [
+                "roleId": roleUserDefault,
+                "nama": "\(nama!)",
+                "owner": "\(user)"
+            ]){ (error) in
+                if let e = error {
+                    print("failed saved data \(e)")
+                }else{
+                    print("success saved data")
+                    // make segue
+                    FirebaseManager.firebaseManager.getAccountInfo()
+                    self.performSegue(withIdentifier: "goToHomeKonfirmasi", sender: self)
+                }
+            }
+        }
     }
     
     @objc func validateForm(){

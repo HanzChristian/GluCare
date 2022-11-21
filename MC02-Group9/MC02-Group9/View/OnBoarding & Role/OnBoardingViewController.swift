@@ -18,6 +18,7 @@ class OnBoardingViewController: UIViewController {
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var pageCtrlImg: UIImageView!
     
+    @IBOutlet weak var eksplorBtn: UIButton!
     @IBAction func skipBtnAction(_ sender: UIButton) {
         showItem(at: 2)
         thirdShow(true)
@@ -71,17 +72,22 @@ class Core{
 extension OnBoardingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         firstShow(true)
         backBtn.layer.cornerRadius = 12
         nextBtn.layer.cornerRadius = 12
         signupBtn.layer.cornerRadius = 12
         signupBtn.isHidden = true
+        eksplorBtn.isHidden = true
+        
         signupBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
+        eksplorBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if Core.shared.isNewUser(){
-            Core.shared.notNewUser()
+//            Core.shared.notNewUser()
+            UserDefaults.standard.set(1, forKey: "role")
         }
         else{
 
@@ -132,6 +138,8 @@ extension OnBoardingViewController {
         nextBtn.isHidden = !bool
         skipBtn.isHidden = !bool
         signupBtn.isHidden = bool
+        eksplorBtn.isHidden = bool
+        
         titleLbl.text = titleArray[0]
         subtitleLbl.text = subtitleArray[0]
     }
@@ -143,6 +151,7 @@ extension OnBoardingViewController {
         nextBtn.isHidden = !bool
         skipBtn.isHidden = !bool
         signupBtn.isHidden = bool
+        eksplorBtn.isHidden = bool
         
         titleLbl.text = titleArray[1]
         subtitleLbl.text = subtitleArray[1]
@@ -155,6 +164,8 @@ extension OnBoardingViewController {
         nextBtn.isHidden = bool
         skipBtn.isHidden = bool
         signupBtn.isHidden = !bool
+        eksplorBtn.isHidden = !bool
+        
         titleLbl.text = titleArray[2]
         subtitleLbl.text = subtitleArray[2]
     }

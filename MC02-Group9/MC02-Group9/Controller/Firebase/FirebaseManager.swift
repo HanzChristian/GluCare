@@ -164,6 +164,9 @@ class FirebaseManager {
                                 
                                     
                                 }
+                                
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "finishGetAccountInfo"),object: nil)
+//                                finishGetAccountInfo
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                             }

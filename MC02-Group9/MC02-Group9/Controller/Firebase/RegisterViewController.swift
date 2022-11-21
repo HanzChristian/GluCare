@@ -54,31 +54,11 @@ class RegisterViewController: UIViewController {
                         {
                         print(user)
                         
-                        let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
-//                        "roleId": self!.role.selectedSegmentIndex
-                        self!.db.collection("account").addDocument(data: [
-                            "roleId": roleUserDefault,
-                            "nama": "\(nama)",
-                            "owner": "\(user)"
-                        ]){ (error) in
-                            if let e = error {
-                                print("failed saved data \(e)")
-                            }else{
-                                print("success saved data")
-                                // make segue
-                                FirebaseManager.firebaseManager.getAccountInfo()
-                                DispatchQueue.main.asyncAfter(deadline: .now()){
-                                    if email.count > 5 && pass.count > 5 {
-                                        
-                                    }
-                                    
-                                    self!.performSegue(withIdentifier: "daftar", sender: self)
-                                    print("Already Login")
+                        UserDefaults.standard.set(nama, forKey: "nama")
 
-                                }
-                                
-                            }
-                        }
+                        self!.performSegue(withIdentifier: "daftar", sender: self)
+                        print("Already Login")
+                        
                     }
                     
                 }
@@ -95,7 +75,7 @@ class RegisterViewController: UIViewController {
                 // User is signed in. Show home screen
                 FirebaseManager.firebaseManager.getAccountInfo()
                 DispatchQueue.main.asyncAfter(deadline: .now()){
-                    self.performSegue(withIdentifier: "masuk2", sender: self)
+//                    self.performSegue(withIdentifier: "masuk2", sender: self)
                     print("Already Login")
                 }
                 

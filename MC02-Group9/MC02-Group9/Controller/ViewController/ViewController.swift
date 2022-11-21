@@ -131,6 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Core.shared.notNewUser()
         self.tabBarController?.delegate = self
 
         // dapong

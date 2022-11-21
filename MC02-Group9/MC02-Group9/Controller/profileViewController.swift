@@ -91,6 +91,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(toLogin), name: NSNotification.Name(rawValue: "passLogin"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(toOnboarding), name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
         
         alreadyLogin()
@@ -105,14 +107,35 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func toLogin(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "roleManagementVC") as! RoleManagementVC
+        let vc = storyboard.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
         let navController = UINavigationController(rootViewController: vc)
+        
 //        vc.navigationController?.pushViewController(vc, animated: true)
-//        vc.modalPresentationStyle = .fullScreen
-        navController.modalPresentationStyle = .fullScreen
-//        navController.navigationBar.prefersLargeTitles = true
+        vc.modalPresentationStyle = .fullScreen
+//
+        navController.modalPresentationStyle = .pageSheet
+        navController.navigationBar.prefersLargeTitles = true
+        
+//        UserDefaults.standard.removeObject(forKey: "isNewUser")
+        
         present(navController, animated: true, completion: nil)
     
+    }
+    
+    @objc func toOnboarding(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingViewController") as! OnBoardingViewController
+//        let navController = UINavigationController(rootViewController: vc)
+        
+        vc.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+//
+//        navController.modalPresentationStyle = .fullScreen
+//        navController.navigationBar.prefersLargeTitles = true
+        
+        UserDefaults.standard.removeObject(forKey: "isNewUser")
+        
+        present(vc, animated: true, completion: nil)
     }
     
     
@@ -252,7 +275,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         listCaregiver.caregiverList.removeAll()
                         CoreDataManager.coreDataManager.resetAllCoreData()
 
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passLogin"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
 
                     } catch let signOutError as NSError {
                         print("Error signing out: %@", signOutError)

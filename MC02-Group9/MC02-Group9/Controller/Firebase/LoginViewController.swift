@@ -24,9 +24,10 @@ class LoginViewController: UIViewController {
                 if let e = error {
                     self!.msgLabel.text = "\(e.localizedDescription)"
                 }else{
-                    self!.msgLabel.text = "login berhasil"
+//                    self!.msgLabel.text = "login berhasil"
                     // make segue
-                    self!.performSegue(withIdentifier: "masuk", sender: self)
+                    FirebaseManager.firebaseManager.getAccountInfo()
+//                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }
             }
         }
@@ -38,13 +39,18 @@ class LoginViewController: UIViewController {
                 
                 // User is signed in. Show home screen
                 FirebaseManager.firebaseManager.getAccountInfo()
-                DispatchQueue.main.asyncAfter(deadline: .now()){
-                    self.performSegue(withIdentifier: "masuk", sender: self)
-                    print("Already Login")
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now()){
+//                    self.performSegue(withIdentifier: "masuk", sender: self)
+//                    print("Already Login")
+//                }
                 
             }
         }
+    }
+    
+    @objc func goToMain(){
+        self.performSegue(withIdentifier: "masuk", sender: self)
+        print("Already Login")
     }
     
     
@@ -53,6 +59,8 @@ class LoginViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
         alreadyLogin()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.goToMain), name: NSNotification.Name(rawValue: "finishGetAccountInfo"), object: nil)
     }
     
     func hexStringToUIColor (hex:String) -> UIColor {
