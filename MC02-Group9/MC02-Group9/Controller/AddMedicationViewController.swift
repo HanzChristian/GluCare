@@ -104,18 +104,32 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         } else if (section == 1){
             return 2
         } else {
-            return jadwal.count+1
+            if(edit == true){
+                
+                coreDataManager.fetchMeds()
+                let count = coreDataManager.medicines![SelectedIdx.selectedIdx.indexPath.row].time!.count
+                if count > 1{
+                    for i in 1...count-1{
+                        jadwal.append("Jadwal \(i+1)")
+                    }
+                    
+                }
+                
+                return count + 1
+            }else{
+                return jadwal.count+1
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //logic if-else mod2]
-        var medicine_time:Medicine_Time?
+        var medicine:Medicine?
         var row: Int?
         
         if(edit == true){
             row = SelectedIdx.selectedIdx.indexPath.row
-            medicine_time = self.coreDataManager.items![row!]
+            medicine = self.coreDataManager.medicines![row!]
         }
         
         if(indexPath.section == 0){
@@ -128,8 +142,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 if(edit == false){
                     cell.medNameTextField?.placeholder = "Misal: Metformin 500 mg"
                 }else if(edit == true){
-                    cell.medNameTextField?.text = medicine_time!.medicine?.name
-                    title = medicine_time!.medicine?.name
+                    cell.medNameTextField?.text = medicine!.name
+                    title = medicine!.name
                 }
                 
                 
@@ -147,13 +161,13 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 // SECTION 2 ROW 1 (Picker View)
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mealTimePickerTableViewCell", for: indexPath) as! MealTimePickerTableViewCell
                 if(edit == true){
-                    if(medicine_time!.medicine?.eat_time == 2){
+                    if(medicine!.eat_time == 2){
                         cell.mealTimeLabel.text = "Setelah Makan"
                     }
-                    else if(medicine_time!.medicine?.eat_time == 1){
+                    else if(medicine!.eat_time == 1){
                         cell.mealTimeLabel.text = "Sebelum Makan"
                     }
-                    else if(medicine_time!.medicine?.eat_time == 3){
+                    else if(medicine!.eat_time == 3){
                         cell.mealTimeLabel.text = "Bersamaan dengan Makan"
                     }else{
                         cell.mealTimeLabel.text = "Waktu Spesifik"
@@ -174,18 +188,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 // SECTION 2 ROW 2 (Keterangan Waktu)
                 let cell = tableView.dequeueReusableCell(withIdentifier: "medDescTableViewCell", for: indexPath) as! MedDescTableViewCell
                 if(edit == true){
-                    if(medicine_time!.medicine?.eat_time == 2){
+                    if(medicine!.eat_time == 2){
                         cell.mealDescTitle.text = "Setelah Makan"
                         cell.mealDesc.text = "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat"
                         cell.mealImage.image = UIImage(named: "MealDesc2")
                         
                     }
-                    else if(medicine_time!.medicine?.eat_time == 1){
+                    else if(medicine!.eat_time == 1){
                         cell.mealDescTitle.text = "Sebelum Makan"
                         cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan"
                         cell.mealImage.image = UIImage(named: "MealDesc1")
                     }
-                    else if(medicine_time!.medicine?.eat_time == 3){
+                    else if(medicine!.eat_time == 3){
                         cell.mealDescTitle.text = "Bersamaan dengan Makan"
                         cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan"
                         cell.mealImage.image = UIImage(named: "MealDesc3")
@@ -214,22 +228,27 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 // buat simpen waktu yg nya
                 
                 if(edit == true){
-//                    for time in cellTimePicker{
-//                        cellTimePicker.append(time)
-//                        let medicine_time = Medicine_Time(context: context)
-//                        cell.mealTimeLabel.text = medicine_time.time
-////                        medicine_time.time = time.btnTimePicker.text
-//                    }
+                    //                    for time in cellTimePicker{
+                    //                        cellTimePicker.append(time)
+                    //                        let medicine_time = Medicine_Time(context: context)
+                    //                        cell.mealTimeLabel.text = medicine_time.time
+                    ////                        medicine_time.time = time.btnTimePicker.text
+                    //                    }
                     
-//                    let times = self.items![indexPath.row].time!
-//                    for t in times {
-//                        cell.btnTimePicker.text = (" \((t as! Medicine_Time).time!) ")
-//                    }
+                    //                    let times = self.items![indexPath.row].time!
+                    //                    for t in times {
+                    //                        cell.btnTimePicker.text = (" \((t as! Medicine_Time).time!) ")
+                    //                    }
                     
-                    for time in cellTimePicker{
-                        cellTimePicker.append(time)
+                    var idx = 0
+                    for med_time in medicine!.time!{
+                        if idx == indexPath.row
+                        {
+                            cell.btnTimePicker.text = (med_time as? Medicine_Time)?.time
+                        }
+                        idx += 1
                     }
-                    cell.btnTimePicker.text = medicine_time?.time
+                    //                    cell.btnTimePicker.text = medicine.time[0].time
                 }
                 if(indexPath.row == cellTimePicker.count){
                     cellTimePicker.append(cell)
@@ -275,7 +294,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     jadwalIdx += 1
                 }
                 
-                self.tableView.reloadData()
+                reloadTableView()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 
                 
@@ -366,13 +385,11 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     @objc func reloadTableView(){
         do{
             DispatchQueue.main.async { [self] in
-                tableView.reloadData()
-                //                UIView.performWithoutAnimation {
-                //                    let loc = tableView.contentOffset
-                //                    let indexPath = IndexPath.init(row: 4, section: 1)
-                //                    tableView.reloadRows(at: [indexPath], with: .none)
-                //                    tableView.setContentOffset(loc, animated: false)
-                //                }
+                UIView.performWithoutAnimation {
+                    let loc = tableView.contentOffset
+                    tableView.reloadSections(IndexSet(integer: 2), with: .none)
+                    tableView.setContentOffset(loc, animated: false)
+                }
             }
         }catch{
             
@@ -398,7 +415,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         }else if(edit == false){
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simpan", style: .plain, target: self, action: #selector(saveItem))
         }
-      
+        
         
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
@@ -471,11 +488,11 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             let medicine = self.itemsEdit![row!]
             var medicine_time = self.items![row!]
             
-
-//            let med = medicine.medicine
+            
+            //            let med = medicine.medicine
             
             UserDefaults.standard.set(false, forKey: "edit")
-    
+            
             medicine.name = cellMedNameTV!.medNameTextField.text!
             
             if(mealVars.mealPickedRow == 4){
@@ -501,7 +518,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 med_time.time = time.btnTimePicker.text
                 print("INI btnTimePicker \(time.btnTimePicker.text)")
                 medicine.addToTime(med_time)
-
+                
                 medicine_time = med_time
                 //Get notification info
                 notificationCenter.getNotificationSettings { (settings) in
@@ -538,7 +555,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                             var content = UNMutableNotificationContent()
                             
                             //notif belum didelete
-                        
+                            
                             if(medicine.eat_time == 0){
                                 content.title = "Yuk Minum Obat!"
                                 content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
@@ -632,7 +649,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             
             dismiss(animated: true, completion: nil)
         }
-
+        
     }
     
     @objc private func saveItem(){

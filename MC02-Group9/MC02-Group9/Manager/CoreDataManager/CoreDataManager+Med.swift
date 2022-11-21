@@ -18,7 +18,8 @@ extension CoreDataManager{
         do{
             let request = Medicine.fetchRequest() as NSFetchRequest<Medicine>
             
-            self.medicines = try context.fetch(request)
+            medicines = try context.fetch(request)
+            
     
         }catch{
             

@@ -12,7 +12,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     @IBOutlet var calendarCollectionView:UICollectionView!
     var calendarModel = [CalendarModel]()
     var calendarMonthModel:[CalendarModel]?
-    var calendarWiden:Bool = false
+    var calendarWiden:Bool = true
 
 
     override func awakeFromNib() {

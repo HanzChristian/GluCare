@@ -263,16 +263,32 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 for i in 1...20 { //loop dari hari 1 - 100
                     for t in bg_times{
                         let date = (t as! BG_Time).bg_date_item
-                        let calendar = Calendar.current
                         
-                        var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: lastDate!)
+                        let formatter = DateFormatter()
+                        formatter.locale = Locale(identifier: "en_gb")
+                        formatter.dateFormat = "dd MMM yyyy"
+                        // 29 October 2019 20:15:55 +0200
                         
-                        dateComponents?.day = Int(date)
+                        // Create String
+                        formatter.dateFormat = "MMM"
+                        let month = formatter.string(from: lastDate!)
+                        formatter.dateFormat = "yyyy"
+                        let year = formatter.string(from: lastDate!)
                         
-                        let dates: Date? = calendar.date(from: dateComponents!)
-                        print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
-                        if(bg.bg_start_date! <= dates!){
-                            CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                        let string = ("\(date+1) \(month) \(year)  07:00:00 +0700")
+                        
+                        formatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                        let final = formatter.date(from: string)
+                        
+                        print("INI BULAN DAPONG \(final)")
+                        
+                        if final == nil{
+                            continue
+                        }
+                        // pake discord aja suaranya lah
+    //                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
+                        if(bg.bg_start_date! <= final!){
+                            CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
                         }
                     }
                     lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
@@ -390,16 +406,32 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             for i in 1...20 { //loop dari hari 1 - 100
                 for t in bg_times{
                     let date = (t as! BG_Time).bg_date_item
-                    let calendar = Calendar.current
                     
-                    var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: lastDate!)
+                    let formatter = DateFormatter()
+                    formatter.locale = Locale(identifier: "en_gb")
+                    formatter.dateFormat = "dd MMM yyyy"
+                    // 29 October 2019 20:15:55 +0200
                     
-                    dateComponents?.day = Int(date)
+                    // Create String
+                    formatter.dateFormat = "MMM"
+                    let month = formatter.string(from: lastDate!)
+                    formatter.dateFormat = "yyyy"
+                    let year = formatter.string(from: lastDate!)
                     
-                    let dates: Date? = calendar.date(from: dateComponents!)
-                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
-                    if(bg.bg_start_date! <= dates!){
-                        CoreDataManager.coreDataManager.bgLog(bgDate: dates!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                    let string = ("\(date+1) \(month) \(year)  07:00:00 +0700")
+                    
+                    formatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+                    let final = formatter.date(from: string)
+                    
+                    print("INI BULAN DAPONG \(final)")
+                    
+                    if final == nil{
+                        continue
+                    }
+                    // pake discord aja suaranya lah
+//                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
+                    if(bg.bg_start_date! <= final!){
+                        CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
                     }
                 }
                 lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
