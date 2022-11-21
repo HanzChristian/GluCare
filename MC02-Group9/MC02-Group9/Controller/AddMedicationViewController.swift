@@ -30,6 +30,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     var edit = UserDefaults.standard.bool(forKey: "edit")
     
+    var first = false
+    
     //    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
     //    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
     //                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
@@ -104,17 +106,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         } else if (section == 1){
             return 2
         } else {
-            if(edit == true){
+            if(edit == true && first == false){
+                
                 
                 coreDataManager.fetchMeds()
                 let count = coreDataManager.medicines![SelectedIdx.selectedIdx.indexPath.row].time!.count
-                if count > 1{
+                if count > 1 && jadwal.count == 1{
                     for i in 1...count-1{
                         jadwal.append("Jadwal \(i+1)")
                     }
-                    
                 }
-                return count
+                
+                first = true
+                return jadwal.count+1
             }else{
                 return jadwal.count+1
             }
@@ -298,11 +302,23 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
 //                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
                 self.tableView.deleteRows(at: [indexPath], with: .none)
                 
-
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2){ [self] in
+//                    tableView.setEditing(true, animated: false)
+//                    tableView.reloadData()
+                }
+                
                 
             }
             tableView.endUpdates()
+            tableView.reloadData()
+            
+        }else{
+            
+            
+            
         }
+        
+        
     }
     
     
