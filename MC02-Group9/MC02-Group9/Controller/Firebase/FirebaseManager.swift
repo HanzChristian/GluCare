@@ -238,6 +238,9 @@ class FirebaseManager {
     }
     
     func loadFirebase() {
+        
+        var firstTime = false
+        
         if var user = Auth.auth().currentUser?.email {
             let role = UserDefaults.standard.integer(forKey: "role")
             if role == 2 {
@@ -257,8 +260,8 @@ class FirebaseManager {
                             return try? $0.data(as: MedicineFire.self)
                         }
                         
-                        if medicine != nil {
-                            
+                        if medicine != nil || firstTime == false{
+                            firstTime = true
                             if role == 2{
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
                                 
@@ -282,7 +285,8 @@ class FirebaseManager {
                         
                         if bgs != nil {
                             
-                            if role == 2{
+                            if role == 2 || firstTime == false{
+                                firstTime = true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
                                 
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
@@ -303,8 +307,8 @@ class FirebaseManager {
                             return try? $0.data(as: LogFire.self)
                         }
                         
-                        if logs != nil {
-                            
+                        if logs != nil || firstTime == false{
+                            firstTime == true
                             if role == 2{
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
                             
