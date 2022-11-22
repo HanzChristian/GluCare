@@ -36,6 +36,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     @objc func narrowCalendarSelected(){
         calendarWiden = false
+        print("narrow calendar selected")
         dateVars.datePickedRow.removeAll()
     }
     
@@ -48,7 +49,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     public func configure(with model: [CalendarModel]){
         self.calendarModel = model
-
+        print("week reload")
         calendarCollectionView.reloadData()
     }
     
@@ -67,6 +68,7 @@ class BGCalendarTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         cell!.calendarLbl.layer.cornerRadius = 0
         cell!.calendarLbl.textAlignment = .center
         
+        print("week widen \(calendarWiden)")
         if(calendarWiden == false){
             if(CalendarViewModel.calendarViewModel.calendarModel![indexPath.row].isSelected == true){
                 cell!.backgroundColor = blue

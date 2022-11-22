@@ -53,6 +53,11 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scheduleVars.schedulePickedRow = -1
+        typeVars.typePickedRow = -1
+        daysVars.dayPickedRow = 31
+        
+        selectedType = -1
         
         CalendarViewModel.calendarViewModel.resetModel()
         if(edit == true){
@@ -67,11 +72,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         view.backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
       
-        scheduleVars.schedulePickedRow = 3
-        typeVars.typePickedRow = -1
-        daysVars.dayPickedRow = 31
-        
-        selectedType = -1
+     
         firstTime = false
         
         cellCalendar?.isHidden = true
@@ -217,7 +218,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             
             bg.bg_frequency = Int16(bgFrequency!.pickedFreq)
             bg.bg_each_frequency = Int16(cellBgSubFrequency!.pickedEachFreq)+1
-            bg.bg_id = UUID().uuidString
+//            bg.bg_id = UUID().uuidString
             
             if(scheduleVars.schedulePickedRow == 1 || scheduleVars.schedulePickedRow == 2){
                 let bg_timeDelete = bg.time?.allObjects as? [BG_Time]
@@ -532,9 +533,6 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        
         if(indexPath.section == 0){
             if(indexPath.row == 0){
                 cellBgTypeTV = tableView.dequeueReusableCell(withIdentifier: "bgTypeTableViewCell", for: indexPath) as! BGTypeTableViewCell
@@ -615,13 +613,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     }
                     else if(bg!.bg_frequency == 1){
                         if(firstTime == false){
+                            print("hellow654 ")
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
                         }
                         bgFrequency!.bgFrequencyScheduleLbl.text = "Minggu"
                         bgFrequency!.pickedFreq = 1
                         scheduleVars.schedulePickedRow = 1
-                
                     }else{
                         if(firstTime == false){
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
@@ -650,37 +648,32 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 
                 firstTime = true
                 cellBgSubFrequency!.bgSubFrequencyEveryLbl.text = "Setiap"
+                cellBgSubFrequency!.bgSubFrequencyDay.text = "\(bg!.bg_each_frequency)"
                 validateFormBG()
                 return cellBgSubFrequency!
             }
             else if(indexPath.row == 4){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "bgCalendarTableViewCell",for: indexPath) as! BGCalendarTableViewCell
                 
-//                if(firstTimeCalendar == false){
-//                }
-                
-//                if(edit == true && firstTimeCalendar == false){
-//
-//                    var time = [BG_Time]()
-//
-//                    for t in bg!.time!{
-//                        time.append((t as? BG_Time)!)
-//                    }
-//
-//                    if(calendarWiden){
-//                        CalendarViewModel.calendarViewModel.bindDataMonth(dateItem: time)
-//                    }else{
-//                        CalendarViewModel.calendarViewModel.bindDataWeek(dateItem: time)
-//                    }
-//
-//                }
-                 
-                if(calendarWiden){
+                if (calendarWiden){
+                    if(firstTimeCalendar == false){
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wideCalendar"), object: nil)
+                    }
+                    
                     cell.configure(with: CalendarViewModel.calendarViewModel.calendarMonthModel!)
                 }else{
+                    if(firstTimeCalendar == false){
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOn"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "narrowCalendar"), object: nil)
+                    }
+                    
                     cell.configure(with: CalendarViewModel.calendarViewModel.calendarModel!)
                 }
                 
+                if cellBgSubFrequency!.bgFrequencyLbl.text == "Hari" && firstTimeCalendar == false{
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "calendarOff"), object: nil)
+                }
                 
                 firstTimeCalendar = true
                 
