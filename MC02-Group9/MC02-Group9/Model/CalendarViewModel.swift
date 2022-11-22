@@ -12,6 +12,54 @@ class CalendarViewModel{
     
     var calendarModel:[CalendarModel]?
     var calendarMonthModel:[CalendarModel]?
+
+    func resetModel(){
+        
+        var idx = 0
+        
+        for calendar in calendarModel!{
+            self.calendarModel![idx].isSelected = false
+            idx += 1
+        }
+        
+        idx = 0
+        
+        for calendar in calendarMonthModel!{
+            self.calendarMonthModel![idx].isSelected = false
+            idx += 1
+        }
+    }
+    
+    func bindDataWeek(dateItem:[BG_Time]){
+        
+        var idx = 0
+        for date in dateItem{
+            idx = 0
+            print("HALOHALOHALO \(date.bg_date_item)")
+            for calendar in calendarModel!{
+                
+                if(date.bg_date_item == calendar.position){
+                    self.calendarModel![idx].isSelected = true
+                    print("KE SELECT")
+                }
+                idx += 1
+            }
+        }
+    }
+    
+    func bindDataMonth(dateItem:[BG_Time]){
+        var idx = 0
+        for date in dateItem{
+            idx = 0
+            for calendar in calendarMonthModel!{
+                if(date.bg_date_item == calendar.position){
+                    self.calendarMonthModel![idx].isSelected = true
+                }
+                idx += 1
+            }
+        }
+    }
+    
     
     private init(){
         calendarModel = [

@@ -251,6 +251,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }else if (indexPath.section == 0 && self.itemsBG?.count != 0 && self.items?.count == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "routinesBGTVC", for: indexPath) as! RoutinesBGTVC
+            print("XXXXXX \(indexPath.row) + \(self.itemsBG![indexPath.row].bg_type)")
             cell.routinesTitleCellLbl?.text = bgTypeArr[Int(self.itemsBG![indexPath.row].bg_type)]
            // cell.routinesDescCellLbl?.text = "Keterangan Blood Glucose"
             cell.routinesDescCellLbl?.text = "Setiap \(self.itemsBG![indexPath.row].bg_each_frequency) \(bgFreqArr[Int(self.itemsBG![indexPath.row].bg_frequency)]) "
