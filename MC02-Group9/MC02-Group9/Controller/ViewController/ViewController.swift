@@ -117,13 +117,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
          let tabBarIndex = tabBarController.selectedIndex
          if tabBarIndex == 0 {
-             DispatchQueue.main.async {
-                 self.navigationItem.title = "Hari ini"
+             DispatchQueue.main.async { [weak self] in
+                 self!.navigationItem.title = "Hari ini"
                  daySelected = Date()
                  
-                 self.setWeekView()
-                 self.refresh()
-                 self.collectionView.scrollToItem(at: IndexPath(row: self.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+                 self!.setWeekView()
+                 self!.refresh()
+//                 self!.coreDataManager.checkBGLogAvailable(logs: self!.coreDataManager.logs!, bgs: self!.coreDataManager.bg!, daySelected: daySelected)
+                 self!.collectionView.scrollToItem(at: IndexPath(row: self!.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
              }
          }
     }

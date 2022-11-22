@@ -65,6 +65,7 @@ extension ViewController{
     func setupCellBG(cell: TakeMedTableViewCell, element: JadwalVars){
         let bg = self.coreDataManager.bg?[element.idx]
         let user = self.coreDataManager.user?[element.idx]
+        let log = self.coreDataManager.logs?[element.logIdx]
         
         if(bg?.bg_type == 0){
             cell.freqLbl.text = "Gula Darah Puasa"
@@ -87,37 +88,58 @@ extension ViewController{
         
         cell.timeLbl.text = bg?.bg_time
         
-        for (i, log) in self.coreDataManager.logs!.enumerated() {
-            
-            
-            if(log.ref_id == bg!.bg_id && bg!.bg_type == 2){
-                print("tes44 \(log.ref_id) \(bg?.bg_id)")
-                print("tes44 check result \(log.bg_check_result)")
+        // New
+        if(log!.bg_check_result != "-1" && log!.ref_id! == bg!.bg_id){
+            if(log!.action == "Skip"){
+                cell.tintColor = UIColor.red
+                cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
+                //                        cell.cellImgView.layer.opacity = 0.3
+                //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
             }
-            
-            if(log.bg_check_result != "-1" && log.ref_id! == bg!.bg_id){
-                self.coreDataManager.undoIdx[element.idx] = i
-                self.coreDataManager.keTake[element.idx] = 1
-                if(log.action == "Skip"){
-                    cell.tintColor = UIColor.red
-                    cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
-                    //                        cell.cellImgView.layer.opacity = 0.3
-                    //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
-                }
-                else if(log.action == "Take"){
-                    cell.tintColor = UIColor.green
-                    cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
-                    
-                    cell.freqLbl.text! += " (\(log.bg_check_result!)"
-                    
-                    if(bg?.bg_type == 0 || bg?.bg_type == 1){
-                        cell.freqLbl.text! += " mg/dL)"
-                    }else{
-                        cell.freqLbl.text! += " %)"
-                    }
+            else if(log!.action == "Take"){
+                cell.tintColor = UIColor.green
+                cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
+                
+                cell.freqLbl.text! += " (\(log!.bg_check_result!)"
+                
+                if(bg?.bg_type == 0 || bg?.bg_type == 1){
+                    cell.freqLbl.text! += " mg/dL)"
+                }else{
+                    cell.freqLbl.text! += " %)"
                 }
             }
         }
+        
+//        for (i, log) in self.coreDataManager.logs!.enumerated() {
+//
+//            if(log.ref_id == bg!.bg_id && bg!.bg_type == 2){
+//                print("tes44 \(log.ref_id) \(bg?.bg_id)")
+//                print("tes44 check result \(log.bg_check_result)")
+//            }
+//
+//            if(log.bg_check_result != "-1" && log.ref_id! == bg!.bg_id){
+//                self.coreDataManager.undoIdx[element.idx] = i
+//                self.coreDataManager.keTake[element.idx] = 1
+//                if(log.action == "Skip"){
+//                    cell.tintColor = UIColor.red
+//                    cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
+//                    //                        cell.cellImgView.layer.opacity = 0.3
+//                    //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
+//                }
+//                else if(log.action == "Take"){
+//                    cell.tintColor = UIColor.green
+//                    cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
+//
+//                    cell.freqLbl.text! += " (\(log.bg_check_result!)"
+//
+//                    if(bg?.bg_type == 0 || bg?.bg_type == 1){
+//                        cell.freqLbl.text! += " mg/dL)"
+//                    }else{
+//                        cell.freqLbl.text! += " %)"
+//                    }
+//                }
+//            }
+//        }
     }
     
     

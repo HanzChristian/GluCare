@@ -93,6 +93,8 @@ extension ViewController:UITableViewDelegate{
         
         let log = coreDataManager.logs![jadwalVars.logIdx]
         
+        print("woi dapong \(log.type) \(jadwalVars.logIdx)")
+        
         if(log.bg_check_result != "-1"){
             isSkipped = true
         }
@@ -118,6 +120,16 @@ extension ViewController:UITableViewDelegate{
         
         // New
         vc.log = log
+//        if(bg?.bg_type == 0){
+//            cell.freqLbl.text = "Gula Darah Puasa"
+//        }else if(bg?.bg_type == 1){
+//            cell.freqLbl.text = "Gula Darah Sesaat"
+//        }else{
+//            cell.freqLbl.text = "HbA1c"
+//        }
+        
+        
+        
         
         if(isSkipped){
             log.bg_check_result = "-1"

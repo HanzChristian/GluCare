@@ -101,7 +101,7 @@ extension CoreDataManager{
         return -1
     }
     
-    func getLogRealIdx(log: Log) -> Int {
+    func getLogRealIdx(log: Log, bg: BG) -> Int {
         
         guard let getLogs = logs else{
             return -1
@@ -110,7 +110,7 @@ extension CoreDataManager{
         var idx = 0
 
         for l in getLogs{ //menentukan log bg atau med
-            if log.type == l.type && log.time == l.time{
+            if bg.bg_id == l.ref_id{
                 return idx
             }
             

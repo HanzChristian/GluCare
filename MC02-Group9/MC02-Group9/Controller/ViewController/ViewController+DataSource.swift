@@ -88,7 +88,7 @@ extension ViewController{
                 medIdx += 1
             }else{ //bg lebih kecil
                 var j = JadwalVars(type: "BG", idx: getBgIdx(bG: bgCopy[idxLowestBg]))
-                j.logIdx = coreDataManager.getLogRealIdx(log: bgLog[idxLogLowestBg])
+                j.logIdx = coreDataManager.getLogRealIdx(log: bgLog[idxLogLowestBg], bg: bgCopy[idxLowestBg])
                 jadwalVars.append(j)
                 bgCopy.remove(at: idxLowestBg)
                 bgLog.remove(at: idxLogLowestBg)
@@ -100,7 +100,7 @@ extension ViewController{
                 if log.time == bg.bg_time && log.ref_id == bg.bg_id{
                     
                     var j = JadwalVars(type: "BG", idx: getBgIdx(bG: bg))
-                    j.logIdx = coreDataManager.getLogRealIdx(log: log)
+                    j.logIdx = coreDataManager.getLogRealIdx(log: log, bg: bg)
                     jadwalVars.append(j)
                 }
                 print("ini lognya \(log)")
@@ -113,6 +113,11 @@ extension ViewController{
             print("BGTIME \(bg.bg_time)")
         }
         print("JADWALVARS \(jadwalVars) \(coreDataManager.bg)")
+        
+        
+        for asd in jadwalVars{
+            print("jadwal222 \(asd.logIdx)")
+        }
         
         coreDataManager.jadwal.accept(jadwalVars)
     }
