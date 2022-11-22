@@ -62,10 +62,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemGroupedBackground
         
+        
         profileSection.append(ProfileSection.init(profileSectionTitle: ""))
         profileSection.append(ProfileSection.init(profileSectionTitle: "Target"))
         profileSection.append(ProfileSection.init(profileSectionTitle: "Keluarga"))
         profileSection.append(ProfileSection.init(profileSectionTitle: ""))
+        
         
         let nibUsername = UINib(nibName: "UsernameTVC", bundle: nil)
         tableView.register(nibUsername, forCellReuseIdentifier: "usernameTVC")
@@ -140,63 +142,135 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        //yang lama
+//        return 4
+        if(isLogin == false){
+            return 1
+        }else{
+            return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countCaregiver = listCaregiver.caregiverList.count
         
-        if (section == 0){
-            return 2
+        if(isLogin == false){
+            if (section == 0){
+                return 1
+            }
         }
-        else if (section == 1){
-            return 3
-        } else if (section == 2){
-            return countCaregiver+1
-        } else {
-            return 1
+        else{
+            if (section == 0){
+                return 1
+            }
+            else if (section == 1){
+                return 3
+            } else if (section == 2){
+                return countCaregiver+1
+            }
+            else {
+                return 1
+            }
         }
-        //            return jadwal.count+1
+        
+        return 1
     }
+        
+        //yang lama
+//        if (section == 0){
+//            return 2
+//        }
+//        else if (section == 1){
+//            return 3
+//        } else if (section == 2){
+//            return countCaregiver+1
+//        } else {
+//            return 1
+//        }
+        //            return jadwal.count+1
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countCaregiver = listCaregiver.caregiverList.count
         
-        if(indexPath.section == 0){
-            if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
-                return cell
+        if(isLogin == false){
+            if(indexPath.section == 0){
+                if (indexPath.row == 0) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
+                    return cell
+                }
             }
-            else if (indexPath.row == 1){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
-                return cell
-            }
-        } else if (indexPath.section == 1) {
-            if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "medAdheranceTVC", for: indexPath) as! MedAdheranceTVC
-                return cell
-            } else if (indexPath.row == 1) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "hbA1CBGTVC", for: indexPath) as! HbA1CBGTVC
-                return cell
-            } else if (indexPath.row == 2) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
-                return cell
-            }
-        } else if (indexPath.section == 2) {
-            if (indexPath.row == (countCaregiver)) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
-                cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
-                return cell
-            }
-        } else if (indexPath.section == 3) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
-            return cell
         }
-        return UITableViewCell()
+        else{ //login == false
+            if(indexPath.section == 0){
+                if (indexPath.row == 0) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
+                    return cell
+                }
+            }
+            else if (indexPath.section == 1){
+                if (indexPath.row == 0) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "medAdheranceTVC", for: indexPath) as! MedAdheranceTVC
+                    return cell
+                } else if (indexPath.row == 1) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "hbA1CBGTVC", for: indexPath) as! HbA1CBGTVC
+                    return cell
+                } else if (indexPath.row == 2) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
+                    return cell
+                }
+            }
+            else if (indexPath.section == 2) {
+                if (indexPath.row == (countCaregiver)) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
+                    cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
+                    return cell
+                }
+            }
+            else if (indexPath.section == 3) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
+                return cell
+            }
+        }
         
+        //yang lama
+//        if(indexPath.section == 0){
+//            if (indexPath.row == 0) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
+//                return cell
+//            }
+//            else if (indexPath.row == 1){
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
+//                return cell
+//            }
+//        } else if (indexPath.section == 1) {
+//            if (indexPath.row == 0) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "medAdheranceTVC", for: indexPath) as! MedAdheranceTVC
+//                return cell
+//            } else if (indexPath.row == 1) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "hbA1CBGTVC", for: indexPath) as! HbA1CBGTVC
+//                return cell
+//            } else if (indexPath.row == 2) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
+//                return cell
+//            }
+//        } else if (indexPath.section == 2) {
+//            if (indexPath.row == (countCaregiver)) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
+//                return cell
+//            } else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
+//                cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
+//                return cell
+//            }
+//        } else if (indexPath.section == 3) {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
+//            return cell
+//        }
+        return UITableViewCell()
     }
     //
     //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -218,73 +292,138 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let countCaregiver = listCaregiver.caregiverList.count
         
-        if(isLogin == true){
-            if(indexPath.section == 0){
-                if(indexPath.row == 0){
-                    height = 0
+            if(isLogin == true){
+                if(indexPath.section == 0){
+                    if(indexPath.row == 0){
+                        height = 80
+                    }
                 }
-                else if(indexPath.row == 1){
-                    height = 80
+                else if (indexPath.section == 2) {
+                    if (indexPath.row == countCaregiver) {
+                        height = 180
+                    } else if (indexPath.row != countCaregiver) {
+                        height = 56
+                    }
+                } else {
+                    height = 56.0
                 }
-            }
-            else if (indexPath.section == 2) {
-                if (indexPath.row == countCaregiver) {
-                    height = 180
-                } else if (indexPath.row != countCaregiver) {
-                    height = 56
-                }
-            } else {
-                height = 56.0
-            }
-            
-        }else{
+        }
+        else{
             if(indexPath.section == 0){
                 if(indexPath.row == 0){
                     height = 509
-                }else if(indexPath.row == 1){
-                    height = 0
                 }
-            }else{
-                height = 0
             }
         }
+            
+            
+        //yang lama
+//        if(isLogin == true){
+//            if(indexPath.section == 0){
+//                if(indexPath.row == 0){
+//                    height = 0
+//                }
+//                else if(indexPath.row == 1){
+//                    height = 80
+//                }
+//            }
+//            else if (indexPath.section == 2) {
+//                if (indexPath.row == countCaregiver) {
+//                    height = 180
+//                } else if (indexPath.row != countCaregiver) {
+//                    height = 56
+//                }
+//            } else {
+//                height = 56.0
+//            }
+//
+//        }else{
+//            if(indexPath.section == 0){
+//                if(indexPath.row == 0){
+//                    height = 509
+//                }else if(indexPath.row == 1){
+//                    height = 0
+//                }
+//            }else{
+//                height = 0
+//            }
+//        }
         return height
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath.section == 0) {
-            if (indexPath.row == 1) {
-                return true
+        
+        if(isLogin == true){
+            if (indexPath.section == 0) {
+                if (indexPath.row == 1) {
+                    return true
+                }
             }
         }
+        //yang lama
+//        if (indexPath.section == 0) {
+//            if (indexPath.row == 1) {
+//                return true
+//            }
+//        }
         return false
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 3) {
-            if (indexPath.row == 0) {
-                print("alert exit done")
-                let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
-                    action in
-                    let firebaseAuth = Auth.auth()
-                    do {
-                        try firebaseAuth.signOut()
+        
+        if(isLogin == true){
+            if (indexPath.section == 3) {
+                if (indexPath.row == 0) {
+                    print("alert exit done")
+                    let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
+                        action in
+                        let firebaseAuth = Auth.auth()
+                        do {
+                            try firebaseAuth.signOut()
 
-                        listCaregiver.caregiverList.removeAll()
-                        CoreDataManager.coreDataManager.resetAllCoreData()
+                            listCaregiver.caregiverList.removeAll()
+                            CoreDataManager.coreDataManager.resetAllCoreData()
 
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
 
-                    } catch let signOutError as NSError {
-                        print("Error signing out: %@", signOutError)
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
 
-                    }
-                }))
-                present(alert, animated: true, completion: nil)
+                        }
+                    }))
+                    present(alert, animated: true, completion: nil)
+                }
             }
         }
+
+        
+        //yang lama
+//        if (indexPath.section == 3) {
+//            if (indexPath.row == 0) {
+//                print("alert exit done")
+//                let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+//                alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
+//                    action in
+//                    let firebaseAuth = Auth.auth()
+//                    do {
+//                        try firebaseAuth.signOut()
+//
+//                        listCaregiver.caregiverList.removeAll()
+//                        CoreDataManager.coreDataManager.resetAllCoreData()
+//
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
+//
+//                    } catch let signOutError as NSError {
+//                        print("Error signing out: %@", signOutError)
+//
+//                    }
+//                }))
+//                present(alert, animated: true, completion: nil)
+//            }
+//        }
    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -292,12 +431,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 0
         }
         else{
-            if (section == 0) {
+            if(section == 0){
                 return 24
-            } else if (section == 3) {
+            }else if (section == 3){
                 return 14
             }
             return 35
+            
+            //yang lama
+//            if (section == 0) {
+//                return 24
+//            } else if (section == 3) {
+//                return 14
+//            }
+//            return 35
         }
     }
     

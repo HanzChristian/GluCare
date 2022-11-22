@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UBT-jF-w6S">
-                                <rect key="frame" x="0.0" y="143" width="390" height="97"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="97"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="G6E-hP-0JZ"/>
@@ -71,7 +71,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
-                                <rect key="frame" x="0.0" y="240" width="390" height="521"/>
+                                <rect key="frame" x="0.0" y="188" width="390" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="573" id="Rzn-J1-l4B"/>
@@ -719,7 +719,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Lihat Rutinitas"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Lihat Rutinitas" cornerStyle="large"/>
                                 <connections>
                                     <action selector="addMedBtn:" destination="rai-jm-7bR" eventType="touchUpInside" id="jn7-0x-410"/>
                                 </connections>
@@ -1443,7 +1443,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.1176470588" green="0.51764705879999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Tambah Rutinitas"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Tambah Rutinitas" cornerStyle="large"/>
                                 <connections>
                                     <action selector="addRoutinesBtn:" destination="S5d-OC-bWY" eventType="touchUpInside" id="TtT-MJ-D4r"/>
                                 </connections>
@@ -1483,8 +1483,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sPl-H0-eu2"/>
-        <segue reference="Efi-nT-MCB"/>
+        <segue reference="NRd-8N-AW9"/>
+        <segue reference="FrA-CF-765"/>
         <segue reference="kOP-r9-bA2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
