@@ -258,9 +258,13 @@ class FirebaseManager {
                         }
                         
                         if medicine != nil {
-//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
                             
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataMedToFirestore(fireMeds: medicine)
+                            if role == 2{
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
+                                
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataMedToFirestore(fireMeds: medicine)
+                            }
+                            
                             
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
                         }
@@ -277,9 +281,13 @@ class FirebaseManager {
                         }
                         
                         if bgs != nil {
-//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
                             
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
+                            if role == 2{
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
+                                
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
+                            }
+                            
                             
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
                         }
@@ -297,9 +305,12 @@ class FirebaseManager {
                         
                         if logs != nil {
                             
-//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
-                        
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
+                            if role == 2{
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
+                            
+                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
+                            }
+                            
 
                             
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
