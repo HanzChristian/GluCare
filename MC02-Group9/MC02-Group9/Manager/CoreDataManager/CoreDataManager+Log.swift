@@ -233,7 +233,11 @@ extension CoreDataManager{
             }
             
             if isLog == false {
-                populateBGLog(bg: bg, daySelected: daySelected)
+                
+                if bg.bg_start_date! < daySelected{
+                    populateBGLog(bg: bg, daySelected: daySelected)
+                }
+                
             }
         }
     }

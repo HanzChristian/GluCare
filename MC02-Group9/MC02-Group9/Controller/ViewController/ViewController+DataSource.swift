@@ -18,7 +18,10 @@ extension ViewController{
     }
     
     func mergeTV(){
+        
+        self.coreDataManager.fetchBG()
         checkAvailableInitLog(daySelected: daySelected)
+        coreDataManager.checkBGLogAvailable(logs: coreDataManager.logs!, bgs: coreDataManager.bg!, daySelected: daySelected)
         jadwalVars.removeAll()
         self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         

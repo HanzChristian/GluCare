@@ -459,7 +459,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         coreDataManager.fetchBG()
         coreDataManager.fetchBGTime(daySelected: daySelected)
         
-        coreDataManager.checkBGLogAvailable(logs: coreDataManager.logs!, bgs: coreDataManager.bg!, daySelected: daySelected)
         
         if(coreDataManager.logs!.count > 0 ){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
