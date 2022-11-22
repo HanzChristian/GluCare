@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wjz-tq-dd7">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Statistik-->
+        <scene sceneID="7D2-5m-PKT">
+            <objects>
+                <navigationController storyboardIdentifier="BadgeNavVC" title="Statistik" automaticallyAdjustsScrollViewInsets="NO" id="wjz-tq-dd7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistik" image="chart.xyaxis.line" catalog="system" id="SRf-KO-zeY"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WF7-Z3-sSd">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5F0-5z-veQ" kind="relationship" relationship="rootViewController" id="4K3-K1-7SK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWa-lF-40h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-242" y="585"/>
+        </scene>
+        <!--Statistik-->
+        <scene sceneID="zWs-Py-eqc">
+            <objects>
+                <viewController storyboardIdentifier="AddMedicationViewController" title="Statistik" id="5F0-5z-veQ" customClass="StatisticVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EdU-9O-vmI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zy1-Tv-ZSq">
+                                <rect key="frame" x="0.0" y="123" width="393" height="646"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2U0-qV-cYd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2U0-qV-cYd" firstAttribute="trailing" secondItem="zy1-Tv-ZSq" secondAttribute="trailing" id="EGv-ce-jnD"/>
+                            <constraint firstItem="zy1-Tv-ZSq" firstAttribute="leading" secondItem="2U0-qV-cYd" secondAttribute="leading" id="T2g-zJ-H0i"/>
+                            <constraint firstItem="zy1-Tv-ZSq" firstAttribute="top" secondItem="2U0-qV-cYd" secondAttribute="top" constant="20" id="Tyb-HP-Tf5"/>
+                            <constraint firstItem="2U0-qV-cYd" firstAttribute="bottom" secondItem="zy1-Tv-ZSq" secondAttribute="bottom" id="kgt-cO-I5f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="ldI-yr-cCs"/>
+                    <connections>
+                        <outlet property="tableView" destination="zy1-Tv-ZSq" id="0wZ-zU-Ukj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zf-hf-vCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="585"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chart.xyaxis.line" catalog="system" width="128" height="102"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

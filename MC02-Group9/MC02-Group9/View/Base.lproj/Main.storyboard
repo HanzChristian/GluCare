@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -144,10 +144,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="3rr-X0-JG2">
-                                <rect key="frame" x="35" y="103" width="320" height="320"/>
+                                <rect key="frame" x="35" y="103" width="320" height="280"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-9U-L95">
-                                <rect key="frame" x="0.0" y="423" width="390" height="63"/>
+                                <rect key="frame" x="0.0" y="383" width="390" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="pHk-Bn-VVf"/>
                                 </constraints>
@@ -172,7 +172,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ctrl-page-1" translatesAutoresizingMaskIntoConstraints="NO" id="nCh-ID-sN8">
-                                <rect key="frame" x="157" y="590" width="77" height="12"/>
+                                <rect key="frame" x="157" y="550" width="77" height="12"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glucare-logo" translatesAutoresizingMaskIntoConstraints="NO" id="WgV-Dn-uqD">
                                 <rect key="frame" x="30" y="67" width="45" height="36"/>
@@ -182,7 +182,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSM-zW-Ki7">
-                                <rect key="frame" x="20" y="498" width="350" height="80"/>
+                                <rect key="frame" x="20" y="458" width="350" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="mIK-sf-3yl"/>
                                 </constraints>
@@ -485,7 +485,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="GcJ-tA-QlO" kind="relationship" relationship="viewControllers" id="2bW-9X-6p2"/>
-                        <segue destination="yPK-Nn-lpy" kind="relationship" relationship="viewControllers" id="ovq-cz-Wh0"/>
+                        <segue destination="cmn-md-pRj" kind="relationship" relationship="viewControllers" id="6rq-8W-Zld"/>
+                        <segue destination="yPK-Nn-lpy" kind="relationship" relationship="viewControllers" id="ifQ-RI-OdO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9M-Tp-TIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -522,7 +523,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzi-T7-7lL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="593"/>
+            <point key="canvasLocation" x="302" y="592"/>
+        </scene>
+        <!--Statistic-->
+        <scene sceneID="gW7-ZX-zxa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistic" id="cmn-md-pRj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KsP-4k-aJD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U6z-Cc-TgJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-192" y="593"/>
         </scene>
         <!--Badge-->
         <scene sceneID="2EE-jR-pTG">
@@ -1230,7 +1241,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1405,9 +1416,9 @@
         <image name="clock" width="17.333333969116211" height="17.333333969116211"/>
         <image name="ctrl-page-1" width="77" height="12"/>
         <image name="empty" width="386" height="546"/>
-        <image name="glucare-logo" width="45" height="36"/>
+        <image name="glucare-logo" width="44.666667938232422" height="35.666667938232422"/>
         <image name="med" width="20" height="19.333333969116211"/>
-        <image name="onboard1" width="320" height="320"/>
+        <image name="onboard1" width="280" height="280"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="right-arrow" width="10.666666984558105" height="10.666666984558105"/>
         <image name="warning" width="24" height="24"/>

@@ -168,10 +168,7 @@ extension UIFont {
 
 extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-//  LOGICNYA BELUM BS JALAN KARENA GAADA CORE DATA BG-NYA //
-//  Kalau mau lihat cell ubah return = 2, tp kalau dihapus crash //
-//        1
-        
+
         if (self.items?.count == 0) && (self.itemsBG?.count == 0) {
             print("dapong - no bg + med")
             return 0

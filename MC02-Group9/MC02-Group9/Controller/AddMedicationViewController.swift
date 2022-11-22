@@ -23,12 +23,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     let cellTitle = ["Nama Obat", "Waktu Minum", "Jadwal Minum Obat"]
     var jadwal = ["Jadwal 1"]
     let textFieldShadow = ["Misal: Metformin 500 mg", "Pilih Waktu Minum", "", ""]
-//    let mealTime = ["Waktu Spesifik", "Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan", "Pilih Waktu Minum"]
-//    let mealTimeDesc = ["Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat",
-//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan",
-//                        "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat",
-//                        "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan",
-//                        "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"]
+    
     var newMealVars = 4
     var currentCell: IndexPath?
     var height = 60.0

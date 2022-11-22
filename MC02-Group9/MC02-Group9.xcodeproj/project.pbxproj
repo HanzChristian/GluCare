@@ -92,6 +92,12 @@
 		2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */; };
 		2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */; };
 		2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */; };
+		2C4C20BA2926A251009E03F6 /* StatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C20B92926A251009E03F6 /* StatisticVC.swift */; };
+		2C4C20BC2926A272009E03F6 /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C20BB2926A272009E03F6 /* Statistic.storyboard */; };
+		2C4C20C02926A69E009E03F6 /* StatisticAdheranceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C20BE2926A69E009E03F6 /* StatisticAdheranceTVC.swift */; };
+		2C4C20C12926A69E009E03F6 /* StatisticAdheranceTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C20BF2926A69E009E03F6 /* StatisticAdheranceTVC.xib */; };
+		2C4C20C42926A6D0009E03F6 /* StatisticBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C20C22926A6D0009E03F6 /* StatisticBGTVC.swift */; };
+		2C4C20C52926A6D0009E03F6 /* StatisticBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C20C32926A6D0009E03F6 /* StatisticBGTVC.xib */; };
 		2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */; };
 		2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */; };
 		2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */; };
@@ -237,6 +243,12 @@
 		2C3D935B2859AE430017DCB6 /* MedDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedDescTableViewCell.xib; sourceTree = "<group>"; };
 		2C41FFD02865B73E0094D39E /* Streak+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		2C41FFD12865B73E0094D39E /* Streak+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Streak+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		2C4C20B92926A251009E03F6 /* StatisticVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticVC.swift; sourceTree = "<group>"; };
+		2C4C20BB2926A272009E03F6 /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
+		2C4C20BE2926A69E009E03F6 /* StatisticAdheranceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticAdheranceTVC.swift; sourceTree = "<group>"; };
+		2C4C20BF2926A69E009E03F6 /* StatisticAdheranceTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticAdheranceTVC.xib; sourceTree = "<group>"; };
+		2C4C20C22926A6D0009E03F6 /* StatisticBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBGTVC.swift; sourceTree = "<group>"; };
+		2C4C20C32926A6D0009E03F6 /* StatisticBGTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticBGTVC.xib; sourceTree = "<group>"; };
 		2C8A3D852907AE4600B0646A /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		2C8A3D8B2907BD7000B0646A /* OnBoardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCVCell.swift; sourceTree = "<group>"; };
 		2C8A3D8D2907BFD600B0646A /* RoleManagementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleManagementVC.swift; sourceTree = "<group>"; };
@@ -444,6 +456,26 @@
 			path = RoutinesTVC;
 			sourceTree = "<group>";
 		};
+		2C4C20B82926A219009E03F6 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C20B92926A251009E03F6 /* StatisticVC.swift */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
+		2C4C20BD2926A27D009E03F6 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C20BB2926A272009E03F6 /* Statistic.storyboard */,
+				2C4C20BE2926A69E009E03F6 /* StatisticAdheranceTVC.swift */,
+				2C4C20BF2926A69E009E03F6 /* StatisticAdheranceTVC.xib */,
+				2C4C20C22926A6D0009E03F6 /* StatisticBGTVC.swift */,
+				2C4C20C32926A6D0009E03F6 /* StatisticBGTVC.xib */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
 		2C8A3D802907ABB500B0646A /* OnBoarding & Role */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +546,7 @@
 		F02A60D92869A6F900441781 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C4C20BD2926A27D009E03F6 /* Statistic */,
 				2C8A3D802907ABB500B0646A /* OnBoarding & Role */,
 				1F4EF3B42872E3250056E693 /* Take Medication.storyboard */,
 				153AFA6428EEBDEE00395648 /* Take BG.storyboard */,
@@ -537,6 +570,7 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C4C20B82926A219009E03F6 /* Statistic */,
 				F054B0D8290BDDE700287D06 /* Firebase */,
 				157F70D22906E63C000C7B07 /* ViewController */,
 				F05616A928EED6F400F61C4C /* CalendarCell */,
@@ -716,9 +750,11 @@
 				F05478152910B44600DB4503 /* HbA1CBGTVC.xib in Resources */,
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
+				2C4C20BC2926A272009E03F6 /* Statistic.storyboard in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
 				2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
+				2C4C20C52926A6D0009E03F6 /* StatisticBGTVC.xib in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */,
 				15CAFCFF28F54684009A7686 /* BGTimeTableViewCell.xib in Resources */,
@@ -753,6 +789,7 @@
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
 				2C23DF022913DD550074AFB3 /* ListCaregiverTVC.xib in Resources */,
 				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
+				2C4C20C12926A69E009E03F6 /* StatisticAdheranceTVC.xib in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
 				15CAFCFB28F54662009A7686 /* BGStartDateTableViewCell.xib in Resources */,
 				15CAFD0728F546F3009A7686 /* BGSubFrequencyTableViewCell.xib in Resources */,
@@ -821,6 +858,7 @@
 				15CAFD2028F7E521009A7686 /* BGCalendarTableViewCell.swift in Sources */,
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
 				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
+				2C4C20C42926A6D0009E03F6 /* StatisticBGTVC.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				F05478232910BD1D00DB4503 /* BG+CoreDataProperties.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
@@ -873,6 +911,7 @@
 				F0DFE2BA291E236100993B0D /* Log+CoreDataProperties.swift in Sources */,
 				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
 				15CAFD0228F5469C009A7686 /* BGFrequencyTableViewCell.swift in Sources */,
+				2C4C20BA2926A251009E03F6 /* StatisticVC.swift in Sources */,
 				1547608F290AAB1500D56835 /* ViewController+Delegate.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
 				6EDAF415285878900099213F /* RoutinesViewController.swift in Sources */,
@@ -880,6 +919,7 @@
 				2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */,
 				F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
+				2C4C20C02926A69E009E03F6 /* StatisticAdheranceTVC.swift in Sources */,
 				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
@@ -1083,6 +1123,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1113,6 +1154,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
