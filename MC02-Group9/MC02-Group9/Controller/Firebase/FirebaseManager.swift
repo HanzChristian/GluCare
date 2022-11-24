@@ -314,16 +314,12 @@ class FirebaseManager {
                         if logs != nil {
                             
                             if role == 2 || firstTime3 == false{
-                                firstTime3 == true
+                                firstTime3 = true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
                             
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
                             }
-                            
-
-                            
-                            
                         }
                     }
                 }
