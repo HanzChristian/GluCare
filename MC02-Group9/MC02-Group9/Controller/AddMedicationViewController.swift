@@ -714,6 +714,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                 }
             }
+            
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
 //            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: medicine.id!)

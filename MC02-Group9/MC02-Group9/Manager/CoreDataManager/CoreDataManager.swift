@@ -417,11 +417,18 @@ class CoreDataManager{
 
             }
 
+        
+            var idToRemove = [String]()
             print("logtoremove : Date \(date)")
 
             for log in logToRemove {
                 print("logtoremove \(log.log_id!) \(log.date!) \(log.type)")
+                idToRemove.append(log.log_id!)
                 removeLogBG(logToRemove: log)
+            }
+        
+            for remove in idToRemove {
+                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: remove)
             }
 
         }
