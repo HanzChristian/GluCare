@@ -307,9 +307,10 @@ class FirebaseManager {
                             return try? $0.data(as: LogFire.self)
                         }
                         
-                        if logs != nil || firstTime == false{
-                            firstTime == true
-                            if role == 2{
+                        if logs != nil {
+                            
+                            if role == 2 || firstTime == false{
+                                firstTime == true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
                             
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
