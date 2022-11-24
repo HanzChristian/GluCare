@@ -260,9 +260,10 @@ class FirebaseManager {
                             return try? $0.data(as: MedicineFire.self)
                         }
                         
-                        if medicine != nil || firstTime == false{
-                            firstTime = true
-                            if role == 2{
+                        if medicine != nil {
+                            
+                            if role == 2 || firstTime == false{
+                                firstTime = true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
                                 
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataMedToFirestore(fireMeds: medicine)
