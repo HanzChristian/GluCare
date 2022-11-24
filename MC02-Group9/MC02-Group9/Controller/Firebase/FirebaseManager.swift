@@ -240,6 +240,8 @@ class FirebaseManager {
     func loadFirebase() {
         
         var firstTime = false
+        var firstTime2 = false
+        var firstTime3 = false
         
         if var user = Auth.auth().currentUser?.email {
             let role = UserDefaults.standard.integer(forKey: "role")
@@ -286,8 +288,8 @@ class FirebaseManager {
                         
                         if bgs != nil {
                             
-                            if role == 2 || firstTime == false{
-                                firstTime = true
+                            if role == 2 || firstTime2 == false{
+                                firstTime2 = true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
                                 
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
@@ -310,8 +312,8 @@ class FirebaseManager {
                         
                         if logs != nil {
                             
-                            if role == 2 || firstTime == false{
-                                firstTime == true
+                            if role == 2 || firstTime3 == false{
+                                firstTime3 == true
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
                             
                                 MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
