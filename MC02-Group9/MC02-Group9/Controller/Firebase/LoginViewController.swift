@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
                 }else{
 //                    self!.msgLabel.text = "login berhasil"
                     // make segue
+                    CoreDataManager.coreDataManager.resetAllCoreData()
                     FirebaseManager.firebaseManager.getAccountInfo()
 //                    self!.performSegue(withIdentifier: "masuk", sender: self)
                 }

@@ -554,13 +554,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 if(selectedType != -1){
                     if(selectedType == 0){
                         cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Puasa"
-                        title = "Cek Gula Darah Puasa"
+                        //title = "Cek Gula Darah Puasa"
                     }else if(selectedType == 1){
                         cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sesaat"
-                        title = "Cek Gula Darah Sesaat"
+                        //title = "Cek Gula Darah Sesaat"
                     }else{
                         cellBgTypeTV!.bgTypeLbl.text = "HbA1c"
-                        title = "Cek HbA1c"
+                        //title = "Cek HbA1c"
                     }
                 }
                 

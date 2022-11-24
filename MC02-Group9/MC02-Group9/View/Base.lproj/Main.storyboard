@@ -266,7 +266,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.1176470588" green="0.51764705879999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="MULAI" cornerStyle="large"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Mulai" cornerStyle="large"/>
                                 <connections>
                                     <segue destination="YCm-RV-gWL" kind="presentation" modalPresentationStyle="automatic" id="eS4-iE-SAU"/>
                                 </connections>
@@ -999,7 +999,7 @@
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="D3U-14-ykU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EKT-dl-gTl" firstAttribute="top" secondItem="rZP-k6-esW" secondAttribute="bottom" id="2fD-mf-vfj"/>
                             <constraint firstItem="6uW-9W-Dca" firstAttribute="leading" secondItem="D3U-14-ykU" secondAttribute="leading" constant="20" id="4Jl-u8-mlE"/>
@@ -1104,7 +1104,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ka6-FI-3Yg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ka6-FI-3Yg" firstAttribute="trailing" secondItem="0yR-Dc-bDH" secondAttribute="trailing" constant="20" id="1oa-FC-lfV"/>
                             <constraint firstItem="xtH-NI-Wvn" firstAttribute="top" secondItem="0yR-Dc-bDH" secondAttribute="bottom" constant="70" id="Bvn-Sz-M2d"/>
@@ -1301,7 +1301,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1485,7 +1485,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="NRd-8N-AW9"/>
         <segue reference="FrA-CF-765"/>
-        <segue reference="KoF-Bm-9Lp"/>
+        <segue reference="Eak-g9-Exf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>

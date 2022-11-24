@@ -73,6 +73,17 @@ class BGTypeTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     }
     
     @objc func doneTapped() {
+        
+        if bgTypeLbl.text == "Pilih Jenis Cek Gula Darah"{
+            bgTypeLbl.textColor = .black
+            bgTypeLbl.text = bgType[0]
+            typeVars.typePickedRow = 0
+            bgTypePicked = true
+            bgTypeLbl.resignFirstResponder()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidate"), object: nil)
+        }
+        
+       
         self.endEditing(true)
     }
     

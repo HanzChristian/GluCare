@@ -118,6 +118,7 @@ class MigrateFirestoreToCoreData {
             medicine.name = med.medicine_name
             medicine.eat_time = Int16(med.medicine_eat_time)
             medicine.id = med.id
+            medicine.start_date = med.start_date
             
             for time in med.medicine_time{
                 let medicine_time = Medicine_Time(context: context)

@@ -28,6 +28,8 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     let textFieldShadow = ["Misal: Metformin 500 mg", "Pilih Waktu Minum", "", ""]
     let coreDataManager = CoreDataManager.coreDataManager
     
+    var waktuminumIdx = -1
+    
     var edit = UserDefaults.standard.bool(forKey: "edit")
     
     var first = false
@@ -53,7 +55,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        waktuminumIdx = -1
         if(edit == true){
             UserDefaults.standard.set(false, forKey: "edit")
         }
@@ -176,7 +178,21 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         cell.mealTimeLabel.text = "Waktu Spesifik"
                     }
                 }else{
-                    cell.mealTimeLabel.text = "Pilih waktu minum"
+                    cell.mealTimeLabel.text = "Pilih Waktu Minum"
+                }
+                
+                if waktuminumIdx != -1{
+                    if(waktuminumIdx == 2){
+                        cell.mealTimeLabel.text = "Setelah Makan"
+                    }
+                    else if(waktuminumIdx == 1){
+                        cell.mealTimeLabel.text = "Sebelum Makan"
+                    }
+                    else if(waktuminumIdx == 3){
+                        cell.mealTimeLabel.text = "Bersamaan dengan Makan"
+                    }else{
+                        cell.mealTimeLabel.text = "Waktu Spesifik"
+                    }
                 }
                 
                 cell.accessoryType = .disclosureIndicator
@@ -214,6 +230,29 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 }else{
                     cell.mealDescTitle.text = "Pilih Waktu Minum"
                     cell.mealDesc.text = "Keterangan tentang notifikasi akan muncul setelah memilih waktu minum"
+                }
+                
+                if waktuminumIdx != -1{
+                    if(waktuminumIdx == 2){
+                        cell.mealDescTitle.text = "Setelah Makan"
+                        cell.mealDesc.text = "Notifikasi muncul 1 jam sebelum waktu yang ditentukan untuk makan lalu meminum obat"
+                        cell.mealImage.image = UIImage(named: "MealDesc2")
+                        
+                    }
+                    else if(waktuminumIdx == 1){
+                        cell.mealDescTitle.text = "Sebelum Makan"
+                        cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat lalu makan"
+                        cell.mealImage.image = UIImage(named: "MealDesc1")
+                    }
+                    else if(waktuminumIdx == 3){
+                        cell.mealDescTitle.text = "Bersamaan dengan Makan"
+                        cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat dan makan"
+                        cell.mealImage.image = UIImage(named: "MealDesc3")
+                    }else{
+                        cell.mealDescTitle.text = "Waktu Spesifik"
+                        cell.mealDesc.text = "Notifikasi muncul 30 menit sebelum waktu yang ditentukan untuk meminum obat"
+                        cell.mealImage.image = UIImage(named: "MealDesc0")
+                    }
                 }
                 return cell
             }
@@ -440,8 +479,13 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
     
     @objc func validateForm(){
         print("Test")
+        
+        if let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih Waktu Minum"{
+            waktuminumIdx = mealVars.mealPickedRow
+        }
+        
         if let txtMed = cellMedNameTV?.medNameTextField.text, !txtMed.isEmpty,
-           let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih waktu minum"{
+           let txtTime = cellMealTimePicker?.mealTimeLabel.text, txtTime != "Pilih Waktu Minum"{
             
             var timeSet = Set<String>()
             for cell in cellTimePicker{

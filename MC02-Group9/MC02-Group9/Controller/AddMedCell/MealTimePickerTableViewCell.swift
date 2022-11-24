@@ -22,6 +22,8 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
         super.awakeFromNib()
         pickerView.dataSource = self
         pickerView.delegate = self
+        
+        
 
     }
 
@@ -32,6 +34,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     
     override var canBecomeFirstResponder: Bool{
         return true
@@ -66,6 +69,8 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return mealTime[row]
     }
+    
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         mealTimeLabel.textColor = .black
         mealTimeLabel.text = mealTime[row]
@@ -80,6 +85,16 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     }
     
     @objc func doneTapped() {
+        if mealTimeLabel.text == "Pilih Waktu Minum"{
+            mealTimeLabel.text = mealTime[0]
+    //        mealTimeTextField.text = mealTime[row]
+            mealPicked = true
+            mealTimeVar.row = 0
+            mealVars.mealPickedRow = 0
+            mealTimeLabel.resignFirstResponder()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "selectTime"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
+        }
         self.endEditing(true)
     }
     
@@ -94,6 +109,7 @@ class MealTimePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPi
     @objc func dismissPicker() {
         self.endEditing(true)
     }
+    
     
     @objc func viewTapped(sender: UITapGestureRecognizer) {
         pickerView.endEditing(true)

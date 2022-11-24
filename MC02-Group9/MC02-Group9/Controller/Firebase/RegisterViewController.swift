@@ -55,7 +55,7 @@ class RegisterViewController: UIViewController {
                         print(user)
                         
                         UserDefaults.standard.set(nama, forKey: "nama")
-
+                        CoreDataManager.coreDataManager.resetAllCoreData()
                         self!.performSegue(withIdentifier: "daftar", sender: self)
                         print("Already Login")
                         
