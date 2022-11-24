@@ -185,16 +185,13 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             row = SelectedIdx.selectedIdx.indexPath.row
             
             let bg = self.itemsBG![row!]
-            //            self.itemsBGTime![row!]
             
             UserDefaults.standard.set(false, forKey: "edit")
             
-            //            context.delete(bg_time)
-            //            do{
-            //                try self.context.save()
-            //            }catch{
-            //
-            //            }
+            var today = Date()
+            today = calendarHelper.addDays(date: today, days: -1)
+            coreDataManager.removeAllLogBGAfter(bg: bg, date: today)
+            
             
             let dateFormatter = DateFormatter()
             dateFormatter.string(from: currentTime)
@@ -251,10 +248,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             }
             
             
+            // ISI DISINI
+            
             if(bg.bg_frequency == 0){
-                CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
+                CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
                 
-                for i in 1...20 { //loop dari hari 1 - 100
+                for i in 1...5 { //loop dari hari 1 - 100
                     let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
                     lastDate = date
                     CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
@@ -262,7 +261,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             }
             else if(bg.bg_frequency == 1){
                 
-                for i in 1...20 { //loop dari hari 1 - 20
+                for i in 1...3 { //loop dari hari 1 - 20
                     let oneWeekAgo = calendarHelper.addDays(date: lastDate!, days: 7)
                     var currentDate = lastDate
                     
@@ -271,7 +270,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         
                         for t in bg_times{
                             if(currentWeekDay == (t as! BG_Time).bg_date_item){
-                                CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
+                                CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                                 
                                 print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
                                 print("Tete \((t as! BG_Time).bg_date_item)")
@@ -317,7 +316,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         // pake discord aja suaranya lah
     //                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
                         if(bg.bg_start_date! <= final!){
-                            CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
+                            CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                         }
                     }
                     lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
@@ -580,7 +579,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd MMM yyyy"
                     var bgDate =
-                    dateFormatter.string(from: bg!.bg_start_date!)
+                    dateFormatter.string(from: Date())
                     
                     cellBgStartDateTV!.bgStartDatePicker.text = bgDate
                 }

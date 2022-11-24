@@ -183,6 +183,17 @@ extension CoreDataManager{
     
     func checkMedLogAvailable(logs: [Log], meds: [Medicine], dayselected: Date){
         for med in meds {
+            
+            let today = calendarManager.calendar.startOfDay(for: dayselected)
+            let medDate = calendarManager.calendar.startOfDay(for: med.start_date!)
+            
+            print("aku ga bikin \(today) \(medDate)")
+            
+            if today < medDate{
+                print("aku ga bikin")
+                continue
+            }
+            
             var isLog = false
             
             for log in logs {

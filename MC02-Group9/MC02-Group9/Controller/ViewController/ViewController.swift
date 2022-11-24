@@ -332,12 +332,32 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
         let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
+        print("my substring \(dayOfWeek)")
         let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 1)
         let mySubstring = dayOfWeek[..<index]
         
+        
         let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
         
-        cell.dayOfWeek.text = String(mySubstring)
+        if dayOfWeek == "Monday" {
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Tuesday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Wednesday"{
+            cell.dayOfWeek.text = "R"
+        }else if dayOfWeek == "Thursday"{
+            cell.dayOfWeek.text = "K"
+        }else if dayOfWeek == "Friday"{
+            cell.dayOfWeek.text = "J"
+        }else if dayOfWeek == "Saturday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Sunday"{
+            cell.dayOfWeek.text = "M"
+        }
+        
+        
+        
+        
         cell.dayOfWeek.textColor = blue
         
         cell.dayOfMonth.backgroundColor = UIColor.white
@@ -441,10 +461,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         coreDataManager.checkBGLogAvailable(logs: coreDataManager.logs!, bgs: coreDataManager.bg!, daySelected: daySelected)
         
-        if(coreDataManager.items!.count > 0 || coreDataManager.bg!.count > 0 ){
+        if(coreDataManager.logs!.count > 0 ){
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
         }
-        else if(coreDataManager.items!.count == 0 || coreDataManager.bg!.count == 0){
+        else{
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
         }
         

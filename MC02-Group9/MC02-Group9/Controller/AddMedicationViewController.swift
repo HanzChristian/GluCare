@@ -500,11 +500,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         if(edit == true){
+            
+            
+            
             var row: Int?
             row = SelectedIdx.selectedIdx.indexPath.row
             
             let medicine = self.itemsEdit![row!]
-            var medicine_time = self.items![row!]
+            var medicine_time = medicine.time?.allObjects as? [Medicine_Time]
+            
+            var today = Date()
+            today = CalendarHelper().addDays(date: today, days: -1)
+            
+            coreDataManager.removeAllLogMedAfter(med: medicine, date: today)
             
             
             //            let med = medicine.medicine
@@ -512,20 +520,28 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             UserDefaults.standard.set(false, forKey: "edit")
             
             medicine.name = cellMedNameTV!.medNameTextField.text!
+            medicine.start_date = Date()
             
             if(mealVars.mealPickedRow == 4){
-                medicine.eat_time = Int16(medicine_time.medicine!.eat_time)
+                medicine.eat_time = medicine.eat_time
             }else{
                 medicine.eat_time = Int16(mealVars.mealPickedRow)
             }
             
             medicine.id = UUID().uuidString
             
-            context.delete(medicine_time)
-            do{
-                try self.context.save()
-            }catch{
-                
+            
+            // hapus notif
+            let deletedId: [String] = [medicine.id!]
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: deletedId)
+            
+            for time in medicine_time! {
+                context.delete(time)
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
             }
             
             for time in cellTimePicker{
@@ -536,14 +552,13 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 med_time.time = time.btnTimePicker.text
                 print("INI btnTimePicker \(time.btnTimePicker.text)")
                 medicine.addToTime(med_time)
-                
-                medicine_time = med_time
+            
                 //Get notification info
                 notificationCenter.getNotificationSettings { (settings) in
                     if(settings.authorizationStatus == .authorized){
                         DispatchQueue.main.async {
                             //create trigger
-                            let time = medicine_time.time!
+                            let time = med_time.time!
                             let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
                             let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
                             let string = ("20 Jun 2022 \(hour):\(minutes):00 +0700")
@@ -576,22 +591,22 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                             
                             if(medicine.eat_time == 0){
                                 content.title = "Yuk Minum Obat!"
-                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
+                                content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)!"
                                 newDate.addTimeInterval(-1800)
                             }
                             else if(medicine.eat_time == 1){
                                 content.title = "Yuk Minum Obat!"
-                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa makan setelah itu!"
+                                content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Jangan lupa makan setelah itu!"
                                 newDate.addTimeInterval(-1800)
                             }
                             else if(medicine.eat_time == 1){
                                 content.title = "Yuk Minum Obat!"
-                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Yuk makan sekarang!"
+                                content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Yuk makan sekarang!"
                                 newDate.addTimeInterval(-3600)
                             }
                             else{
                                 content.title = "Yuk Minum Obat!"
-                                content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa disertakan dengan makan!"
+                                content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Jangan lupa disertakan dengan makan!"
                                 newDate.addTimeInterval(-1800)
                             }
                             
