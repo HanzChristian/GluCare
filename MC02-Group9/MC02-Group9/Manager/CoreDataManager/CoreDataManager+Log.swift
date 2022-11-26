@@ -44,18 +44,18 @@ extension CoreDataManager{
     }
     
     func batalkan(logToRemove: Log){
-        if logToRemove.type == 1 {
-            // BG Logic
-//            logToRemove.bg_check_result = "-1"
-            do{
-                try self.context.save()
-            }
-            catch {
-
-            }
-
-            return
-        }
+//        if logToRemove.type == 1 {
+//            // BG Logic
+////            logToRemove.bg_check_result = "-1"
+//            do{
+//                try self.context.save()
+//            }
+//            catch {
+//
+//            }
+//
+//            return
+//        }
         
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: logToRemove.log_id!)
         
