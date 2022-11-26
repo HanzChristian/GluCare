@@ -142,7 +142,6 @@
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
 		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
-		F07F1D3B292FAD1400DAD066 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07F1D3A292FAD1400DAD066 /* ProfileViewController.swift */; };
 		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 		F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */; };
@@ -290,7 +289,6 @@
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
-		F07F1D3A292FAD1400DAD066 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Med.swift"; sourceTree = "<group>"; };
@@ -547,7 +545,6 @@
 				1F4EF3B9287331580056E693 /* TakeMedCell */,
 				F02A60DB2869A73900441781 /* AddMedCell */,
 				6EDAF414285878900099213F /* RoutinesViewController.swift */,
-				F07F1D3A292FAD1400DAD066 /* ProfileViewController.swift */,
 				F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */,
 				15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */,
 				15CAFCEF28F54038009A7686 /* AddBGViewController.swift */,
@@ -851,7 +848,6 @@
 				F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */,
 				1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
-				F07F1D3B292FAD1400DAD066 /* ProfileViewController.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
