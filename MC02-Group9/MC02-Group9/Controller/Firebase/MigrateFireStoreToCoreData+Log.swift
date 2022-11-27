@@ -144,6 +144,7 @@ extension MigrateFirestoreToCoreData {
             newLog.time = log.time
             newLog.type = Int16(log.type)
             newLog.ref_id = log.log_ref
+            newLog.eat_time = log.eat_time
             
             do{
                 try self.context.save()
