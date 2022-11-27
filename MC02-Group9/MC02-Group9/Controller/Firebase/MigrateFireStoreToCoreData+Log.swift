@@ -52,8 +52,10 @@ extension MigrateFirestoreToCoreData {
                     for document in querySnapshot!.documents {
                     
                         document.reference.updateData([
-                            "action": newLog.action,
-                            "bg_check_result": newLog.bg_check_result
+                            "action": newLog.action!,
+                            "bg_check_result": newLog.bg_check_result!,
+                            "eat_time": newLog.eat_time,
+                            "dateTake": newLog.dateTake!
                         ])
 
                     }
@@ -87,7 +89,8 @@ extension MigrateFirestoreToCoreData {
                     
                     if  log.bg_check_result != fireLog.bg_check_result  ||
                         log.dateTake != fireLog.dateTake                ||
-                        log.action != fireLog.action
+                        log.action != fireLog.action                    ||
+                        log.eat_time != fireLog.eat_time
                     {
                         needUpdateLog = true
                         tempLog = fireLog
