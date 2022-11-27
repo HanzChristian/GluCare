@@ -22,6 +22,9 @@ class CoreDataManager{
     var undoIdx = Array(0...100)
     var keTake = Array(0...100)
     
+    // from login
+    var fromLogin = false
+    
     //attriute
     var items:[Medicine_Time]?
     var logs:[Log]?
@@ -60,6 +63,11 @@ class CoreDataManager{
                 // error
             }
         }
+        
+        fetchBG()
+        fetchMeds()
+        fetchMedicine()
+        logs = fetchAllLogs()
     }
     
     

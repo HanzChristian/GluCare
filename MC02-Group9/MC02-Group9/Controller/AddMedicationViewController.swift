@@ -572,7 +572,9 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 medicine.eat_time = Int16(mealVars.mealPickedRow)
             }
             
-//            medicine.id = UUID().uuidString
+            
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: medicine.id!)
+            medicine.id = UUID().uuidString
             
             
             // hapus notif
@@ -716,16 +718,19 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
             
-//            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: medicine.id!)
             
+            // bikin logic updatenya
             
-//            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
+           
             do{
                 try self.context.save()
             }catch{
                 
             }
+//            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateMedFirestore(id: medicine.id!, medicine: medicine)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             
             dismiss(animated: true, completion: nil)

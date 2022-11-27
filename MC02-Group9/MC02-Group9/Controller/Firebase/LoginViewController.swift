@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func goToMain(){
+        CoreDataManager.coreDataManager.fromLogin = true
         self.performSegue(withIdentifier: "masuk", sender: self)
         print("Already Login")
     }

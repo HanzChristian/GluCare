@@ -11,6 +11,14 @@ import UIKit
 extension ViewController{
     
     func checkAvailableInitLog(daySelected: Date){
+        
+        if coreDataManager.fromLogin == true{
+            return
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
+                self!.coreDataManager.fromLogin = false
+            }
+        }
+        
         self.coreDataManager.fetchMeds()
         self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         coreDataManager.checkMedLogAvailable(logs: coreDataManager.logs!, meds: coreDataManager.medicines!, dayselected: daySelected)

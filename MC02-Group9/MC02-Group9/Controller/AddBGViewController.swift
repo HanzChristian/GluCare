@@ -215,7 +215,10 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             
             bg.bg_frequency = Int16(bgFrequency!.pickedFreq)
             bg.bg_each_frequency = Int16(cellBgSubFrequency!.pickedEachFreq)+1
-//            bg.bg_id = UUID().uuidString
+            
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeBGToFirestore(id: bg.bg_id!)
+            
+            bg.bg_id = UUID().uuidString
             
             if(scheduleVars.schedulePickedRow == 1 || scheduleVars.schedulePickedRow == 2){
                 let bg_timeDelete = bg.time?.allObjects as? [BG_Time]
@@ -237,7 +240,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                 }
             }
             
-            //MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewBGToFirestore(bg: bg)
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewBGToFirestore(bg: bg)
             
             var lastDate = bg.bg_start_date
             

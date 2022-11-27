@@ -61,7 +61,6 @@ extension MigrateFirestoreToCoreData {
                     }
                 }
             }
-        
     }
     
     func syncCoredataLogToFirestore(fireLogs: [LogFire]){

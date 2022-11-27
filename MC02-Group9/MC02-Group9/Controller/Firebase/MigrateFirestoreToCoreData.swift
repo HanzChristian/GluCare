@@ -24,6 +24,33 @@ class MigrateFirestoreToCoreData {
         
     }
     
+    func updateMedFirestore(id: String, medicine: Medicine){
+        FirebaseManager.firebaseManager.db.collection("medicine")
+            .whereField("id", isEqualTo: "\(id)")
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                    
+                        document.reference.updateData([
+                            "medicine_eat_time": medicine.eat_time,
+                            "medicine_name": medicine.name!
+                        ])
+                        
+//                        let medicine_times = medicine.time!
+//                        var new_medicine_times = [MedicineTimeFire]()
+//                        for time in medicine_times{
+//                            let t = (time as! Medicine_Time).time!
+//                            new_medicine_times.append(MedicineTimeFire(time: t))
+//                        }
+//                        
+//                        document.reference.setValue(new_medicine_times, forKey: "medicine_time")
+                    }
+                }
+            }
+    }
+    
     func removeMedToFirestore(id: String) {
         if let user = Auth.auth().currentUser?.email {
             db.collection("medicine").whereField("id", isEqualTo: "\(id)")
