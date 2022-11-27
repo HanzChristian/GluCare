@@ -13,10 +13,10 @@ extension ViewController{
     func checkAvailableInitLog(daySelected: Date){
         
         if coreDataManager.fromLogin == true{
-            return
             DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
                 self!.coreDataManager.fromLogin = false
             }
+            return
         }
         
         self.coreDataManager.fetchMeds()
