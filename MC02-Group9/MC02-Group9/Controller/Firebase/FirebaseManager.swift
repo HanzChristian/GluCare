@@ -258,7 +258,7 @@ class FirebaseManager {
                         }
                         
                         if medicine != nil {
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
+//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateMedicineFromFirestoreToCoredata(medicines: medicine)
                             
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataMedToFirestore(fireMeds: medicine)
                             
@@ -277,7 +277,7 @@ class FirebaseManager {
                         }
                         
                         if bgs != nil {
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
+//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateBGFromFirestoreToCoredata(bgs: bgs)
                             
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataBGToFirestore(fireBGs: bgs)
                             
@@ -297,10 +297,8 @@ class FirebaseManager {
                         
                         if logs != nil {
                             
-                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
+//                            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
                         
-                            
-                            
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
 
                             

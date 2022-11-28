@@ -71,7 +71,6 @@ extension CoreDataManager{
     }
     
     func removeLogBG(logToRemove: Log){
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: logToRemove.log_id!)
         
         // remove log
         self.context.delete(logToRemove)
@@ -81,6 +80,9 @@ extension CoreDataManager{
         }catch{
             
         }
+        
+        
+        
     }
     
     func getLogRealIdx(med: Medicine_Time) -> Int {

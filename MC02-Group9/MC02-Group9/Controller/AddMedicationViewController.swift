@@ -572,7 +572,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 medicine.eat_time = Int16(mealVars.mealPickedRow)
             }
             
-            medicine.id = UUID().uuidString
+//            medicine.id = UUID().uuidString
             
             
             // hapus notif
@@ -716,7 +716,10 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             }
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
-            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
+//            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: medicine.id!)
+            
+            
+//            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
             do{
                 try self.context.save()
             }catch{
