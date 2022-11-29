@@ -693,6 +693,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         medicine.name = cellMedNameTV!.medNameTextField.text!
         medicine.eat_time = Int16(mealVars.mealPickedRow)
         medicine.id = UUID().uuidString
+        medicine.start_date = Date()
         
         // Add time
         

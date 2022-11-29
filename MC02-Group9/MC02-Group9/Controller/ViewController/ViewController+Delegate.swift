@@ -22,7 +22,7 @@ extension ViewController:UITableViewDelegate{
         alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
             //print("Tepat Waktu tapped")
             
-            self.coreDataManager.tepatWaktu(daySelected: daySelected, indexPath: indexPath)
+            self.coreDataManager.tepatWaktu(daySelected: daySelected, log: self.coreDataManager.logs![indexPath.row])
             
             self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
             
@@ -49,7 +49,7 @@ extension ViewController:UITableViewDelegate{
                 
                 let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     
-                    self.coreDataManager.pilihWaktu(daySelected: daySelected, indexPath: indexPath, myDatePicker: myDatePicker)
+                    self.coreDataManager.pilihWaktu(daySelected: daySelected, log: self.coreDataManager.logs![indexPath.row], myDatePicker: myDatePicker)
                     
                     self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                     
@@ -91,9 +91,8 @@ extension ViewController:UITableViewDelegate{
         let idx = index
         var isSkipped = false
         
-        let log = coreDataManager.logs![jadwalVars.logIdx]
+        let log = coreDataManager.logs![jadwalVars.idx]
         
-        print("woi dapong \(log.type) \(jadwalVars.logIdx)")
         
         if(log.bg_check_result != "-1"){
             isSkipped = true
@@ -114,22 +113,12 @@ extension ViewController:UITableViewDelegate{
             
         }
         vc.daySelected = daySelected
-        vc.indexPath = IndexPath(row: idx,section : 0)
-        vc.bg = coreDataManager.bg![idx]
-        vc.tblViewBG = self.tableView
+//        vc.indexPath = IndexPath(row: idx,section : 0)
+//        vc.bg = coreDataManager.bg![idx]
+//        vc.tblViewBG = self.tableView
         
         // New
         vc.log = log
-//        if(bg?.bg_type == 0){
-//            cell.freqLbl.text = "Gula Darah Puasa"
-//        }else if(bg?.bg_type == 1){
-//            cell.freqLbl.text = "Gula Darah Sesaat"
-//        }else{
-//            cell.freqLbl.text = "HbA1c"
-//        }
-        
-        
-        
         
         if(isSkipped){
             log.bg_check_result = "-1"
@@ -146,8 +135,8 @@ extension ViewController:UITableViewDelegate{
             
             return
         }
-        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
-        print("INI IDX NYA \(vc.indexPath)")
+//        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
+//        print("INI IDX NYA \(vc.indexPath)")
         print(isSkipped)
         self.present(nav, animated: true,completion: nil)
         
@@ -195,18 +184,14 @@ extension ViewController:UITableViewDelegate{
 //    }
     
     func makeSheetMed(index: Int, jadwalVars: JadwalVars){
-        let idx = index
-        
+        let log = coreDataManager.logs![jadwalVars.idx]
         print("rx - \(index)")
         
         var isSkipped = false
         
-        if(jadwalVars.logIdx != -1){
+        if(log.action != "Nil"){
             isSkipped = true
         }
-        
-        print("MASUK 666 \(jadwalVars.logIdx)")
-        
         
         let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
@@ -218,40 +203,27 @@ extension ViewController:UITableViewDelegate{
             sheet.detents = [.medium()]
             sheet.preferredCornerRadius = 30
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            
         }
         
         vc.daySelected = daySelected
-        vc.indexPath = IndexPath(row: idx,section : 0)
-        vc.tableView = self.tableView
+        vc.log = log
+        
         if(isSkipped){
-            //isi dari untake action
-            let logToRemove = self.coreDataManager.logs![jadwalVars.logIdx]
-            coreDataManager.batalkan(logToRemove: logToRemove)
+            log.action = "Nil"
+            do{
+                try coreDataManager.context.save()
+            }
+            catch {
+                
+            }
             
-            mergeTV()
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
             
             return
             
-            if(coreDataManager.streaks!.isEmpty == true){
-                return
-            }
-            
-    
-            //             Streak Logic
-            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-            
-            if(lastDate == dateFrom){
-                // Streak nya udah ketambah di hari yg sama
-                
-                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-                coreDataManager.fetchStreak()
-            }
-            
         }
-        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
-        print("INI IDX NYA \(vc.indexPath)")
         print(isSkipped)
         self.present(nav, animated: true,completion: nil)
         

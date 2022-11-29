@@ -19,8 +19,9 @@ struct LogFire: Codable {
     var time: String
     var type: Int
     var owner: String
+    var eat_time: Int16
     
-    init(action: String, bg_check_result: String, date: Date, dateTake: Date, log_id: String, log_ref: String, medicine_name: String, time: String, type: Int, owner: String) {
+    init(action: String, bg_check_result: String, date: Date, dateTake: Date, log_id: String, log_ref: String, medicine_name: String, time: String, type: Int, owner: String, eat_time: Int16) {
         self.action = action
         self.bg_check_result = bg_check_result
         self.date = date
@@ -31,6 +32,7 @@ struct LogFire: Codable {
         self.time = time
         self.type = type
         self.owner = owner
+        self.eat_time = eat_time
     }
 
 }
@@ -42,13 +44,15 @@ struct MedicineFire: Codable {
     var medicine_eat_time: Int
     var owner: String
     var id: String
+    var start_date: Date
     
-    init(medicine_name: String, medicine_time: [MedicineTimeFire], medicine_eat_time: Int, owner: String, id: String) {
+    init(medicine_name: String, medicine_time: [MedicineTimeFire], medicine_eat_time: Int, owner: String, id: String, start_date: Date) {
         self.medicine_name = medicine_name
         self.medicine_time = medicine_time
         self.medicine_eat_time = medicine_eat_time
         self.owner = owner
         self.id = id
+        self.start_date = start_date
     }
 }
 

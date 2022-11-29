@@ -12,15 +12,13 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     var daySelected: Date?
     var height = 60.0
     
-    var indexPath:IndexPath?
-    var tableView: UITableView?
-    
     
     let coreDataManager = CoreDataManager.coreDataManager
-    let streakManager = StreakManager.streakManager
     
     var cellTakeMed: TakeMedTimeTableViewCell? //cell
     var switchMode: OnTimeTableViewCell? //triger
+    
+    var log: Log?
     
     
     @IBOutlet weak var tblView: UITableView!
@@ -66,7 +64,7 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
     }
     
     @objc func skipSheet(){
-        self.coreDataManager.lewati(daySelected: self.daySelected!, indexPath: indexPath!)
+        self.coreDataManager.lewati(daySelected: self.daySelected!, log: log!)
         
         self.coreDataManager.resetStreak()
         self.showToastSkip(message: "Kamu tidak mengonsumsi obatmu.", font: .systemFont(ofSize: 12.0))
@@ -81,11 +79,11 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         if(switchMode!.switchOnTime.isOn == true){
             print("adadada \(daySelected)")
             //Tepat Waktu
-            self.coreDataManager.tepatWaktu(daySelected: daySelected!, indexPath: indexPath!)
+            self.coreDataManager.tepatWaktu(daySelected: daySelected!, log: log!)
         }
         else{
             //Pilih Waktu
-            self.coreDataManager.pilihWaktu(daySelected: daySelected!, indexPath: indexPath!, myDatePicker: cellTakeMed!.timePicker)
+            self.coreDataManager.pilihWaktu(daySelected: daySelected!, log: log!, myDatePicker: cellTakeMed!.timePicker)
         }
 
         
@@ -93,9 +91,8 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
-        self.coreDataManager.fetchLogs(tableView: self.tableView!, daySelected: daySelected!)
+//        self.coreDataManager.fetchLogs(tableView: self.tableView!, daySelected: daySelected!)
 
-        self.streakManager.validateNewStreak(daySelected: daySelected!, tableView: self.tableView!)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -213,15 +210,14 @@ class TakeMedicationViewController: UIViewController , UITableViewDelegate, UITa
             if(indexPath.row == 0){
                 let cell = tblView.dequeueReusableCell(withIdentifier: "medNameTableViewCell", for: indexPath) as! MedNameTableViewCell
                 
-                let medicine_time = self.coreDataManager.items![coreDataManager.medicineSelectedIdx]
-                cell.lblMedname.text = medicine_time.medicine?.name
-                if(medicine_time.medicine?.eat_time == 2){
+                cell.lblMedname.text = log?.medicine_name!
+                if(log!.eat_time == 2){
                     cell.lblMedTime.text = "Setelah makan"
                 }
-                else if(medicine_time.medicine?.eat_time == 1){
+                else if(log!.eat_time == 1){
                     cell.lblMedTime.text = "Sebelum makan"
                 }
-                else if(medicine_time.medicine?.eat_time == 3){
+                else if(log!.eat_time == 3){
                     cell.lblMedTime.text = "Bersamaan dengan makan"
                 }else{
                     cell.lblMedTime.text = "Waktu Spesifik"

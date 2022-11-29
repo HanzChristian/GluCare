@@ -305,6 +305,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
                     let id = medicine.id
                     
                     // delete on firebase
+                    coreDataManager.removeAllLogMedAfter(med: medicine, date: Date())
                     MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
                     
                     self.context.delete(medicine)
@@ -342,6 +343,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
                     let id = medicine.id
                     
                     // delete on firebase
+                    coreDataManager.removeAllLogMedAfter(med: medicine, date: Date())
                     MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeMedToFirestore(id: id!)
                     
                     self.context.delete(medicine)

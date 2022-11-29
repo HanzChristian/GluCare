@@ -13,13 +13,13 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     var cellBGName: BGNameTableViewCell?
     var cellBGResult: BGResultTableViewCell?
-    var indexPath:IndexPath?
+//    var indexPath:IndexPath?
     var daySelected: Date?
     let coreDataManager = CoreDataManager.coreDataManager
     
     var log: Log?
     
-    var bg = BG()
+//    var bg = BG()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,15 +147,13 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
 
                 cellBGName = tblViewBG.dequeueReusableCell(withIdentifier: "bgNameTableViewCell", for: indexPath) as! BGNameTableViewCell
 
-                if(bg.bg_type == 0){
+                if(log?.eat_time == 0){
                     cellBGName!.BGNameLbl.text = "Gula Darah Puasa"
-                }else if(bg.bg_type == 1){
+                }else if(log?.eat_time == 1){
                     cellBGName!.BGNameLbl.text = "Gula Darah Sesaat"
                 }else{
                     cellBGName!.BGNameLbl.text = "HbA1c"
                 }
-
-                print("INI NILAI DARI BG TYPE \(bg.bg_type)")
 
                 return cellBGName!
             }
@@ -165,9 +163,9 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
                 cellBGResult = tblViewBG.dequeueReusableCell(withIdentifier: "bgResultTableViewCell", for:indexPath) as! BGResultTableViewCell
                 cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
 
-                if(bg.bg_type == 0){
+                if(log?.eat_time == 0){
                     cellBGResult!.BGUnitLbl.text = "mg/dL"
-                }else if(bg.bg_type == 1){
+                }else if(log?.eat_time == 1){
                     cellBGResult!.BGUnitLbl.text = "mg/dL"
                 }else{
                     cellBGResult!.BGUnitLbl.text = "%"

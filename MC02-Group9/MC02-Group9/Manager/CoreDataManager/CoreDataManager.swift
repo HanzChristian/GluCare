@@ -129,7 +129,7 @@ class CoreDataManager{
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: newLog)
     }
     
-    func lewati(daySelected: Date, indexPath: IndexPath){
+    func lewati(daySelected: Date, log: Log){
         //change daySelected to String
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_gb")
@@ -138,7 +138,7 @@ class CoreDataManager{
         // print(tanggal)
         
         // Create String
-        let time = self.items![indexPath.row].time!
+        let time = log.time!
         let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
         let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
         let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
@@ -154,12 +154,10 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = makeLogInit(ref_id: (self.items![indexPath.row].medicine!.id)!)
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Skip"
-        log.time = self.items![indexPath.row].time
-        log.medicine_name = self.items![indexPath.row].medicine?.name
+
         
         do{
             try self.context.save()
@@ -168,10 +166,10 @@ class CoreDataManager{
         }
         
         //Firestore
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
     }
     
-    func pilihWaktu(daySelected: Date, indexPath: IndexPath, myDatePicker: UIDatePicker){
+    func pilihWaktu(daySelected: Date, log: Log, myDatePicker: UIDatePicker){
         
         //change daySelected to String
         let formatter = DateFormatter()
@@ -181,7 +179,7 @@ class CoreDataManager{
         // print(tanggal)
         
         // Create String
-        let times = self.items![indexPath.row].time!
+        let times = log.time!
         let hour = times[..<times.index(times.startIndex, offsetBy: 2)]
         let minutes = times[times.index(times.startIndex, offsetBy: 3)...]
         let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
@@ -202,13 +200,9 @@ class CoreDataManager{
         // time.addTimeInterval(25200)
         print("Selected Date: \(time)")
         
-        let log = makeLogInit(ref_id: (self.items![indexPath.row].medicine!.id)!)
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = time
         log.action = "Take"
-        log.time = self.items![indexPath.row].time
-        log.medicine_name = self.items![indexPath.row].medicine?.name
-        
         
         do{
             try self.context.save()
@@ -217,23 +211,42 @@ class CoreDataManager{
         }
         
         //Firestore
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
     }
     
-    func bgLog(bgDate:Date,bgTime:String,bg_id:String){
+    func medLog(medicine_name:String,date: Date, time:String,bg_id:String, eat_time: Int16){
         
         let log = makeLogInit(ref_id: bg_id)
-        log.date = bgDate
-        log.time = bgTime
-        log.bg_check_result = "-1"
-        log.type = 1
+        log.medicine_name = medicine_name
+        log.date = date
+        log.time = time
+        log.action = "Nil" //First time
+        log.type = 0 //med
+        log.eat_time = eat_time
         
         do{
             try self.context.save()
         }catch{
             
         }
+        //Firestore
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
+    }
+    
+    func bgLog(bgDate:Date,bgTime:String,bg_id:String, bg_type: Int16){
         
+        let log = makeLogInit(ref_id: bg_id)
+        log.date = bgDate
+        log.time = bgTime
+        log.bg_check_result = "-1"
+        log.type = 1 //BG
+        log.eat_time = bg_type //BG_type
+        
+        do{
+            try self.context.save()
+        }catch{
+            
+        }
         //Firestore
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
@@ -266,7 +279,7 @@ class CoreDataManager{
         let bg_time = BG_Time(context: self.context)
     }
     
-    func tepatWaktu(daySelected: Date, indexPath: IndexPath){
+    func tepatWaktu(daySelected: Date, log: Log){
         //change daySelected to String
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_gb")
@@ -275,7 +288,7 @@ class CoreDataManager{
         // print(tanggal)
         
         // Create String
-        let time = self.items![indexPath.row].time!
+        let time = log.time!
         let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
         let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
         let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
@@ -291,12 +304,10 @@ class CoreDataManager{
         // Convert String to Date
         print("\(dateFormatter.date(from: string)!) ubah ke UTC")
         
-        let log = makeLogInit(ref_id: (self.items![indexPath.row].medicine!.id)!)
+
         log.date = dateFormatter.date(from: string) // Oct 29, 2019 at 7:15 PM
         log.dateTake = dateFormatter.date(from: string)
         log.action = "Take"
-        log.time = self.items![indexPath.row].time
-        log.medicine_name = self.items![indexPath.row].medicine?.name
         
         do{
             try self.context.save()
@@ -305,7 +316,7 @@ class CoreDataManager{
         }
         
         //Firestore
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
     }
     
 
@@ -333,6 +344,43 @@ class CoreDataManager{
         }
     }
     
+    func removeAllLogMedAfter(med: Medicine, date: Date){
+
+            var logToRemove = [Log]()
+            let request = Log.fetchRequest() as NSFetchRequest<Log>
+
+            // Get the current calendar with local time zone
+            // Get today's beginning & end
+            var dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
+            dateFrom =  calendarHelper.addDays(date: dateFrom, days: 1)
+
+            // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
+
+            // Set predicate as date being today's date
+
+            let fromPredicate = NSPredicate(format: "%K > %@",#keyPath(Log.date), dateFrom as NSDate)
+            let refPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), med.id! as String)
+
+            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, refPredicate])
+
+            request.predicate = datePredicate
+
+            do{
+                logToRemove = try context.fetch(request)
+            }catch{
+
+            }
+
+            print("logtoremove : Date \(date)")
+
+            for log in logToRemove {
+                print("logtoremove \(log.log_id!) \(log.date!) \(log.type)")
+                removeLogBG(logToRemove: log)
+            }
+
+        }
+    
+    
     func removeAllLogBGAfter(bg: BG, date: Date){
 
             var logToRemove = [Log]()
@@ -340,17 +388,17 @@ class CoreDataManager{
 
             // Get the current calendar with local time zone
             // Get today's beginning & end
-            let dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
+            var dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
+            dateFrom =  calendarHelper.addDays(date: dateFrom, days: 1)
 
             // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
 
             // Set predicate as date being today's date
 
-            let fromPredicate = NSPredicate(format: "%K >= %@",#keyPath(Log.date), dateFrom as NSDate)
-            let typePredicate = NSPredicate(format: "type == 1")
-            let timePredicate = NSPredicate(format: "%K == %@",#keyPath(Log.time), bg.bg_time! as String)
+            let fromPredicate = NSPredicate(format: "%K > %@",#keyPath(Log.date), dateFrom as NSDate)
+            let refPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), bg.bg_id! as String)
 
-            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, typePredicate, timePredicate])
+            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, refPredicate])
 
             request.predicate = datePredicate
 

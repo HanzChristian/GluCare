@@ -22,6 +22,7 @@ extension CoreDataManager{
         newLog.medicine_name = ""
         newLog.time = ""
         newLog.type = 0 //med
+        newLog.eat_time = -1
         newLog.ref_id = ref_id
         
         
@@ -157,6 +158,9 @@ extension CoreDataManager{
             
             request.predicate = datePredicate
             
+            let sort = NSSortDescriptor(key: "time", ascending: true)
+            request.sortDescriptors = [sort]
+            
             self.logs = try context.fetch(request)
             
             DispatchQueue.main.async {
@@ -175,8 +179,30 @@ extension CoreDataManager{
         }catch{
             
         }
-        
     }
+    
+    func checkMedLogAvailable(logs: [Log], meds: [Medicine], dayselected: Date){
+        for med in meds {
+            var isLog = false
+            
+            for log in logs {
+                if med.id == log.ref_id{
+                    isLog = true
+                }
+            }
+            
+            if isLog == false {
+                // Buat log baru
+                let med_times = med.time
+                for t in med_times!{
+                    let time = t as! Medicine_Time
+                    print("create at time \(time.time)")
+                    medLog(medicine_name: med.name!, date: dayselected, time: time.time!, bg_id: med.id!, eat_time: med.eat_time)
+                }
+            }
+        }
+    }
+    
     
     func checkBGLogAvailable(logs: [Log], bgs: [BG], daySelected: Date){
         for bg in bgs {
@@ -279,7 +305,7 @@ extension CoreDataManager{
         var lastDate = beginDate
         
         repeat {
-            CoreDataManager.coreDataManager.bgLog(bgDate: lastDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+            CoreDataManager.coreDataManager.bgLog(bgDate: lastDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
             
             let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate)
             lastDate = date!
@@ -310,7 +336,7 @@ extension CoreDataManager{
                             continue
                         }
                         
-                        CoreDataManager.coreDataManager.bgLog(bgDate: currentDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                        CoreDataManager.coreDataManager.bgLog(bgDate: currentDate, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
                         
                         print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
                         print("Tete \((t as! BG_Time).bg_date_item)")

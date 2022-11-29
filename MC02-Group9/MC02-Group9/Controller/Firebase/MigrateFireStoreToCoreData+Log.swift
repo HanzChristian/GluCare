@@ -16,7 +16,7 @@ extension MigrateFirestoreToCoreData {
     
     func addNewLogToFirestore(log: Log) {
         if let user = Auth.auth().currentUser?.email{
-            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, log_ref: log.ref_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user)
+            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, log_ref: log.ref_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user, eat_time: log.eat_time)
             
             do{
                 try db.collection("log").document().setData(from: newLog)
@@ -65,10 +65,11 @@ extension MigrateFirestoreToCoreData {
     func syncCoredataLogToFirestore(fireLogs: [LogFire]){
         
         let role = UserDefaults.standard.integer(forKey: "role")
-        if role == 0{
+        if role == 1{
             return
         }
         
+        print("aku caregiver")
         let logs = coreDataManager.fetchAllLogs()
         
         var logsToDelete = [Log]()
@@ -76,19 +77,21 @@ extension MigrateFirestoreToCoreData {
         for log in logs {
             
             var findSame = false
-            var bgSame = true
+            var needUpdateLog = false
             var tempLog: LogFire?
             
             for fireLog in fireLogs {
- 
-                print("tes22 -- \(fireLog.log_id) \(log.log_id!) ")
                 
-                if fireLog.log_id == log.log_id!{
+                if log.log_id == fireLog.log_id{
                     findSame = true
-                }
-                if fireLog.log_id == log.log_id! && fireLog.bg_check_result != log.bg_check_result{
-                    bgSame = false
-                    tempLog = fireLog
+                    
+                    if  log.bg_check_result != fireLog.bg_check_result  ||
+                        log.dateTake != fireLog.dateTake                ||
+                        log.action != fireLog.action
+                    {
+                        needUpdateLog = true
+                        tempLog = fireLog
+                    }
                 }
             }
             
@@ -97,7 +100,7 @@ extension MigrateFirestoreToCoreData {
                 coreDataManager.batalkan(logToRemove: log)
             }
             
-            if bgSame == false{
+            if needUpdateLog == true{
                 coreDataManager.updateLog(log: log, logFire: tempLog!)
             }
             

@@ -492,12 +492,9 @@ struct JadwalVars {
     var type:String
     var idx:Int
     
-    var logIdx: Int
-    
     init(type:String,idx:Int){
         self.type = type
         self.idx = idx
-        self.logIdx = -1
     }
     
 }

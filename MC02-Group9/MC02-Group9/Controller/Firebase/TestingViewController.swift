@@ -43,27 +43,27 @@ class TestingViewController: UIViewController {
     }
     
     @IBAction func addSampleData (_ sender:Any ){
-        if role != 0 {
-            errorMsg.text = "you can't add new data"
-            return
-        }
-        
-        let medicineTimes = [
-            MedicineTimeFire(time: "16.00"),
-            MedicineTimeFire(time: "20.00")
-        ]
-        
-        if let user = Auth.auth().currentUser?.email,
-           let medicine_name = newDataField.text, medicine_name != "" {
-            let medicine = MedicineFire(medicine_name: medicine_name, medicine_time: medicineTimes, medicine_eat_time: 1, owner: user, id: UUID().uuidString)
-            
-            do{
-                try db.collection("medicine").document().setData(from: medicine)
-                self.errorMsg.text = "success add new medicine"
-            }catch let error{
-                print(" error msg \(error)")
-            }
-        }
+//        if role != 0 {
+//            errorMsg.text = "you can't add new data"
+//            return
+//        }
+//        
+//        let medicineTimes = [
+//            MedicineTimeFire(time: "16.00"),
+//            MedicineTimeFire(time: "20.00")
+//        ]
+//        
+//        if let user = Auth.auth().currentUser?.email,
+//           let medicine_name = newDataField.text, medicine_name != "" {
+//            let medicine = MedicineFire(medicine_name: medicine_name, medicine_time: medicineTimes, medicine_eat_time: 1, owner: user, id: UUID().uuidString, start_date: medicine)
+//            
+//            do{
+//                try db.collection("medicine").document().setData(from: medicine)
+//                self.errorMsg.text = "success add new medicine"
+//            }catch let error{
+//                print(" error msg \(error)")
+//            }
+//        }
     }
     
     @IBAction func connectToPatient (_ sender: Any){

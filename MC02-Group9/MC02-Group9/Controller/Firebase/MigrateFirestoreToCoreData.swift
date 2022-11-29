@@ -48,7 +48,7 @@ class MigrateFirestoreToCoreData {
         }
         
         if let user = Auth.auth().currentUser?.email{
-            let new_medicine = MedicineFire(medicine_name: medicine.name!, medicine_time: new_medicine_times, medicine_eat_time: Int(medicine.eat_time), owner: user, id: medicine.id!)
+            let new_medicine = MedicineFire(medicine_name: medicine.name!, medicine_time: new_medicine_times, medicine_eat_time: Int(medicine.eat_time), owner: user, id: medicine.id!, start_date: medicine.start_date!)
             do{
                 try db.collection("medicine").document().setData(from: new_medicine)
                 print("success add new medicine")

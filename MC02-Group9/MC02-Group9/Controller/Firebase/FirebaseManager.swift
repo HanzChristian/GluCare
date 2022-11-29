@@ -296,7 +296,10 @@ class FirebaseManager {
                         }
                         
                         if logs != nil {
+                            
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
+                        
+                            
                             
                             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
 

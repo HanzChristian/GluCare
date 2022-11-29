@@ -252,12 +252,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
             
             
             if(bg.bg_frequency == 0){
-                CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                 
                 for i in 1...20 { //loop dari hari 1 - 100
                     let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
                     lastDate = date
-                    CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                    CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                 }
             }
             else if(bg.bg_frequency == 1){
@@ -271,7 +271,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         
                         for t in bg_times{
                             if(currentWeekDay == (t as! BG_Time).bg_date_item){
-                                CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                                CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
                                 
                                 print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
                                 print("Tete \((t as! BG_Time).bg_date_item)")
@@ -317,7 +317,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         // pake discord aja suaranya lah
     //                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
                         if(bg.bg_start_date! <= final!){
-                            CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                            CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
                         }
                     }
                     lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
@@ -395,12 +395,12 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
         
         
         if(bg.bg_frequency == 0){
-            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+            CoreDataManager.coreDataManager.bgLog(bgDate: bg.bg_start_date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!,bg_type: bg.bg_type)
             
             for i in 1...5 { //loop dari hari 1 - 100
                 let date = CalendarManager.calendarManager.calendar.date(byAdding: .day, value: Int(bg.bg_each_frequency), to: lastDate!)
                 lastDate = date
-                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                CoreDataManager.coreDataManager.bgLog(bgDate: date!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
             }
         }
         else if(bg.bg_frequency == 1){
@@ -414,7 +414,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     
                     for t in bg_times{
                         if(currentWeekDay == (t as! BG_Time).bg_date_item){
-                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                            CoreDataManager.coreDataManager.bgLog(bgDate: currentDate!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                             
                             print(" CURRENT DATE \(currentDate) \(currentWeekDay)")
                             print("Tete \((t as! BG_Time).bg_date_item)")
@@ -460,7 +460,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     // pake discord aja suaranya lah
 //                    print("INI START DATE \(bg.bg_start_date) INI DATENYA \(dates)")
                     if(bg.bg_start_date! <= final!){
-                        CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!)
+                        CoreDataManager.coreDataManager.bgLog(bgDate: final!, bgTime: bg.bg_time!, bg_id: bg.bg_id!, bg_type: bg.bg_type)
                     }
                 }
                 lastDate = Calendar.current.date(byAdding: .month, value: Int(bg.bg_each_frequency), to: lastDate!)
@@ -646,9 +646,14 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                     }
                 }
                 
+                
+                
+                if edit == true && firstTime == false{
+                    cellBgSubFrequency!.bgSubFrequencyEveryLbl.text = "Setiap"
+                    cellBgSubFrequency!.bgSubFrequencyDay.text = "\(bg!.bg_each_frequency)"
+                }
                 firstTime = true
-                cellBgSubFrequency!.bgSubFrequencyEveryLbl.text = "Setiap"
-                cellBgSubFrequency!.bgSubFrequencyDay.text = "\(bg!.bg_each_frequency)"
+                
                 validateFormBG()
                 return cellBgSubFrequency!
             }
