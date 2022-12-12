@@ -13,6 +13,7 @@ class UsernameTVC: UITableViewCell {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var userEmailLbl: UILabel!
     
+    let role = UserDefaults.standard.integer(forKey: "role")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,7 +22,11 @@ class UsernameTVC: UITableViewCell {
         
         
         userNameLbl.text = FirebaseManager.firebaseManager.name
-        userEmailLbl.text = FirebaseManager.firebaseManager.email
+        if(role == 1){
+            userEmailLbl.text = "Pasien Diabetes"
+        }else if(role == 2){
+            userEmailLbl.text = "Anggota Keluarga"
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUser), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
         
@@ -29,7 +34,13 @@ class UsernameTVC: UITableViewCell {
     
     @objc func refreshUser(){
         userNameLbl.text = FirebaseManager.firebaseManager.name
-        userEmailLbl.text = FirebaseManager.firebaseManager.email
+        
+        if(role == 1){
+            userEmailLbl.text = "Pasien Diabetes"
+        }else if(role == 2){
+            userEmailLbl.text = "Anggota Keluarga"
+        }
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

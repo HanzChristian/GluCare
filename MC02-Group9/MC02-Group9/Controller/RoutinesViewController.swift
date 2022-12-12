@@ -21,7 +21,7 @@ class RoutinesViewController: UIViewController {
     let coreDataManager = CoreDataManager.coreDataManager
     
     var medsTypeArr = ["Waktu Spesifik","Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
-    var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
+    var bgTypeArr = ["Gula darah puasa", "Gula darah sewaktu", "HbA1c"]
     var bgFreqArr = ["Hari", "Minggu", "Bulan"]
     
     var rutinitasSections = ["Jadwal Minum Obat","Jadwal Cek Gula Darah"]
