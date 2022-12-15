@@ -183,6 +183,36 @@ extension CoreDataManager{
         }
     }
     
+    func fetchBGLogSelectedDate(date: Date, jenis: String) -> [Log]{
+        
+        var logs = [Log]()
+        
+        do{
+            let request = Log.fetchRequest() as NSFetchRequest<Log>
+            
+            let dateFrom = calendarManager.calendar.startOfDay(for: daySelected)
+            let dateTo = calendarManager.calendar.date(byAdding: .day, value: 1, to: dateFrom)
+
+            let fromPredicate = NSPredicate(format: "%@ <= %K", dateFrom as NSDate, #keyPath(Log.date))
+            
+            let toPredicate = NSPredicate(format: "%K < %@", #keyPath(Log.date), dateTo! as NSDate)
+            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
+            
+            request.predicate = datePredicate
+            
+            let sort = NSSortDescriptor(key: "time", ascending: true)
+            request.sortDescriptors = [sort]
+            
+            
+            logs = try context.fetch(request)
+
+        }catch{
+            
+        }
+        
+        return logs
+    }
+    
     func checkMedLogAvailable(logs: [Log], meds: [Medicine], dayselected: Date){
         
 //        let role = UserDefaults.standard.integer(forKey: "role")
