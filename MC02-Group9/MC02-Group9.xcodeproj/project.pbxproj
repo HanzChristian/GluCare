@@ -142,6 +142,10 @@
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
 		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
+		F07D242C2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D242B2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift */; };
+		F07D242E2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */; };
+		F07D24302949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */; };
+		F07D2432294A0A53007F49A1 /* LineChartViewFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */; };
 		F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0822A452932DE5C000AC907 /* ProfileViewController.swift */; };
 		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
@@ -149,6 +153,7 @@
 		F0DFE2C1291E243300993B0D /* CoreDataManager+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */; };
 		F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */; };
 		F0DFE2C5291E252D00993B0D /* CoreDataManager+Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */; };
+		F0E006882942DC140054DA0F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E006872942DC140054DA0F /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -290,6 +295,10 @@
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
+		F07D242B2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+Fastis.swift"; sourceTree = "<group>"; };
+		F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+DateSelector.swift"; sourceTree = "<group>"; };
+		F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+ChartView.swift"; sourceTree = "<group>"; };
+		F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewFormatter.swift; sourceTree = "<group>"; };
 		F0822A452932DE5C000AC907 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
@@ -297,6 +306,7 @@
 		F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Log.swift"; sourceTree = "<group>"; };
 		F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+BG.swift"; sourceTree = "<group>"; };
 		F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Streak.swift"; sourceTree = "<group>"; };
+		F0E006872942DC140054DA0F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -593,6 +603,7 @@
 		F05616A628EED4B200F61C4C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F0E006872942DC140054DA0F /* Color.swift */,
 				F05616A728EED4BD00F61C4C /* CalendarHelper.swift */,
 				1547608C290AAA7300D56835 /* ImageHelper.swift */,
 			);
@@ -611,6 +622,10 @@
 			isa = PBXGroup;
 			children = (
 				F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */,
+				F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */,
+				F07D242B2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift */,
+				F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */,
+				F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */,
 			);
 			path = Statistik;
 			sourceTree = "<group>";
@@ -854,6 +869,7 @@
 				F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
+				F0E006882942DC140054DA0F /* Color.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				F054B0DC290BDE0C00287D06 /* RegisterViewController.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
@@ -880,7 +896,9 @@
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				155F70BA28ED47C8003A844B /* BGNameTableViewCell.swift in Sources */,
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
+				F07D242C2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
+				F07D242E2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
@@ -893,6 +911,7 @@
 				2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */,
 				F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
+				F07D2432294A0A53007F49A1 /* LineChartViewFormatter.swift in Sources */,
 				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
@@ -903,6 +922,7 @@
 				15CAFCFE28F54684009A7686 /* BGTimeTableViewCell.swift in Sources */,
 				F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */,
 				156E789328EEAB780072615F /* BGBtnSaveTableViewCell.swift in Sources */,
+				F07D24302949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift in Sources */,
 				F054B0D5290BDC5100287D06 /* User+CoreDataClass.swift in Sources */,
 				F02AE118292CF03000C8AF34 /* Medicine+CoreDataProperties.swift in Sources */,
 				2C23DF012913DD550074AFB3 /* ListCaregiverTVC.swift in Sources */,

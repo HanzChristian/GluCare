@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NnK-gh-mzR">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -131,19 +131,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f18-gr-k8c">
-                                <rect key="frame" x="33" y="133" width="325" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f18-gr-k8c">
+                                <rect key="frame" x="33" y="91" width="325" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Hari"/>
                                     <segment title="Minggu"/>
                                     <segment title="Bulan"/>
                                 </segments>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-TL-Uan">
-                                <rect key="frame" x="104" y="645" width="182" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="182" id="KUC-1o-TJo"/>
-                                </constraints>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-TL-Uan">
+                                <rect key="frame" x="104" y="724" width="182" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -151,31 +150,50 @@
                                     <action selector="tapTextField:" destination="iEV-0P-YvW" eventType="touchUpInside" id="Tis-Q5-oqA"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-0E-RW9" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="227" width="390" height="390"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-0E-RW9" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="146" width="366" height="355"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gaY-0E-RW9" secondAttribute="height" multiplier="1:1" id="YLw-Bf-Pwt"/>
-                                    <constraint firstAttribute="width" constant="390" id="yvS-dw-2os"/>
-                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamis, 21 September 2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gio-Ca-GgC">
+                                <rect key="frame" x="70" y="520" width="250" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT0-fX-hmw">
+                                <rect key="frame" x="33" y="513" width="40" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="semibold"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="leftBtn:" destination="iEV-0P-YvW" eventType="touchUpInside" id="xS9-dw-IQ3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-Dz-vNV">
+                                <rect key="frame" x="318" y="513" width="40" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="semibold"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="rightBtn:" destination="iEV-0P-YvW" eventType="touchUpInside" id="JYZ-dG-bVf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gOL-Ju-2dd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gaY-0E-RW9" firstAttribute="centerX" secondItem="shn-el-KZd" secondAttribute="centerX" id="1UX-lj-ASU"/>
-                            <constraint firstItem="r6j-TL-Uan" firstAttribute="top" secondItem="gaY-0E-RW9" secondAttribute="bottom" constant="28" id="5HW-e6-vjv"/>
-                            <constraint firstItem="r6j-TL-Uan" firstAttribute="leading" secondItem="gOL-Ju-2dd" secondAttribute="leading" constant="104" id="AM6-t1-tOM"/>
-                            <constraint firstItem="f18-gr-k8c" firstAttribute="leading" secondItem="gOL-Ju-2dd" secondAttribute="leading" constant="33" id="Fsh-wm-L5E"/>
-                            <constraint firstItem="gOL-Ju-2dd" firstAttribute="trailing" secondItem="r6j-TL-Uan" secondAttribute="trailing" constant="104" id="Kkh-3U-HPX"/>
-                            <constraint firstItem="f18-gr-k8c" firstAttribute="top" secondItem="gOL-Ju-2dd" secondAttribute="top" constant="42" id="M4d-RF-QcN"/>
-                            <constraint firstItem="gaY-0E-RW9" firstAttribute="centerY" secondItem="shn-el-KZd" secondAttribute="centerY" id="pFQ-2G-ewf"/>
-                            <constraint firstItem="gOL-Ju-2dd" firstAttribute="trailing" secondItem="f18-gr-k8c" secondAttribute="trailing" constant="32" id="xsY-eS-wdQ"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cla-3G-NfM"/>
                     <connections>
+                        <outlet property="dateField" destination="Gio-Ca-GgC" id="gXH-FI-PBa"/>
+                        <outlet property="leftArrow" destination="wT0-fX-hmw" id="uFx-m3-Xgu"/>
                         <outlet property="lineChartView" destination="gaY-0E-RW9" id="daH-U6-mPz"/>
+                        <outlet property="rightArrow" destination="BAa-Dz-vNV" id="XIx-K3-v07"/>
                         <outlet property="segmentedControl" destination="f18-gr-k8c" id="aHb-pO-SQf"/>
                         <outlet property="textField" destination="r6j-TL-Uan" id="f2O-wF-71R"/>
                     </connections>
@@ -1301,7 +1319,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1491,6 +1509,8 @@
     <resources>
         <image name="card-caregiver" width="351" height="132"/>
         <image name="card-patient" width="351" height="132"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="clock" width="17.333333969116211" height="17.333333969116211"/>
         <image name="ctrl-page-1" width="77" height="12"/>
         <image name="empty" width="386" height="546"/>

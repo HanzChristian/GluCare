@@ -238,7 +238,7 @@ class FirebaseManager {
     }
     
     func loadFirebase() {
-        
+    
         var firstTime = false
         var firstTime2 = false
         var firstTime3 = false
