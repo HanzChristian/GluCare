@@ -60,6 +60,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
+        listCaregiver.caregiverList.removeAll()
         alreadyLogin()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.goToMain), name: NSNotification.Name(rawValue: "finishGetAccountInfo"), object: nil)

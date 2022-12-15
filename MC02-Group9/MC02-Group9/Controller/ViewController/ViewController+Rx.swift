@@ -68,7 +68,7 @@ extension ViewController{
         if(log?.eat_time == 0){
             cell.freqLbl.text = "Gula Darah Puasa"
         }else if(log?.eat_time == 1){
-            cell.freqLbl.text = "Gula Darah Sesaat"
+            cell.freqLbl.text = "Gula Darah Sewaktu"
         }else{
             cell.freqLbl.text = "HbA1c"
         }

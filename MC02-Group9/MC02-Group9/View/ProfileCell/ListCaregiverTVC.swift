@@ -13,6 +13,15 @@ class ListCaregiverTVC: UITableViewCell {
     @IBOutlet weak var caregiverNameLbl: UILabel!
     @IBOutlet weak var confirmCaregiverBtn: UIButton!
     @IBOutlet weak var waitingConfirmBtn: UIButton!
+    @IBOutlet weak var deleteCaregiverBtn: UIButton!
+    
+    
+    
+    @IBAction func tapDelete(_ sender: UIButton) {
+        
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+        listCaregiver.caregiverList.removeAll()
+    }
     
     @IBAction func tapConfirm1(_ sender: Any) {
         
@@ -48,6 +57,7 @@ class ListCaregiverTVC: UITableViewCell {
                                 FirebaseManager.firebaseManager.getAccountInfo()
                             }
                         }
+                        
                     }
                 }
         }
@@ -75,6 +85,7 @@ class ListCaregiverTVC: UITableViewCell {
     // TINGGAL DIMAININ IS HIDDEN NYA
         confirmCaregiverBtn.isHidden = true
         waitingConfirmBtn.isHidden = true
+        deleteCaregiverBtn.isHidden = false
 //        STATUS CAREGIVER
 //        0 = SUDAH ACCEPT
 //        1 = BUTTON KONFIRMASI
@@ -98,14 +109,17 @@ extension ListCaregiverTVC {
     private func caregiver(_ bool: Bool) {
         confirmCaregiverBtn.isHidden = true
         waitingConfirmBtn.isHidden = true
+        deleteCaregiverBtn.isHidden = false
     }
     private func caregiverConfirm(_ bool: Bool) {
         confirmCaregiverBtn.isHidden = false
         waitingConfirmBtn.isHidden = true
+        deleteCaregiverBtn.isHidden = true
     }
     private func caregiverWaiting(_ bool: Bool) {
         confirmCaregiverBtn.isHidden = true
         waitingConfirmBtn.isHidden = false
+        deleteCaregiverBtn.isHidden = true
     }
     
 }

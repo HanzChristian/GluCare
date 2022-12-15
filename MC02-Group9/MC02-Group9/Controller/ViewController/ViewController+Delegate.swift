@@ -246,8 +246,8 @@ extension ViewController:UITableViewDelegate{
                 title = "Gula Darah Puasa"
                 content = "Halo, jangan lupa untuk periksa gula darah puasa kamu ya jam \(bg.time!) hari ini."
             }else if(bg.eat_time == 1){
-                title = "Gula Darah Sesaat"
-                content = "Jangan lupa untuk memeriksa gula darah sesaat kamu pukul \(bg.time!) hari ini, ya."
+                title = "Gula Darah Sewaktu"
+                content = "Jangan lupa untuk memeriksa gula darah sewaktu kamu pukul \(bg.time!) hari ini, ya."
             }else{
                 title = "HbA1c"
                 content = "Hai, kamu ada jadwal untuk memeriksa HbA1c di jam \(bg.time!) hari ini."

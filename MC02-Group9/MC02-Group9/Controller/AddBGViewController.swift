@@ -16,7 +16,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
     
     var height = 49.0
     let cellTitle = ["Jenis", "Jadwal"]
-    var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
+    var bgTypeArr = ["Gula darah puasa", "Gula darah sewaktu", "HbA1c"]
     
     
     var cellCalendar: BGCalendarTableViewCell?
@@ -544,8 +544,8 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Puasa"
                         title = "Cek Gula Darah Puasa"
                     }else if(bg!.bg_type == 1){
-                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sesaat"
-                        title = "Cek Gula Darah Sesaat"
+                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sewaktu"
+                        title = "Cek Gula Darah Sewaktu"
                     }else{
                         cellBgTypeTV!.bgTypeLbl.text = "HbA1c"
                         title = "Cek HbA1c"
@@ -559,7 +559,7 @@ class AddBGViewController: UIViewController,UITableViewDelegate,checkBGForm, UIT
                         cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Puasa"
                         //title = "Cek Gula Darah Puasa"
                     }else if(selectedType == 1){
-                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sesaat"
+                        cellBgTypeTV!.bgTypeLbl.text = "Gula Darah Sewaktu"
                         //title = "Cek Gula Darah Sesaat"
                     }else{
                         cellBgTypeTV!.bgTypeLbl.text = "HbA1c"

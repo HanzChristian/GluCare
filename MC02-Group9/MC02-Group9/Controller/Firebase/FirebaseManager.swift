@@ -328,6 +328,29 @@ class FirebaseManager {
                         }
                     }
                 }
+            
+//            db.collection("link").whereField("owner", isEqualTo: "\(user)")
+//                .addSnapshotListener() { [weak self] (querySnapshot, err) in
+//                    if let err = err {
+//                        print("Error getting documents: \(err)")
+//                    } else if let querySnapshot = querySnapshot{
+//                        let logs: [LogFire] = querySnapshot.documents.compactMap{
+//                            return try? $0.data(as: LogFire.self)
+//                        }
+//
+//                        if logs != nil {
+//
+//                            if role == 2 || firstTime3 == false{
+//                                firstTime3 = true
+//                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.migrateLogFromFirestoreToCoredata(logs: logs)
+//
+//                                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.syncCoredataLogToFirestore(fireLogs: logs)
+//                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
+//                            }
+//
+//                        }
+//                    }
+//                }
         }
     }
     

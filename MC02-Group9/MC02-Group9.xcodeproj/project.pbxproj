@@ -35,6 +35,7 @@
 		158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 158B02DC284FAD0D005254A0 /* MC02_Group9.xcdatamodeld */; };
 		158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158B02DF284FAD0F005254A0 /* Assets.xcassets */; };
 		158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B02E1284FAD0F005254A0 /* LaunchScreen.storyboard */; };
+		15B869A829436160009D9C60 /* MigrateFirestoreToCoreData+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869A729436160009D9C60 /* MigrateFirestoreToCoreData+User.swift */; };
 		15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */; };
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
 		15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFCEF28F54038009A7686 /* AddBGViewController.swift */; };
@@ -187,6 +188,7 @@
 		158B02DF284FAD0F005254A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		158B02E2284FAD0F005254A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158B02E4284FAD0F005254A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15B869A729436160009D9C60 /* MigrateFirestoreToCoreData+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MigrateFirestoreToCoreData+User.swift"; sourceTree = "<group>"; };
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
 		15CAFCEF28F54038009A7686 /* AddBGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBGViewController.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				F054B0DF290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift */,
 				F05478322910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift */,
 				F05478342910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift */,
+				15B869A729436160009D9C60 /* MigrateFirestoreToCoreData+User.swift */,
 				F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */,
 			);
 			path = Firebase;
@@ -892,6 +895,7 @@
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
 				F054781F2910B70200DB4503 /* MedAdheranceTVC.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
+				15B869A829436160009D9C60 /* MigrateFirestoreToCoreData+User.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				155F70BA28ED47C8003A844B /* BGNameTableViewCell.swift in Sources */,
@@ -1108,7 +1112,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y38KPN6RN4;
+				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1139,7 +1143,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y38KPN6RN4;
+				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
