@@ -12,19 +12,24 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    var statisticsSections = ["Rata-rata mingguan 25 Sept - 1 Okt","", ""]
+    let currentDateTime = Date()
+    let formatter = DateFormatter()
+    
     var items = CoreDataManager.coreDataManager.items
     var itemsMed = CoreDataManager.coreDataManager.medicines
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemGroupedBackground
         
-        
+        //formatter.timeStyle = .none
+        //formatter.dateStyle = .medium
+        formatter.dateFormat = "MMM d"
         
         let nibAdheranceStat = UINib(nibName: "AdheranceSTVC", bundle: nil)
         tableView.register(nibAdheranceStat, forCellReuseIdentifier: "adheranceSTVC")
@@ -109,6 +114,10 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         let headerView = UIView()
         
         let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
+        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: daySelected))!
+        let dateFrom = formatter.string(from: startOfMonth)
+        let dateToday = formatter.string(from: currentDateTime)
+        let statisticsSections = ["Rata-rata bulanan \(dateFrom) - \(dateToday)","", ""]
         sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
         sectionLabel.textColor = UIColor.black
         sectionLabel.text = statisticsSections[section]
@@ -156,8 +165,10 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         print("print calculate" ,totalMeds, skippedMed)
+        if (totalMeds == 0.0 && skippedMed == 0.0) {
+            return 0.0
+        }
         resultMeds = Double(round((totalMeds - skippedMed) / (totalMeds) * 100.0))
-        print("results", resultMeds)
         return resultMeds
     }
     
@@ -197,7 +208,6 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
             return 0.0
         }
         resultHbA1C = Double(round((totalHbA1C) / (countHbA1c)))
-        
         return resultHbA1C
     }
     
@@ -233,7 +243,6 @@ extension CoreDataManager {
             let dateFrom = calendarManager.calendar.startOfDay(for: startOfMonth) // eg. 2016-10-10 00:00:00
             let startDate = calendarManager.calendar.startOfDay(for: daySelected)
             let dateTo = calendarManager.calendar.date(byAdding: .day, value: 1, to: startDate)
-            print("datefromto", dateFrom, dateTo)
 
             // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
 
@@ -256,5 +265,4 @@ extension CoreDataManager {
         }
         return logs
     }
-    
 }
