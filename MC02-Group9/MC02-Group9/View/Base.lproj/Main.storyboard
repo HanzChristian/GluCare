@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -557,7 +557,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="GcJ-tA-QlO" kind="relationship" relationship="viewControllers" id="2bW-9X-6p2"/>
-                        <segue destination="yPK-Nn-lpy" kind="relationship" relationship="viewControllers" id="ovq-cz-Wh0"/>
+                        <segue destination="cR9-Ul-joY" kind="relationship" relationship="viewControllers" id="ofg-Ta-seW"/>
+                        <segue destination="yPK-Nn-lpy" kind="relationship" relationship="viewControllers" id="8Nm-s4-Fkz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9M-Tp-TIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -595,6 +596,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzi-T7-7lL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="295" y="593"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="BPD-VG-72S">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistics" id="cR9-Ul-joY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FtT-Gf-H33"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3T4-3a-R5K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="585"/>
         </scene>
         <!--Badge-->
         <scene sceneID="2EE-jR-pTG">
