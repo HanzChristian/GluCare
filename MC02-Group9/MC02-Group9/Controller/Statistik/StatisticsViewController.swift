@@ -20,7 +20,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.title = "Statistik"
         
         tableView.delegate = self
         tableView.dataSource = self

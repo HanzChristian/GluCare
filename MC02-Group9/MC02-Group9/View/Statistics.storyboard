@@ -31,13 +31,13 @@
         <!--Statistik-->
         <scene sceneID="qFu-dx-Hn0">
             <objects>
-                <viewController id="XqI-4a-GIo" customClass="StatisticsViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="t9N-Ua-PMh">
+                <viewController title="Statistik" id="XqI-4a-GIo" customClass="StatisticsViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="t9N-Ua-PMh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Statistik" largeTitleDisplayMode="always" id="EUG-fb-VlW"/>
+                    <navigationItem key="navigationItem" id="EUG-fb-VlW"/>
                     <connections>
                         <outlet property="tableView" destination="t9N-Ua-PMh" id="zn5-yK-cm8"/>
                     </connections>
