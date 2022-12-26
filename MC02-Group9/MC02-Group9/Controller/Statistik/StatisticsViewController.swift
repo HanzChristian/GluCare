@@ -27,6 +27,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemGroupedBackground
         
+        print("test")
         //formatter.timeStyle = .none
         //formatter.dateStyle = .medium
         formatter.dateFormat = "MMM d"
