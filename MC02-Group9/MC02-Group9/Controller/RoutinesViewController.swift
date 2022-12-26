@@ -21,7 +21,7 @@ class RoutinesViewController: UIViewController {
     let coreDataManager = CoreDataManager.coreDataManager
     
     var medsTypeArr = ["Waktu Spesifik","Sebelum Makan", "Setelah Makan", "Bersamaan dengan Makan"]
-    var bgTypeArr = ["Gula darah puasa", "Gula darah sesaat", "HbA1c"]
+    var bgTypeArr = ["Gula darah puasa", "Gula darah sewaktu", "HbA1c"]
     var bgFreqArr = ["Hari", "Minggu", "Bulan"]
     
     var rutinitasSections = ["Jadwal Minum Obat","Jadwal Cek Gula Darah"]
@@ -241,10 +241,13 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RoutinesMedsTVC
             cell.routinesTitleCellLbl?.text = self.items![indexPath.row].name!
             cell.routinesDescCellLbl?.text = medsTypeArr[Int(self.items![indexPath.row].eat_time)]
-            let times = self.items![indexPath.row].time!
+            var times = self.items![indexPath.row].time!.allObjects as? [Medicine_Time]
             cell.routinesTimeDescLbl?.text = ""
-            for t in times {
-                cell.routinesTimeDescLbl?.text! += (" \((t as! Medicine_Time).time!) ")
+            
+            times = times!.sorted(by: {$0.time! < $1.time!})
+            
+            for t in times! {
+                cell.routinesTimeDescLbl?.text! += (" \((t ).time!) ")
             }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
             cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")

@@ -150,7 +150,7 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
                 if(log?.eat_time == 0){
                     cellBGName!.BGNameLbl.text = "Gula Darah Puasa"
                 }else if(log?.eat_time == 1){
-                    cellBGName!.BGNameLbl.text = "Gula Darah Sesaat"
+                    cellBGName!.BGNameLbl.text = "Gula Darah Sewaktu"
                 }else{
                     cellBGName!.BGNameLbl.text = "HbA1c"
                 }

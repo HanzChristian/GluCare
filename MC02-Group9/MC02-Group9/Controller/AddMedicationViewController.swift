@@ -270,18 +270,6 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 // buat simpen waktu yg nya
                 
                 if(edit == true){
-                    //                    for time in cellTimePicker{
-                    //                        cellTimePicker.append(time)
-                    //                        let medicine_time = Medicine_Time(context: context)
-                    //                        cell.mealTimeLabel.text = medicine_time.time
-                    ////                        medicine_time.time = time.btnTimePicker.text
-                    //                    }
-                    
-                    //                    let times = self.items![indexPath.row].time!
-                    //                    for t in times {
-                    //                        cell.btnTimePicker.text = (" \((t as! Medicine_Time).time!) ")
-                    //                    }
-                    
                     var idx = 0
                     for med_time in medicine!.time!{
                         if idx == indexPath.row
@@ -292,17 +280,22 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     //                    cell.btnTimePicker.text = medicine.time[0].time
                 }
-                if(indexPath.row == cellTimePicker.count){
-                    cellTimePicker.append(cell)
-                }else{
-                    cellTimePicker[indexPath.row] = cell
-                }
+                
                 if(indexPath.row == 0){
                     tableView.setEditing(false, animated: false)
                 }else{
                     tableView.setEditing(true, animated: true)
                 }
                 
+                if(indexPath.row == cellTimePicker.count){
+                    cellTimePicker.append(cell)
+                    print("append")
+                }else{
+                    cell.btnTimePicker.text = cellTimePicker[indexPath.row].btnTimePicker.text
+                    cellTimePicker[indexPath.row] = cell
+                    print("masuk \(indexPath.row)")
+//                    return cellTimePicker[indexPath.row]
+                }
                 
                 return cell
                 
@@ -327,25 +320,23 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
             if(indexPath.section == 2){
                 
                 var jadwalIdx = 0
-                //                  self.cellTimePicker.remove(at: indexPath.row)
                 self.jadwal.remove(at: indexPath.row)
-                self.cellTimePicker.remove(at: indexPath.row)
+                
                 
                 for j in jadwal{
                     jadwal[jadwalIdx] = "Jadwal \(jadwalIdx+1)"
                     jadwalIdx += 1
                 }
                 
-                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
-                
-//                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
-                self.tableView.deleteRows(at: [indexPath], with: .none)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.2){ [self] in
-//                    tableView.setEditing(true, animated: false)
-//                    tableView.reloadData()
+                for i in indexPath.row...cellTimePicker.count - 1{
+                    print("ini woy \(i) \(cellTimePicker[i].btnTimePicker.text)")
                 }
                 
+                self.cellTimePicker.remove(at: indexPath.row)
+                
+                
+                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
+                self.tableView.deleteRows(at: [indexPath], with: .none)
                 
             }
             tableView.endUpdates()
@@ -765,10 +756,18 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         
         // Add time
         
+//        cellTimePicker = cellTimePicker.sorted{ $0.btnTimePicker.text! < $1.btnTimePicker.text!}
+//        for picker in cellTimePicker {
+//            print("heeee \(picker.btnTimePicker.text!)")
+//        }
+        
         for time in cellTimePicker{
             let medicine_time = Medicine_Time(context: context)
             medicine_time.time = time.btnTimePicker.text
+            print("hiiiii \(time.btnTimePicker.text!)")
+            
             medicine.addToTime(medicine_time)
+            
             
             //Get notification info
             notificationCenter.getNotificationSettings { (settings) in
