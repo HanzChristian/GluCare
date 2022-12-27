@@ -183,20 +183,32 @@ extension CoreDataManager{
         }
     }
     
-    func fetchBGLogSelectedDate(date: Date, jenis: String) -> [Log]{
+    func fetchBGLogSelectedDate(date: Date, jenis: Int16) -> [Log]{
+        // jenis reference = bg_type (BG) || eat_time (Log)
+        // 0 = "Gula Darah Puasa"
+        // 1 = "Gula Darah Sewaktu"
+        // 2 = "HbA1c"
+        
+        let type = Int16(1) // BG
         
         var logs = [Log]()
         
         do{
             let request = Log.fetchRequest() as NSFetchRequest<Log>
             
-            let dateFrom = calendarManager.calendar.startOfDay(for: daySelected)
+            let dateFrom = calendarManager.calendar.startOfDay(for: date)
             let dateTo = calendarManager.calendar.date(byAdding: .day, value: 1, to: dateFrom)
 
             let fromPredicate = NSPredicate(format: "%@ <= %K", dateFrom as NSDate, #keyPath(Log.date))
             
             let toPredicate = NSPredicate(format: "%K < %@", #keyPath(Log.date), dateTo! as NSDate)
-            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
+            
+            let jenisPredicate = NSPredicate(format: "eat_time == \(jenis)")
+            
+            let typePredicate = NSPredicate(format: "type == \(type)")
+            
+            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate,jenisPredicate,
+                                                                                    typePredicate])
             
             request.predicate = datePredicate
             

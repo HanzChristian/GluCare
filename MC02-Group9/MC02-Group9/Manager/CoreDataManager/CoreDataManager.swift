@@ -375,6 +375,7 @@ class CoreDataManager{
 
             let fromPredicate = NSPredicate(format: "%K > %@",#keyPath(Log.date), dateFrom as NSDate)
             let refPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), med.id! as String)
+        
 
             let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, refPredicate])
 

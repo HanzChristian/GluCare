@@ -12,12 +12,18 @@ import Fastis
 
 class GulaDarahStatistikViewController: UIViewController, ChartViewDelegate{
     
+    var chartDataEntries = [ChartDataEntry]()
+    let coredatamanager = CoreDataManager.coreDataManager
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var leftArrow: UIButton!
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var lineChartView: LineChartView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     let calendarHelper = CalendarHelper()
     let datePicker = UIDatePicker()
@@ -71,15 +77,18 @@ class GulaDarahStatistikViewController: UIViewController, ChartViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         
-        updateDateField()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .secondarySystemBackground
+        
         setupLineChartView()
         
         currentValue = nil
         textField.textAlignment = .center
 
-        setData()
 
-
+        updateDateField()
+        
         segmentedControl.addTarget(self, action: #selector(indexChanged), for: .valueChanged)
     }
     
@@ -109,16 +118,16 @@ class GulaDarahStatistikViewController: UIViewController, ChartViewDelegate{
         } else if segmentedControl.selectedSegmentIndex == 2 {
             print("Select 2")
             selected = 2
-            lineChartView = setupMonthView(chartView: lineChartView)
+            
         }
         
-        setData()
+        dateController = 0
+        updateDateField()
         
         lineChartView.data?.notifyDataChanged()
         lineChartView.notifyDataSetChanged()
         
-        dateController = 0
-        updateDateField()
+
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {

@@ -61,7 +61,7 @@ extension GulaDarahStatistikViewController{
     func setupDailyView(chartView: LineChartView) -> LineChartView{
 //        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: day)
         
-        chartView.xAxis.labelRotationAngle = -90
+//        chartView.xAxis.labelRotationAngle = -90
 //        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 9)
         
         chartView.xAxis.axisMinimum = 0
@@ -76,11 +76,11 @@ extension GulaDarahStatistikViewController{
         return chartView
     }
     
-    func setupMonthView(chartView: LineChartView) -> LineChartView{
+    func setupMonthView(chartView: LineChartView, numberOfDays: Int) -> LineChartView{
         chartView.xAxis.labelRotationAngle = 0
         
-        chartView.xAxis.axisMinimum = 0
-        chartView.xAxis.axisMaximum = 31
+        chartView.xAxis.axisMinimum = 1
+        chartView.xAxis.axisMaximum = Double(numberOfDays)
         
         chartView.xAxis.setLabelCount(6, force: true)
         chartView.xAxis.valueFormatter = nil
@@ -90,13 +90,7 @@ extension GulaDarahStatistikViewController{
     
     func setData() {
         //selected == 0
-        var set1 = LineChartDataSet(entries: daySampleValues,label: "Gula Darah")
-        
-        if selected == 1{
-            set1 = LineChartDataSet(entries: weekSampleValues,label: "Gula Darah")
-        }else if selected == 2{
-            set1 = LineChartDataSet(entries: monthSampleValues,label: "Gula Darah")
-        }
+        var set1 = LineChartDataSet(entries: chartDataEntries,label: "Gula Darah")
                 
         set1.label = ""
         set1.colors = [.secondarySystemBackground]

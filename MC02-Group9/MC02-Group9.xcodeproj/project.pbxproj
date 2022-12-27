@@ -147,7 +147,10 @@
 		F07D242E2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */; };
 		F07D24302949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */; };
 		F07D2432294A0A53007F49A1 /* LineChartViewFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */; };
+		F07D2435294AB9FC007F49A1 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D2434294AB9FC007F49A1 /* String+Ext.swift */; };
 		F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0822A452932DE5C000AC907 /* ProfileViewController.swift */; };
+		F094829C2951499D009C5598 /* StatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F094829B2951499D009C5598 /* StatisticsTableViewCell.swift */; };
+		F094829E29514A87009C5598 /* GulaDarahStatistikViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F094829D29514A87009C5598 /* GulaDarahStatistikViewController+TableView.swift */; };
 		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 		F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */; };
@@ -301,7 +304,10 @@
 		F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+DateSelector.swift"; sourceTree = "<group>"; };
 		F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+ChartView.swift"; sourceTree = "<group>"; };
 		F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewFormatter.swift; sourceTree = "<group>"; };
+		F07D2434294AB9FC007F49A1 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F0822A452932DE5C000AC907 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F094829B2951499D009C5598 /* StatisticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewCell.swift; sourceTree = "<group>"; };
+		F094829D29514A87009C5598 /* GulaDarahStatistikViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+TableView.swift"; sourceTree = "<group>"; };
 		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Med.swift"; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 		158B02D2284FAD0D005254A0 /* MC02-Group9 */ = {
 			isa = PBXGroup;
 			children = (
+				F07D2433294AB9EC007F49A1 /* Extension */,
 				F05616A628EED4B200F61C4C /* Helper */,
 				F02A60DA2869A70900441781 /* Controller */,
 				F02A60D92869A6F900441781 /* View */,
@@ -626,11 +633,21 @@
 			children = (
 				F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */,
 				F07D242F2949FEBF007F49A1 /* GulaDarahStatistikViewController+ChartView.swift */,
-				F07D242B2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift */,
 				F07D242D2949FE77007F49A1 /* GulaDarahStatistikViewController+DateSelector.swift */,
+				F07D242B2949FDDA007F49A1 /* GulaDarahStatistikViewController+Fastis.swift */,
+				F094829D29514A87009C5598 /* GulaDarahStatistikViewController+TableView.swift */,
 				F07D2431294A0A53007F49A1 /* LineChartViewFormatter.swift */,
+				F094829B2951499D009C5598 /* StatisticsTableViewCell.swift */,
 			);
 			path = Statistik;
+			sourceTree = "<group>";
+		};
+		F07D2433294AB9EC007F49A1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F07D2434294AB9FC007F49A1 /* String+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		F0CBC5352851F6E800D638F7 /* Model */ = {
@@ -861,6 +878,7 @@
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
 				F0394EFF286AFC780009215C /* CodeReview.swift in Sources */,
+				F094829E29514A87009C5598 /* GulaDarahStatistikViewController+TableView.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02AE114292CD02B00C8AF34 /* Log+CoreDataProperties.swift in Sources */,
 				2C23DF052913F55F0074AFB3 /* ExitTVC.swift in Sources */,
@@ -869,6 +887,7 @@
 				F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */,
 				1548D0732918B15C0087D8AE /* IntroTVC.swift in Sources */,
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
+				F094829C2951499D009C5598 /* StatisticsTableViewCell.swift in Sources */,
 				F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
@@ -915,6 +934,7 @@
 				2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */,
 				F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
+				F07D2435294AB9FC007F49A1 /* String+Ext.swift in Sources */,
 				F07D2432294A0A53007F49A1 /* LineChartViewFormatter.swift in Sources */,
 				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,

@@ -13,17 +13,17 @@ class xAxisFormatter : AxisValueFormatter {
 
         switch value {
         case 0:
-            return "00:00"
+            return "00"
         case 360:
-            return "06:00"
+            return "06"
         case 720:
-            return "12:00"
+            return "12"
         case 1080:
-            return "18:00"
+            return "18"
         case 1440:
-            return "23:59"
+            return "23"
         default:
-            return "00:00"
+            return "00"
         }
     }
 }
