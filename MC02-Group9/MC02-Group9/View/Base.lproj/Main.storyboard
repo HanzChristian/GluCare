@@ -1251,18 +1251,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168.33333015441889" width="390" height="485.00000000000006"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
                                     </connections>
                                 </containerView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="q6k-qP-5sC" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="q6k-qP-5sC" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.333332061767578" width="350" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q6k-qP-5sC" id="y1Q-vg-Esv" customClass="RoutinesMedsTVC" customModule="MC02_Group9" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="95"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y01-TF-nt8">
@@ -1287,10 +1287,6 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-Ax-ffz">
-                                                            <rect key="frame" x="324" y="10" width="21" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-gg-JoN">
                                                             <rect key="frame" x="31" y="41" width="290" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1309,7 +1305,6 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="routinesArrowImgView" destination="fVz-Ax-ffz" id="I9t-n2-1ji"/>
                                             <outlet property="routinesClockImgView" destination="Qyp-jW-Ci6" id="YJD-WK-50E"/>
                                             <outlet property="routinesDescCellLbl" destination="TP8-R1-hFo" id="wsQ-SB-I3i"/>
                                             <outlet property="routinesTimeDescLbl" destination="Psx-gg-JoN" id="udb-4p-JiT"/>
@@ -1566,8 +1561,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NRd-8N-AW9"/>
-        <segue reference="FrA-CF-765"/>
+        <segue reference="sPl-H0-eu2"/>
+        <segue reference="Efi-nT-MCB"/>
         <segue reference="Eak-g9-Exf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
@@ -1583,7 +1578,6 @@
         <image name="med" width="20" height="19.333333969116211"/>
         <image name="onboard1" width="280" height="280"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="right-arrow" width="10.666666984558105" height="10.666666984558105"/>
         <image name="warning" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

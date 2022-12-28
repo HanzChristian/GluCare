@@ -14,7 +14,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bgStartDateTableViewCell" id="KGk-i7-Jjw" customClass="BGStartDateTableViewCell" customModule="MC02_Group9" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -39,6 +39,7 @@
                 <constraints>
                     <constraint firstItem="Coh-gg-J3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3ts-In-na2"/>
                     <constraint firstAttribute="trailing" secondItem="Coh-gg-J3l" secondAttribute="trailing" constant="16" id="DTb-Ua-6Fg"/>
+                    <constraint firstAttribute="bottom" secondItem="Coh-gg-J3l" secondAttribute="bottom" constant="5" id="rDC-rI-f5l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

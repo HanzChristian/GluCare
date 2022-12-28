@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="132" width="414" height="632"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="EIo-O9-sdb">
-                                    <rect key="frame" x="0.0" y="168.5" width="414" height="467"/>
+                                    <rect key="frame" x="0.0" y="169" width="414" height="467"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="Uhg-L4-s0g" kind="embed" id="McN-YQ-Af3"/>
@@ -87,7 +87,6 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="routinesArrowImgView" destination="OWI-0p-hJb" id="v1A-dg-evs"/>
                                             <outlet property="routinesClockImgView" destination="RgI-Ox-OXC" id="le7-BA-xKe"/>
                                             <outlet property="routinesDescCellLbl" destination="Qsn-I2-ND3" id="fqk-zi-DC7"/>
                                             <outlet property="routinesTimeDescLbl" destination="Xfx-xq-5xd" id="RKC-BQ-bQg"/>

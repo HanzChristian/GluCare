@@ -11,7 +11,7 @@ class RoutinesBGTVC: UITableViewCell {
 
     @IBOutlet weak var routinesView: UIView!
     @IBOutlet weak var routinesClockImgView: UIImageView!
-    @IBOutlet weak var routinesArrowImgView: UIImageView!
+//    @IBOutlet weak var routinesArrowImgView: UIImageView!
     @IBOutlet weak var routinesTitleCellLbl: UILabel!
     @IBOutlet weak var routinesDescCellLbl: UILabel!
     @IBOutlet weak var routinesTimeDescLbl: UILabel!

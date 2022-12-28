@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kadar Gula Puasa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNM-xa-Qu4">
-                        <rect key="frame" x="23.999999999999993" y="17" width="116.33333333333331" height="17"/>
+                        <rect key="frame" x="15.999999999999993" y="17" width="116.33333333333331" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="oNM-xa-Qu4" firstAttribute="top" secondItem="9xe-6a-jwW" secondAttribute="top" constant="17" id="Mt4-hi-JvG"/>
-                    <constraint firstItem="oNM-xa-Qu4" firstAttribute="leading" secondItem="9xe-6a-jwW" secondAttribute="leading" constant="24" id="oBd-yd-fxh"/>
+                    <constraint firstItem="oNM-xa-Qu4" firstAttribute="leading" secondItem="9xe-6a-jwW" secondAttribute="leading" constant="16" id="oBd-yd-fxh"/>
                     <constraint firstItem="14m-ph-xeP" firstAttribute="top" secondItem="9xe-6a-jwW" secondAttribute="top" constant="17" id="wCz-yz-lLn"/>
                     <constraint firstAttribute="trailing" secondItem="14m-ph-xeP" secondAttribute="trailing" constant="24" id="xgW-bq-hC3"/>
                 </constraints>

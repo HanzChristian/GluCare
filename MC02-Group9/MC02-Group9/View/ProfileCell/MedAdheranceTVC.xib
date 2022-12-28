@@ -23,14 +23,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kepatuhan Minum Obat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alf-Pw-zaK">
-                        <rect key="frame" x="24" y="18" width="155.33333333333334" height="17"/>
+                        <rect key="frame" x="16" y="18" width="155.33333333333334" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Alf-Pw-zaK" firstAttribute="leading" secondItem="QHB-82-nLs" secondAttribute="leading" constant="24" id="9bo-4j-Pti"/>
+                    <constraint firstItem="Alf-Pw-zaK" firstAttribute="leading" secondItem="QHB-82-nLs" secondAttribute="leading" constant="16" id="9bo-4j-Pti"/>
                     <constraint firstAttribute="trailing" secondItem="cYd-GX-7ar" secondAttribute="trailing" constant="24" id="Exf-SR-NsN"/>
                     <constraint firstItem="Alf-Pw-zaK" firstAttribute="top" secondItem="QHB-82-nLs" secondAttribute="top" constant="18" id="Fcf-kK-tBj"/>
                     <constraint firstItem="cYd-GX-7ar" firstAttribute="top" secondItem="QHB-82-nLs" secondAttribute="top" constant="18" id="xyV-At-wSs"/>

@@ -200,8 +200,9 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let headerView = UIView()
-            let sectionLabel = UILabel(frame: CGRect(x: 21, y: 28, width:
-                tableView.bounds.size.width, height: tableView.bounds.size.height))
+//            let sectionLabel = UILabel(frame: CGRect(x: 21, y: 28, width:
+//                tableView.bounds.size.width, height: tableView.bounds.size.height))
+            let sectionLabel = UILabel(frame: CGRect(x: 6, y: 28, width: tableView.bounds.size.width, height: 5))
             sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
             sectionLabel.textColor = UIColor.black
         if ( self.items?.count == 0) {
@@ -250,7 +251,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.routinesTimeDescLbl?.text! += (" \((t ).time!) ")
             }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
-            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+//            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
             return cell
         }else if (indexPath.section == 0 && self.itemsBG?.count != 0 && self.items?.count == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "routinesBGTVC", for: indexPath) as! RoutinesBGTVC
@@ -264,7 +265,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
 //                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
 //            }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
-            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+//            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
             return cell
         }
         else if (indexPath.section == 1) {
@@ -278,7 +279,7 @@ extension RoutinesViewController: UITableViewDelegate, UITableViewDataSource {
 //                cell.routinesTimeDescLbl?.text! += (" \((t as! BG_Time).bg_date_item) ")
 //            }
             cell.routinesClockImgView?.image = UIImage(named: "clock")
-            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
+//            cell.routinesArrowImgView?.image = UIImage(named: "right-arrow")
             return cell
         }
         return UITableViewCell()

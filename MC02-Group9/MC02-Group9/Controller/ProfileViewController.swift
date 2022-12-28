@@ -454,7 +454,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(isLogin == false){
             return headerView
         }else{
-            let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
+            let sectionLabel = UILabel(frame: CGRect(x: 6, y: 0, width: tableView.bounds.size.width, height: 5))
             sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
             sectionLabel.textColor = UIColor.black
             sectionLabel.text = profileSection[section].profileSectionTitle
