@@ -11,6 +11,7 @@ import RxSwift
 import UIKit
 
 
+@available(iOS 16.0, *)
 extension ViewController{
     
     
