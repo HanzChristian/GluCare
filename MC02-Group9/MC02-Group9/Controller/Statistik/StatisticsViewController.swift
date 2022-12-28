@@ -40,7 +40,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.register(nibHbA1CStat, forCellReuseIdentifier: "iHbA1CSTVC")
         
         setNavItem()
-        //roundedTitle()
+        roundedTitle()
         //
         
     }
@@ -74,6 +74,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var percentage = 0.0
                 percentage = calculateAdherancePercentage()
                 cell.percentageAdheranceLbl?.text = "\(percentage) %"
+                cell.percentageAdheranceLbl?.font = .rounded(ofSize: 28, weight: .bold)
 
                 ///
                 return cell
@@ -85,6 +86,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var mean = 0.0
                 mean = calculateBGPercentage()
                 cell.percentageBGLbl?.text = "\(mean) mg/dL"
+                cell.percentageBGLbl?.font = .rounded(ofSize: 28, weight: .bold)
                 
                 return cell
             }
@@ -95,6 +97,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var percentage = 0.0
                 percentage = calculateHbA1CPercentage()
                 cell.percentageHbA1CLbl?.text = "\(percentage) %"
+                cell.percentageHbA1CLbl?.font = .rounded(ofSize: 28, weight: .bold)
                 return cell
             }
         }
@@ -122,7 +125,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return 40
+            return 50
         } else {
             return 4
         }
@@ -131,7 +134,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         
-        let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
+        let sectionLabel = UILabel(frame: CGRect(x: 6, y: 20, width: tableView.bounds.size.width, height: 5))
         let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: daySelected))!
         let dateFrom = formatter.string(from: startOfMonth)
         let dateToday = formatter.string(from: currentDateTime)
@@ -143,26 +146,18 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         headerView.addSubview(sectionLabel)
         
         return headerView
-        
-        
-        
-        
-        
-        
-        func roundedTitle() {
-            if let roundedTitleDescriptor = UIFontDescriptor
-                .preferredFontDescriptor(withTextStyle: .largeTitle)
-                .withDesign(.rounded)?
-                .withSymbolicTraits(.traitBold) {
-                self.navigationController?
-                    .navigationBar
-                    .largeTitleTextAttributes = [
-                        .font: UIFont(descriptor: roundedTitleDescriptor, size: 0)
-                    ]
-            }
+    }
+    func roundedTitle() {
+        if let roundedTitleDescriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .largeTitle)
+            .withDesign(.rounded)?
+            .withSymbolicTraits(.traitBold) {
+            self.navigationController?
+                .navigationBar
+                .largeTitleTextAttributes = [
+                    .font: UIFont(descriptor: roundedTitleDescriptor, size: 0)
+                ]
         }
-        
-        
     }
     
     func calculateAdherancePercentage() -> Double {
@@ -186,7 +181,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         if (totalMeds == 0.0 && skippedMed == 0.0) {
             return 0.0
         }
-        resultMeds = Double(round((totalMeds - skippedMed) / (totalMeds) * 100.0))
+        resultMeds = Double((round(((totalMeds - skippedMed) / (totalMeds) * 100.0)*100))/100.0)
         return resultMeds
     }
     
@@ -199,13 +194,13 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
             //Meds
             if (log.type == 1 && (log.eat_time == 0 || log.eat_time == 1) && log.action! == "Take") {
                 countBG += 1.0
-                totalBG += Double(Int(log.bg_check_result!) ?? Int(0.0))
+                totalBG += Double(Double(log.bg_check_result!) ?? Double(0.0))
             }
         }
         if (countBG == 0) {
             return 0.0
         }
-        resultBG = Double(round((totalBG) / (countBG)))
+        resultBG = Double((round(((totalBG) / (countBG))*100)) / 100.0)
         
         return resultBG
     }
@@ -217,15 +212,17 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         var resultHbA1C = 0.0
         for log in logs{
             //Meds
+            print("Take hba1c")
             if (log.type == 1 && (log.eat_time == 2) && log.action! == "Take") {
                 countHbA1c += 1.0
-                totalHbA1C += Double(Int(log.bg_check_result!) ?? Int(0.0))
+                totalHbA1C += Double(Double(Double(log.bg_check_result!)!) ?? Double(0.0))
+                print("hba1c loop", totalHbA1C)
             }
         }
         if (countHbA1c == 0) {
             return 0.0
         }
-        resultHbA1C = Double(round((totalHbA1C) / (countHbA1c)))
+        resultHbA1C = Double((round(((totalHbA1C) / (countHbA1c))*100)) / 100.0)
         return resultHbA1C
     }
     
