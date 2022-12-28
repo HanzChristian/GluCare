@@ -44,6 +44,13 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         //
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if (segue.identifier == "goToStatisticsChart") {
+          let secondView = segue.destination as! GulaDarahStatistikViewController
+          let object = sender as! [String: Any?]
+          secondView.id = object["id"] as? Int
+       }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -100,7 +107,17 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.section == 0{
+            print("0")
+        }else if indexPath.section == 1{
+            print("1")
+            let sender: [String: Any?] = ["id": 1]
+            self.performSegue(withIdentifier: "goToStatisticsChart", sender: sender)
+        }else if indexPath.section == 2{
+            print("2")
+            let sender: [String: Any?] = ["id": 2]
+            self.performSegue(withIdentifier: "goToStatisticsChart", sender: sender)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
