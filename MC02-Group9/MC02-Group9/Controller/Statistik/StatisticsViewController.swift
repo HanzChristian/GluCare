@@ -40,7 +40,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.register(nibHbA1CStat, forCellReuseIdentifier: "iHbA1CSTVC")
         
         setNavItem()
-        //roundedTitle()
+        roundedTitle()
         //
         
     }
@@ -74,6 +74,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var percentage = 0.0
                 percentage = calculateAdherancePercentage()
                 cell.percentageAdheranceLbl?.text = "\(percentage) %"
+                cell.percentageAdheranceLbl?.font = .rounded(ofSize: 28, weight: .bold)
 
                 ///
                 return cell
@@ -85,6 +86,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var mean = 0.0
                 mean = calculateBGPercentage()
                 cell.percentageBGLbl?.text = "\(mean) mg/dL"
+                cell.percentageBGLbl?.font = .rounded(ofSize: 28, weight: .bold)
                 
                 return cell
             }
@@ -95,6 +97,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
                 var percentage = 0.0
                 percentage = calculateHbA1CPercentage()
                 cell.percentageHbA1CLbl?.text = "\(percentage) %"
+                cell.percentageHbA1CLbl?.font = .rounded(ofSize: 28, weight: .bold)
                 return cell
             }
         }
@@ -122,7 +125,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return 40
+            return 50
         } else {
             return 4
         }
@@ -131,7 +134,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         
-        let sectionLabel = UILabel(frame: CGRect(x: 18, y: 0, width: tableView.bounds.size.width, height: 5))
+        let sectionLabel = UILabel(frame: CGRect(x: 6, y: 20, width: tableView.bounds.size.width, height: 5))
         let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: daySelected))!
         let dateFrom = formatter.string(from: startOfMonth)
         let dateToday = formatter.string(from: currentDateTime)
@@ -143,26 +146,18 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         headerView.addSubview(sectionLabel)
         
         return headerView
-        
-        
-        
-        
-        
-        
-        func roundedTitle() {
-            if let roundedTitleDescriptor = UIFontDescriptor
-                .preferredFontDescriptor(withTextStyle: .largeTitle)
-                .withDesign(.rounded)?
-                .withSymbolicTraits(.traitBold) {
-                self.navigationController?
-                    .navigationBar
-                    .largeTitleTextAttributes = [
-                        .font: UIFont(descriptor: roundedTitleDescriptor, size: 0)
-                    ]
-            }
+    }
+    func roundedTitle() {
+        if let roundedTitleDescriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .largeTitle)
+            .withDesign(.rounded)?
+            .withSymbolicTraits(.traitBold) {
+            self.navigationController?
+                .navigationBar
+                .largeTitleTextAttributes = [
+                    .font: UIFont(descriptor: roundedTitleDescriptor, size: 0)
+                ]
         }
-        
-        
     }
     
     func calculateAdherancePercentage() -> Double {
