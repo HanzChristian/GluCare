@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@available(iOS 16.0, *)
+
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
@@ -107,14 +107,14 @@ extension ViewController:UITableViewDelegate{
         let nav =  UINavigationController(rootViewController: vc)
         //        nav.modalPresentationStyle = .overCurrentContext
         
-        let smallId = UISheetPresentationController.Detent.Identifier("small")
-        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallId) { context in
-            return 290
-        }
+//        let smallId = UISheetPresentationController.Detent.Identifier("small")
+//        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallId) { context in
+//            return 290
+//        }
         
         if let sheet = nav.presentationController as? UISheetPresentationController{
-            sheet.detents = [smallDetent,.medium()]
-            sheet.preferredCornerRadius = 30
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 15
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             
         }

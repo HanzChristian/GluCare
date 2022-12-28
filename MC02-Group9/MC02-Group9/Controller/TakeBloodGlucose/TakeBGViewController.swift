@@ -99,6 +99,7 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         let label = UILabel()
         label.text = "Hasil Cek Gula Darah"
         label.font = .rounded(ofSize: 18, weight: .semibold)
+        label.largeContentImageInsets
         
         //        label.sizeToFit()
         

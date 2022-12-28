@@ -18,37 +18,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="389" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzq-BT-GUn">
-                        <rect key="frame" x="10" y="5" width="175" height="55"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Lewati" cornerStyle="medium">
-                            <color key="baseForegroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="baseBackgroundColor" red="0.7803921568627451" green="0.8784313725490196" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="pressedSkip:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="olc-fJ-tJ2"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTw-IB-uux">
-                        <rect key="frame" x="200" y="6" width="180" height="55"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Simpan" cornerStyle="medium">
-                            <color key="baseBackgroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="pressedSave:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2pi-Va-sGl"/>
-                        </connections>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aPG-wj-LDd">
+                        <rect key="frame" x="0.0" y="5" width="389" height="61"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzq-BT-GUn">
+                                <rect key="frame" x="0.0" y="0.0" width="187" height="61"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Lewati" cornerStyle="medium">
+                                    <color key="baseForegroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.7803921568627451" green="0.8784313725490196" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pressedSkip:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="olc-fJ-tJ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTw-IB-uux">
+                                <rect key="frame" x="202" y="0.0" width="187" height="61"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Simpan" cornerStyle="medium">
+                                    <color key="baseBackgroundColor" red="0.11764705882352941" green="0.51764705882352935" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pressedSave:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2pi-Va-sGl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YTw-IB-uux" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.462725" id="7Ah-Z9-11d"/>
-                    <constraint firstItem="wzq-BT-GUn" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.833333" id="9MT-hL-ldA"/>
-                    <constraint firstAttribute="bottom" secondItem="YTw-IB-uux" secondAttribute="bottom" constant="5" id="UxE-FY-izE"/>
-                    <constraint firstAttribute="bottom" secondItem="wzq-BT-GUn" secondAttribute="bottom" constant="6" id="ZRZ-SA-dom"/>
-                    <constraint firstItem="wzq-BT-GUn" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.45" id="nNS-Zj-VTQ"/>
-                    <constraint firstItem="YTw-IB-uux" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.833333" id="qq2-36-vsQ"/>
-                    <constraint firstAttribute="trailing" secondItem="YTw-IB-uux" secondAttribute="trailing" constant="9" id="w50-T5-5xY"/>
-                    <constraint firstItem="wzq-BT-GUn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wOe-iG-F76"/>
+                    <constraint firstAttribute="trailing" secondItem="aPG-wj-LDd" secondAttribute="trailing" id="3U2-JS-Nxc"/>
+                    <constraint firstAttribute="bottom" secondItem="aPG-wj-LDd" secondAttribute="bottom" id="Gxk-Tb-WLz"/>
+                    <constraint firstItem="aPG-wj-LDd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IoI-PF-qh1"/>
+                    <constraint firstItem="aPG-wj-LDd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Q9t-8W-cz7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
