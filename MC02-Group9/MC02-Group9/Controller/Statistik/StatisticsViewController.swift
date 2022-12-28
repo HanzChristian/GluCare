@@ -186,7 +186,7 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         if (totalMeds == 0.0 && skippedMed == 0.0) {
             return 0.0
         }
-        resultMeds = Double(round((totalMeds - skippedMed) / (totalMeds) * 100.0))
+        resultMeds = Double((round(((totalMeds - skippedMed) / (totalMeds) * 100.0)*100))/100.0)
         return resultMeds
     }
     
@@ -199,13 +199,13 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
             //Meds
             if (log.type == 1 && (log.eat_time == 0 || log.eat_time == 1) && log.action! == "Take") {
                 countBG += 1.0
-                totalBG += Double(Int(log.bg_check_result!) ?? Int(0.0))
+                totalBG += Double(Double(log.bg_check_result!) ?? Double(0.0))
             }
         }
         if (countBG == 0) {
             return 0.0
         }
-        resultBG = Double(round((totalBG) / (countBG)))
+        resultBG = Double((round(((totalBG) / (countBG))*100)) / 100.0)
         
         return resultBG
     }
@@ -217,15 +217,17 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
         var resultHbA1C = 0.0
         for log in logs{
             //Meds
+            print("Take hba1c")
             if (log.type == 1 && (log.eat_time == 2) && log.action! == "Take") {
                 countHbA1c += 1.0
-                totalHbA1C += Double(Int(log.bg_check_result!) ?? Int(0.0))
+                totalHbA1C += Double(Double(Double(log.bg_check_result!)!) ?? Double(0.0))
+                print("hba1c loop", totalHbA1C)
             }
         }
         if (countHbA1c == 0) {
             return 0.0
         }
-        resultHbA1C = Double(round((totalHbA1C) / (countHbA1c)))
+        resultHbA1C = Double((round(((totalHbA1C) / (countHbA1c))*100)) / 100.0)
         return resultHbA1C
     }
     
