@@ -34,7 +34,7 @@ extension GulaDarahStatistikViewController: UITableViewDataSource{
             if Int(ratarata) == 0{
                 result = "-"
             }else{
-                result = "\(ratarata)"
+                result = "\(String(format: "%.1f", ratarata))"
             }
             
         }

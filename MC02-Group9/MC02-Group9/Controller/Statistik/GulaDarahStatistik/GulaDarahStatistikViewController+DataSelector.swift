@@ -114,10 +114,12 @@ extension GulaDarahStatistikViewController{
             }
         }
         
+       
+        
         if low == high{
-            range = "\(low)"
+            range = "\(String(format: "%.1f", low))"
         }else{
-            range = "\(low)-\(high)"
+            range = "\(String(format: "%.1f", low))-\(String(format: "%.1f", high))"
         }
         
         if chartDataEntries.isEmpty{
