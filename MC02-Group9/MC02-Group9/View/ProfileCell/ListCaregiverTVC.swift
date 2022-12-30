@@ -18,7 +18,7 @@ class ListCaregiverTVC: UITableViewCell {
     
     @IBAction func tapCancel(_ sender: UIButton) {
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-        listCaregiver.caregiverList.removeLast()
+        listCaregiver.caregiverList.removeAll()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
     }
     

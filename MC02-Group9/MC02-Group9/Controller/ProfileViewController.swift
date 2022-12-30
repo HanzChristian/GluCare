@@ -182,7 +182,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else if (section == 2){
                 if(role == 2 && connected == true){
                     return countCaregiver
-                }else{
+                }else if(role == 1 && countCaregiver > 0){
+                    return countCaregiver
+                }
+                else{
                     return countCaregiver+1
                 }
             }
