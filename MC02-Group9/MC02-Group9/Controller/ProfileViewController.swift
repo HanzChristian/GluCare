@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var height = 56.0
     
     var isLogin = false
+    let role = UserDefaults.standard.integer(forKey: "role")
+    var connected = false
     
     func alreadyLogin(){
         Auth.auth().addStateDidChangeListener { [weak self] auth, user in
@@ -85,7 +87,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.register(nibExit, forCellReuseIdentifier: "exitTVC")
         let nibIntro = UINib(nibName: "IntroTVC", bundle: nil)
         tableView.register(nibIntro, forCellReuseIdentifier: "introTVC")
-        
+        let nibCaregiverWokrspace = UINib(nibName: "CaregiverWorkspaaceTVC", bundle: nil)
+        tableView.register(nibCaregiverWokrspace, forCellReuseIdentifier: "caregiverWorkspaaceTVC")
         //view.backgroundColor = .systemGroupedBackground
         setNavItem()
         roundedTitle()
@@ -97,9 +100,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(connectedUser), name: NSNotification.Name(rawValue: "connected"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        
+        
         alreadyLogin()
     }
     
+    
+    @objc func connectedUser(){
+        connected = !connected
+        self.refresh()
+        print("MASUK CONNECTED")
+    }
     
     @objc func refresh(){
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
@@ -166,7 +180,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             else if (section == 1){
                 return 3
             } else if (section == 2){
-                return countCaregiver+1
+                if(role == 2 && connected == true){
+                    return countCaregiver
+                }else{
+                    return countCaregiver+1
+                }
             }
             else {
                 return 1
@@ -225,9 +243,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
                     return cell
                 } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
-                    cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
-                    return cell
+                    if(role == 2 && connected == true){
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "caregiverWorkspaaceTVC", for: indexPath) as! CaregiverWorkspaaceTVC
+                            return cell
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
+                        cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
+                        return cell
+                    }
                 }
             }
             else if (indexPath.section == 3) {
@@ -304,6 +327,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     } else if (indexPath.row != countCaregiver) {
                         height = 56
                     }
+                    if (role == 2 && connected == true){
+                        height = 180
+                    }
                 } else {
                     height = 56.0
                 }
@@ -372,6 +398,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(isLogin == true){
+            if(indexPath.section == 2){
+                if(role == 2 && connected == true){
+                    print("sini gan")
+                    let alert = UIAlertController(title: "Yakin ingin keluar?", message: "Kamu harus meminta izin pasien apabila ingin mengakses kembali.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Keluar", style: .destructive, handler: {
+                        action in
+                        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+                        listCaregiver.caregiverList.removeAll()
+                        UserDefaults.standard.removeObject(forKey: "patient")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                        
+                    }))
+                    present(alert, animated: true, completion: nil)
+                }
+            }
+    
             if (indexPath.section == 3) {
                 if (indexPath.row == 0) {
                     print("alert exit done")

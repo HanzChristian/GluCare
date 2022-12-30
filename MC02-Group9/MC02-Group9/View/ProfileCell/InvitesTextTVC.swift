@@ -16,6 +16,7 @@ class InvitesTextTVC: UITableViewCell {
     @IBOutlet weak var inviteTextField: UITextField!
     
     let capsuleView = UIView()
+    let role = UserDefaults.standard.integer(forKey: "role")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +27,11 @@ class InvitesTextTVC: UITableViewCell {
         invitesAddBtn.layer.borderWidth = 2
         invitesAddBtn.layer.borderColor = UIColor.lightGray.cgColor
         inviteTextField.placeholder = "Masukkan email anggota keluarga..."
+        
+        if(role == 2){
+            invitesTitleLbl.text = "Masuk ke Workspace Pasien"
+            invitesDescLbl.text = "Masuk ke dalam workspace anggota keluargamu dengan memasukkan email mereka yang telah terdaftar di Glucare."
+        }
     }
     
     @IBAction func invite(_ sender: Any) {
