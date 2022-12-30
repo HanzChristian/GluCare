@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kwy-yc-ncv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kwy-yc-ncv">
+                        <rect key="frame" x="15" y="10" width="295" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
@@ -30,14 +30,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Kwy-yc-ncv" secondAttribute="bottom" id="89h-w5-uiL"/>
+                    <constraint firstItem="Kwy-yc-ncv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="0Z4-Jo-sc9"/>
+                    <constraint firstAttribute="bottom" secondItem="Kwy-yc-ncv" secondAttribute="bottom" constant="10" id="85S-RU-i1b"/>
                     <constraint firstAttribute="trailing" secondItem="TLY-SC-bhZ" secondAttribute="trailing" constant="16" id="9ax-gi-Z4W"/>
-                    <constraint firstAttribute="trailing" secondItem="Kwy-yc-ncv" secondAttribute="trailing" id="Awf-Fj-0lN"/>
-                    <constraint firstItem="Kwy-yc-ncv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QvW-6i-tW6"/>
+                    <constraint firstAttribute="trailing" secondItem="Kwy-yc-ncv" secondAttribute="trailing" constant="10" id="BSf-Nc-9w7"/>
+                    <constraint firstItem="Kwy-yc-ncv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="J3N-hG-PjU"/>
                     <constraint firstAttribute="bottom" secondItem="TLY-SC-bhZ" secondAttribute="bottom" constant="11.33" id="mFp-y5-UYF"/>
                     <constraint firstItem="TLY-SC-bhZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11.67" id="n9s-7N-8zM"/>
-                    <constraint firstItem="Kwy-yc-ncv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sX7-G3-VPD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

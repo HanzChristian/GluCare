@@ -98,14 +98,17 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         
         let label = UILabel()
         label.text = "Hasil Cek Gula Darah"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = .rounded(ofSize: 18, weight: .semibold)
+        label.largeContentImageInsets
+        
         //        label.sizeToFit()
         
         
         let leftItem = UIBarButtonItem(customView: label)
         self.navigationItem.leftBarButtonItem = leftItem
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Batal", style: .plain, target: self, action: #selector(dismissSelf))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark")?.withTintColor(.gray,renderingMode: .alwaysOriginal).withConfiguration(largeConfig), style: .plain, target: self, action: #selector(dismissSelf))
     }
     
     func setNib(){
@@ -161,13 +164,15 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         else if(indexPath.section == 1){
             if(indexPath.row == 0){
                 cellBGResult = tblViewBG.dequeueReusableCell(withIdentifier: "bgResultTableViewCell", for:indexPath) as! BGResultTableViewCell
-                cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
 
                 if(log?.eat_time == 0){
+                    cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
                     cellBGResult!.BGUnitLbl.text = "mg/dL"
                 }else if(log?.eat_time == 1){
+                    cellBGResult!.BGInputLbl?.placeholder = "Misal: 100"
                     cellBGResult!.BGUnitLbl.text = "mg/dL"
                 }else{
+                    cellBGResult!.BGInputLbl?.placeholder = "Misal: 7.0"
                     cellBGResult!.BGUnitLbl.text = "%"
                 }
                 return cellBGResult!

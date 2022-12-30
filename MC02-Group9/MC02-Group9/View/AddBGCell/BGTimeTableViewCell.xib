@@ -40,6 +40,7 @@
                     <constraint firstItem="SLo-kc-qgo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Xnq-jz-tAO"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="amQ-M5-XpW"/>
                     <constraint firstItem="28O-1z-Sfx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="cGP-2F-Y9j"/>
+                    <constraint firstAttribute="bottom" secondItem="SLo-kc-qgo" secondAttribute="bottom" constant="5" id="dID-gJ-w4S"/>
                     <constraint firstAttribute="trailing" secondItem="SLo-kc-qgo" secondAttribute="trailing" constant="16" id="hRj-JD-6PC"/>
                 </constraints>
             </tableViewCellContentView>

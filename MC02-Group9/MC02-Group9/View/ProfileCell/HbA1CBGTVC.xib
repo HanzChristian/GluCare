@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kadar Gula HbA1C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wch-9V-olN">
-                        <rect key="frame" x="24.000000000000007" y="18" width="120.66666666666669" height="17"/>
+                        <rect key="frame" x="16.000000000000007" y="18" width="120.66666666666669" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                     <constraint firstAttribute="trailing" secondItem="PPy-nd-rWr" secondAttribute="trailing" constant="24" id="0GZ-TN-P0a"/>
                     <constraint firstItem="Wch-9V-olN" firstAttribute="top" secondItem="ZJo-d8-WiZ" secondAttribute="top" constant="18" id="aJY-Yg-oh8"/>
                     <constraint firstItem="PPy-nd-rWr" firstAttribute="top" secondItem="ZJo-d8-WiZ" secondAttribute="top" constant="18" id="jwB-Ks-Zdd"/>
-                    <constraint firstItem="Wch-9V-olN" firstAttribute="leading" secondItem="ZJo-d8-WiZ" secondAttribute="leading" constant="24" id="lir-ep-nIT"/>
+                    <constraint firstItem="Wch-9V-olN" firstAttribute="leading" secondItem="ZJo-d8-WiZ" secondAttribute="leading" constant="16" id="lir-ep-nIT"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-40" y="-32.701421800947863"/>

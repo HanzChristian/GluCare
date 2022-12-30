@@ -20,11 +20,11 @@ class InvitesTextTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        invitesCapsuleView.layer.cornerRadius = 15;
-        invitesCapsuleView.layer.borderWidth = 2
+        invitesCapsuleView.layer.cornerRadius = 15
+        invitesCapsuleView.layer.borderWidth = 0.3
         invitesCapsuleView.layer.borderColor = UIColor.lightGray.cgColor
         invitesAddBtn.layer.cornerRadius = 24
-        invitesAddBtn.layer.borderWidth = 2
+        invitesAddBtn.layer.borderWidth = 0.3
         invitesAddBtn.layer.borderColor = UIColor.lightGray.cgColor
         inviteTextField.placeholder = "Masukkan email anggota keluarga..."
         

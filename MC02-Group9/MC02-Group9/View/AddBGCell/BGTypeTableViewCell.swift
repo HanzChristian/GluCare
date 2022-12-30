@@ -10,7 +10,6 @@ import UIKit
 class BGTypeTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet var bgTypeLbl:UILabel!
-    @IBOutlet var bgTypeBtn:UIButton!
     
     let bgType = ["Gula Darah Puasa","Gula Darah Sewaktu","HbA1c"]
     // hide hbA1c

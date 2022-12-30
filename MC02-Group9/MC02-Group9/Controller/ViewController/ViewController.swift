@@ -16,6 +16,7 @@ import FirebaseAuth
 // var for logic
 var daySelected = Date()
 
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
     
     let disposeBag = DisposeBag()

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 extension ViewController{
     
     func checkAvailableInitLog(daySelected: Date){

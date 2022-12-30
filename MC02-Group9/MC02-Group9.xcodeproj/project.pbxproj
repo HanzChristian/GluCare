@@ -101,7 +101,15 @@
 		2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */; };
 		2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */; };
 		2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */; };
+		2CA646C029430B4B001E6438 /* AdheranceSTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA646BE29430B4B001E6438 /* AdheranceSTVC.swift */; };
+		2CA646C129430B4B001E6438 /* AdheranceSTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA646BF29430B4B001E6438 /* AdheranceSTVC.xib */; };
+		2CA646C429430B69001E6438 /* BGSTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA646C229430B69001E6438 /* BGSTVC.swift */; };
+		2CA646C529430B69001E6438 /* BGSTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA646C329430B69001E6438 /* BGSTVC.xib */; };
+		2CA646C829430B80001E6438 /* HbA1CSTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA646C629430B80001E6438 /* HbA1CSTVC.swift */; };
+		2CA646C929430B80001E6438 /* HbA1CSTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA646C729430B80001E6438 /* HbA1CSTVC.xib */; };
 		2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */; };
+		2CD9C5FE2942FF5400CEF8E5 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9C5FD2942FF5400CEF8E5 /* StatisticsViewController.swift */; };
+		2CD9C6002942FF7F00CEF8E5 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD9C5FF2942FF7F00CEF8E5 /* Statistics.storyboard */; };
 		2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */; };
 		2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */; };
 		2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFEFFDD290A5D8C0060A995 /* profile.storyboard */; };
@@ -146,6 +154,14 @@
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
 		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
 		F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0822A452932DE5C000AC907 /* ProfileViewController.swift */; };
+		F09482AF295ABC11009C5598 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482AE295ABC11009C5598 /* Color.swift */; };
+		F09482B1295ABC28009C5598 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B0295ABC28009C5598 /* String+Ext.swift */; };
+		F09482B4295ACC2B009C5598 /* GulaDarahStatistikViewController+ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B3295ACC2B009C5598 /* GulaDarahStatistikViewController+ChartView.swift */; };
+		F09482B6295ACC42009C5598 /* GulaDarahStatistikViewController+DataSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B5295ACC42009C5598 /* GulaDarahStatistikViewController+DataSelector.swift */; };
+		F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B7295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift */; };
+		F09482BA295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B9295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift */; };
+		F09482BC295ACC6E009C5598 /* LineChartViewFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482BB295ACC6E009C5598 /* LineChartViewFormatter.swift */; };
+		F09482BE295ACC7F009C5598 /* StatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482BD295ACC7F009C5598 /* StatisticsTableViewCell.swift */; };
 		F0AB0D4C29187AC600D13250 /* ProfileViewController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */; };
 		F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */; };
 		F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */; };
@@ -250,7 +266,15 @@
 		2C8E9B722853E03A0026FDF5 /* MedNameTextFieldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedNameTextFieldTVC.xib; sourceTree = "<group>"; };
 		2C8E9B752853E5010026FDF5 /* MealTimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		2C8E9B762853E5010026FDF5 /* MealTimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTimePickerTableViewCell.xib; sourceTree = "<group>"; };
+		2CA646BE29430B4B001E6438 /* AdheranceSTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdheranceSTVC.swift; sourceTree = "<group>"; };
+		2CA646BF29430B4B001E6438 /* AdheranceSTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdheranceSTVC.xib; sourceTree = "<group>"; };
+		2CA646C229430B69001E6438 /* BGSTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSTVC.swift; sourceTree = "<group>"; };
+		2CA646C329430B69001E6438 /* BGSTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGSTVC.xib; sourceTree = "<group>"; };
+		2CA646C629430B80001E6438 /* HbA1CSTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HbA1CSTVC.swift; sourceTree = "<group>"; };
+		2CA646C729430B80001E6438 /* HbA1CSTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HbA1CSTVC.xib; sourceTree = "<group>"; };
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
+		2CD9C5FD2942FF5400CEF8E5 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		2CD9C5FF2942FF7F00CEF8E5 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyRoutinesSpaceVC.swift; sourceTree = "<group>"; };
 		2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutinesMedsTVC.swift; sourceTree = "<group>"; };
 		2CFEFFDD290A5D8C0060A995 /* profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
@@ -297,6 +321,14 @@
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
 		F0822A452932DE5C000AC907 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F09482AE295ABC11009C5598 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F09482B0295ABC28009C5598 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		F09482B3295ACC2B009C5598 /* GulaDarahStatistikViewController+ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+ChartView.swift"; sourceTree = "<group>"; };
+		F09482B5295ACC42009C5598 /* GulaDarahStatistikViewController+DataSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+DataSelector.swift"; sourceTree = "<group>"; };
+		F09482B7295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+Fastis.swift"; sourceTree = "<group>"; };
+		F09482B9295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GulaDarahStatistikViewController+TableView.swift"; sourceTree = "<group>"; };
+		F09482BB295ACC6E009C5598 /* LineChartViewFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewFormatter.swift; sourceTree = "<group>"; };
+		F09482BD295ACC7F009C5598 /* StatisticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewCell.swift; sourceTree = "<group>"; };
 		F0AB0D4B29187AC600D13250 /* ProfileViewController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Firebase.swift"; sourceTree = "<group>"; };
 		F0B90A4C290C1F7600899167 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		F0DFE2BD291E23B900993B0D /* CoreDataManager+Med.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Med.swift"; sourceTree = "<group>"; };
@@ -382,6 +414,7 @@
 		158B02D2284FAD0D005254A0 /* MC02-Group9 */ = {
 			isa = PBXGroup;
 			children = (
+				F09482AC295ABBE7009C5598 /* Extension */,
 				F05616A628EED4B200F61C4C /* Helper */,
 				F0CBC5352851F6E800D638F7 /* Model */,
 				F02A60D92869A6F900441781 /* View */,
@@ -477,6 +510,19 @@
 			path = AddMedCell;
 			sourceTree = "<group>";
 		};
+		2CD9C60529430AA900CEF8E5 /* TVC */ = {
+			isa = PBXGroup;
+			children = (
+				2CA646BE29430B4B001E6438 /* AdheranceSTVC.swift */,
+				2CA646BF29430B4B001E6438 /* AdheranceSTVC.xib */,
+				2CA646C229430B69001E6438 /* BGSTVC.swift */,
+				2CA646C329430B69001E6438 /* BGSTVC.xib */,
+				2CA646C629430B80001E6438 /* HbA1CSTVC.swift */,
+				2CA646C729430B80001E6438 /* HbA1CSTVC.xib */,
+			);
+			path = TVC;
+			sourceTree = "<group>";
+		};
 		2CEE5945290A625700AE7C84 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +572,7 @@
 			children = (
 				2C8A3D802907ABB500B0646A /* OnBoarding & Role */,
 				1F4EF3B42872E3250056E693 /* Take Medication.storyboard */,
+				2CD9C5FF2942FF7F00CEF8E5 /* Statistics.storyboard */,
 				153AFA6428EEBDEE00395648 /* Take BG.storyboard */,
 				1F6B40882850EE0E001CFC86 /* Add Medication.storyboard */,
 				15CAFCF128F54196009A7686 /* Add BG.storyboard */,
@@ -604,6 +651,7 @@
 			children = (
 				F05616A728EED4BD00F61C4C /* CalendarHelper.swift */,
 				1547608C290AAA7300D56835 /* ImageHelper.swift */,
+				F09482AE295ABC11009C5598 /* Color.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -619,9 +667,33 @@
 		F05B1C1829273817009BA2CB /* Statistik */ = {
 			isa = PBXGroup;
 			children = (
-				F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */,
+				2CD9C60529430AA900CEF8E5 /* TVC */,
+				2CD9C5FD2942FF5400CEF8E5 /* StatisticsViewController.swift */,
+				F09482B2295ACBB6009C5598 /* GulaDarahStatistik */,
 			);
 			path = Statistik;
+			sourceTree = "<group>";
+		};
+		F09482AC295ABBE7009C5598 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F09482B0295ABC28009C5598 /* String+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F09482B2295ACBB6009C5598 /* GulaDarahStatistik */ = {
+			isa = PBXGroup;
+			children = (
+				F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */,
+				F09482B3295ACC2B009C5598 /* GulaDarahStatistikViewController+ChartView.swift */,
+				F09482B5295ACC42009C5598 /* GulaDarahStatistikViewController+DataSelector.swift */,
+				F09482B7295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift */,
+				F09482B9295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift */,
+				F09482BB295ACC6E009C5598 /* LineChartViewFormatter.swift */,
+				F09482BD295ACC7F009C5598 /* StatisticsTableViewCell.swift */,
+			);
+			path = GulaDarahStatistik;
 			sourceTree = "<group>";
 		};
 		F0CBC5352851F6E800D638F7 /* Model */ = {
@@ -746,6 +818,7 @@
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
 				2C23DF062913F55F0074AFB3 /* ExitTVC.xib in Resources */,
+				2CA646C129430B4B001E6438 /* AdheranceSTVC.xib in Resources */,
 				F054B0D7290BDCEB00287D06 /* GoogleService-Info.plist in Resources */,
 				1548D0742918B15C0087D8AE /* IntroTVC.xib in Resources */,
 				2C3D935D2859AE430017DCB6 /* MedDescTableViewCell.xib in Resources */,
@@ -761,14 +834,17 @@
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				156E789428EEAB780072615F /* BGBtnSaveTableViewCell.xib in Resources */,
 				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
+				2CA646C529430B69001E6438 /* BGSTVC.xib in Resources */,
 				15CAFD2128F7E521009A7686 /* BGCalendarTableViewCell.xib in Resources */,
 				15CAFCF628F54619009A7686 /* BGTypeTableViewCell.xib in Resources */,
 				1F4EF3CC28733C020056E693 /* TakeMedTimeTableViewCell.xib in Resources */,
 				158B02DB284FAD0D005254A0 /* Main.storyboard in Resources */,
+				2CA646C929430B80001E6438 /* HbA1CSTVC.xib in Resources */,
 				1F8813A328562171009994F9 /* FrequencyPickerTableViewCell.xib in Resources */,
 				1F8813AB285B14D0009994F9 /* SchedulePickerTableViewCell.xib in Resources */,
 				F05478312910D8A900DB4503 /* UsernameTVC.xib in Resources */,
 				153AFA6528EEBDEE00395648 /* Take BG.storyboard in Resources */,
+				2CD9C6002942FF7F00CEF8E5 /* Statistics.storyboard in Resources */,
 				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
 				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
@@ -841,7 +917,10 @@
 				F05478332910F5ED00DB4503 /* MigrateFirestoreToCoreData+BG.swift in Sources */,
 				15CAFD2028F7E521009A7686 /* BGCalendarTableViewCell.swift in Sources */,
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
+				2CA646C429430B69001E6438 /* BGSTVC.swift in Sources */,
 				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
+				F09482BA295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift in Sources */,
+				F09482BE295ACC7F009C5598 /* StatisticsTableViewCell.swift in Sources */,
 				F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */,
 				F05478232910BD1D00DB4503 /* BG+CoreDataProperties.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
@@ -852,6 +931,7 @@
 				158B02D6284FAD0D005254A0 /* SceneDelegate.swift in Sources */,
 				1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */,
 				158B02DE284FAD0D005254A0 /* MC02_Group9.xcdatamodeld in Sources */,
+				F09482B6295ACC42009C5598 /* GulaDarahStatistikViewController+DataSelector.swift in Sources */,
 				F0394EFF286AFC780009215C /* CodeReview.swift in Sources */,
 				F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */,
 				F02AE114292CD02B00C8AF34 /* Log+CoreDataProperties.swift in Sources */,
@@ -863,6 +943,7 @@
 				2C8A3D8C2907BD7000B0646A /* OnBoardingCVCell.swift in Sources */,
 				F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */,
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
+				2CA646C029430B4B001E6438 /* AdheranceSTVC.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				F054B0DC290BDE0C00287D06 /* RegisterViewController.swift in Sources */,
@@ -878,6 +959,7 @@
 				F02AE113292CD02B00C8AF34 /* Log+CoreDataClass.swift in Sources */,
 				F05478222910BD1D00DB4503 /* BG+CoreDataClass.swift in Sources */,
 				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
+				2CA646C829430B80001E6438 /* HbA1CSTVC.swift in Sources */,
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
 				155F70B628ED47A8003A844B /* TakeBGTableViewCell.swift in Sources */,
@@ -886,23 +968,29 @@
 				2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */,
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
 				F054781F2910B70200DB4503 /* MedAdheranceTVC.swift in Sources */,
+				F09482B4295ACC2B009C5598 /* GulaDarahStatistikViewController+ChartView.swift in Sources */,
 				1F4EF3B82872E37A0056E693 /* TakeMedicationViewController.swift in Sources */,
 				15B869A829436160009D9C60 /* MigrateFirestoreToCoreData+User.swift in Sources */,
 				2C41FFD32865B73E0094D39E /* Streak+CoreDataClass.swift in Sources */,
 				1515331928687EA600606068 /* GuideViewController.swift in Sources */,
 				155F70BA28ED47C8003A844B /* BGNameTableViewCell.swift in Sources */,
+				2CD9C5FE2942FF5400CEF8E5 /* StatisticsViewController.swift in Sources */,
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
+				F09482AF295ABC11009C5598 /* Color.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
+				F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
 				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
+				F09482BC295ACC6E009C5598 /* LineChartViewFormatter.swift in Sources */,
 				15CAFD0228F5469C009A7686 /* BGFrequencyTableViewCell.swift in Sources */,
 				1547608F290AAB1500D56835 /* ViewController+Delegate.swift in Sources */,
 				F033B15E285B36C900CD4941 /* Medicine_Time+CoreDataClass.swift in Sources */,
 				6EDAF415285878900099213F /* RoutinesViewController.swift in Sources */,
 				1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */,
 				2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */,
+				F09482B1295ABC28009C5598 /* String+Ext.swift in Sources */,
 				F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */,
 				2C8E9B772853E5010026FDF5 /* MealTimePickerTableViewCell.swift in Sources */,
 				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
@@ -1100,7 +1188,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BX9VA5G2BF;
+				DEVELOPMENT_TEAM = Y38KPN6RN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1114,7 +1202,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppleDeveloperAcademyBinus.GluCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1131,7 +1219,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BX9VA5G2BF;
+				DEVELOPMENT_TEAM = Y38KPN6RN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1145,7 +1233,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppleDeveloperAcademyBinus.GluCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
