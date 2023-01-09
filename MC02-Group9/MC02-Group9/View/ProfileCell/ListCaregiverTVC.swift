@@ -16,6 +16,11 @@ class ListCaregiverTVC: UITableViewCell {
     @IBOutlet weak var deleteCaregiverBtn: UIButton!
     
     
+    @IBAction func tapCancel(_ sender: UIButton) {
+        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+        listCaregiver.caregiverList.removeAll()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+    }
     
     @IBAction func tapDelete(_ sender: UIButton) {
         
@@ -34,6 +39,7 @@ class ListCaregiverTVC: UITableViewCell {
             roleString = "patient"
         }else if role == 2{
             roleString = "caregiver"
+            waitingConfirmBtn.titleLabel?.text = "Batalkan Permohonan"
         }
         
         if let user = Auth.auth().currentUser?.email {

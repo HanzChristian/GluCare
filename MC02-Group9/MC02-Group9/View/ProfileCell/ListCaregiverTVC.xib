@@ -35,12 +35,6 @@
                             <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mih-wJ-BXr"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-OZ-E6s">
-                        <rect key="frame" x="154" y="21" width="183" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Menunggu Konfirmasi" buttonSize="small"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsV-10-5bs">
                         <rect key="frame" x="272" y="10" width="65" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,6 +47,17 @@
                         <connections>
                             <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJ0-Z0-eOy"/>
                             <action selector="tapDelete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="25j-DZ-cab"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-OZ-E6s">
+                        <rect key="frame" x="171" y="10" width="166" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonConfiguration key="configuration" style="filled" title="Batalkan Undangan" buttonSize="small">
+                            <color key="baseForegroundColor" red="0.33725490196078434" green="0.63921568627450975" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="tapCancel:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RwO-1B-fh6"/>
                         </connections>
                     </button>
                 </subviews>

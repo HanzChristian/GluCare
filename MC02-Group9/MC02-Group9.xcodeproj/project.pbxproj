@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150DB205294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB203294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift */; };
+		150DB206294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150DB204294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib */; };
 		1515331928687EA600606068 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331828687EA600606068 /* GuideViewController.swift */; };
 		1515331B2868A8B100606068 /* GuideViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515331A2868A8B100606068 /* GuideViewController2.swift */; };
 		1519255728636BC50019B9C8 /* EmptySpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */; };
@@ -169,6 +171,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		150DB203294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaregiverWorkspaaceTVC.swift; sourceTree = "<group>"; };
+		150DB204294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CaregiverWorkspaaceTVC.xib; sourceTree = "<group>"; };
 		1515331828687EA600606068 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		1515331A2868A8B100606068 /* GuideViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController2.swift; sourceTree = "<group>"; };
 		1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceViewController.swift; sourceTree = "<group>"; };
@@ -412,10 +416,10 @@
 			children = (
 				F09482AC295ABBE7009C5598 /* Extension */,
 				F05616A628EED4B200F61C4C /* Helper */,
-				F02A60DA2869A70900441781 /* Controller */,
-				F02A60D92869A6F900441781 /* View */,
-				F02A60D228698F8F00441781 /* Manager */,
 				F0CBC5352851F6E800D638F7 /* Model */,
+				F02A60D92869A6F900441781 /* View */,
+				F02A60DA2869A70900441781 /* Controller */,
+				F02A60D228698F8F00441781 /* Manager */,
 				158B02D3284FAD0D005254A0 /* AppDelegate.swift */,
 				158B02D5284FAD0D005254A0 /* SceneDelegate.swift */,
 				158B02DF284FAD0F005254A0 /* Assets.xcassets */,
@@ -532,6 +536,8 @@
 				F054780D2910B44600DB4503 /* HbA1CBGTVC.xib */,
 				2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */,
 				2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */,
+				150DB203294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift */,
+				150DB204294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib */,
 				2C23DEFF2913DD550074AFB3 /* ListCaregiverTVC.swift */,
 				2C23DF002913DD550074AFB3 /* ListCaregiverTVC.xib */,
 				2C23DF032913F55F0074AFB3 /* ExitTVC.swift */,
@@ -803,6 +809,7 @@
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
+				150DB206294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib in Resources */,
 				2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
@@ -956,6 +963,7 @@
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
 				155F70B628ED47A8003A844B /* TakeBGTableViewCell.swift in Sources */,
+				150DB205294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift in Sources */,
 				F02AE117292CF03000C8AF34 /* Medicine+CoreDataClass.swift in Sources */,
 				2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */,
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
