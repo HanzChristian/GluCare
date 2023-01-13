@@ -182,7 +182,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else if (section == 2){
                 if(role == 2 && connected == true){
                     return countCaregiver
-                }else if(role == 1 && countCaregiver > 0){
+                }else if(role == 1 && countCaregiver > 0 || role == 2 && countCaregiver > 0){
                     return countCaregiver
                 }
                 else{
@@ -331,7 +331,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         height = 56
                     }
                     if (role == 2 && connected == true){
-                        height = 180
+                        height = 150
                     }
                 } else {
                     height = 56.0
@@ -401,23 +401,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(isLogin == true){
-            if(indexPath.section == 2){
-                if(role == 2 && connected == true){
-                    print("sini gan")
-                    let alert = UIAlertController(title: "Yakin ingin keluar?", message: "Kamu harus meminta izin pasien apabila ingin mengakses kembali.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
-                    alert.addAction(UIAlertAction(title: "Keluar", style: .destructive, handler: {
-                        action in
-                        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-                        listCaregiver.caregiverList.removeAll()
-                        UserDefaults.standard.removeObject(forKey: "patient")
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
-                        
-                    }))
-                    present(alert, animated: true, completion: nil)
-                }
-            }
-    
             if (indexPath.section == 3) {
                 if (indexPath.row == 0) {
                     print("alert exit done")

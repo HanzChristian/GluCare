@@ -35,6 +35,19 @@
                             <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mih-wJ-BXr"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKM-H2-FFw">
+                        <rect key="frame" x="115" y="11" width="107" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="Batalkan" buttonSize="small">
+                            <color key="baseForegroundColor" red="0.33725490196078434" green="0.63921568627450975" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="tapCancelConfirm:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zbQ-ea-hPx"/>
+                            <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZgI-gu-XQk"/>
+                        </connections>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsV-10-5bs">
                         <rect key="frame" x="272" y="10" width="65" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,6 +77,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cancelConfirmBtn" destination="dKM-H2-FFw" id="RPg-ZK-gab"/>
                 <outlet property="caregiverNameLbl" destination="twR-TO-w5E" id="tkq-hE-M6S"/>
                 <outlet property="confirmCaregiverBtn" destination="g3u-bc-siL" id="zjq-cd-JHB"/>
                 <outlet property="deleteCaregiverBtn" destination="UsV-10-5bs" id="Pbo-Ir-baR"/>
