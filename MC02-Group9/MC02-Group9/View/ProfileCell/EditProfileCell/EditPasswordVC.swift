@@ -1,5 +1,5 @@
 //
-//  EditProfileViewController.swift
+//  EditPasswordVC.swift
 //  MC02-Group9
 //
 //  Created by Richard Mulyadi on 13/01/23.
@@ -7,25 +7,17 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class EditPasswordVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     @IBOutlet weak var tableView: UITableView!
     
     var height = 56.0
-    var profileSection = ["Nama", "Email", "Password"]
+    var editPasswSection = ["Password Lama", "Password Baru", "Verifikasi Password Baru"]
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//
-//        hideKeyboardWhenTappedAround()
-        
-        self.tabBarController?.title = "Data Diri"
-        
-        
+        self.tabBarController?.title = "Ubah Password"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,19 +25,13 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.backgroundColor = .systemGroupedBackground
         
         
-        let nibEditUsername = UINib(nibName: "EditUsernameTVC", bundle: nil)
-        tableView.register(nibEditUsername, forCellReuseIdentifier: "editUsernameTVC")
-        let nibEditEmail = UINib(nibName: "EditEmailTVC", bundle: nil)
-        tableView.register(nibEditEmail, forCellReuseIdentifier: "editEmailTVC")
-        let nibEditPassword = UINib(nibName: "EditPasswordTVC", bundle: nil)
-        tableView.register(nibEditPassword, forCellReuseIdentifier: "editPasswordTVC")
-        
-//        setNavItem()
-//        roundedTitle()
-        
+        let nibOldPass = UINib(nibName: "OldPassTVC", bundle: nil)
+        tableView.register(nibOldPass, forCellReuseIdentifier: "oldPassTVC")
+        let nibNewPass = UINib(nibName: "NewPassTVC", bundle: nil)
+        tableView.register(nibNewPass, forCellReuseIdentifier: "newPassTVC")
+        let nibConfNewPass = UINib(nibName: "ConfNewPassTVC", bundle: nil)
+        tableView.register(nibConfNewPass, forCellReuseIdentifier: "confNewPassTVC")
     }
-    
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -56,27 +42,31 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let sectionLabel = UILabel(frame: CGRect(x: 4, y: 10, width: tableView.bounds.size.width, height: 5))
         sectionLabel.font = .rounded(ofSize: 16, weight: .semibold)
         sectionLabel.textColor = UIColor.black
-        sectionLabel.text = profileSection[section]
+        sectionLabel.text = editPasswSection[section]
         sectionLabel.sizeToFit()
         headerView.addSubview(sectionLabel)
         return headerView
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "editUsernameTVC", for: indexPath) as! EditUsernameTVC
+            let cell = tableView.dequeueReusableCell(withIdentifier: "oldPassTVC", for: indexPath) as! OldPassTVC
+            cell.oldPassTxt?.placeholder = "Masukkan Password Lama"
             return cell
         }
         else if (indexPath.section == 1) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "editEmailTVC", for: indexPath) as! EditEmailTVC
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newPassTVC", for: indexPath) as! NewPassTVC
+            cell.newPassTxt?.placeholder = "Masukkan Password Baru"
             return cell
         }
         else if (indexPath.section == 2) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "editPasswordTVC", for: indexPath) as! EditPasswordTVC
+            let cell = tableView.dequeueReusableCell(withIdentifier: "confNewPassTVC", for: indexPath) as! ConfNewPassTVC
+            cell.confNewPassTxt?.placeholder = "Masukkan Ulang Password Baru"
             return cell
         }
         return UITableViewCell()
@@ -103,15 +93,6 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         return false
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 2) {
-            if (indexPath.row == 0) {
-                self.performSegue(withIdentifier: "goToEditPassword", sender: self)
-            }
-        }
-    }
     
- 
+    
 }
-
-
