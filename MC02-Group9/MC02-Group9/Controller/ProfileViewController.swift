@@ -167,6 +167,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countCaregiver = listCaregiver.caregiverList.count
+        print("jumlah caregivernya adalah \(countCaregiver) dan status koneknya adalah \(connected)")
+        
         
         if(isLogin == false){
             if (section == 0){
@@ -246,6 +248,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
                     return cell
                 } else {
+                    print("ini rolenya \(role) dan ini statusnya \(connected)")
                     if(role == 2 && connected == true){
                             let cell = tableView.dequeueReusableCell(withIdentifier: "caregiverWorkspaaceTVC", for: indexPath) as! CaregiverWorkspaaceTVC
                             return cell

@@ -154,7 +154,9 @@ class FirebaseManager {
                                 if(roleId == 0){
                                     UserDefaults.standard.set(1, forKey: "role")
                                     self!.role = 1
-                                    self!.loadFirebase()
+                                    self!.loadFirebase({_,_,_ in
+                                        
+                                    })
                                 }else{
                                     UserDefaults.standard.set(2
                                                               , forKey: "role")
@@ -177,7 +179,6 @@ class FirebaseManager {
     }
     
     func getUserData(){
-        
         if let user = Auth.auth().currentUser?.email {
             db.collection("link")
                 .whereField("caregiver", isEqualTo: "\(user)")
@@ -197,7 +198,14 @@ class FirebaseManager {
                                     }else{
                                         UserDefaults.standard.set("\(patient)", forKey: "patient")
                                     }
-                                    self!.loadFirebase()
+                                    if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
+                                        snapShotListenerList.listenerMed == nil {
+                                        self!.loadFirebase({_,_,_ in
+                                            
+                                        })
+                                    }
+
+                                
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
@@ -225,7 +233,13 @@ class FirebaseManager {
                                     if patient.count > 0 {
                                         UserDefaults.standard.set("\(patient)", forKey: "patient")
                                     }
-                                    self!.loadFirebase()
+                                    if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
+                                        snapShotListenerList.listenerMed == nil {
+                                        self!.loadFirebase({_,_,_ in
+                                            
+                                        })
+                                    }
+                                   
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
@@ -239,7 +253,7 @@ class FirebaseManager {
         
     }
     
-    func loadFirebase() {
+    func loadFirebase(_ completion: (ListenerRegistration,ListenerRegistration,ListenerRegistration) -> Void){
         
         var firstTime = false
         var firstTime2 = false
@@ -255,7 +269,7 @@ class FirebaseManager {
             }
             
             print("email fetch \(user)")
-            db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
+            let listenerMed = db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -278,8 +292,11 @@ class FirebaseManager {
                         }
                     }
                 }
+        
             
-            db.collection("bg").whereField("owner", isEqualTo: "\(user)")
+            
+            
+           let listenerBG = db.collection("bg").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -304,7 +321,7 @@ class FirebaseManager {
                     }
                 }
             
-            db.collection("log").whereField("owner", isEqualTo: "\(user)")
+            let listenerLog = db.collection("log").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -330,6 +347,13 @@ class FirebaseManager {
                         }
                     }
                 }
+            snapShotListenerList.listenerBG = listenerBG
+            snapShotListenerList.listenerMed = listenerMed
+            snapShotListenerList.listenerLog = listenerLog
+            
+            print("listener log = \(listenerLog) \(user)b")
+//            listenerLog.remove()
+            completion (listenerMed,listenerBG,listenerLog)
             
 //            db.collection("link").whereField("owner", isEqualTo: "\(user)")
 //                .addSnapshotListener() { [weak self] (querySnapshot, err) in
@@ -353,6 +377,7 @@ class FirebaseManager {
 //                        }
 //                    }
 //                }
+
         }
     }
     

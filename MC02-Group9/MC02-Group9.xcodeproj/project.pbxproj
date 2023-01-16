@@ -40,6 +40,7 @@
 		15B869A829436160009D9C60 /* MigrateFirestoreToCoreData+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869A729436160009D9C60 /* MigrateFirestoreToCoreData+User.swift */; };
 		15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */; };
 		15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */; };
+		15C3792B2975081F00C7320E /* SnapShotListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3792A2975081F00C7320E /* SnapShotListener.swift */; };
 		15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFCEF28F54038009A7686 /* AddBGViewController.swift */; };
 		15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFCF128F54196009A7686 /* Add BG.storyboard */; };
 		15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFCF328F54619009A7686 /* BGTypeTableViewCell.swift */; };
@@ -206,6 +207,7 @@
 		15B869A729436160009D9C60 /* MigrateFirestoreToCoreData+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MigrateFirestoreToCoreData+User.swift"; sourceTree = "<group>"; };
 		15BDF6DC2850882A008E0388 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		15BDF6E42851DACE008E0388 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
+		15C3792A2975081F00C7320E /* SnapShotListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotListener.swift; sourceTree = "<group>"; };
 		15CAFCEF28F54038009A7686 /* AddBGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBGViewController.swift; sourceTree = "<group>"; };
 		15CAFCF128F54196009A7686 /* Add BG.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add BG.storyboard"; sourceTree = "<group>"; };
 		15CAFCF328F54619009A7686 /* BGTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGTypeTableViewCell.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				15CAFD1028F6BCAE009A7686 /* ScheduleTime.swift */,
 				15CAFD2228F7E991009A7686 /* CalendarModel.swift */,
 				15CAFD2628F7F939009A7686 /* CalendarViewModel.swift */,
+				15C3792A2975081F00C7320E /* SnapShotListener.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				F09482AF295ABC11009C5598 /* Color.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
 				F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
+				15C3792B2975081F00C7320E /* SnapShotListener.swift in Sources */,
 				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
 				F09482BC295ACC6E009C5598 /* LineChartViewFormatter.swift in Sources */,
 				15CAFD0228F5469C009A7686 /* BGFrequencyTableViewCell.swift in Sources */,

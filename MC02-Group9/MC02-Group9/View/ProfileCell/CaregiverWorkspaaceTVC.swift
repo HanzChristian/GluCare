@@ -23,6 +23,13 @@ class CaregiverWorkspaaceTVC: UITableViewCell {
         alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Keluar", style: .destructive, handler: {
             action in
+            print("listener log removed= \(snapShotListenerList.listenerLog)")
+            snapShotListenerList.listenerMed?.remove()
+            snapShotListenerList.listenerBG?.remove()
+            snapShotListenerList.listenerLog?.remove()
+            snapShotListenerList.listenerLog = nil
+            snapShotListenerList.listenerBG = nil
+            snapShotListenerList.listenerMed = nil
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
             listCaregiver.caregiverList.removeAll()
             UserDefaults.standard.removeObject(forKey: "patient")

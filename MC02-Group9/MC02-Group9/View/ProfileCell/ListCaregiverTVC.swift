@@ -16,6 +16,8 @@ class ListCaregiverTVC: UITableViewCell {
     @IBOutlet weak var deleteCaregiverBtn: UIButton!
     @IBOutlet weak var cancelConfirmBtn: UIButton!
     
+    let role = UserDefaults.standard.integer(forKey: "role")
+    
     @IBAction func tapCancelConfirm(_ sender: UIButton) {
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
         listCaregiver.caregiverList.removeAll()
@@ -32,13 +34,15 @@ class ListCaregiverTVC: UITableViewCell {
         
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
         listCaregiver.caregiverList.removeAll()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+        
     }
     
     @IBAction func tapConfirm1(_ sender: Any) {
         
         print("button is pressed to confrim")
-        
-        let role = UserDefaults.standard.integer(forKey: "role")
         var roleString = ""
         
         if role == 1{
@@ -67,12 +71,15 @@ class ListCaregiverTVC: UITableViewCell {
                                 ])
                                 
                                 FirebaseManager.firebaseManager.getAccountInfo()
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
                             }
                         }
                         
                     }
                 }
+            
         }
+        
     }
     
     var temp: listCaregiver?
