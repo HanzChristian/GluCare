@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     let role = UserDefaults.standard.integer(forKey: "role")
     var connected = false
     
+    
     func alreadyLogin(){
         Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             if user != nil {
@@ -38,11 +39,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + tableView.rowHeight + 50, right: 0)
-            }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + tableView.rowHeight + 50, right: 0)
         }
-
+    }
+    
     @objc private func keyboardWillHide(notification: NSNotification) {
         tableView.contentInset = .zero
     }
@@ -104,6 +105,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(toJadwal), name: NSNotification.Name(rawValue: "passJadwal"), object: nil)
         
         alreadyLogin()
     }
@@ -121,33 +123,52 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @objc func toJadwal(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//        vc.navigationController?.pushViewController(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+//
+//        present(vc, animated: true, completion: nil)
+//
+        
+        let alert = UIAlertController(title: "Keluar dari Workspace", message: "Kamu telah keluar dari workspace \(tempNama.name)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Mengerti", style: .default, handler: {
+            action in
+            tempNama.name = ""
+            
+        }))
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
     @objc func toLogin(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
         let navController = UINavigationController(rootViewController: vc)
         
-//        vc.navigationController?.pushViewController(vc, animated: true)
+        //        vc.navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
-//
+        //
         navController.modalPresentationStyle = .pageSheet
         navController.navigationBar.prefersLargeTitles = true
         
-//        UserDefaults.standard.removeObject(forKey: "isNewUser")
+        //        UserDefaults.standard.removeObject(forKey: "isNewUser")
         
         present(navController, animated: true, completion: nil)
-    
+        
     }
     
     @objc func toOnboarding(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingViewController") as! OnBoardingViewController
-//        let navController = UINavigationController(rootViewController: vc)
+        //        let navController = UINavigationController(rootViewController: vc)
         
         vc.navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
-//
-//        navController.modalPresentationStyle = .fullScreen
-//        navController.navigationBar.prefersLargeTitles = true
+        //
+        //        navController.modalPresentationStyle = .fullScreen
+        //        navController.navigationBar.prefersLargeTitles = true
         
         UserDefaults.standard.removeObject(forKey: "isNewUser")
         
@@ -157,7 +178,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //yang lama
-//        return 4
+        //        return 4
         if(isLogin == false){
             return 1
         }else{
@@ -198,19 +219,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return 1
     }
-        
-        //yang lama
-//        if (section == 0){
-//            return 2
-//        }
-//        else if (section == 1){
-//            return 3
-//        } else if (section == 2){
-//            return countCaregiver+1
-//        } else {
-//            return 1
-//        }
-        //            return jadwal.count+1
+    
+    //yang lama
+    //        if (section == 0){
+    //            return 2
+    //        }
+    //        else if (section == 1){
+    //            return 3
+    //        } else if (section == 2){
+    //            return countCaregiver+1
+    //        } else {
+    //            return 1
+    //        }
+    //            return jadwal.count+1
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -250,8 +271,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 } else {
                     print("ini rolenya \(role) dan ini statusnya \(connected)")
                     if(role == 2 && connected == true){
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "caregiverWorkspaaceTVC", for: indexPath) as! CaregiverWorkspaaceTVC
-                            return cell
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "caregiverWorkspaaceTVC", for: indexPath) as! CaregiverWorkspaaceTVC
+                        return cell
                     }else{
                         let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
                         cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
@@ -266,39 +287,39 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         //yang lama
-//        if(indexPath.section == 0){
-//            if (indexPath.row == 0) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
-//                return cell
-//            }
-//            else if (indexPath.row == 1){
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
-//                return cell
-//            }
-//        } else if (indexPath.section == 1) {
-//            if (indexPath.row == 0) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "medAdheranceTVC", for: indexPath) as! MedAdheranceTVC
-//                return cell
-//            } else if (indexPath.row == 1) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "hbA1CBGTVC", for: indexPath) as! HbA1CBGTVC
-//                return cell
-//            } else if (indexPath.row == 2) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
-//                return cell
-//            }
-//        } else if (indexPath.section == 2) {
-//            if (indexPath.row == (countCaregiver)) {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
-//                return cell
-//            } else {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
-//                cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
-//                return cell
-//            }
-//        } else if (indexPath.section == 3) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
-//            return cell
-//        }
+        //        if(indexPath.section == 0){
+        //            if (indexPath.row == 0) {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "introTVC", for: indexPath) as! IntroTVC
+        //                return cell
+        //            }
+        //            else if (indexPath.row == 1){
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "usernameTVC", for: indexPath) as! UsernameTVC
+        //                return cell
+        //            }
+        //        } else if (indexPath.section == 1) {
+        //            if (indexPath.row == 0) {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "medAdheranceTVC", for: indexPath) as! MedAdheranceTVC
+        //                return cell
+        //            } else if (indexPath.row == 1) {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "hbA1CBGTVC", for: indexPath) as! HbA1CBGTVC
+        //                return cell
+        //            } else if (indexPath.row == 2) {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "fastingBGTVC", for: indexPath) as! FastingBGTVC
+        //                return cell
+        //            }
+        //        } else if (indexPath.section == 2) {
+        //            if (indexPath.row == (countCaregiver)) {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
+        //                return cell
+        //            } else {
+        //                let cell = tableView.dequeueReusableCell(withIdentifier: "listCaregiverTVC", for: indexPath) as! ListCaregiverTVC
+        //                cell.setupView(care: listCaregiver.caregiverList[indexPath.row])
+        //                return cell
+        //            }
+        //        } else if (indexPath.section == 3) {
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: "exitTVC", for: indexPath) as! ExitTVC
+        //            return cell
+        //        }
         return UITableViewCell()
     }
     //
@@ -321,24 +342,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let countCaregiver = listCaregiver.caregiverList.count
         
-            if(isLogin == true){
-                if(indexPath.section == 0){
-                    if(indexPath.row == 0){
-                        height = 80
-                    }
+        if(isLogin == true){
+            if(indexPath.section == 0){
+                if(indexPath.row == 0){
+                    height = 80
                 }
-                else if (indexPath.section == 2) {
-                    if (indexPath.row == countCaregiver) {
-                        height = 180
-                    } else if (indexPath.row != countCaregiver) {
-                        height = 56
-                    }
-                    if (role == 2 && connected == true){
-                        height = 150
-                    }
-                } else {
-                    height = 56.0
+            }
+            else if (indexPath.section == 2) {
+                if (indexPath.row == countCaregiver) {
+                    height = 180
+                } else if (indexPath.row != countCaregiver) {
+                    height = 56
                 }
+                if (role == 2 && connected == true){
+                    height = 150
+                }
+            } else {
+                height = 56.0
+            }
         }
         else{
             if(indexPath.section == 0){
@@ -347,39 +368,39 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
-            
-            
+        
+        
         //yang lama
-//        if(isLogin == true){
-//            if(indexPath.section == 0){
-//                if(indexPath.row == 0){
-//                    height = 0
-//                }
-//                else if(indexPath.row == 1){
-//                    height = 80
-//                }
-//            }
-//            else if (indexPath.section == 2) {
-//                if (indexPath.row == countCaregiver) {
-//                    height = 180
-//                } else if (indexPath.row != countCaregiver) {
-//                    height = 56
-//                }
-//            } else {
-//                height = 56.0
-//            }
-//
-//        }else{
-//            if(indexPath.section == 0){
-//                if(indexPath.row == 0){
-//                    height = 509
-//                }else if(indexPath.row == 1){
-//                    height = 0
-//                }
-//            }else{
-//                height = 0
-//            }
-//        }
+        //        if(isLogin == true){
+        //            if(indexPath.section == 0){
+        //                if(indexPath.row == 0){
+        //                    height = 0
+        //                }
+        //                else if(indexPath.row == 1){
+        //                    height = 80
+        //                }
+        //            }
+        //            else if (indexPath.section == 2) {
+        //                if (indexPath.row == countCaregiver) {
+        //                    height = 180
+        //                } else if (indexPath.row != countCaregiver) {
+        //                    height = 56
+        //                }
+        //            } else {
+        //                height = 56.0
+        //            }
+        //
+        //        }else{
+        //            if(indexPath.section == 0){
+        //                if(indexPath.row == 0){
+        //                    height = 509
+        //                }else if(indexPath.row == 1){
+        //                    height = 0
+        //                }
+        //            }else{
+        //                height = 0
+        //            }
+        //        }
         return height
     }
     
@@ -393,11 +414,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         //yang lama
-//        if (indexPath.section == 0) {
-//            if (indexPath.row == 1) {
-//                return true
-//            }
-//        }
+        //        if (indexPath.section == 0) {
+        //            if (indexPath.row == 1) {
+        //                return true
+        //            }
+        //        }
         return false
     }
     
@@ -414,49 +435,49 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let firebaseAuth = Auth.auth()
                         do {
                             try firebaseAuth.signOut()
-
+                            
                             listCaregiver.caregiverList.removeAll()
                             CoreDataManager.coreDataManager.resetAllCoreData()
-
+                            
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
-
+                            
                         } catch let signOutError as NSError {
                             print("Error signing out: %@", signOutError)
-
+                            
                         }
                     }))
                     present(alert, animated: true, completion: nil)
                 }
             }
         }
-
+        
         
         //yang lama
-//        if (indexPath.section == 3) {
-//            if (indexPath.row == 0) {
-//                print("alert exit done")
-//                let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
-//                alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
-//                    action in
-//                    let firebaseAuth = Auth.auth()
-//                    do {
-//                        try firebaseAuth.signOut()
-//
-//                        listCaregiver.caregiverList.removeAll()
-//                        CoreDataManager.coreDataManager.resetAllCoreData()
-//
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
-//
-//                    } catch let signOutError as NSError {
-//                        print("Error signing out: %@", signOutError)
-//
-//                    }
-//                }))
-//                present(alert, animated: true, completion: nil)
-//            }
-//        }
-   }
+        //        if (indexPath.section == 3) {
+        //            if (indexPath.row == 0) {
+        //                print("alert exit done")
+        //                let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)
+        //                alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+        //                alert.addAction(UIAlertAction(title: "Ya", style: .destructive, handler: {
+        //                    action in
+        //                    let firebaseAuth = Auth.auth()
+        //                    do {
+        //                        try firebaseAuth.signOut()
+        //
+        //                        listCaregiver.caregiverList.removeAll()
+        //                        CoreDataManager.coreDataManager.resetAllCoreData()
+        //
+        //                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passOnboarding"), object: nil)
+        //
+        //                    } catch let signOutError as NSError {
+        //                        print("Error signing out: %@", signOutError)
+        //
+        //                    }
+        //                }))
+        //                present(alert, animated: true, completion: nil)
+        //            }
+        //        }
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(isLogin == false){
@@ -471,17 +492,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 35
             
             //yang lama
-//            if (section == 0) {
-//                return 24
-//            } else if (section == 3) {
-//                return 14
-//            }
-//            return 35
+            //            if (section == 0) {
+            //                return 24
+            //            } else if (section == 3) {
+            //                return 14
+            //            }
+            //            return 35
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      
+        
         let headerView = UIView()
         if(isLogin == false){
             return headerView

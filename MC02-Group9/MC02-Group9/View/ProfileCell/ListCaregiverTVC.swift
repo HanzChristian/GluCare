@@ -17,26 +17,71 @@ class ListCaregiverTVC: UITableViewCell {
     @IBOutlet weak var cancelConfirmBtn: UIButton!
     
     let role = UserDefaults.standard.integer(forKey: "role")
+    var name = listCaregiver.caregiverList[0].name
     
     @IBAction func tapCancelConfirm(_ sender: UIButton) {
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-        listCaregiver.caregiverList.removeAll()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        let alert = UIAlertController(title: "Batalkan Undangan?", message: "Kamu akan membatalkan undangan dari \(name)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Batalkan", style: .destructive, handler: {
+            action in
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+            listCaregiver.caregiverList.removeAll()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        }))
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-        listCaregiver.caregiverList.removeAll()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        let alert = UIAlertController(title: "Batalkan Undangan?", message: "Kamu akan membatalkan undangan untuk \(name)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Batalkan", style: .destructive, handler: {
+            action in
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+            listCaregiver.caregiverList.removeAll()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+        }))
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func tapDelete(_ sender: UIButton) {
         
-        MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-        listCaregiver.caregiverList.removeAll()
+        let alert = UIAlertController(title: "Hapus Akses Anggota?", message: "Kamu akan membatalkan undangan untuk \(name)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Keluar", style: .destructive, handler: {
+            action in
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
+            listCaregiver.caregiverList.removeAll()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+        }))
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
+        
         
     }
     
