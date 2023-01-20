@@ -21,6 +21,7 @@ class ContractViewController: UIViewController {
     
     let blue25 = #colorLiteral(red: 0.7803921569, green: 0.8784313725, blue: 0.9450980392, alpha: 1)
 
+    @IBOutlet weak var greetingsLabel: UILabel!
     @IBOutlet weak var attributedLabel: UILabel!
     
     var isFinishAnimating = false
@@ -38,6 +39,8 @@ class ContractViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        greetingsLabel.text = "Hi \(UserDefaults.standard.value(forKey: "nama")!)"
         
         attributedLabel.attributedText = attributedText(
             withString: "Tahan tombol di bawah ini sebagai bentuk komitmen kamu untuk mencapai tujuan!", boldString: "Tahan tombol",
