@@ -1698,6 +1698,7 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                     </view>
                     <connections>
                         <outlet property="attributedLabel" destination="NKC-Wa-UhG" id="pDU-ib-AA2"/>
+                        <outlet property="greetingsLabel" destination="XP2-8f-r2Z" id="TnS-N5-S4w"/>
                         <segue destination="k0n-Oj-qNT" kind="presentation" identifier="goToHomeKonfirmasi" modalPresentationStyle="fullScreen" id="Itf-Nf-aZh"/>
                     </connections>
                 </viewController>
