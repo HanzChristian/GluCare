@@ -17,24 +17,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKG-Ap-Isv">
-                        <rect key="frame" x="16" y="16" width="286" height="20"/>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KpR-9e-itk">
+                        <rect key="frame" x="16" y="16" width="290" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="286" id="xdC-72-s1W"/>
+                            <constraint firstAttribute="width" constant="290" id="eNB-jb-Gvi"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hKG-Ap-Isv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Nub-S5-ihh"/>
-                    <constraint firstItem="hKG-Ap-Isv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="wjL-qc-bQo"/>
+                    <constraint firstItem="KpR-9e-itk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="dFj-he-ilB"/>
+                    <constraint firstItem="KpR-9e-itk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="h17-6O-9ke"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="emailLbl" destination="hKG-Ap-Isv" id="V67-82-2Je"/>
+                <outlet property="emailTxt" destination="KpR-9e-itk" id="oRe-XX-qLr"/>
             </connections>
             <point key="canvasLocation" x="56.488549618320612" y="-11.267605633802818"/>
         </tableViewCell>

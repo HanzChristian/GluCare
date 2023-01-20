@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmP-U7-pH7">
-                                <rect key="frame" x="-5" y="85" width="390" height="44"/>
+                                <rect key="frame" x="-5" y="85" width="389" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5oh-0e-YXw">
@@ -120,7 +120,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Data Diri" largeTitleDisplayMode="never" style="browser" id="zBj-m8-q9Y">
                         <barButtonItem key="backBarButtonItem" title="Kembali" id="GfD-SW-47V"/>
-                        <barButtonItem key="rightBarButtonItem" title="Simpan" id="WeB-Dv-SpJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Simpan" id="WeB-Dv-SpJ">
+                            <connections>
+                                <action selector="didTapSaveProfile:" destination="qo6-4x-keO" id="IFp-wC-gwT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -141,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rew-rd-a8I">
-                                <rect key="frame" x="-5" y="85" width="390" height="44"/>
+                                <rect key="frame" x="-5" y="85" width="389" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OKR-pO-A7S">

@@ -17,24 +17,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzn-rU-y9Y">
-                        <rect key="frame" x="16" y="15.999999999999998" width="270" height="19.333333333333329"/>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-YY-IYz">
+                        <rect key="frame" x="16" y="16" width="300" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="270" id="DZq-HO-btX"/>
+                            <constraint firstAttribute="width" constant="300" id="c4L-aD-dEE"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <textInputTraits key="textInputTraits"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tzn-rU-y9Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2Yd-cI-Pd3"/>
-                    <constraint firstItem="tzn-rU-y9Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hxW-xe-a1v"/>
+                    <constraint firstItem="eKS-YY-IYz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2Di-vt-4bV"/>
+                    <constraint firstItem="eKS-YY-IYz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="s9e-sh-kTa"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="nameLbl" destination="tzn-rU-y9Y" id="PVj-t0-Uod"/>
+                <outlet property="nameTxt" destination="eKS-YY-IYz" id="VNO-LH-9Uc"/>
             </connections>
             <point key="canvasLocation" x="33.587786259541986" y="-11.267605633802818"/>
         </tableViewCell>
