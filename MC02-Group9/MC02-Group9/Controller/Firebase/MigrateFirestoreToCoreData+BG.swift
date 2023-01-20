@@ -37,8 +37,8 @@ extension MigrateFirestoreToCoreData {
             new_medicine_times.append(BGTimeFire(time: t))
         }
         
-        if let user = Auth.auth().currentUser?.email{
-            let new_bg = BGFire(bg_id: bg.bg_id!, bg_each_frequency: bg.bg_each_frequency, bg_frequency: bg.bg_frequency, bg_start_date: bg.bg_start_date!, bg_time: bg.bg_time!, bg_type: bg.bg_type, bg_times: new_medicine_times, owner: user)
+        if let user = Auth.auth().currentUser{
+            let new_bg = BGFire(bg_id: bg.bg_id!, bg_each_frequency: bg.bg_each_frequency, bg_frequency: bg.bg_frequency, bg_start_date: bg.bg_start_date!, bg_time: bg.bg_time!, bg_type: bg.bg_type, bg_times: new_medicine_times, owner: user.uid)
             do{
                 try db.collection("bg").document().setData(from: new_bg)
                 print("success add new medicine")

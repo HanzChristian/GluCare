@@ -15,8 +15,8 @@ import FirebaseFirestoreSwift
 extension MigrateFirestoreToCoreData {
     
     func addNewLogToFirestore(log: Log) {
-        if let user = Auth.auth().currentUser?.email{
-            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, log_ref: log.ref_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user, eat_time: log.eat_time)
+        if let user = Auth.auth().currentUser{
+            let newLog = LogFire(action: log.action!, bg_check_result: log.bg_check_result!, date: log.date!, dateTake: log.dateTake!, log_id: log.log_id!, log_ref: log.ref_id!, medicine_name: log.medicine_name!, time: log.time!, type: Int(log.type), owner: user.uid, eat_time: log.eat_time)
             
             do{
                 try db.collection("log").document().setData(from: newLog)

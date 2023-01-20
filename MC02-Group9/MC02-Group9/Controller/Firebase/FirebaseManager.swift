@@ -54,6 +54,7 @@ class FirebaseManager {
                                         if msg != "You can't invite multiple time"{
                                             self.db.collection("link").addDocument(data: [
                                                 "patient": "\(emailPatient)",
+                                                "patientId": "",
                                                 "caregiver": "",
                                                 "owner": "\(user)",
                                                 "status": false
@@ -81,7 +82,7 @@ class FirebaseManager {
         var msg = "Invitation can't be sended"
         
         
-        if  let user = Auth.auth().currentUser?.email{
+        if  let user = Auth.auth().currentUser{
             print(user)
             
             FirebaseManager.firebaseManager.db.collection("link")
@@ -112,8 +113,9 @@ class FirebaseManager {
                                         if msg != "You can't invite multiple time"{
                                             self.db.collection("link").addDocument(data: [
                                                 "patient": "",
+                                                "patientId": "\(user.uid)",
                                                 "caregiver": "\(emailCaregiver)",
-                                                "owner": "\(user)",
+                                                "owner": "\(String(describing: user.email!))",
                                                 "status": false
                                             ]){ (error) in
                                                 if let e = error {
@@ -190,14 +192,12 @@ class FirebaseManager {
                             let data = document.data()
                             if  let status = data["status"] as? Bool,
                                 let owner = data["owner"] as? String,
-                                let patient = data["patient"] as? String
+                                let patient = data["patient"] as? String,
+                                let userId = data["patientId"] as? String
                             {
                                 if status == true{
-                                    if owner.count > 0 {
-                                        UserDefaults.standard.set("\(owner)", forKey: "patient")
-                                    }else{
-                                        UserDefaults.standard.set("\(patient)", forKey: "patient")
-                                    }
+     
+                                    UserDefaults.standard.set("\(userId)", forKey: "patient")
                                     if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
                                         snapShotListenerList.listenerMed == nil {
                                         self!.loadFirebase({_,_,_ in
@@ -227,12 +227,13 @@ class FirebaseManager {
                             let data = document.data()
                             if  let status = data["status"] as? Bool,
                                 let owner = data["owner"] as? String,
-                                let patient = data["patient"] as? String
+                                let patient = data["patient"] as? String,
+                                let userId = data["patientId"] as? String
                             {
                                 if status == true{
-                                    if patient.count > 0 {
-                                        UserDefaults.standard.set("\(patient)", forKey: "patient")
-                                    }
+                                    
+                                    UserDefaults.standard.set("\(userId)", forKey: "patient")
+                                    
                                     if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
                                         snapShotListenerList.listenerMed == nil {
                                         self!.loadFirebase({_,_,_ in
@@ -259,14 +260,17 @@ class FirebaseManager {
         var firstTime2 = false
         var firstTime3 = false
         
-        if var user = Auth.auth().currentUser?.email {
+        if var user = Auth.auth().currentUser?.uid {
             let role = UserDefaults.standard.integer(forKey: "role")
             if role == 2 {
                 if let p = UserDefaults.standard.string(forKey: "patient"){
                     user = p
+                    
                 }
                 
             }
+            
+            print("userid \(user)")
             
             print("email fetch \(user)")
             let listenerMed = db.collection("medicine").whereField("owner", isEqualTo: "\(user)")

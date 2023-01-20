@@ -111,9 +111,21 @@ class ListCaregiverTVC: UITableViewCell {
                             let data = document.data()
                             if  let caregiver = data["owner"] as? String
                             {
-                                document.reference.updateData([
-                                    "status": true
-                                ])
+                                
+                                if self.role == 1{
+                                    if let patientId = Auth.auth().currentUser?.uid{
+                                        document.reference.updateData([
+                                            "status": true,
+                                            "patientId": "\(patientId)"
+                                        ])
+                                    }
+                                }else{
+                                    document.reference.updateData([
+                                        "status": true
+                                    ])
+                                }
+                                
+                                
                                 
                                 FirebaseManager.firebaseManager.getAccountInfo()
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
