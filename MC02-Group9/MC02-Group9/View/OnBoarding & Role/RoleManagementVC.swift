@@ -99,26 +99,28 @@ class RoleManagementVC: UIViewController {
     
     func addRoleDataToFirebase(){
         
-        if  let user = Auth.auth().currentUser?.email{
-    
-            let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
-            let nama = UserDefaults.standard.string(forKey: "nama")
-            
-            self.db.collection("account").addDocument(data: [
-                "roleId": roleUserDefault,
-                "nama": "\(nama!)",
-                "owner": "\(user)"
-            ]){ (error) in
-                if let e = error {
-                    print("failed saved data \(e)")
-                }else{
-                    print("success saved data")
-                    // make segue
-                    FirebaseManager.firebaseManager.getAccountInfo()
-                    self.performSegue(withIdentifier: "goToHomeKonfirmasi", sender: self)
-                }
-            }
-        }
+        performSegue(withIdentifier: "goToContract", sender: self)
+        
+//        if  let user = Auth.auth().currentUser?.email{
+//    
+//            let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
+//            let nama = UserDefaults.standard.string(forKey: "nama")
+//            
+//            self.db.collection("account").addDocument(data: [
+//                "roleId": roleUserDefault,
+//                "nama": "\(nama!)",
+//                "owner": "\(user)"
+//            ]){ (error) in
+//                if let e = error {
+//                    print("failed saved data \(e)")
+//                }else{
+//                    print("success saved data")
+//                    // make segue
+//                    FirebaseManager.firebaseManager.getAccountInfo()
+//                    self.performSegue(withIdentifier: "goToContract", sender: self)
+//                }
+//            }
+//        }
     }
     
     @objc func validateForm(){

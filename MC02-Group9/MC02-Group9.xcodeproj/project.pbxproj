@@ -169,6 +169,9 @@
 		F0DFE2C1291E243300993B0D /* CoreDataManager+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */; };
 		F0DFE2C3291E249900993B0D /* CoreDataManager+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */; };
 		F0DFE2C5291E252D00993B0D /* CoreDataManager+Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */; };
+		F0EEBF51297970F500BF853F /* ContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF50297970F500BF853F /* ContractViewController.swift */; };
+		F0EEBF532979711D00BF853F /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF522979711D00BF853F /* CircleView.swift */; };
+		F0EEBF552979713D00BF853F /* OnBoardingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -337,6 +340,9 @@
 		F0DFE2C0291E243300993B0D /* CoreDataManager+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Log.swift"; sourceTree = "<group>"; };
 		F0DFE2C2291E249900993B0D /* CoreDataManager+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+BG.swift"; sourceTree = "<group>"; };
 		F0DFE2C4291E252D00993B0D /* CoreDataManager+Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Streak.swift"; sourceTree = "<group>"; };
+		F0EEBF50297970F500BF853F /* ContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractViewController.swift; sourceTree = "<group>"; };
+		F0EEBF522979711D00BF853F /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingBackView.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -596,6 +602,7 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F0EEBF4F297970E300BF853F /* Contract */,
 				F05B1C1829273817009BA2CB /* Statistik */,
 				F054B0D8290BDDE700287D06 /* Firebase */,
 				157F70D22906E63C000C7B07 /* ViewController */,
@@ -746,6 +753,16 @@
 				1515331A2868A8B100606068 /* GuideViewController2.swift */,
 			);
 			path = Stash;
+			sourceTree = "<group>";
+		};
+		F0EEBF4F297970E300BF853F /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				F0EEBF50297970F500BF853F /* ContractViewController.swift */,
+				F0EEBF522979711D00BF853F /* CircleView.swift */,
+				F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */,
+			);
+			path = Contract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -980,10 +997,13 @@
 				2CD9C5FE2942FF5400CEF8E5 /* StatisticsViewController.swift in Sources */,
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
+				F0EEBF51297970F500BF853F /* ContractViewController.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F09482AF295ABC11009C5598 /* Color.swift in Sources */,
+				F0EEBF532979711D00BF853F /* CircleView.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
+				F0EEBF552979713D00BF853F /* OnBoardingBackView.swift in Sources */,
 				F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
 				15C3792B2975081F00C7320E /* SnapShotListener.swift in Sources */,
 				F05478352910F60F00DB4503 /* MigrateFireStoreToCoreData+Log.swift in Sources */,
@@ -1192,7 +1212,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y38KPN6RN4;
+				DEVELOPMENT_TEAM = 784J694B86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1223,7 +1243,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y38KPN6RN4;
+				DEVELOPMENT_TEAM = 784J694B86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
