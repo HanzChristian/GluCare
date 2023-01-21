@@ -15,6 +15,8 @@ class EditUsernameTVC: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var nameTxt: UITextField!
     
+    let db = Firestore.firestore()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +28,8 @@ class EditUsernameTVC: UITableViewCell {
             string: FirebaseManager.firebaseManager.name,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
         )
+        print("db col id", db.collection("account").parent)
+        
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUser), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
         

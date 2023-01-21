@@ -70,6 +70,7 @@ class EditPasswordVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         setNavItem()
         NotificationCenter.default.addObserver(self, selector: #selector(self.validateForm), name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
         navigationItem.rightBarButtonItem?.isEnabled = false
+        tableView.reloadData()
     }
     
     @objc func validateForm() {

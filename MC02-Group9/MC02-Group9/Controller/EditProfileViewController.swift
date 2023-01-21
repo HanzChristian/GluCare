@@ -85,7 +85,7 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         validateForm()
         setNavItem()
         NotificationCenter.default.addObserver(self, selector: #selector(self.validateForm), name: NSNotification.Name(rawValue: "formValidateNotif"), object: nil)
-        
+        tableView.reloadData()
 //        roundedTitle()
         
     }
@@ -177,29 +177,45 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
+
+    
     @objc private func saveProfile() {
+        print("saveProfile triggeredd")
         let txtUsername = cellUsername?.nameTxt.text
         let txtEmail = cellEmail?.emailTxt.text
         if (txtUsername != Optional("")) {
             let newUsername = cellUsername!.nameTxt.text!
+            print("newusername", newUsername)
             let updateUsername = db.collection("account").document()
-            updateUsername.setData([
-                "nama": "\(newUsername)",
-            ], merge: true)
-        }
-        if (txtEmail != Optional("")) {
-            let email = cellEmail!.emailTxt.text!
-            Auth.auth().currentUser?.updateEmail(to: email) { error in
+            updateUsername.updateData([
+                "nama": "\(newUsername)"
+            ]) {error in
                 if let e = error {
                     print(e)
                 } else {
-                    
                 }
             }
         }
-        
-        
-        
+        if (txtEmail != Optional("")) {
+            print("change email triggered")
+            let newEmail = cellEmail!.emailTxt.text!
+            Auth.auth().currentUser?.updateEmail(to: newEmail) { error in
+                if let e = error {
+                    print(e)
+                } else {
+                }
+            }
+//            let updateEmail = db.collection("account").document("k90oCZPayPbzsgUjXs2d")
+//            updateEmail.updateData([
+//                "owner": "\(updateEmail)"
+//            ]) {error in
+//                if let e = error {
+//                    print(e)
+//                } else {
+//                }
+//            }
+        }
+        print("textusername", txtUsername!, " changed from ", FirebaseManager.firebaseManager.name)
     }
     
  
