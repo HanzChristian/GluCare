@@ -54,6 +54,7 @@ class FirebaseManager {
                                         if msg != "You can't invite multiple time"{
                                             self.db.collection("link").addDocument(data: [
                                                 "patient": "\(emailPatient)",
+                                                "patientId": "",
                                                 "caregiver": "",
                                                 "owner": "\(user)",
                                                 "status": false
@@ -81,7 +82,7 @@ class FirebaseManager {
         var msg = "Invitation can't be sended"
         
         
-        if  let user = Auth.auth().currentUser?.email{
+        if  let user = Auth.auth().currentUser{
             print(user)
             
             FirebaseManager.firebaseManager.db.collection("link")
@@ -112,8 +113,9 @@ class FirebaseManager {
                                         if msg != "You can't invite multiple time"{
                                             self.db.collection("link").addDocument(data: [
                                                 "patient": "",
+                                                "patientId": "\(user.uid)",
                                                 "caregiver": "\(emailCaregiver)",
-                                                "owner": "\(user)",
+                                                "owner": "\(String(describing: user.email!))",
                                                 "status": false
                                             ]){ (error) in
                                                 if let e = error {
@@ -156,7 +158,9 @@ class FirebaseManager {
                                 if(roleId == 0){
                                     UserDefaults.standard.set(1, forKey: "role")
                                     self!.role = 1
-                                    self!.loadFirebase()
+                                    self!.loadFirebase({_,_,_ in
+                                        
+                                    })
                                 }else{
                                     UserDefaults.standard.set(2
                                                               , forKey: "role")
@@ -179,7 +183,6 @@ class FirebaseManager {
     }
     
     func getUserData(){
-        
         if let user = Auth.auth().currentUser?.email {
             db.collection("link")
                 .whereField("caregiver", isEqualTo: "\(user)")
@@ -191,15 +194,20 @@ class FirebaseManager {
                             let data = document.data()
                             if  let status = data["status"] as? Bool,
                                 let owner = data["owner"] as? String,
-                                let patient = data["patient"] as? String
+                                let patient = data["patient"] as? String,
+                                let userId = data["patientId"] as? String
                             {
                                 if status == true{
-                                    if owner.count > 0 {
-                                        UserDefaults.standard.set("\(owner)", forKey: "patient")
-                                    }else{
-                                        UserDefaults.standard.set("\(patient)", forKey: "patient")
+     
+                                    UserDefaults.standard.set("\(userId)", forKey: "patient")
+                                    if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
+                                        snapShotListenerList.listenerMed == nil {
+                                        self!.loadFirebase({_,_,_ in
+                                            
+                                        })
                                     }
-                                    self!.loadFirebase()
+
+                                
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
@@ -221,13 +229,20 @@ class FirebaseManager {
                             let data = document.data()
                             if  let status = data["status"] as? Bool,
                                 let owner = data["owner"] as? String,
-                                let patient = data["patient"] as? String
+                                let patient = data["patient"] as? String,
+                                let userId = data["patientId"] as? String
                             {
                                 if status == true{
-                                    if patient.count > 0 {
-                                        UserDefaults.standard.set("\(patient)", forKey: "patient")
+                                    
+                                    UserDefaults.standard.set("\(userId)", forKey: "patient")
+                                    
+                                    if snapShotListenerList.listenerLog == nil || snapShotListenerList.listenerBG == nil ||
+                                        snapShotListenerList.listenerMed == nil {
+                                        self!.loadFirebase({_,_,_ in
+                                            
+                                        })
                                     }
-                                    self!.loadFirebase()
+                                   
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
@@ -241,23 +256,26 @@ class FirebaseManager {
         
     }
     
-    func loadFirebase() {
+    func loadFirebase(_ completion: (ListenerRegistration,ListenerRegistration,ListenerRegistration) -> Void){
         
         var firstTime = false
         var firstTime2 = false
         var firstTime3 = false
         
-        if var user = Auth.auth().currentUser?.email {
+        if var user = Auth.auth().currentUser?.uid {
             let role = UserDefaults.standard.integer(forKey: "role")
             if role == 2 {
                 if let p = UserDefaults.standard.string(forKey: "patient"){
                     user = p
+                    
                 }
                 
             }
             
+            print("userid \(user)")
+            
             print("email fetch \(user)")
-            db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
+            let listenerMed = db.collection("medicine").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -280,8 +298,11 @@ class FirebaseManager {
                         }
                     }
                 }
+        
             
-            db.collection("bg").whereField("owner", isEqualTo: "\(user)")
+            
+            
+           let listenerBG = db.collection("bg").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -306,7 +327,7 @@ class FirebaseManager {
                     }
                 }
             
-            db.collection("log").whereField("owner", isEqualTo: "\(user)")
+            let listenerLog = db.collection("log").whereField("owner", isEqualTo: "\(user)")
                 .addSnapshotListener() { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -332,6 +353,13 @@ class FirebaseManager {
                         }
                     }
                 }
+            snapShotListenerList.listenerBG = listenerBG
+            snapShotListenerList.listenerMed = listenerMed
+            snapShotListenerList.listenerLog = listenerLog
+            
+            print("listener log = \(listenerLog) \(user)b")
+//            listenerLog.remove()
+            completion (listenerMed,listenerBG,listenerLog)
             
 //            db.collection("link").whereField("owner", isEqualTo: "\(user)")
 //                .addSnapshotListener() { [weak self] (querySnapshot, err) in
@@ -355,6 +383,7 @@ class FirebaseManager {
 //                        }
 //                    }
 //                }
+
         }
     }
     

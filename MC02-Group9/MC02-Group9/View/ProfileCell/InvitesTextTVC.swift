@@ -36,7 +36,7 @@ class InvitesTextTVC: UITableViewCell {
     
     @IBAction func invite(_ sender: Any) {
         if self.inviteTextField.text == ""{return}
-        
+        listCaregiver.caregiverList.removeAll()
         let firebaseManager = FirebaseManager.firebaseManager
         
         if firebaseManager.role == 1{

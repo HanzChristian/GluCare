@@ -55,6 +55,33 @@ extension ProfileViewController{
         }
     }
     
+    func filterDeleteCaregiver(newList: [listCaregiver]){
+        var count = 0
+        let role = UserDefaults.standard.integer(forKey: "role")
+        
+        for list in listCaregiver.caregiverList{
+            var isFound = 0
+            
+            for j in newList{
+                if(list.name == j.name){
+                    isFound = 1
+                }
+            }
+            if(isFound == 0){
+                listCaregiver.caregiverList.remove(at: count)
+                if(role == 2){
+                    CoreDataManager.coreDataManager.resetAllCoreData()
+                    snapShotListenerList.listenerMed?.remove()
+                    snapShotListenerList.listenerBG?.remove()
+                    snapShotListenerList.listenerLog?.remove()
+                    snapShotListenerList.listenerLog = nil
+                    snapShotListenerList.listenerBG = nil
+                    snapShotListenerList.listenerMed = nil
+                }
+            }
+            count += 1
+        }
+    }
     
     func fetchInvitationFromCaregiver() {
         
@@ -83,6 +110,7 @@ extension ProfileViewController{
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        var listCaregiverFirebase = [listCaregiver]()
                         for document in querySnapshot!.documents {
                             let data = document.data()
                             if  let caregiver = data["owner"] as? String,
@@ -98,12 +126,15 @@ extension ProfileViewController{
                                 
                                 let newList = listCaregiver(name: caregiver, status: s)
                                 
+                                listCaregiverFirebase.append(newList)
+                                
                                 if(self!.filterNewCaregiver(newList: newList) == false){
                                     listCaregiver.caregiverList.append(newList)
                                 }
+                                
                             }
                         }
-                        
+                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
                         self?.tableView.reloadData()
                         if querySnapshot!.isEmpty{
 
@@ -118,6 +149,7 @@ extension ProfileViewController{
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        var listCaregiverFirebase = [listCaregiver]()
                         for document in querySnapshot!.documents {
                             let data = document.data()
                             if  let caregiver = data["\(role2String)"] as? String,
@@ -133,13 +165,13 @@ extension ProfileViewController{
                                 print("\(caregiver)")
                                 
                                 let newList = listCaregiver(name: caregiver, status: s)
-                                
+                                listCaregiverFirebase.append(newList)
                                 if(self!.filterNewCaregiver(newList: newList) == false){
                                     listCaregiver.caregiverList.append(newList)
                                 }
                             }
                         }
-                        
+                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
                         self?.tableView.reloadData()
                         if querySnapshot!.isEmpty{
 

@@ -28,6 +28,13 @@ extension ViewController{
     
     func mergeTV(){
         
+        if coreDataManager.logs == nil{
+            coreDataManager.logs = [Log]()
+        }
+        if coreDataManager.bg == nil{
+            coreDataManager.bg = [BG]()
+        }
+        
         self.coreDataManager.fetchBG()
         checkAvailableInitLog(daySelected: daySelected)
         coreDataManager.checkBGLogAvailable(logs: coreDataManager.logs!, bgs: coreDataManager.bg!, daySelected: daySelected)

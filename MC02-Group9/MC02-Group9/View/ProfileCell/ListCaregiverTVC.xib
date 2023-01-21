@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,36 +26,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3u-bc-siL">
-                        <rect key="frame" x="230" y="11" width="107" height="35"/>
+                        <rect key="frame" x="281" y="11" width="56" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Konfirmasi" buttonSize="small">
-                            <color key="baseBackgroundColor" red="0.1176470518" green="0.50980395079999996" blue="0.76470589639999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </buttonConfiguration>
+                        <buttonConfiguration key="configuration" style="filled" image="accept" buttonSize="small"/>
                         <connections>
                             <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mih-wJ-BXr"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKM-H2-FFw">
-                        <rect key="frame" x="115" y="11" width="107" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Batalkan" buttonSize="small">
-                            <color key="baseForegroundColor" red="0.33725490196078434" green="0.63921568627450975" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="tapCancelConfirm:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zbQ-ea-hPx"/>
-                            <action selector="tapConfirm1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZgI-gu-XQk"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsV-10-5bs">
-                        <rect key="frame" x="272" y="10" width="65" height="36"/>
+                        <rect key="frame" x="281" y="11" width="56" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="tintColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Hapus" subtitle="" buttonSize="small">
-                            <color key="baseForegroundColor" red="0.87058823529411766" green="0.43529411764705883" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <buttonConfiguration key="configuration" style="filled" image="quit" subtitle="" buttonSize="small">
                             <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
                         <connections>
@@ -63,14 +49,24 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc4-OZ-E6s">
-                        <rect key="frame" x="171" y="10" width="166" height="36"/>
+                        <rect key="frame" x="281" y="11" width="56" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Batalkan Undangan" buttonSize="small">
-                            <color key="baseForegroundColor" red="0.33725490196078434" green="0.63921568627450975" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <buttonConfiguration key="configuration" style="filled" image="decline" buttonSize="small">
                             <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
                         <connections>
                             <action selector="tapCancel:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RwO-1B-fh6"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKM-H2-FFw">
+                        <rect key="frame" x="219" y="11" width="56" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" image="decline" buttonSize="small">
+                            <color key="baseBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="tapCancelConfirm:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zbQ-ea-hPx"/>
                         </connections>
                     </button>
                 </subviews>
@@ -86,4 +82,12 @@
             <point key="canvasLocation" x="130.76923076923077" y="-12.085308056872037"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="accept" width="56" height="32"/>
+        <image name="decline" width="56" height="32"/>
+        <image name="quit" width="56" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
