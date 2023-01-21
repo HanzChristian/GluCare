@@ -197,7 +197,7 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         if (txtEmail != Optional("")) {
-            print("change email triggered")
+            print("change email triggered here")
             let newEmail = cellEmail!.emailTxt.text!
             Auth.auth().currentUser?.updateEmail(to: newEmail) { error in
                 if let e = error {
