@@ -147,10 +147,12 @@ class FirebaseManager {
                         print("Error getting documents: \(err)")
                     } else {
                         for document in querySnapshot!.documents {
+                            print("data heree")
                             let data = document.data()
                             if  let roleId = data["roleId"] as? Int,
                                 let nama = data["nama"] as? String
                             {
+                                print("nama", nama)
                                 self!.name = nama
                                 self!.email = user
                                 if(roleId == 0){
