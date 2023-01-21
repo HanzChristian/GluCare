@@ -216,6 +216,7 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
 //            }
         }
         print("textusername", txtUsername!, " changed from ", FirebaseManager.firebaseManager.name)
+        print("s")
     }
     
  
