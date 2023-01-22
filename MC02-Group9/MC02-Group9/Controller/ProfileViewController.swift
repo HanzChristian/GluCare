@@ -423,9 +423,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if(isLogin == true){
-            if (indexPath.section == 3) {
+            if (indexPath.section == 0) {
+                if (indexPath.row == 0) {
+                    self.performSegue(withIdentifier: "goToEditProfile", sender: self)
+                }
+            }
+            else if (indexPath.section == 3) {
                 if (indexPath.row == 0) {
                     print("alert exit done")
                     let alert = UIAlertController(title: "Yakin mau keluar?", message: "", preferredStyle: .alert)

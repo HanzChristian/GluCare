@@ -82,6 +82,13 @@
 		1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8813B72861E0DF009994F9 /* Badge.storyboard */; };
 		1FFCAEAD2863293500E97CBA /* MealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCAEAC2863293500E97CBA /* MealTime.swift */; };
 		2B6E69EB3CEC9E461AD08673 /* Pods_MC02_Group9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797BBEB59BD9764CA8E4D5 /* Pods_MC02_Group9.framework */; };
+		2C17E1A529716CE500D9AEF6 /* OldPassTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17E1A329716CE500D9AEF6 /* OldPassTVC.swift */; };
+		2C17E1A629716CE500D9AEF6 /* OldPassTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C17E1A429716CE500D9AEF6 /* OldPassTVC.xib */; };
+		2C17E1A929716CF500D9AEF6 /* NewPassTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17E1A729716CF500D9AEF6 /* NewPassTVC.swift */; };
+		2C17E1AA29716CF500D9AEF6 /* NewPassTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C17E1A829716CF500D9AEF6 /* NewPassTVC.xib */; };
+		2C17E1AD29716D0700D9AEF6 /* ConfNewPassTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17E1AB29716D0700D9AEF6 /* ConfNewPassTVC.swift */; };
+		2C17E1AE29716D0700D9AEF6 /* ConfNewPassTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C17E1AC29716D0700D9AEF6 /* ConfNewPassTVC.xib */; };
+		2C17E1B029716D9700D9AEF6 /* EditPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17E1AF29716D9700D9AEF6 /* EditPasswordVC.swift */; };
 		2C1F2E5528FC5D4F00FC2950 /* RoutinesBGTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */; };
 		2C23DEFD2913D4DE0074AFB3 /* InvitesTextTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */; };
 		2C23DEFE2913D4DE0074AFB3 /* InvitesTextTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */; };
@@ -108,6 +115,13 @@
 		2CA646C529430B69001E6438 /* BGSTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA646C329430B69001E6438 /* BGSTVC.xib */; };
 		2CA646C829430B80001E6438 /* HbA1CSTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA646C629430B80001E6438 /* HbA1CSTVC.swift */; };
 		2CA646C929430B80001E6438 /* HbA1CSTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA646C729430B80001E6438 /* HbA1CSTVC.xib */; };
+		2CBD1BED297150D60067CA35 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD1BEC297150D60067CA35 /* EditProfileViewController.swift */; };
+		2CBD1BF1297155080067CA35 /* EditUsernameTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD1BEF297155080067CA35 /* EditUsernameTVC.swift */; };
+		2CBD1BF2297155080067CA35 /* EditUsernameTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD1BF0297155080067CA35 /* EditUsernameTVC.xib */; };
+		2CBD1BF52971551D0067CA35 /* EditEmailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD1BF32971551D0067CA35 /* EditEmailTVC.swift */; };
+		2CBD1BF62971551D0067CA35 /* EditEmailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD1BF42971551D0067CA35 /* EditEmailTVC.xib */; };
+		2CBD1BF92971552D0067CA35 /* EditPasswordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD1BF72971552D0067CA35 /* EditPasswordTVC.swift */; };
+		2CBD1BFA2971552D0067CA35 /* EditPasswordTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD1BF82971552D0067CA35 /* EditPasswordTVC.xib */; };
 		2CCD168F28FC63830010EEB4 /* RoutinesBGTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */; };
 		2CD9C5FE2942FF5400CEF8E5 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9C5FD2942FF5400CEF8E5 /* StatisticsViewController.swift */; };
 		2CD9C6002942FF7F00CEF8E5 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD9C5FF2942FF7F00CEF8E5 /* Statistics.storyboard */; };
@@ -252,6 +266,13 @@
 		1F8813B52861E01A009994F9 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		1F8813B82861E0DF009994F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Badge.storyboard; sourceTree = "<group>"; };
 		1FFCAEAC2863293500E97CBA /* MealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTime.swift; sourceTree = "<group>"; };
+		2C17E1A329716CE500D9AEF6 /* OldPassTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPassTVC.swift; sourceTree = "<group>"; };
+		2C17E1A429716CE500D9AEF6 /* OldPassTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OldPassTVC.xib; sourceTree = "<group>"; };
+		2C17E1A729716CF500D9AEF6 /* NewPassTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassTVC.swift; sourceTree = "<group>"; };
+		2C17E1A829716CF500D9AEF6 /* NewPassTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPassTVC.xib; sourceTree = "<group>"; };
+		2C17E1AB29716D0700D9AEF6 /* ConfNewPassTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfNewPassTVC.swift; sourceTree = "<group>"; };
+		2C17E1AC29716D0700D9AEF6 /* ConfNewPassTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfNewPassTVC.xib; sourceTree = "<group>"; };
+		2C17E1AF29716D9700D9AEF6 /* EditPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordVC.swift; sourceTree = "<group>"; };
 		2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesBGTVC.swift; sourceTree = "<group>"; };
 		2C23DEFB2913D4DE0074AFB3 /* InvitesTextTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesTextTVC.swift; sourceTree = "<group>"; };
 		2C23DEFC2913D4DE0074AFB3 /* InvitesTextTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitesTextTVC.xib; sourceTree = "<group>"; };
@@ -278,6 +299,13 @@
 		2CA646C329430B69001E6438 /* BGSTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BGSTVC.xib; sourceTree = "<group>"; };
 		2CA646C629430B80001E6438 /* HbA1CSTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HbA1CSTVC.swift; sourceTree = "<group>"; };
 		2CA646C729430B80001E6438 /* HbA1CSTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HbA1CSTVC.xib; sourceTree = "<group>"; };
+		2CBD1BEC297150D60067CA35 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		2CBD1BEF297155080067CA35 /* EditUsernameTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameTVC.swift; sourceTree = "<group>"; };
+		2CBD1BF0297155080067CA35 /* EditUsernameTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUsernameTVC.xib; sourceTree = "<group>"; };
+		2CBD1BF32971551D0067CA35 /* EditEmailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailTVC.swift; sourceTree = "<group>"; };
+		2CBD1BF42971551D0067CA35 /* EditEmailTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditEmailTVC.xib; sourceTree = "<group>"; };
+		2CBD1BF72971552D0067CA35 /* EditPasswordTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordTVC.swift; sourceTree = "<group>"; };
+		2CBD1BF82971552D0067CA35 /* EditPasswordTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPasswordTVC.xib; sourceTree = "<group>"; };
 		2CCD168E28FC63830010EEB4 /* RoutinesBGTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutinesBGTVC.xib; sourceTree = "<group>"; };
 		2CD9C5FD2942FF5400CEF8E5 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		2CD9C5FF2942FF7F00CEF8E5 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
@@ -487,6 +515,19 @@
 			path = TakeMedCell;
 			sourceTree = "<group>";
 		};
+		2C17E1A229716CC000D9AEF6 /* EditPasswordCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C17E1A329716CE500D9AEF6 /* OldPassTVC.swift */,
+				2C17E1A429716CE500D9AEF6 /* OldPassTVC.xib */,
+				2C17E1A729716CF500D9AEF6 /* NewPassTVC.swift */,
+				2C17E1A829716CF500D9AEF6 /* NewPassTVC.xib */,
+				2C17E1AB29716D0700D9AEF6 /* ConfNewPassTVC.swift */,
+				2C17E1AC29716D0700D9AEF6 /* ConfNewPassTVC.xib */,
+			);
+			path = EditPasswordCell;
+			sourceTree = "<group>";
+		};
 		2C1F2E5728FC62CF00FC2950 /* RoutinesTVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +561,20 @@
 			path = AddMedCell;
 			sourceTree = "<group>";
 		};
+		2CBD1BEE297154CF0067CA35 /* EditProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CBD1BEF297155080067CA35 /* EditUsernameTVC.swift */,
+				2CBD1BF0297155080067CA35 /* EditUsernameTVC.xib */,
+				2CBD1BF32971551D0067CA35 /* EditEmailTVC.swift */,
+				2CBD1BF42971551D0067CA35 /* EditEmailTVC.xib */,
+				2CBD1BF72971552D0067CA35 /* EditPasswordTVC.swift */,
+				2CBD1BF82971552D0067CA35 /* EditPasswordTVC.xib */,
+				2C17E1AF29716D9700D9AEF6 /* EditPasswordVC.swift */,
+			);
+			path = EditProfileCell;
+			sourceTree = "<group>";
+		};
 		2CD9C60529430AA900CEF8E5 /* TVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +591,8 @@
 		2CEE5945290A625700AE7C84 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
+				2CBD1BEE297154CF0067CA35 /* EditProfileCell */,
+				2C17E1A229716CC000D9AEF6 /* EditPasswordCell */,
 				F054782E2910D8A900DB4503 /* UsernameTVC.swift */,
 				F054782F2910D8A900DB4503 /* UsernameTVC.xib */,
 				F054781D2910B70200DB4503 /* MedAdheranceTVC.swift */,
@@ -620,6 +677,7 @@
 				2CE0722328F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift */,
 				2CE0722428F27724008B8EB0 /* RoutinesMedsTVC.swift */,
 				F0822A452932DE5C000AC907 /* ProfileViewController.swift */,
+				2CBD1BEC297150D60067CA35 /* EditProfileViewController.swift */,
 				2C1F2E5328FC5D4F00FC2950 /* RoutinesBGTVC.swift */,
 				1519255628636BC50019B9C8 /* EmptySpaceViewController.swift */,
 				15476098290B6D9D00D56835 /* ShareSheet.swift */,
@@ -840,14 +898,18 @@
 				1F8813B92861E0DF009994F9 /* Badge.storyboard in Resources */,
 				155F70B728ED47A8003A844B /* TakeBGTableViewCell.xib in Resources */,
 				15CAFCF228F54196009A7686 /* Add BG.storyboard in Resources */,
+				2CBD1BF62971551D0067CA35 /* EditEmailTVC.xib in Resources */,
 				150DB206294DFDF700253F2C /* CaregiverWorkspaaceTVC.xib in Resources */,
 				2C336FE32909D35B00F37A36 /* OnBoardingViewController.storyboard in Resources */,
+				2C17E1AE29716D0700D9AEF6 /* ConfNewPassTVC.xib in Resources */,
 				158B02E3284FAD0F005254A0 /* LaunchScreen.storyboard in Resources */,
 				1F8813AF285B37AB009994F9 /* AddNewScheduleTableViewCell.xib in Resources */,
 				155F70A628ED274E003A844B /* TakeMedTableViewCell.xib in Resources */,
 				15CAFCFF28F54684009A7686 /* BGTimeTableViewCell.xib in Resources */,
 				2C8E9B782853E5010026FDF5 /* MealTimePickerTableViewCell.xib in Resources */,
 				158B02E0284FAD0F005254A0 /* Assets.xcassets in Resources */,
+				2CBD1BF2297155080067CA35 /* EditUsernameTVC.xib in Resources */,
+				2C17E1A629716CE500D9AEF6 /* OldPassTVC.xib in Resources */,
 				2C23DF062913F55F0074AFB3 /* ExitTVC.xib in Resources */,
 				2CA646C129430B4B001E6438 /* AdheranceSTVC.xib in Resources */,
 				F054B0D7290BDCEB00287D06 /* GoogleService-Info.plist in Resources */,
@@ -862,6 +924,7 @@
 				2C8E9B742853E03A0026FDF5 /* MedNameTextFieldTVC.xib in Resources */,
 				15CAFD1D28F7DB8B009A7686 /* BGCalendarCollectionViewCell.xib in Resources */,
 				F05478192910B44600DB4503 /* FastingBGTVC.xib in Resources */,
+				2C17E1AA29716CF500D9AEF6 /* NewPassTVC.xib in Resources */,
 				1F6B40892850EE0E001CFC86 /* Add Medication.storyboard in Resources */,
 				156E789428EEAB780072615F /* BGBtnSaveTableViewCell.xib in Resources */,
 				1F4EF3B62872E3250056E693 /* Take Medication.storyboard in Resources */,
@@ -879,6 +942,7 @@
 				1F4EF3BF2873384A0056E693 /* MedNameTableViewCell.xib in Resources */,
 				1F4EF3C828733BCE0056E693 /* OnTimeTableViewCell.xib in Resources */,
 				155F70B328ED4714003A844B /* BGResultTableViewCell.xib in Resources */,
+				2CBD1BFA2971552D0067CA35 /* EditPasswordTVC.xib in Resources */,
 				2C23DF022913DD550074AFB3 /* ListCaregiverTVC.xib in Resources */,
 				2CFEFFDE290A5D8C0060A995 /* profile.storyboard in Resources */,
 				155F70BB28ED47C8003A844B /* BGNameTableViewCell.xib in Resources */,
@@ -941,6 +1005,7 @@
 				1F4EF3CB28733C020056E693 /* TakeMedTimeTableViewCell.swift in Sources */,
 				1F8813AE285B37AB009994F9 /* AddNewScheduleTableViewCell.swift in Sources */,
 				F0DFE2C5291E252D00993B0D /* CoreDataManager+Streak.swift in Sources */,
+				2CBD1BF1297155080067CA35 /* EditUsernameTVC.swift in Sources */,
 				F054783729110E7900DB4503 /* FirebaseManager.swift in Sources */,
 				F0DFE2C1291E243300993B0D /* CoreDataManager+Log.swift in Sources */,
 				2CE0722528F27724008B8EB0 /* EmptyRoutinesSpaceVC.swift in Sources */,
@@ -949,6 +1014,7 @@
 				15CAFD2028F7E521009A7686 /* BGCalendarTableViewCell.swift in Sources */,
 				15CAFCF028F54038009A7686 /* AddBGViewController.swift in Sources */,
 				2CA646C429430B69001E6438 /* BGSTVC.swift in Sources */,
+				2CBD1BF52971551D0067CA35 /* EditEmailTVC.swift in Sources */,
 				2C8A3D8E2907BFD600B0646A /* RoleManagementVC.swift in Sources */,
 				F09482BA295ACC5C009C5598 /* GulaDarahStatistikViewController+TableView.swift in Sources */,
 				F09482BE295ACC7F009C5598 /* StatisticsTableViewCell.swift in Sources */,
@@ -956,6 +1022,8 @@
 				F05478232910BD1D00DB4503 /* BG+CoreDataProperties.swift in Sources */,
 				158B02D4284FAD0D005254A0 /* AppDelegate.swift in Sources */,
 				15CAFD1128F6BCAE009A7686 /* ScheduleTime.swift in Sources */,
+				2C17E1A529716CE500D9AEF6 /* OldPassTVC.swift in Sources */,
+				2C17E1AD29716D0700D9AEF6 /* ConfNewPassTVC.swift in Sources */,
 				F054782D2910C6D100DB4503 /* LoginViewController.swift in Sources */,
 				F05478182910B44600DB4503 /* HbA1CBGTVC.swift in Sources */,
 				2C3D935C2859AE430017DCB6 /* MedDescTableViewCell.swift in Sources */,
@@ -976,6 +1044,7 @@
 				15476093290AAB5F00D56835 /* ViewController+Rx.swift in Sources */,
 				2CA646C029430B4B001E6438 /* AdheranceSTVC.swift in Sources */,
 				F05478302910D8A900DB4503 /* UsernameTVC.swift in Sources */,
+				2CBD1BF92971552D0067CA35 /* EditPasswordTVC.swift in Sources */,
 				1F4EF3C428733A900056E693 /* ViewController.swift in Sources */,
 				F054B0DC290BDE0C00287D06 /* RegisterViewController.swift in Sources */,
 				1F4EF3BE2873384A0056E693 /* MedNameTableViewCell.swift in Sources */,
@@ -988,6 +1057,7 @@
 				15CAFCF528F54619009A7686 /* BGTypeTableViewCell.swift in Sources */,
 				F054B0DE290BDE2000287D06 /* StructFirebase.swift in Sources */,
 				F02AE113292CD02B00C8AF34 /* Log+CoreDataClass.swift in Sources */,
+				2C17E1B029716D9700D9AEF6 /* EditPasswordVC.swift in Sources */,
 				F05478222910BD1D00DB4503 /* BG+CoreDataClass.swift in Sources */,
 				2C8A3D9029088EA800B0646A /* OnBoardingViewController.swift in Sources */,
 				2CA646C829430B80001E6438 /* HbA1CSTVC.swift in Sources */,
@@ -1009,6 +1079,7 @@
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
 				F0EEBF51297970F500BF853F /* ContractViewController.swift in Sources */,
+				2CBD1BED297150D60067CA35 /* EditProfileViewController.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,
 				F04D4277287EC2070051C9F9 /* MedicineApi.swift in Sources */,
 				F09482AF295ABC11009C5598 /* Color.swift in Sources */,
@@ -1045,6 +1116,7 @@
 				15CAFD2328F7E991009A7686 /* CalendarModel.swift in Sources */,
 				2CE0722628F27724008B8EB0 /* RoutinesMedsTVC.swift in Sources */,
 				F054782A2910BD3300DB4503 /* BG_Time+CoreDataClass.swift in Sources */,
+				2C17E1A929716CF500D9AEF6 /* NewPassTVC.swift in Sources */,
 				2C41FFD22865B73E0094D39E /* Streak+CoreDataProperties.swift in Sources */,
 				15BDF6DD2850882A008E0388 /* AddMedicationViewController.swift in Sources */,
 				F05478172910B44600DB4503 /* FastingBGTVC.swift in Sources */,
@@ -1224,7 +1296,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 784J694B86;
+				DEVELOPMENT_TEAM = Y38KPN6RN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1238,7 +1310,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppleDeveloperAcademyBinus.GluCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1255,7 +1327,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 784J694B86;
+				DEVELOPMENT_TEAM = Y38KPN6RN4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC02-Group9/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "GlüCare";
@@ -1269,7 +1341,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppleDeveloperAcademyBinus.GluCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
