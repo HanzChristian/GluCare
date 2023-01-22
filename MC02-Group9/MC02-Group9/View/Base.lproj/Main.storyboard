@@ -378,12 +378,84 @@
             </objects>
             <point key="canvasLocation" x="-1869" y="799"/>
         </scene>
+        <!--Verification View Controller-->
+        <scene sceneID="jGa-Gr-MKw">
+            <objects>
+                <viewController id="gBx-aM-cUj" customClass="VerificationViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7K8-vb-qlR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Verify you email address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-OY-fNh">
+                                <rect key="frame" x="36" y="325" width="319" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To continue using glucare, please verify your email address. Please check your email and click the verification link." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60Z-Ih-Pnh">
+                                <rect key="frame" x="18" y="391.66666666666669" width="354" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-DW-RRh">
+                                <rect key="frame" x="149" y="492.66666666666669" width="93" height="35.000000000000057"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue"/>
+                                <connections>
+                                    <action selector="continuePressed:" destination="gBx-aM-cUj" eventType="touchUpInside" id="gW0-LR-isN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvW-CB-5l1">
+                                <rect key="frame" x="18" y="577.66666666666663" width="354" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Resend verification Email"/>
+                                <connections>
+                                    <action selector="resendVerificationEmail:" destination="gBx-aM-cUj" eventType="touchUpInside" id="Pxw-Rq-Q4e"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-C3-Unf">
+                                <rect key="frame" x="18" y="749.66666666666663" width="354" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="maf-fP-EPe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="S6K-DW-RRh" firstAttribute="top" secondItem="60Z-Ih-Pnh" secondAttribute="bottom" constant="40" id="4lv-CL-hrw"/>
+                            <constraint firstItem="S6K-DW-RRh" firstAttribute="leading" secondItem="maf-fP-EPe" secondAttribute="leading" constant="149" id="4uL-rd-6Sx"/>
+                            <constraint firstItem="maf-fP-EPe" firstAttribute="trailing" secondItem="S6K-DW-RRh" secondAttribute="trailing" constant="148" id="4yF-9e-3cx"/>
+                            <constraint firstItem="60Z-Ih-Pnh" firstAttribute="centerY" secondItem="7K8-vb-qlR" secondAttribute="centerY" id="9T2-3d-YE5"/>
+                            <constraint firstItem="gvW-CB-5l1" firstAttribute="leading" secondItem="maf-fP-EPe" secondAttribute="leading" constant="18" id="E95-4r-MDe"/>
+                            <constraint firstAttribute="trailing" secondItem="60Z-Ih-Pnh" secondAttribute="trailing" constant="18" id="JtL-W9-kOO"/>
+                            <constraint firstItem="60Z-Ih-Pnh" firstAttribute="centerX" secondItem="7K8-vb-qlR" secondAttribute="centerX" id="NPt-d6-hTN"/>
+                            <constraint firstItem="dXA-C3-Unf" firstAttribute="leading" secondItem="maf-fP-EPe" secondAttribute="leading" constant="18" id="Nx0-oa-oqZ"/>
+                            <constraint firstItem="maf-fP-EPe" firstAttribute="trailing" secondItem="gvW-CB-5l1" secondAttribute="trailing" constant="18" id="eAr-pP-0kV"/>
+                            <constraint firstItem="60Z-Ih-Pnh" firstAttribute="leading" secondItem="7K8-vb-qlR" secondAttribute="leading" constant="18" id="fJq-3d-C8r"/>
+                            <constraint firstItem="maf-fP-EPe" firstAttribute="trailing" secondItem="dXA-C3-Unf" secondAttribute="trailing" constant="18" id="gyZ-Ph-0Ud"/>
+                            <constraint firstItem="maf-fP-EPe" firstAttribute="bottom" secondItem="dXA-C3-Unf" secondAttribute="bottom" constant="40" id="oyG-oN-ldR"/>
+                            <constraint firstItem="gvW-CB-5l1" firstAttribute="top" secondItem="S6K-DW-RRh" secondAttribute="bottom" constant="50" id="tVL-il-Ker"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="dXA-C3-Unf" id="rfg-BS-97m"/>
+                        <outlet property="resendButton" destination="gvW-CB-5l1" id="cJs-4D-1f2"/>
+                        <segue destination="oSz-iB-UEh" kind="presentation" identifier="daftar" id="HEW-pB-SeI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htH-D3-0Tm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-1909"/>
+        </scene>
         <!--Role ManagementVC-->
         <scene sceneID="sYy-Uk-P5d">
             <objects>
                 <viewController storyboardIdentifier="roleManagementVC" id="oSz-iB-UEh" customClass="RoleManagementVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D7y-lu-U4U">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamu adalah ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-9R-uwq">
@@ -413,10 +485,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="7Yt-qG-Po3">
-                                <rect key="frame" x="20" y="681" width="24" height="24"/>
+                                <rect key="frame" x="20" y="658" width="24" height="24"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztu-wd-G9r">
-                                <rect key="frame" x="20" y="733" width="350" height="57"/>
+                                <rect key="frame" x="20" y="710" width="350" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="u8M-RA-9uR"/>
                                 </constraints>
@@ -430,7 +502,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peranmu tidak dapat diubah setelah konfirmasi" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-LG-0gz">
-                                <rect key="frame" x="64" y="672.33333333333337" width="306" height="40.666666666666629"/>
+                                <rect key="frame" x="64" y="649.33333333333337" width="306" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="E0t-uu-qAP"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="zrT-BF-iOm"/>
@@ -991,12 +1063,12 @@
                         <outlet property="pass" destination="RfP-79-dWR" id="hUj-Oi-t7u"/>
                         <outlet property="registerBtn" destination="KPg-Bb-ywD" id="h24-jP-yri"/>
                         <outlet property="role" destination="8rA-XM-5XC" id="kr2-jY-vy6"/>
-                        <segue destination="oSz-iB-UEh" kind="presentation" identifier="daftar" modalPresentationStyle="fullScreen" id="mTo-RT-JY3"/>
+                        <segue destination="gBx-aM-cUj" kind="presentation" identifier="goToVerify" modalPresentationStyle="fullScreen" id="UGh-5e-cEg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9d6-nP-Wcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="-922"/>
+            <point key="canvasLocation" x="-45" y="-887"/>
         </scene>
         <!--Masuk-->
         <scene sceneID="pgA-VF-PuO">
@@ -1251,7 +1323,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
                                 <rect key="frame" x="0.0" y="143" width="390" height="618"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1710,7 +1782,7 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
     <inferredMetricsTieBreakers>
         <segue reference="sPl-H0-eu2"/>
         <segue reference="Efi-nT-MCB"/>
-        <segue reference="Itf-Nf-aZh"/>
+        <segue reference="kOP-r9-bA2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>

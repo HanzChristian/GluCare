@@ -172,6 +172,7 @@
 		F0EEBF51297970F500BF853F /* ContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF50297970F500BF853F /* ContractViewController.swift */; };
 		F0EEBF532979711D00BF853F /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF522979711D00BF853F /* CircleView.swift */; };
 		F0EEBF552979713D00BF853F /* OnBoardingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */; };
+		F0EEBF57297A860B00BF853F /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEBF56297A860B00BF853F /* VerificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -343,6 +344,7 @@
 		F0EEBF50297970F500BF853F /* ContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractViewController.swift; sourceTree = "<group>"; };
 		F0EEBF522979711D00BF853F /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingBackView.swift; sourceTree = "<group>"; };
+		F0EEBF56297A860B00BF853F /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		F8F49B63CFB381DE27A77312 /* Pods-MC02-Group9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.debug.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -602,6 +604,7 @@
 		F02A60DA2869A70900441781 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F0EEBF58297A861200BF853F /* Verification */,
 				F0EEBF4F297970E300BF853F /* Contract */,
 				F05B1C1829273817009BA2CB /* Statistik */,
 				F054B0D8290BDDE700287D06 /* Firebase */,
@@ -763,6 +766,14 @@
 				F0EEBF542979713D00BF853F /* OnBoardingBackView.swift */,
 			);
 			path = Contract;
+			sourceTree = "<group>";
+		};
+		F0EEBF58297A861200BF853F /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				F0EEBF56297A860B00BF853F /* VerificationViewController.swift */,
+			);
+			path = Verification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1003,6 +1014,7 @@
 				F09482AF295ABC11009C5598 /* Color.swift in Sources */,
 				F0EEBF532979711D00BF853F /* CircleView.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
+				F0EEBF57297A860B00BF853F /* VerificationViewController.swift in Sources */,
 				F0EEBF552979713D00BF853F /* OnBoardingBackView.swift in Sources */,
 				F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
 				15C3792B2975081F00C7320E /* SnapShotListener.swift in Sources */,

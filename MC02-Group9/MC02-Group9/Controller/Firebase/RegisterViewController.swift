@@ -56,7 +56,7 @@ class RegisterViewController: UIViewController {
                         
                         UserDefaults.standard.set(nama, forKey: "nama")
                         CoreDataManager.coreDataManager.resetAllCoreData()
-                        self!.performSegue(withIdentifier: "daftar", sender: self)
+                        self!.performSegue(withIdentifier: "goToVerify", sender: self)
                         print("Already Login")
                         
                     }
