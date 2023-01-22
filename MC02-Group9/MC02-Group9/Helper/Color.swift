@@ -13,5 +13,3 @@ let magenta100 = #colorLiteral(red: 0.8689922094, green: 0.3549886644, blue: 0.6
 
 let lime25 = #colorLiteral(red: 0.9554088712, green: 0.97598809, blue: 0.8138026595, alpha: 1)
 let lime100 = #colorLiteral(red: 0.6196811795, green: 0.6650282145, blue: 0.2486066818, alpha: 1)
-
-
