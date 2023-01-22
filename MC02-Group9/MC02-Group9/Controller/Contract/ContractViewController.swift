@@ -131,7 +131,7 @@ class ContractViewController: UIViewController {
     }
     func addRoleDataToFirebase(){
         
-        if  let user = Auth.auth().currentUser?.email{
+        if  let user = Auth.auth().currentUser?.uid{
     
             let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
             let nama = UserDefaults.standard.string(forKey: "nama")
