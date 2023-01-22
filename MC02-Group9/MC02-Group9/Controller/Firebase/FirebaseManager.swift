@@ -140,8 +140,8 @@ class FirebaseManager {
     }
     
     func getAccountInfo(){
-        if let user = Auth.auth().currentUser?.email {
-            db.collection("account").whereField("owner", isEqualTo: "\(user)")
+        if let user = Auth.auth().currentUser {
+            db.collection("account").whereField("owner", isEqualTo: "\(user.uid)")
                 .getDocuments { [weak self] (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -154,7 +154,7 @@ class FirebaseManager {
                             {
                                 print("nama", nama)
                                 self!.name = nama
-                                self!.email = user
+                                self!.email = user.email!
                                 if(roleId == 0){
                                     UserDefaults.standard.set(1, forKey: "role")
                                     self!.role = 1
