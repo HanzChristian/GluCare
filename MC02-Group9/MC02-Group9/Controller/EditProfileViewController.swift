@@ -177,34 +177,76 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
+//    func read(_ completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void){
+//        reference(to: .users).getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//
+//                if let documents = querySnapshot?.documents{
+//                    completion(documents)
+//                }
+//            }
+//        }
+//    }
+    
 
     
     @objc private func saveProfile() {
-        print("saveProfile triggeredd")
-        let txtUsername = cellUsername?.nameTxt.text
-        let txtEmail = cellEmail?.emailTxt.text
-        if (txtUsername != Optional("")) {
+
+        if let userID = Auth.auth().currentUser?.uid {
             let newUsername = cellUsername!.nameTxt.text!
-            print("newusername", newUsername)
-            let updateUsername = db.collection("account").document()
-            updateUsername.updateData([
-                "nama": "\(newUsername)"
-            ]) {error in
-                if let e = error {
-                    print(e)
-                } else {
+            
+            FirebaseManager.firebaseManager.db.collection("account")
+                .whereField("owner", isEqualTo: "\(userID)")
+                .getDocuments { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        print("masokk")
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            print("data", data)
+                            print("docc", document)
+                            document.reference.updateData([
+                                "nama": "\(newUsername)"
+                            ])
+                        }
+                    }
+                    FirebaseManager.firebaseManager.getAccountInfo()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                 }
-            }
         }
-        if (txtEmail != Optional("")) {
-            print("change email triggered here")
-            let newEmail = cellEmail!.emailTxt.text!
-            Auth.auth().currentUser?.updateEmail(to: newEmail) { error in
-                if let e = error {
-                    print(e)
-                } else {
-                }
-            }
+                            
+
+        
+//        let txtUsername = cellUsername?.nameTxt.text
+//        let txtEmail = cellEmail?.emailTxt.text
+//        if (txtUsername != Optional("")) {
+//            let newUsername = cellUsername!.nameTxt.text!
+//            print("newusername", newUsername)
+//            let updateUsername = db.collection("account").document()
+//            updateUsername.updateData([
+//                "nama": "\(newUsername)"
+//            ]) {error in
+//                if let e = error {
+//                    print(e)
+//                } else {
+//                }
+//            }
+//        }
+                            
+//        if (txtEmail != Optional("")) {
+//            print("change email triggered here")
+//            let newEmail = cellEmail!.emailTxt.text!
+//            Auth.auth().currentUser?.updateEmail(to: newEmail) { error in
+//                if let e = error {
+//                    print(e)
+//                } else {
+//                }
+//            }
+            
+            
 //            let updateEmail = db.collection("account").document("k90oCZPayPbzsgUjXs2d")
 //            updateEmail.updateData([
 //                "owner": "\(updateEmail)"
@@ -214,12 +256,8 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
 //                } else {
 //                }
 //            }
-        }
-        print("textusername", txtUsername!, " changed from ", FirebaseManager.firebaseManager.name)
-        print("s")
+//        }
     }
-    
- 
 }
 
 struct editProfile {
