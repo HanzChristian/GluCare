@@ -111,7 +111,6 @@ class ListCaregiverTVC: UITableViewCell {
                             let data = document.data()
                             if  let caregiver = data["owner"] as? String
                             {
-                                
                                 if self.role == 1{
                                     if let patientId = Auth.auth().currentUser?.uid{
                                         document.reference.updateData([
