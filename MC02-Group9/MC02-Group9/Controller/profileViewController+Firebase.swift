@@ -31,7 +31,9 @@ extension ProfileViewController{
     }
     
     func getRole() {
-        if let user = Auth.auth().currentUser?.email {
+        if let user = Auth.auth().currentUser?.uid {
+            
+            print("DEBUG: \(user) GETROLE")
             FirebaseManager.firebaseManager.db.collection("account").whereField("owner", isEqualTo: "\(user)")
                 .getDocuments { [weak self] (querySnapshot, err) in
                     if let err = err {
@@ -85,8 +87,10 @@ extension ProfileViewController{
     
     func fetchInvitationFromCaregiver() {
         
+        
+        print("fetchInvitationFromCaregiver ")
         if UserDefaults.standard.value(forKey: "role") == nil{
-            print("GAADA USERDEFAULTNYA")
+            print("DEBUG: GAADA USERDEFAULTNYA")
             return
         }
         
@@ -103,7 +107,10 @@ extension ProfileViewController{
         }
         
         // gw yg dikirim
+        print("DEBUG: \(roleString)")
+        
         if let user = Auth.auth().currentUser?.email {
+            print("DEBUG: GW YG DIKIRIM \(roleString) \(user)")
             FirebaseManager.firebaseManager.db.collection("link")
                 .whereField(roleString, isEqualTo: "\(user)")
                 .addSnapshotListener { [weak self] (querySnapshot, err) in
@@ -134,7 +141,7 @@ extension ProfileViewController{
                                 
                             }
                         }
-                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
+//                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
                         self?.tableView.reloadData()
                         if querySnapshot!.isEmpty{
 
@@ -171,7 +178,7 @@ extension ProfileViewController{
                                 }
                             }
                         }
-                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
+//                        self!.filterDeleteCaregiver(newList: listCaregiverFirebase)
                         self?.tableView.reloadData()
                         if querySnapshot!.isEmpty{
 
