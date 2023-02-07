@@ -267,7 +267,7 @@ class FirebaseManager {
             if role == 2 {
                 if let p = UserDefaults.standard.string(forKey: "patient"){
                     user = p
-                    
+                    print("DEBUG: -- \(p)")
                 }
                 
             }
