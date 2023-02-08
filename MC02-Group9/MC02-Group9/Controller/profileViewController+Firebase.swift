@@ -57,33 +57,33 @@ extension ProfileViewController{
         }
     }
     
-    func filterDeleteCaregiver(newList: [listCaregiver]){
-        var count = 0
-        let role = UserDefaults.standard.integer(forKey: "role")
-        
-        for list in listCaregiver.caregiverList{
-            var isFound = 0
-            
-            for j in newList{
-                if(list.name == j.name){
-                    isFound = 1
-                }
-            }
-            if(isFound == 0){
-                listCaregiver.caregiverList.remove(at: count)
-                if(role == 2){
-                    CoreDataManager.coreDataManager.resetAllCoreData()
-                    snapShotListenerList.listenerMed?.remove()
-                    snapShotListenerList.listenerBG?.remove()
-                    snapShotListenerList.listenerLog?.remove()
-                    snapShotListenerList.listenerLog = nil
-                    snapShotListenerList.listenerBG = nil
-                    snapShotListenerList.listenerMed = nil
-                }
-            }
-            count += 1
-        }
-    }
+//    func filterDeleteCaregiver(newList: [listCaregiver]){
+//        var count = 0
+//        let role = UserDefaults.standard.integer(forKey: "role")
+//        
+//        for list in listCaregiver.caregiverList{
+//            var isFound = 0
+//            
+//            for j in newList{
+//                if(list.name == j.name){
+//                    isFound = 1
+//                }
+//            }
+//            if(isFound == 0){
+//                listCaregiver.caregiverList.remove(at: count)
+//                if(role == 2){
+//                    CoreDataManager.coreDataManager.resetAllCoreData()
+//                    snapShotListenerList.listenerMed?.remove()
+//                    snapShotListenerList.listenerBG?.remove()
+//                    snapShotListenerList.listenerLog?.remove()
+//                    snapShotListenerList.listenerLog = nil
+//                    snapShotListenerList.listenerBG = nil
+//                    snapShotListenerList.listenerMed = nil
+//                }
+//            }
+//            count += 1
+//        }
+//    }
     
     func fetchInvitationFromCaregiver() {
         
