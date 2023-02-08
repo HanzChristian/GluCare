@@ -18,14 +18,44 @@ class ListCaregiverTVC: UITableViewCell {
     
     let role = UserDefaults.standard.integer(forKey: "role")
     var name = listCaregiver.caregiverList[0].name
+    var listCaregiverFirebase = [listCaregiver]()
     
+    func filterDeleteCaregiver(newList: [listCaregiver]){
+        var count = 0
+        let role = UserDefaults.standard.integer(forKey: "role")
+        
+        for list in listCaregiver.caregiverList{
+            var isFound = 0
+            
+            for j in newList{
+                if(list.name == j.name){
+                    isFound = 1
+                }
+            }
+            if(isFound == 0){
+                listCaregiver.caregiverList.remove(at: count)
+                if(role == 2){
+                    CoreDataManager.coreDataManager.resetAllCoreData()
+                    snapShotListenerList.listenerMed?.remove()
+                    snapShotListenerList.listenerBG?.remove()
+                    snapShotListenerList.listenerLog?.remove()
+                    snapShotListenerList.listenerLog = nil
+                    snapShotListenerList.listenerBG = nil
+                    snapShotListenerList.listenerMed = nil
+                }
+            }
+            count += 1
+        }
+    }
+    
+    //untuk membatalkan undangan dari pihak yang diundang
     @IBAction func tapCancelConfirm(_ sender: UIButton) {
         let alert = UIAlertController(title: "Batalkan Undangan?", message: "Kamu akan membatalkan undangan dari \(name)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Batalkan", style: .destructive, handler: {
             action in
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-            listCaregiver.caregiverList.removeAll()
+            self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
         }))
         
@@ -39,13 +69,14 @@ class ListCaregiverTVC: UITableViewCell {
         rootViewController?.present(alert, animated: true, completion: nil)
     }
     
+    //untuk membatalkan undangan dari pihak yang mengundang
     @IBAction func tapCancel(_ sender: UIButton) {
         let alert = UIAlertController(title: "Batalkan Undangan?", message: "Kamu akan membatalkan undangan untuk \(name)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Kembali", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Batalkan", style: .destructive, handler: {
             action in
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-            listCaregiver.caregiverList.removeAll()
+            self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
         }))
         
@@ -60,6 +91,7 @@ class ListCaregiverTVC: UITableViewCell {
         
     }
     
+    //Menghapus koneksi dari pihak pasien
     @IBAction func tapDelete(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Hapus Akses Anggota?", message: "Kamu akan membatalkan undangan untuk \(name)", preferredStyle: .alert)
@@ -67,8 +99,8 @@ class ListCaregiverTVC: UITableViewCell {
         alert.addAction(UIAlertAction(title: "Keluar", style: .destructive, handler: {
             action in
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
-            listCaregiver.caregiverList.removeAll()
-            
+            self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
+    
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
         }))
@@ -85,6 +117,7 @@ class ListCaregiverTVC: UITableViewCell {
         
     }
     
+    //Melakukan konfirmasi undangan
     @IBAction func tapConfirm1(_ sender: Any) {
         
         print("button is pressed to confrim")
