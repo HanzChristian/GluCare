@@ -216,6 +216,7 @@ class EditProfileViewController: UIViewController, UITableViewDelegate, UITableV
                     FirebaseManager.firebaseManager.getAccountInfo()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
                 }
+            navigationController?.popViewController(animated: true)
         }
                             
 

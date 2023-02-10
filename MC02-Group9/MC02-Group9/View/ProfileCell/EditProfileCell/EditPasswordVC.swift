@@ -188,7 +188,7 @@ class EditPasswordVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
             }
-        
+        navigationController?.popViewController(animated: true)
     }
     
     
