@@ -17,16 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="358" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamu dapat memantau perkembangan diabetes selama kamu memiliki akses ke dalam workspace." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuG-f7-ZHv">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamu dapat memantau perkembangan diabetes selama kamu memiliki akses ke dalam workspace." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuG-f7-ZHv">
                         <rect key="frame" x="20" y="53" width="324" height="42"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-sY-3I5">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-sY-3I5">
                         <rect key="frame" x="20" y="103" width="217" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="Keluar dari Workspace"/>
                         <buttonConfiguration key="configuration" style="filled" title="Keluar dari Workspace">
@@ -37,14 +35,22 @@
                             <action selector="quitBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mZe-7d-W5M"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamu berada di dalam workspace Noah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIA-TM-690">
-                        <rect key="frame" x="20" y="9" width="338" height="45"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamu berada di dalam workspace Noah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIA-TM-690">
+                        <rect key="frame" x="18" y="25" width="340" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="iuG-f7-ZHv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4R7-AF-94Z"/>
+                    <constraint firstAttribute="trailing" secondItem="HIA-TM-690" secondAttribute="trailing" id="4eC-rq-kdP"/>
+                    <constraint firstItem="HIA-TM-690" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="CNF-vN-oTn"/>
+                    <constraint firstAttribute="trailing" secondItem="iuG-f7-ZHv" secondAttribute="trailing" constant="14" id="HuD-jw-RcG"/>
+                    <constraint firstItem="Hak-sY-3I5" firstAttribute="top" secondItem="iuG-f7-ZHv" secondAttribute="bottom" constant="8" id="Nvd-0m-MeA"/>
+                    <constraint firstItem="HIA-TM-690" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="PDe-ln-qw3"/>
+                    <constraint firstItem="iuG-f7-ZHv" firstAttribute="top" secondItem="HIA-TM-690" secondAttribute="bottom" constant="11" id="oZk-Gw-DFe"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
