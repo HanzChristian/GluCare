@@ -168,6 +168,8 @@
 		F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616A728EED4BD00F61C4C /* CalendarHelper.swift */; };
 		F05616AB28EED70200F61C4C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05616AA28EED70200F61C4C /* CalendarCell.swift */; };
 		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
+		F05C71FF299DFB3A002F00E7 /* JadwalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C71FE299DFB3A002F00E7 /* JadwalVars.swift */; };
+		F05C7201299E01FD002F00E7 /* RoleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C7200299E01FD002F00E7 /* RoleHelper.swift */; };
 		F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0822A452932DE5C000AC907 /* ProfileViewController.swift */; };
 		F09482AF295ABC11009C5598 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482AE295ABC11009C5598 /* Color.swift */; };
 		F09482B1295ABC28009C5598 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B0295ABC28009C5598 /* String+Ext.swift */; };
@@ -354,6 +356,8 @@
 		F05616A728EED4BD00F61C4C /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		F05616AA28EED70200F61C4C /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
+		F05C71FE299DFB3A002F00E7 /* JadwalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadwalVars.swift; sourceTree = "<group>"; };
+		F05C7200299E01FD002F00E7 /* RoleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleHelper.swift; sourceTree = "<group>"; };
 		F0822A452932DE5C000AC907 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F09482AE295ABC11009C5598 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F09482B0295ABC28009C5598 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -721,6 +725,7 @@
 			children = (
 				F05616A728EED4BD00F61C4C /* CalendarHelper.swift */,
 				1547608C290AAA7300D56835 /* ImageHelper.swift */,
+				F05C7200299E01FD002F00E7 /* RoleHelper.swift */,
 				F09482AE295ABC11009C5598 /* Color.swift */,
 			);
 			path = Helper;
@@ -789,6 +794,7 @@
 				15CAFD2228F7E991009A7686 /* CalendarModel.swift */,
 				15CAFD2628F7F939009A7686 /* CalendarViewModel.swift */,
 				15C3792A2975081F00C7320E /* SnapShotListener.swift */,
+				F05C71FE299DFB3A002F00E7 /* JadwalVars.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1051,6 +1057,7 @@
 				2C8E9B732853E03A0026FDF5 /* MedNameTextFieldTVC.swift in Sources */,
 				15476099290B6D9D00D56835 /* ShareSheet.swift in Sources */,
 				F054782B2910BD3300DB4503 /* BG_Time+CoreDataProperties.swift in Sources */,
+				F05C7201299E01FD002F00E7 /* RoleHelper.swift in Sources */,
 				1F4EF3C728733BCE0056E693 /* OnTimeTableViewCell.swift in Sources */,
 				155F70B228ED4714003A844B /* BGResultTableViewCell.swift in Sources */,
 				F0B90A4D290C1F7600899167 /* KeyboardDismiss.swift in Sources */,
@@ -1078,6 +1085,7 @@
 				2CD9C5FE2942FF5400CEF8E5 /* StatisticsViewController.swift in Sources */,
 				1F4EF3CF28736AEF0056E693 /* BtnSaveTableViewCell.swift in Sources */,
 				F054B0E0290BDE3A00287D06 /* MigrateFirestoreToCoreData.swift in Sources */,
+				F05C71FF299DFB3A002F00E7 /* JadwalVars.swift in Sources */,
 				F0EEBF51297970F500BF853F /* ContractViewController.swift in Sources */,
 				2CBD1BED297150D60067CA35 /* EditProfileViewController.swift in Sources */,
 				1F8813B62861E01A009994F9 /* BadgeViewController.swift in Sources */,

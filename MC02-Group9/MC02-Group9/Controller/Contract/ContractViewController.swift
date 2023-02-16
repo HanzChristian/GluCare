@@ -133,7 +133,7 @@ class ContractViewController: UIViewController {
         
         if  let user = Auth.auth().currentUser?.uid{
     
-            let roleUserDefault = UserDefaults.standard.integer(forKey: "role") - 1
+            let roleUserDefault = RoleHelper.instance.getRole() - 1
             let nama = UserDefaults.standard.string(forKey: "nama")
             
             self.db.collection("account").addDocument(data: [

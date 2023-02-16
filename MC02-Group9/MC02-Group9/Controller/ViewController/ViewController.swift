@@ -6,70 +6,28 @@
 //
 
 import UIKit
-import FSCalendar
-import CoreData
-import Gecco
 import RxSwift
 import RxCocoa
 import FirebaseAuth
 
-// var for logic
+// global date
 var daySelected = Date()
 
-
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
+class ViewController: UIViewController{
     
-    let disposeBag = DisposeBag()
-    
-    let notificationCenter = UNUserNotificationCenter.current()
-    //    let dismissNotfication = UNNotificationDismissActionIdentifier
-    
-    let cellSpacingHeight:CGFloat = 10
-    
-    let dataType = "BG"
-    var jadwalVars = [JadwalVars]()
-    let role = UserDefaults.standard.integer(forKey: "role")
-    
+    //  MARK: - Properties
+    // Manager
+    let calendarManager = CalendarManager.calendarManager
+    let coreDataManager = CoreDataManager.coreDataManager
+    let streakManager = StreakManager.streakManager
     let firebaseManager = FirebaseManager.firebaseManager
     
+    let disposeBag = DisposeBag()
+    let notificationCenter = UNUserNotificationCenter.current()
+    let cellSpacingHeight:CGFloat = 10
     
-    @IBAction func segueBtn(_ sender: Any){
-        if(role == 1){
-            performSegue(withIdentifier: "toProfile", sender: self)
-        }
-        else if(role == 2){
-            
-        }
-    
-    }
-//    @IBAction func guideBtn(_ sender: Any) {
-////        if(coreDataManager.items!.count > 0){
-////            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide") as! GuideViewController
-////            spotLight.alpha = 0.85
-////            present(spotLight, animated: true, completion: nil)
-////        }
-////        else if(coreDataManager.items!.count == 0){
-////            let spotLight = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Guide2") as! GuideViewController2
-////            spotLight.alpha = 0.85
-////            present(spotLight, animated: true, completion: nil)
-////        }
-//        coreDataManager.fetchBGTime(daySelected: daySelected)
-//        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-//
-//        print("CORE DATA FETCH BG \(coreDataManager.bg)")
-//        print("CORE DATA FETCH BT_TIME \(coreDataManager.bgTime)")
-//        print("CORE DATA LOGS \(coreDataManager.logs)")
-//
-//    }
-    
-    func setup(){
-        let emptyVC = EmptySpaceViewController()
-        addChild(emptyVC)
-        self.view.addSubview(emptyVC.view)
-        
-        emptyVC.enableHidden()
-    }
-    
+    var jadwalVars = [JadwalVars]()
+    let role: Int = RoleHelper.instance.getRole()
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -79,27 +37,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet var tableView: UITableView!
     
-    
-    // dapong
     @IBOutlet weak var collectionView: UICollectionView!
     var totalSquares = [Date]()
     var indexSelected:Int = 0
     var flowLayout = UICollectionViewFlowLayout()
     
-    func setNib(){
-        let nibTakeMed = UINib(nibName: "TakeMedTableViewCell", bundle: nil)
-        tableView.register(nibTakeMed, forCellReuseIdentifier: "cell")
-    }
 
-    // Manager
-    let calendarManager = CalendarManager.calendarManager
-    let coreDataManager = CoreDataManager.coreDataManager
-    let streakManager = StreakManager.streakManager
-    let networkManager = NetworkManager.shared
     
-    // SheetPresentation
-    //var isSkipped:Bool = false
-    //var indexPath:Int = 0
+    override open var shouldAutorotate: Bool { return false }
+    
+    //  MARK: - Lifecycle
     
     override func viewDidAppear(_ animated: Bool)
     {
@@ -110,24 +57,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-    }
-    
-
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-         let tabBarIndex = tabBarController.selectedIndex
-         if tabBarIndex == 0 {
-             DispatchQueue.main.async { [weak self] in
-                 self!.navigationItem.title = "Hari ini"
-                 daySelected = Date()
-                 
-                 self!.setWeekView()
-                 self!.refresh()
-//                 self!.coreDataManager.checkBGLogAvailable(logs: self!.coreDataManager.logs!, bgs: self!.coreDataManager.bg!, daySelected: daySelected)
-                 self!.collectionView.scrollToItem(at: IndexPath(row: self!.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
-             }
-         }
     }
     
     override func viewDidLoad() {
@@ -156,32 +85,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 // Fallback on earlier versions
             }
         }
-    
-        //Buat disable tab bar routine kalo belom konek
-        let tabBarControllerItems = self.tabBarController?.tabBar.items
-
-//          if let tabArray = tabBarControllerItems {
-//              var tabBarItem = tabArray[1]
-//
-//              if(role == 2){ //belom kasih kondisi konek
-//                  tabBarItem.isEnabled = false
-//              }
-//          }
-        
         
         setCellsView()
         setWeekView()
-        
-        
-        networkManager.getMedicationListName { (medicineApi, error) -> (Void) in
-            if let _ = error {
-                print("Error")
-                return
-            }
-            //print(medicineApi![0].name)
-            //print(medicineApi!)
-        }
-        
         
         coreDataManager.resetKeTake()
         streakManager.checkStreakFail()
@@ -254,24 +160,66 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    
+    //  MARK: - Action
+    @IBAction func segueBtn(_ sender: Any){
+        if(role == 1){
+            performSegue(withIdentifier: "toProfile", sender: self)
+        }
+        else if(role == 2){
+            
+        }
+    
+    }
+    
+    @objc func refresh() {
+        coreDataManager.resetKeTake()
+        coreDataManager.resetArray()
+        coreDataManager.fetchMedicine(tableView: tableView)
+        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+        coreDataManager.fetchBG()
+        coreDataManager.fetchBGTime(daySelected: daySelected)
+        
+        if(coreDataManager.logs!.count > 0 ){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+        }
+        else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+        }
+        mergeTV()
+    }
+    
+    
+    //  MARK: - Helper
+    
+    func setNib(){
+        let nibTakeMed = UINib(nibName: "TakeMedTableViewCell", bundle: nil)
+        tableView.register(nibTakeMed, forCellReuseIdentifier: "cell")
+    }
+    
+    func setup(){
+        let emptyVC = EmptySpaceViewController()
+        addChild(emptyVC)
+        self.view.addSubview(emptyVC.view)
+
+        emptyVC.enableHidden()
+    }
+    
     func getRole(){
         if let user = Auth.auth().currentUser?.email {
             FirebaseManager.firebaseManager.db.collection("account").whereField("owner", isEqualTo: "\(user)")
-                .getDocuments { [weak self] (querySnapshot, err) in
+                .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
                         for document in querySnapshot!.documents {
                             let data = document.data()
                             if  let roleId = data["roleId"] as? Int{
-                                
                                 if(roleId == 0){
-                                    UserDefaults.standard.set(1, forKey: "role")
-                                  
+                                    RoleHelper.instance.setRole(role: .Patient)
                                 }else{
-                                    UserDefaults.standard.set(2, forKey: "role")
+                                    RoleHelper.instance.setRole(role: .Caregiver)
                                 }
-                                
                             }
                         }
                     }
@@ -296,8 +244,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func setWeekView()
     {
         totalSquares.removeAll()
-        
-        //var current = CalendarHelper().sundayForDate(date: daySelected)
         var current = CalendarHelper().addDays(date: daySelected, days: -100)
         let nextSunday = CalendarHelper().addDays(date: daySelected, days: 100)
         
@@ -314,92 +260,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 indexSelected = count
                 print(indexSelected)
             }
-            
         }
-    
         collectionView.reloadData()
-        
     }
+}
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
-        print("dapong \(totalSquares.count)")
-        return totalSquares.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
+// MARK: - UICollectionViewDelegate
 
-        let date = totalSquares[indexPath.item]
-        cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
-        let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
-        print("my substring \(dayOfWeek)")
-        let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 1)
-        let mySubstring = dayOfWeek[..<index]
-        
-        
-        let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
-        
-        if dayOfWeek == "Monday" {
-            cell.dayOfWeek.text = "S"
-        }else if dayOfWeek == "Tuesday"{
-            cell.dayOfWeek.text = "S"
-        }else if dayOfWeek == "Wednesday"{
-            cell.dayOfWeek.text = "R"
-        }else if dayOfWeek == "Thursday"{
-            cell.dayOfWeek.text = "K"
-        }else if dayOfWeek == "Friday"{
-            cell.dayOfWeek.text = "J"
-        }else if dayOfWeek == "Saturday"{
-            cell.dayOfWeek.text = "S"
-        }else if dayOfWeek == "Sunday"{
-            cell.dayOfWeek.text = "M"
-        }
-        
-        
-        
-        
-        cell.dayOfWeek.textColor = blue
-        
-        cell.dayOfMonth.backgroundColor = UIColor.white
-        cell.dayOfMonth.layer.cornerRadius = 32/2
-        cell.dayOfMonth.layer.masksToBounds = true
-        
-        if(date == daySelected)
-        {
-            cell.backgroundColor = blue
-            cell.dayOfWeek.textColor = UIColor.white
-            cell.layer.cornerRadius = 25
-            
-            cell.dayOfMonth.layer.borderWidth = 0
-        }
-        else
-        {
-            cell.backgroundColor = UIColor.white
-            cell.dayOfMonth.backgroundColor = UIColor.white
-            
-            if(calendarManager.calendar.isDate(date, inSameDayAs: Date())){
-                cell.dayOfMonth.layer.borderWidth = 2
-                cell.dayOfMonth.layer.borderColor = CGColor(red: 211/255, green: 63/255, blue: 154/255, alpha: 1)
-            }else{
-                cell.dayOfMonth.layer.borderWidth = 0
-            }
-
-        }
-         
-         
-        
-        return cell
-    }
-    
-    
+extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         daySelected = totalSquares[indexPath.item]
         
         // Create Date Formatter
         let dateFormatter = DateFormatter()
-        let dateComponents = DateComponents()
         dateFormatter.dateFormat = "MMM d, yyyy"
         /*
          Wednesday, Sep 12, 2018           --> EEEE, MMM d, yyyy
@@ -439,82 +313,90 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         collectionView.reloadData()
-        
-//        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         refresh()
     }
-    
-    override open var shouldAutorotate: Bool
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return false
+        print("dapong \(totalSquares.count)")
+        return totalSquares.count
     }
     
-    
-    @objc func refresh() {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
+
+        let date = totalSquares[indexPath.item]
+        cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
+        let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
+        print("my substring \(dayOfWeek)")
+        let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 1)
+        let mySubstring = dayOfWeek[..<index]
         
-        coreDataManager.resetKeTake()
-        coreDataManager.resetArray()
         
-        coreDataManager.fetchMedicine(tableView: tableView)
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        coreDataManager.fetchBG()
-        coreDataManager.fetchBGTime(daySelected: daySelected)
+        let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
         
-        
-        if(coreDataManager.logs!.count > 0 ){
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+        if dayOfWeek == "Monday" {
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Tuesday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Wednesday"{
+            cell.dayOfWeek.text = "R"
+        }else if dayOfWeek == "Thursday"{
+            cell.dayOfWeek.text = "K"
+        }else if dayOfWeek == "Friday"{
+            cell.dayOfWeek.text = "J"
+        }else if dayOfWeek == "Saturday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Sunday"{
+            cell.dayOfWeek.text = "M"
         }
-        else{
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+        cell.dayOfWeek.textColor = blue
+        
+        cell.dayOfMonth.backgroundColor = UIColor.white
+        cell.dayOfMonth.layer.cornerRadius = 32/2
+        cell.dayOfMonth.layer.masksToBounds = true
+        
+        if(date == daySelected)
+        {
+            cell.backgroundColor = blue
+            cell.dayOfWeek.textColor = UIColor.white
+            cell.layer.cornerRadius = 25
+            
+            cell.dayOfMonth.layer.borderWidth = 0
         }
-        
-        print("CORE DATA MANAGERMYA MED \(coreDataManager.items?.count)")
-        print("CORE DATA MANAGERMYA BG \(coreDataManager.medicines?.count)")
-        mergeTV()
-        
-        print("rx here \(coreDataManager.jadwal.value)")
+        else
+        {
+            cell.backgroundColor = UIColor.white
+            cell.dayOfMonth.backgroundColor = UIColor.white
+            
+            if(calendarManager.calendar.isDate(date, inSameDayAs: Date())){
+                cell.dayOfMonth.layer.borderWidth = 2
+                cell.dayOfMonth.layer.borderColor = CGColor(red: 211/255, green: 63/255, blue: 154/255, alpha: 1)
+            }else{
+                cell.dayOfMonth.layer.borderWidth = 0
+            }
+        }
+        return cell
     }
-    
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        //dapong
-        daySelected = date
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-    }
-    
-    
-    
 }
 
+// MARK: - UITabBarControllerDelegate
 
-extension UIColor {
-    
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+extension ViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+         let tabBarIndex = tabBarController.selectedIndex
+         if tabBarIndex == 0 {
+             DispatchQueue.main.async { [weak self] in
+                 self!.navigationItem.title = "Hari ini"
+                 daySelected = Date()
+                 self!.setWeekView()
+                 self!.refresh()
+                 self!.collectionView.scrollToItem(at: IndexPath(row: self!.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+             }
+         }
     }
-    
-    convenience init(rgb: Int) {
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
-    }
-}
-
-
-struct JadwalVars {
-    var type:String
-    var idx:Int
-    
-    init(type:String,idx:Int){
-        self.type = type
-        self.idx = idx
-    }
-    
 }

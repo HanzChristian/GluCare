@@ -65,7 +65,7 @@ extension MigrateFirestoreToCoreData {
     
     func syncCoredataLogToFirestore(fireLogs: [LogFire]){
         
-        let role = UserDefaults.standard.integer(forKey: "role")
+        let role = RoleHelper.instance.getRole()
         if role == 1{
             return
         }

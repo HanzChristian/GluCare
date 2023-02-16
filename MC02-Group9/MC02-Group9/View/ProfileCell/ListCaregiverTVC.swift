@@ -16,13 +16,13 @@ class ListCaregiverTVC: UITableViewCell {
     @IBOutlet weak var deleteCaregiverBtn: UIButton!
     @IBOutlet weak var cancelConfirmBtn: UIButton!
     
-    let role = UserDefaults.standard.integer(forKey: "role")
+    let role = RoleHelper.instance.getRole()
     var name = listCaregiver.caregiverList[0].name
     var listCaregiverFirebase = [listCaregiver]()
     
     func filterDeleteCaregiver(newList: [listCaregiver]){
         var count = 0
-        let role = UserDefaults.standard.integer(forKey: "role")
+        let role = RoleHelper.instance.getRole()
         
         for list in listCaregiver.caregiverList{
             var isFound = 0

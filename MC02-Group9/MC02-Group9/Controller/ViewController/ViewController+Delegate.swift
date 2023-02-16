@@ -13,7 +13,7 @@ extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
     }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    private func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -34,12 +34,7 @@ extension ViewController:UITableViewDelegate{
         
         
         alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
-            //print("Pilih Waktu tapped")
-            // Gas
-            
             self.dismiss(animated: true, completion: {
-                
-                
                 let myDatePicker: UIDatePicker = UIDatePicker()
                 myDatePicker.preferredDatePickerStyle = .wheels
                 myDatePicker.timeZone = TimeZone.init(identifier: "ICT")
@@ -68,12 +63,6 @@ extension ViewController:UITableViewDelegate{
             
         }))
         
-        /*
-         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-         
-         }))
-         
-         */
         alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
         }))
         
@@ -105,13 +94,6 @@ extension ViewController:UITableViewDelegate{
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
         
         let nav =  UINavigationController(rootViewController: vc)
-        //        nav.modalPresentationStyle = .overCurrentContext
-        
-//        let smallId = UISheetPresentationController.Detent.Identifier("small")
-//        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallId) { context in
-//            return 290
-//        }
-        
         if let sheet = nav.presentationController as? UISheetPresentationController{
             sheet.detents = [.medium()]
             sheet.preferredCornerRadius = 15
@@ -119,11 +101,6 @@ extension ViewController:UITableViewDelegate{
             
         }
         vc.daySelected = daySelected
-//        vc.indexPath = IndexPath(row: idx,section : 0)
-//        vc.bg = coreDataManager.bg![idx]
-//        vc.tblViewBG = self.tableView
-        
-        // New
         vc.log = log
         
         if(isSkipped){
@@ -141,53 +118,10 @@ extension ViewController:UITableViewDelegate{
             
             return
         }
-//        coreDataManager.medicineSelectedIdx = vc.indexPath!.row
-//        print("INI IDX NYA \(vc.indexPath)")
         print(isSkipped)
         self.present(nav, animated: true,completion: nil)
         
     }
-    
-//    func untakeMedSheet(index: Int){
-//        let idx = index
-//        isSkipped = false
-//        //
-//        if (coreDataManager.undoIdx[idx] >= 0){
-//            coreDataManager.keTake[idx] = -1
-//            isSkipped = true
-//        }
-//        
-//        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
-//        
-//        vc.daySelected = daySelected
-//        vc.indexPath = IndexPath(row: idx,section : 0)
-//        vc.tableView = self.tableView
-//        
-//        if(isSkipped){
-//            //isi dari untake action
-//            let logToRemove = self.coreDataManager.logs![self.coreDataManager.undoIdx[vc.indexPath!.row]]
-//            coreDataManager.batalkan(logToRemove: logToRemove)
-//            
-//            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
-//            
-//            coreDataManager.fetchStreak()
-//            if(coreDataManager.streaks!.isEmpty == true){
-//                return
-//            }
-//            //             Streak Logic
-//            let dateFrom = calendarManager.calendar.startOfDay(for: Date())
-//            let lastDate = coreDataManager.streaks![coreDataManager.streaks!.count - 1].date
-//            
-//            if(lastDate == dateFrom){
-//                // Streak nya udah ketambah di hari yg sama
-//                
-//                coreDataManager.removeStreak(streakToRemove: coreDataManager.streaks!.last!)
-//                coreDataManager.fetchStreak()
-//            }
-//            
-//        }
-//    }
     
     func makeSheetMed(index: Int, jadwalVars: JadwalVars){
         let log = coreDataManager.logs![jadwalVars.idx]
@@ -203,7 +137,6 @@ extension ViewController:UITableViewDelegate{
         let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
         
         let nav =  UINavigationController(rootViewController: vc)
-        //        nav.modalPresentationStyle = .overCurrentContext
         
         if let sheet = nav.presentationController as? UISheetPresentationController{
             sheet.detents = [.medium()]
@@ -238,7 +171,7 @@ extension ViewController:UITableViewDelegate{
     func makeSheetShare(index: Int,jadwalVars: JadwalVars){
         
         var title = "ini title"
-        var text = "GluCare"
+        let text = "GluCare"
         var content = "ini content"
         
         if(jadwalVars.type == "MED"){

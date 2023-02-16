@@ -9,7 +9,7 @@ import UIKit
 
 class EmptySpaceViewController: UIViewController {
     
-    let role = UserDefaults.standard.integer(forKey: "role")
+    let role = RoleHelper.instance.getRole()
     @IBOutlet weak var medBtn:UIButton!
     
     @IBAction func addMedBtn(_ sender: UIButton) {

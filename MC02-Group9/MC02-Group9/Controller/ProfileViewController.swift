@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var height = 56.0
     
     var isLogin = false
-    let role = UserDefaults.standard.integer(forKey: "role")
+    let role = RoleHelper.instance.getRole()
     var connected = false
     
     

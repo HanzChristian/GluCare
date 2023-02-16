@@ -13,7 +13,7 @@ class UsernameTVC: UITableViewCell {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var userEmailLbl: UILabel!
     
-    let role = UserDefaults.standard.integer(forKey: "role")
+    let role = RoleHelper.instance.getRole()
     
     override func awakeFromNib() {
         super.awakeFromNib()

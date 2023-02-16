@@ -156,7 +156,7 @@ class FirebaseManager {
                                 self!.name = nama
                                 self!.email = user.email!
                                 if(roleId == 0){
-                                    UserDefaults.standard.set(1, forKey: "role")
+                                    RoleHelper.instance.setRole(role: .Patient)
                                     self!.role = 1
                                     self!.loadFirebase({_,_,_ in
                                         
@@ -263,7 +263,7 @@ class FirebaseManager {
         var firstTime3 = false
         
         if var user = Auth.auth().currentUser?.uid {
-            let role = UserDefaults.standard.integer(forKey: "role")
+            let role = RoleHelper.instance.getRole()
             if role == 2 {
                 if let p = UserDefaults.standard.string(forKey: "patient"){
                     user = p

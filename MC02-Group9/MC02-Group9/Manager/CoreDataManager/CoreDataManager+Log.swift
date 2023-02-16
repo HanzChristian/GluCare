@@ -184,13 +184,6 @@ extension CoreDataManager{
     }
     
     func checkMedLogAvailable(logs: [Log], meds: [Medicine], dayselected: Date){
-        
-//        let role = UserDefaults.standard.integer(forKey: "role")
-//
-//        if role == 2{
-//            return
-//        }
-        
         for med in meds {
             
             let today = calendarManager.calendar.startOfDay(for: dayselected)

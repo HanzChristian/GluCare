@@ -86,8 +86,7 @@ extension OnBoardingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if Core.shared.isNewUser(){
-//            Core.shared.notNewUser()
-            UserDefaults.standard.set(1, forKey: "role")
+            RoleHelper.instance.setRole(role: .Patient)
         }
         else{
 

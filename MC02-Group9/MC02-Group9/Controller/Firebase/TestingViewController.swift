@@ -125,7 +125,7 @@ class TestingViewController: UIViewController {
                                 self!.role = roleId
                                 if(roleId == 0){
                                     self!.navigationItem.title = "Patient"
-                                    UserDefaults.standard.set(1, forKey: "role")
+                                    RoleHelper.instance.setRole(role: .Patient)
                                 }else{
                                     self!.navigationItem.title = "Caregiver"
                                     UserDefaults.standard.set(2

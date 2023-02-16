@@ -16,7 +16,7 @@ class InvitesTextTVC: UITableViewCell {
     @IBOutlet weak var inviteTextField: UITextField!
     
     let capsuleView = UIView()
-    let role = UserDefaults.standard.integer(forKey: "role")
+    let role = RoleHelper.instance.getRole()
     
     override func awakeFromNib() {
         super.awakeFromNib()

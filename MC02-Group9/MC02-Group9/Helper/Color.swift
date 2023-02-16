@@ -13,3 +13,22 @@ let magenta100 = #colorLiteral(red: 0.8689922094, green: 0.3549886644, blue: 0.6
 
 let lime25 = #colorLiteral(red: 0.9554088712, green: 0.97598809, blue: 0.8138026595, alpha: 1)
 let lime100 = #colorLiteral(red: 0.6196811795, green: 0.6650282145, blue: 0.2486066818, alpha: 1)
+
+extension UIColor {
+    
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}
