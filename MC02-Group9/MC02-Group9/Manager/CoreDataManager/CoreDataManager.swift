@@ -266,34 +266,6 @@ class CoreDataManager{
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
     }
     
-    func checkBG(daySelected: Date, indexPath: IndexPath){
-        //change daySelected to String
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_gb")
-        formatter.dateFormat = "dd MMM yyyy"
-        let tanggal = formatter.string(from: daySelected)
-        // print(tanggal)
-        
-        // Create String
-        let time = self.items![indexPath.row].time!
-        let hour = time[..<time.index(time.startIndex, offsetBy: 2)]
-        let minutes = time[time.index(time.startIndex, offsetBy: 3)...]
-        let string = ("\(tanggal) \(hour):\(minutes):00 +0700")
-        print(string)
-        // 29 October 2019 20:15:55 +0200
-
-        
-        // Create Date Formatter
-        let dateFormatter = DateFormatter()
-
-        // Set Date Format
-        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
-        // Convert String to Date
-        print("\(dateFormatter.date(from: string)!) ubah ke UTC")
-        
-        let bg_time = BG_Time(context: self.context)
-    }
-    
     func tepatWaktu(daySelected: Date, log: Log){
         //change daySelected to String
         let formatter = DateFormatter()
@@ -333,19 +305,6 @@ class CoreDataManager{
         //Firestore
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
     }
-    
-
-    
-//    func fetchUser(){
-//        do{
-//            let request = User.fetchRequest() as NSFetchRequest<User>
-//
-//            self.user = try context.fetch(request)
-//
-//        }catch{
-//
-//        }
-//    }
     
     func resetArray(){
         for i in undoIdx.indices{

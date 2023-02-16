@@ -91,7 +91,6 @@ class ViewController: UIViewController{
         else if(role == 2){
             
         }
-    
     }
     
     @objc func refresh() {
