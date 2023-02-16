@@ -170,6 +170,9 @@
 		F05B1C1A29273843009BA2CB /* GulaDarahStatistikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */; };
 		F05C71FF299DFB3A002F00E7 /* JadwalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C71FE299DFB3A002F00E7 /* JadwalVars.swift */; };
 		F05C7201299E01FD002F00E7 /* RoleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C7200299E01FD002F00E7 /* RoleHelper.swift */; };
+		F05C7203299E1C16002F00E7 /* ViewController+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C7202299E1C16002F00E7 /* ViewController+Sheet.swift */; };
+		F05C7205299E1F49002F00E7 /* ViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C7204299E1F49002F00E7 /* ViewController+Toast.swift */; };
+		F05C7207299E1F96002F00E7 /* ViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05C7206299E1F96002F00E7 /* ViewController+Helper.swift */; };
 		F0822A462932DE5C000AC907 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0822A452932DE5C000AC907 /* ProfileViewController.swift */; };
 		F09482AF295ABC11009C5598 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482AE295ABC11009C5598 /* Color.swift */; };
 		F09482B1295ABC28009C5598 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09482B0295ABC28009C5598 /* String+Ext.swift */; };
@@ -358,6 +361,9 @@
 		F05B1C1929273843009BA2CB /* GulaDarahStatistikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulaDarahStatistikViewController.swift; sourceTree = "<group>"; };
 		F05C71FE299DFB3A002F00E7 /* JadwalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadwalVars.swift; sourceTree = "<group>"; };
 		F05C7200299E01FD002F00E7 /* RoleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleHelper.swift; sourceTree = "<group>"; };
+		F05C7202299E1C16002F00E7 /* ViewController+Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Sheet.swift"; sourceTree = "<group>"; };
+		F05C7204299E1F49002F00E7 /* ViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Toast.swift"; sourceTree = "<group>"; };
+		F05C7206299E1F96002F00E7 /* ViewController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Helper.swift"; sourceTree = "<group>"; };
 		F0822A452932DE5C000AC907 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F09482AE295ABC11009C5598 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F09482B0295ABC28009C5598 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -428,8 +434,11 @@
 			isa = PBXGroup;
 			children = (
 				1F4EF3C328733A900056E693 /* ViewController.swift */,
+				F05C7206299E1F96002F00E7 /* ViewController+Helper.swift */,
 				1547608E290AAB1500D56835 /* ViewController+Delegate.swift */,
 				15476090290AAB4700D56835 /* ViewController+DataSource.swift */,
+				F05C7202299E1C16002F00E7 /* ViewController+Sheet.swift */,
+				F05C7204299E1F49002F00E7 /* ViewController+Toast.swift */,
 				15476092290AAB5F00D56835 /* ViewController+Rx.swift */,
 			);
 			path = ViewController;
@@ -1070,8 +1079,10 @@
 				2CA646C829430B80001E6438 /* HbA1CSTVC.swift in Sources */,
 				155F70A528ED274E003A844B /* TakeMedTableViewCell.swift in Sources */,
 				F04D4279287EC2250051C9F9 /* NetworkManager.swift in Sources */,
+				F05C7207299E1F96002F00E7 /* ViewController+Helper.swift in Sources */,
 				155F70B628ED47A8003A844B /* TakeBGTableViewCell.swift in Sources */,
 				150DB205294DFDF700253F2C /* CaregiverWorkspaaceTVC.swift in Sources */,
+				F05C7205299E1F49002F00E7 /* ViewController+Toast.swift in Sources */,
 				F02AE117292CF03000C8AF34 /* Medicine+CoreDataClass.swift in Sources */,
 				2C8A3D862907AE4600B0646A /* OnBoardingVC.swift in Sources */,
 				15476091290AAB4700D56835 /* ViewController+DataSource.swift in Sources */,
@@ -1094,6 +1105,7 @@
 				F0EEBF532979711D00BF853F /* CircleView.swift in Sources */,
 				F05616A828EED4BD00F61C4C /* CalendarHelper.swift in Sources */,
 				F0EEBF57297A860B00BF853F /* VerificationViewController.swift in Sources */,
+				F05C7203299E1C16002F00E7 /* ViewController+Sheet.swift in Sources */,
 				F0EEBF552979713D00BF853F /* OnBoardingBackView.swift in Sources */,
 				F09482B8295ACC4F009C5598 /* GulaDarahStatistikViewController+Fastis.swift in Sources */,
 				15C3792B2975081F00C7320E /* SnapShotListener.swift in Sources */,

@@ -10,10 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-
-
 extension ViewController{
-    
     
     func bindDataToTableView(){
        
@@ -24,8 +21,7 @@ extension ViewController{
             [weak self] index, element, cell in
             cell.idx = index
             cell.identity = element
-            
-            let user = self!.coreDataManager.user?[element.idx]
+
             
             if(element.type == "MED"){
                 self!.setupCellMed(cell: cell, element: element)
@@ -35,29 +31,20 @@ extension ViewController{
             
             cell.takeBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
-                    print("take btn on click rx \(cell.medLbl!.text) index: \(cell.idx)")
-                    
                     if(self!.role == 1){
                         let realIdx = cell.identity.idx
                         
                         if(cell.identity.type == "BG"){
                             self!.makeSheet(index: realIdx, jadwalVars: cell.identity)
                         }else{
-//                            print("click rx medicineName \(self!.coreDataManager.items![cell.identity.idx].medicine?.name) with index \(cell.identity.idx)")
-                            
                             self!.makeSheetMed(index: realIdx, jadwalVars: cell.identity)
-                            
                         }
                     }
                     else{
                         let realIdx = cell.identity.idx
                         self!.makeSheetShare(index: realIdx,jadwalVars: cell.identity)
                     }
-                    
-                    
                 }).disposed(by: cell.disposeBag)
-            
-            
         }.disposed(by: disposeBag)
         
         
@@ -108,37 +95,6 @@ extension ViewController{
                 }
             }
         }
-        
-//        for (i, log) in self.coreDataManager.logs!.enumerated() {
-//
-//            if(log.ref_id == bg!.bg_id && bg!.bg_type == 2){
-//                print("tes44 \(log.ref_id) \(bg?.bg_id)")
-//                print("tes44 check result \(log.bg_check_result)")
-//            }
-//
-//            if(log.bg_check_result != "-1" && log.ref_id! == bg!.bg_id){
-//                self.coreDataManager.undoIdx[element.idx] = i
-//                self.coreDataManager.keTake[element.idx] = 1
-//                if(log.action == "Skip"){
-//                    cell.tintColor = UIColor.red
-//                    cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
-//                    //                        cell.cellImgView.layer.opacity = 0.3
-//                    //                        cell.indicatorImgView.image = UIImage(named: "Subtract")
-//                }
-//                else if(log.action == "Take"){
-//                    cell.tintColor = UIColor.green
-//                    cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
-//
-//                    cell.freqLbl.text! += " (\(log.bg_check_result!)"
-//
-//                    if(bg?.bg_type == 0 || bg?.bg_type == 1){
-//                        cell.freqLbl.text! += " mg/dL)"
-//                    }else{
-//                        cell.freqLbl.text! += " %)"
-//                    }
-//                }
-//            }
-//        }
     }
     
     
@@ -158,8 +114,6 @@ extension ViewController{
             cell.freqLbl.text = "Waktu Spesifik"
         }
         cell.timeLbl.text = log.time
-        
-        print("here222 \(log.time)")
         cell.tintColor = UIColor.blue
         
         cell.cellBtn.setImage(UIImage(named:"Take"), for: UIControl.State.normal)
@@ -192,40 +146,6 @@ extension ViewController{
             
             cell.freqLbl.text = "Diminum pada \(date)"
         }
-        
-        
-//        for (index, log) in self.coreDataManager.logs!.enumerated() {
-//            if(log.time == cell.timeLbl.text && log.medicine_name == cell.medLbl.text && log.ref_id == medicine_time.medicine?.id){
-//
-////                print("tes33 \(log.ref_id) == \(medicine_time.medicine!.id)")
-//
-//                self.coreDataManager.undoIdx[element.idx] = index
-//                self.coreDataManager.keTake[element.idx] = 1
-//
-//                if(log.action == "Skip"){
-//                    cell.tintColor = UIColor.red
-//                    cell.cellBtn.setImage(UIImage(named:"Skipped"), for: UIControl.State.normal)
-//                }else{
-//                    // Create Date Formatter
-//                    let dateFormatter = DateFormatter()
-//
-//                    // Set Date/Time Style
-//                    dateFormatter.dateStyle = .long
-//                    dateFormatter.timeStyle = .short
-//                    dateFormatter.dateFormat = "HH:mm"
-//
-//                    // Convert Date to String
-//                    var date = dateFormatter.string(from: log.dateTake!)
-//
-//                    cell.tintColor = UIColor.green
-//                    cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
-//
-//                    cell.freqLbl.text = "Diminum pada \(date)"
-//                }
-//                break
-//            }
-//
-//        }
     }
     
     

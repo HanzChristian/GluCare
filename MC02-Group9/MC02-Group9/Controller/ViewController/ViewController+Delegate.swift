@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-
+// MARK: - UITableViewDelegate
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
@@ -16,199 +16,75 @@ extension ViewController:UITableViewDelegate{
     private func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    func showActionSheet(indexPath: IndexPath) {
-        let alert = UIAlertController(title: "", message: "Kapan kamu mengonsumsi obat ini?", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Tepat Waktu", style: .default, handler: { action in
-            //print("Tepat Waktu tapped")
-            
-            self.coreDataManager.tepatWaktu(daySelected: daySelected, log: self.coreDataManager.logs![indexPath.row])
-            
-            self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
-            
-            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
-            
-            self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
-        }))
-        
-        
-        alert.addAction(UIAlertAction(title: "Pilih Waktu", style: .default, handler: { action in
-            self.dismiss(animated: true, completion: {
-                let myDatePicker: UIDatePicker = UIDatePicker()
-                myDatePicker.preferredDatePickerStyle = .wheels
-                myDatePicker.timeZone = TimeZone.init(identifier: "ICT")
-                myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
-                let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
-                
-                alertController.view.addSubview(myDatePicker)
-                
-                let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                    
-                    self.coreDataManager.pilihWaktu(daySelected: daySelected, log: self.coreDataManager.logs![indexPath.row], myDatePicker: myDatePicker)
-                    
-                    self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
-                    
-                    self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
-                    
-                    self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
-                    
-                })
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alertController.addAction(selectAction)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true)
-                
-            })
-            
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Kembali", style: .cancel, handler: { action in
-        }))
-        
-        self.present(alert, animated: true) {
-            
-        }
-    }
-    
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
-    
-    func makeSheet(index: Int, jadwalVars: JadwalVars){
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        daySelected = totalSquares[indexPath.item]
         
-        let idx = index
-        var isSkipped = false
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        /*
+         Wednesday, Sep 12, 2018           --> EEEE, MMM d, yyyy
+         09/12/2018                        --> MM/dd/yyyy
+         09-12-2018 14:11                  --> MM-dd-yyyy HH:mm
+         Sep 12, 2:11 PM                   --> MMM d, h:mm a
+         September 2018                    --> MMMM yyyy
+         Sep 12, 2018                      --> MMM d, yyyy
+         Wed, 12 Sep 2018 14:11:54 +0000   --> E, d MMM yyyy HH:mm:ss Z
+         2018-09-12T14:11:54+0000          --> yyyy-MM-dd'T'HH:mm:ssZ
+         12.09.18                          --> dd.MM.yy
+         10:41:02.112                      --> HH:mm:ss.SSS
+         */
         
-        let log = coreDataManager.logs![jadwalVars.idx]
+        // change format date to str
+        let strDate = dateFormatter.string(from: daySelected)
+        let strToday = dateFormatter.string(from: Date())
         
+        // Start Of Day
+        let calendar = NSCalendar.current
         
-        if(log.bg_check_result != "-1"){
-            isSkipped = true
-        }
+        let from = calendar.startOfDay(for: Date())
+        let to = calendar.startOfDay(for: daySelected)
         
-        print("rx - \(index)")
+        // numberOfDaysBetween
+        let numberOfDays = Calendar.current.dateComponents([.day], from: from, to: to).day
         
-        let storyboard = UIStoryboard(name: "Take BG", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeBGViewController") as! TakeBGViewController
-        
-        let nav =  UINavigationController(rootViewController: vc)
-        if let sheet = nav.presentationController as? UISheetPresentationController{
-            sheet.detents = [.medium()]
-            sheet.preferredCornerRadius = 15
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            
-        }
-        vc.daySelected = daySelected
-        vc.log = log
-        
-        if(isSkipped){
-            log.bg_check_result = "-1"
-            do{
-                try coreDataManager.context.save()
-            }
-            catch {
-                
-            }
-            
-            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-            
-            return
-        }
-        print(isSkipped)
-        self.present(nav, animated: true,completion: nil)
-        
-    }
-    
-    func makeSheetMed(index: Int, jadwalVars: JadwalVars){
-        let log = coreDataManager.logs![jadwalVars.idx]
-        print("rx - \(index)")
-        
-        var isSkipped = false
-        
-        if(log.action != "Nil"){
-            isSkipped = true
-        }
-        
-        let storyboard = UIStoryboard(name: "Take Medication", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TakeMedicationViewController") as! TakeMedicationViewController
-        
-        let nav =  UINavigationController(rootViewController: vc)
-        
-        if let sheet = nav.presentationController as? UISheetPresentationController{
-            sheet.detents = [.medium()]
-            sheet.preferredCornerRadius = 30
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-        }
-        
-        vc.daySelected = daySelected
-        vc.log = log
-        
-        if(isSkipped){
-            log.action = "Nil"
-            do{
-                try coreDataManager.context.save()
-            }
-            catch {
-                
-            }
-            
-            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-            
-            return
-            
-        }
-        print(isSkipped)
-        self.present(nav, animated: true,completion: nil)
-        
-    }
-    
-    func makeSheetShare(index: Int,jadwalVars: JadwalVars){
-        
-        var title = "ini title"
-        let text = "GluCare"
-        var content = "ini content"
-        
-        if(jadwalVars.type == "MED"){
-            let med = coreDataManager.logs![jadwalVars.idx]
-            title = "\(med.medicine_name!)"
-            content = "Halo, jangan lupa untuk minum obat \(med.medicine_name!) ya pukul \(med.time!)."
-            
+        if(strDate == strToday)
+        {
+            self.navigationItem.title = "Hari ini"
+        }else if(numberOfDays == -1){
+            self.navigationItem.title = "Kemarin"
+        }else if(numberOfDays == 1){
+            self.navigationItem.title = "Besok"
         }else{
-            let bg = coreDataManager.logs![jadwalVars.idx]
-            if(bg.eat_time == 0){
-                title = "Gula Darah Puasa"
-                content = "Halo, jangan lupa untuk periksa gula darah puasa kamu ya jam \(bg.time!) hari ini."
-            }else if(bg.eat_time == 1){
-                title = "Gula Darah Sewaktu"
-                content = "Jangan lupa untuk memeriksa gula darah sewaktu kamu pukul \(bg.time!) hari ini, ya."
-            }else{
-                title = "HbA1c"
-                content = "Hai, kamu ada jadwal untuk memeriksa HbA1c di jam \(bg.time!) hari ini."
-            }
-            
+            self.navigationItem.title = strDate
         }
+        
+        collectionView.reloadData()
+        refresh()
+    }
+}
 
-        
-        // set up activity view controller
-        let textToShare: [Any] = [
-            MyActivityItemSource(content:content,title: title, text: text)
-        ]
-        
+// MARK: - UITabBarControllerDelegate
 
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        
-        // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
-    
+extension ViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+         let tabBarIndex = tabBarController.selectedIndex
+         if tabBarIndex == 0 {
+             DispatchQueue.main.async { [weak self] in
+                 self!.navigationItem.title = "Hari ini"
+                 daySelected = Date()
+                 self!.setWeekView()
+                 self!.refresh()
+                 self!.collectionView.scrollToItem(at: IndexPath(row: self!.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
+             }
+         }
     }
 }

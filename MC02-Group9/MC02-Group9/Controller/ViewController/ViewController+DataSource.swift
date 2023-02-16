@@ -8,136 +8,67 @@
 import Foundation
 import UIKit
 
+// MARK: - UICollectionViewDataSource
 
-extension ViewController{
-    
-    func checkAvailableInitLog(daySelected: Date){
-        
-        if coreDataManager.fromLogin == true{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
-                self!.coreDataManager.fromLogin = false
-            }
-            return
-        }
-        
-        self.coreDataManager.fetchMeds()
-        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        coreDataManager.checkMedLogAvailable(logs: coreDataManager.logs!, meds: coreDataManager.medicines!, dayselected: daySelected)
-        
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        print("dapong \(totalSquares.count)")
+        return totalSquares.count
     }
     
-    func mergeTV(){
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
+
+        let date = totalSquares[indexPath.item]
+        cell.dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
+        let dayOfWeek:String = CalendarHelper().dayOfWeek(date: date)
+        print("my substring \(dayOfWeek)")
+        let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 1)
         
-        if coreDataManager.logs == nil{
-            coreDataManager.logs = [Log]()
+        let blue = UIColor(red: 30/255, green: 132/255, blue: 198/255, alpha: 1)
+        
+        if dayOfWeek == "Monday" {
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Tuesday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Wednesday"{
+            cell.dayOfWeek.text = "R"
+        }else if dayOfWeek == "Thursday"{
+            cell.dayOfWeek.text = "K"
+        }else if dayOfWeek == "Friday"{
+            cell.dayOfWeek.text = "J"
+        }else if dayOfWeek == "Saturday"{
+            cell.dayOfWeek.text = "S"
+        }else if dayOfWeek == "Sunday"{
+            cell.dayOfWeek.text = "M"
         }
-        if coreDataManager.bg == nil{
-            coreDataManager.bg = [BG]()
-        }
+        cell.dayOfWeek.textColor = blue
         
-        self.coreDataManager.fetchBG()
-        checkAvailableInitLog(daySelected: daySelected)
-        coreDataManager.checkBGLogAvailable(logs: coreDataManager.logs!, bgs: coreDataManager.bg!, daySelected: daySelected)
-        jadwalVars.removeAll()
-        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+        cell.dayOfMonth.backgroundColor = UIColor.white
+        cell.dayOfMonth.layer.cornerRadius = 32/2
+        cell.dayOfMonth.layer.masksToBounds = true
         
-        guard let logs = self.coreDataManager.logs else{
-            return
-        }
-        
-        var idx = 0
-        for log in logs {
-            if log.type == 0{
-                jadwalVars.append(JadwalVars(type: "MED", idx: idx))
-            }else{
-                jadwalVars.append(JadwalVars(type: "BG", idx: idx))
-            }
+        if(date == daySelected)
+        {
+            cell.backgroundColor = blue
+            cell.dayOfWeek.textColor = UIColor.white
+            cell.layer.cornerRadius = 25
             
-            idx += 1
+            cell.dayOfMonth.layer.borderWidth = 0
         }
-
-        
-        coreDataManager.jadwal.accept(jadwalVars)
-    }
-    
-    func getBgIdx(bG:BG) -> Int{
-        var i = 0
-        for bg in coreDataManager.bg!{
-            if(bg == bG){
-                return i
+        else
+        {
+            cell.backgroundColor = UIColor.white
+            cell.dayOfMonth.backgroundColor = UIColor.white
+            
+            if(calendarManager.calendar.isDate(date, inSameDayAs: Date())){
+                cell.dayOfMonth.layer.borderWidth = 2
+                cell.dayOfMonth.layer.borderColor = CGColor(red: 211/255, green: 63/255, blue: 154/255, alpha: 1)
+            }else{
+                cell.dayOfMonth.layer.borderWidth = 0
             }
-            i += 1
         }
-        return -1
+        return cell
     }
-    
-    
-    
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //
-    ////        if(dataType == "BG"){
-    ////            return self.coreDataManager.bgTime?.count ?? 0
-    ////        }else{
-    ////            return self.coreDataManager.items?.count ?? 0
-    ////        }
-    //        return jadwalVars.count ?? 0
-    //
-    //    }
-    
-    func showToastSkip(message : String, font: UIFont) {
-        let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-        
-        toastLabel.backgroundColor = UIColor(rgb: 0xDE6FB3)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 8;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
-    
-    func showToastTake(message : String, font: UIFont) {
-        let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-        
-        toastLabel.backgroundColor = UIColor(rgb: 0x56A3D4)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 8;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
-    
-    func showToastUndo(message : String, font: UIFont) {
-        let toastLabel = UILabel(frame: CGRect(x: 16, y: 690, width: 358, height: 48))
-        toastLabel.backgroundColor = .gray
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 8;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 5.0, delay: 0.2, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
-    
 }
