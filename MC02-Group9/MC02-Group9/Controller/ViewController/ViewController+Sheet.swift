@@ -17,8 +17,6 @@ extension ViewController {
             self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
             
             self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
-            
-            self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
         }))
         
         
@@ -39,8 +37,6 @@ extension ViewController {
                     self.showToastTake(message: "Obat berhasil dikonsumsi.", font: .systemFont(ofSize: 12.0))
                     
                     self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
-                    
-                    self.streakManager.validateNewStreak(daySelected: daySelected, tableView: self.tableView)
                     
                 })
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

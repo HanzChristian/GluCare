@@ -17,11 +17,7 @@ class CoreDataManager{
     
     //Rx
     var jadwal = BehaviorRelay<[JadwalVars]>(value: [])
-    
-    //attribute
-    var undoIdx = Array(0...100)
-    var keTake = Array(0...100)
-    
+        
     // from login
     var fromLogin = false
     
@@ -33,9 +29,6 @@ class CoreDataManager{
     var bg:[BG]?
     var bgTime:[BG_Time]?
     var user:[User]?
-    
-    //takemed attribute
-    var medicineSelectedIdx = 0
     
     //context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -305,63 +298,48 @@ class CoreDataManager{
         //Firestore
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.updateLogFirestore(id: log.log_id!, newLog: log)
     }
-    
-    func resetArray(){
-        for i in undoIdx.indices{
-            undoIdx[i] = -1
-        }
-    }
-    
-    func resetKeTake(){
-        for i in keTake.indices{
-            keTake[i] = -1
-        }
-    }
-    
+
     func removeAllLogMedAfter(med: Medicine, date: Date){
 
-            var logToRemove = [Log]()
-            let request = Log.fetchRequest() as NSFetchRequest<Log>
+        var logToRemove = [Log]()
+        let request = Log.fetchRequest() as NSFetchRequest<Log>
 
-            // Get the current calendar with local time zone
-            // Get today's beginning & end
-            var dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
-            dateFrom =  calendarHelper.addDays(date: dateFrom, days: 1)
+        // Get the current calendar with local time zone
+        // Get today's beginning & end
+        var dateFrom = calendarManager.calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
+        dateFrom =  calendarHelper.addDays(date: dateFrom, days: 1)
 
-            // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
+        // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
 
-            // Set predicate as date being today's date
+        // Set predicate as date being today's date
 
-            let fromPredicate = NSPredicate(format: "%K > %@",#keyPath(Log.date), dateFrom as NSDate)
-            let refPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), med.id! as String)
+        let fromPredicate = NSPredicate(format: "%K > %@",#keyPath(Log.date), dateFrom as NSDate)
+        let refPredicate = NSPredicate(format: "%K == %@",#keyPath(Log.ref_id), med.id! as String)
 
-            let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, refPredicate])
+        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, refPredicate])
 
-            request.predicate = datePredicate
+        request.predicate = datePredicate
 
-            do{
-                logToRemove = try context.fetch(request)
-            }catch{
+        do{
+            logToRemove = try context.fetch(request)
+        }catch{
 
-            }
-
-            print("logtoremove : Date \(date)")
-        
-            var idToRemove = [String]()
-
-            for log in logToRemove {
-                print("logtoremove \(log.log_id!) \(log.date!) \(log.type)")
-                idToRemove.append(log.log_id!)
-                removeLogBG(logToRemove: log)
-            }
-        
-            for remove in idToRemove {
-                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: remove)
-            }
-        
-        
-            
         }
+
+        print("logtoremove : Date \(date)")
+    
+        var idToRemove = [String]()
+
+        for log in logToRemove {
+            print("logtoremove \(log.log_id!) \(log.date!) \(log.type)")
+            idToRemove.append(log.log_id!)
+            removeLogBG(logToRemove: log)
+        }
+    
+        for remove in idToRemove {
+            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeLogToFirestore(id: remove)
+        }
+    }
     
     
     func removeAllLogBGAfter(bg: BG, date: Date){

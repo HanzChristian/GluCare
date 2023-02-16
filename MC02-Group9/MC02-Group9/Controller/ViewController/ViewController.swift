@@ -18,7 +18,6 @@ class ViewController: UIViewController{
     //  MARK: - Properties
     let calendarManager = CalendarManager.calendarManager
     let coreDataManager = CoreDataManager.coreDataManager
-    let streakManager = StreakManager.streakManager
     let firebaseManager = FirebaseManager.firebaseManager
     
     let disposeBag = DisposeBag()
@@ -63,13 +62,10 @@ class ViewController: UIViewController{
         self.tabBarController?.delegate = self
         
         setupViews()
-        setCellsView()
-        setWeekView()
+        setupCellsView()
+        setupWeekView()
         
-        coreDataManager.resetKeTake()
-        streakManager.checkStreakFail()
         requestNotificationUserPermission()
-        coreDataManager.resetArray()
         
         FirebaseManager.firebaseManager.getAccountInfo()
         getRole()
@@ -94,8 +90,8 @@ class ViewController: UIViewController{
     }
     
     @objc func refresh() {
-        coreDataManager.resetKeTake()
-        coreDataManager.resetArray()
+//        coreDataManager.resetKeTake()
+//        coreDataManager.resetArray()
         coreDataManager.fetchMedicine(tableView: tableView)
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         coreDataManager.fetchBG()

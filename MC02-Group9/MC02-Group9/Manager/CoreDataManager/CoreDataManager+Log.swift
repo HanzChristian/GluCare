@@ -140,7 +140,6 @@ extension CoreDataManager{
     
     func fetchLogs(tableView: UITableView, daySelected: Date){
         do{
-            resetArray()
             logs?.removeAll()
             let request = Log.fetchRequest() as NSFetchRequest<Log>
             

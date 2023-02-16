@@ -81,7 +81,7 @@ extension ViewController: UITabBarControllerDelegate {
              DispatchQueue.main.async { [weak self] in
                  self!.navigationItem.title = "Hari ini"
                  daySelected = Date()
-                 self!.setWeekView()
+                 self!.setupWeekView()
                  self!.refresh()
                  self!.collectionView.scrollToItem(at: IndexPath(row: self!.indexSelected, section: 0), at: .centeredHorizontally, animated: false)
              }

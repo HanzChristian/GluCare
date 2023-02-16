@@ -146,7 +146,6 @@ class TakeBGViewController: UIViewController , UITableViewDelegate, UITableViewD
         
         if(indexPath.section == 0){
             if(indexPath.row == 0){
-                print("ini selected idx \(coreDataManager.medicineSelectedIdx)")
 
                 cellBGName = tblViewBG.dequeueReusableCell(withIdentifier: "bgNameTableViewCell", for: indexPath) as! BGNameTableViewCell
 

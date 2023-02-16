@@ -132,7 +132,6 @@
 		6EDAF415285878900099213F /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAF414285878900099213F /* RoutinesViewController.swift */; };
 		F02A60D428698FA100441781 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D328698FA100441781 /* CalendarManager.swift */; };
 		F02A60D6286996A500441781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D5286996A500441781 /* CoreDataManager.swift */; };
-		F02A60D82869A31100441781 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02A60D72869A31100441781 /* StreakManager.swift */; };
 		F02AE113292CD02B00C8AF34 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02AE111292CD02B00C8AF34 /* Log+CoreDataClass.swift */; };
 		F02AE114292CD02B00C8AF34 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02AE112292CD02B00C8AF34 /* Log+CoreDataProperties.swift */; };
 		F02AE117292CF03000C8AF34 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02AE115292CF03000C8AF34 /* Medicine+CoreDataClass.swift */; };
@@ -323,7 +322,6 @@
 		B9515898A981067C365B3647 /* Pods-MC02-Group9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MC02-Group9.release.xcconfig"; path = "Target Support Files/Pods-MC02-Group9/Pods-MC02-Group9.release.xcconfig"; sourceTree = "<group>"; };
 		F02A60D328698FA100441781 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F02A60D5286996A500441781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		F02A60D72869A31100441781 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
 		F02AE111292CD02B00C8AF34 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F02AE112292CD02B00C8AF34 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F02AE115292CF03000C8AF34 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -641,7 +639,6 @@
 			children = (
 				F0DFE2BF291E23D000993B0D /* CoreDataManager */,
 				F02A60D328698FA100441781 /* CalendarManager.swift */,
-				F02A60D72869A31100441781 /* StreakManager.swift */,
 				F04D4278287EC2250051C9F9 /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -1123,7 +1120,6 @@
 				F0DFE2BE291E23B900993B0D /* CoreDataManager+Med.swift in Sources */,
 				155F70BE28EEA9E9003A844B /* TakeBGViewController.swift in Sources */,
 				F033B15C285B36C900CD4941 /* Medicine_Time+CoreDataProperties.swift in Sources */,
-				F02A60D82869A31100441781 /* StreakManager.swift in Sources */,
 				15BDF6E52851DACE008E0388 /* ViewControllerTVC.swift in Sources */,
 				15CAFD0628F546F3009A7686 /* BGSubFrequencyTableViewCell.swift in Sources */,
 				1F8813A228562171009994F9 /* FrequencyPickerTableViewCell.swift in Sources */,

@@ -174,7 +174,7 @@ extension ViewController{
         emptyVC.enableHidden()
     }
         
-    func setCellsView(){
+    func setupCellsView(){
         let width = (collectionView.frame.size.width - 2) / 8
         let height = (collectionView.frame.size.height - 2)
         
@@ -187,7 +187,7 @@ extension ViewController{
         flowLayout.collectionView?.showsVerticalScrollIndicator = false
     }
     
-    func setWeekView(){
+    func setupWeekView(){
         totalSquares.removeAll()
         var current = CalendarHelper().addDays(date: daySelected, days: -100)
         let nextSunday = CalendarHelper().addDays(date: daySelected, days: 100)
