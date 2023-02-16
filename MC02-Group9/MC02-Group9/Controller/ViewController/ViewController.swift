@@ -40,8 +40,6 @@ class ViewController: UIViewController{
     var indexSelected:Int = 0
     var flowLayout = UICollectionViewFlowLayout()
     
-
-    
     override open var shouldAutorotate: Bool { return false }
         
     //  MARK: - Lifecycle
@@ -90,8 +88,6 @@ class ViewController: UIViewController{
     }
     
     @objc func refresh() {
-//        coreDataManager.resetKeTake()
-//        coreDataManager.resetArray()
         coreDataManager.fetchMedicine(tableView: tableView)
         coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
         coreDataManager.fetchBG()
