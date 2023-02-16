@@ -139,7 +139,7 @@ extension ViewController{
             dateFormatter.dateFormat = "HH:mm"
             
             // Convert Date to String
-            var date = dateFormatter.string(from: log.dateTake!)
+            let date = dateFormatter.string(from: log.dateTake!)
             
             cell.tintColor = UIColor.green
             cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
