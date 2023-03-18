@@ -21,6 +21,7 @@ class UsernameTVC: UITableViewCell {
         // Initialization code
         
         
+        print(".")
         userNameLbl.text = FirebaseManager.firebaseManager.name
         if(role == 1){
             userEmailLbl.text = "Pasien Diabetes"
