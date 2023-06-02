@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var isLogin = false
     let role = RoleHelper.instance.getRole()
     var connected = false
+    var isConnected = UserDefaults.standard.bool(forKey: "isConnected")
     
     
     func alreadyLogin(){
@@ -51,6 +52,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        print("ini adalah status isconnectednya  = \(isConnected), ini adalah status connectednya = \(connected)")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -101,7 +104,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(instantConnected), name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
+//
         NotificationCenter.default.addObserver(self, selector: #selector(connectedUser), name: NSNotification.Name(rawValue: "connected"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(disconnectedUser), name: NSNotification.Name(rawValue: "disconnected"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
         
@@ -110,11 +117,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         alreadyLogin()
     }
     
-    
-    @objc func connectedUser(){
+    @objc func instantConnected(){
         connected = !connected
         self.refresh()
+        print("ini adalah status isconnectednya  = \(isConnected), ini adalah status connectednya = \(connected)")
+    }
+    
+    @objc func connectedUser(){
+        UserDefaults.standard.set(true, forKey: "isConnected")
+        self.refresh()
         print("MASUK CONNECTED")
+        print("ini adalah status connectednya  = \(isConnected)")
+    }
+    
+    @objc func disconnectedUser(){
+        UserDefaults.standard.set(false, forKey: "isConnected")
+        self.refresh()
+        print("ini adalah status connectednya  = \(isConnected)")
     }
     
     @objc func refresh(){
@@ -188,7 +207,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countCaregiver = listCaregiver.caregiverList.count
-        print("jumlah caregivernya adalah \(countCaregiver) dan status koneknya adalah \(connected)")
+        print("jumlah caregivernya adalah \(countCaregiver) dan status koneknya adalah \(connected), dan status isconnected adalah \(isConnected), dan role = \(role)")
         
         
         if(isLogin == false){
@@ -269,8 +288,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let cell = tableView.dequeueReusableCell(withIdentifier: "invitesTextTVC", for: indexPath) as! InvitesTextTVC
                     return cell
                 } else {
-                    print("ini rolenya \(role) dan ini statusnya \(connected)")
-                    if(role == 2 && connected == true){
+                    print("ini rolenya \(role) dan ini statusnya \(isConnected)")
+                    if(role == 2 && isConnected == true || role == 2 && connected == true){
                         let cell = tableView.dequeueReusableCell(withIdentifier: "caregiverWorkspaaceTVC", for: indexPath) as! CaregiverWorkspaaceTVC
                         return cell
                     }else{
@@ -349,13 +368,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
             else if (indexPath.section == 2) {
-                if (indexPath.row == countCaregiver) {
+                if(indexPath.row == countCaregiver){
+                    print("countcaregiver = \(countCaregiver) dan indexpath = \(indexPath.row)")
                     height = 180
-                } else if (indexPath.row != countCaregiver) {
-                    height = 56
-                }
-                if (role == 2 && connected == true){
-                    height = 150
+                }else if(indexPath.row != countCaregiver){
+                    if((role == 2 && isConnected == true) || (role == 2 && connected == true)){
+                        height = 150
+                    }else{
+                        height = 56
+                    }
                 }
             } else {
                 height = 56.0

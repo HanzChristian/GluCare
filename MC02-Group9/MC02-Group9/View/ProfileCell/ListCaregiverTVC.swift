@@ -57,6 +57,8 @@ class ListCaregiverTVC: UITableViewCell {
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
             self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
         }))
         
         var rootViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -78,6 +80,7 @@ class ListCaregiverTVC: UITableViewCell {
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
             self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
         }))
         
         var rootViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -102,7 +105,7 @@ class ListCaregiverTVC: UITableViewCell {
             self.filterDeleteCaregiver(newList: self.listCaregiverFirebase)
     
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removeCaregiver"), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
         }))
         
         var rootViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -160,6 +163,7 @@ class ListCaregiverTVC: UITableViewCell {
                                 
                                 
                                 FirebaseManager.firebaseManager.getAccountInfo()
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
                                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
                             }
                         }
@@ -168,7 +172,6 @@ class ListCaregiverTVC: UITableViewCell {
                 }
             
         }
-        
     }
     
     var temp: listCaregiver?

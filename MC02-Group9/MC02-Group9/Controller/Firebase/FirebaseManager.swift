@@ -18,6 +18,7 @@ class FirebaseManager {
     var name = "Not Loggin (Name)"
     var email = "Not Loggin (Email)"
     var role = -1
+    var isConnected = UserDefaults.standard.bool(forKey: "isConnected")
     
     private init(){
         
@@ -210,7 +211,14 @@ class FirebaseManager {
                                 
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
-                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
+//                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    if(self!.isConnected == false){
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    }else if(self!.isConnected == true){
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
+                                    }
+                  
                                 }
                             }
                         }
@@ -245,7 +253,13 @@ class FirebaseManager {
                                    
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"),object: nil)
                                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshProfile"), object: nil)
-                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
+//                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    if(self!.isConnected == false){
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
+                                    }else if(self!.isConnected == true){
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
+                                    }
                                 }
                             }
                         }

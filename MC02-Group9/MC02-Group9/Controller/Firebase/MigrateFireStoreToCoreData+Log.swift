@@ -91,6 +91,7 @@ extension MigrateFirestoreToCoreData {
                         log.action != fireLog.action                    ||
                         log.eat_time != fireLog.eat_time
                     {
+                        print("aku caregiver dengan datetake = \(log.dateTake!) dengan firelog = \(fireLog.dateTake)")
                         needUpdateLog = true
                         tempLog = fireLog
                     }
@@ -103,6 +104,7 @@ extension MigrateFirestoreToCoreData {
             }
             
             if needUpdateLog == true{
+                print("updet log = \(tempLog!.dateTake)")
                 coreDataManager.updateLog(log: log, logFire: tempLog!)
             }
             

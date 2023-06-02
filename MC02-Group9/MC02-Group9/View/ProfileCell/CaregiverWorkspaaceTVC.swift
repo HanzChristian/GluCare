@@ -57,8 +57,8 @@ class CaregiverWorkspaaceTVC: UITableViewCell {
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.removeConnection()
             listCaregiver.caregiverList.removeAll()
             UserDefaults.standard.removeObject(forKey: "patient")
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "connected"), object: nil)
-            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "disconnected"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "instantConnected"), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "passJadwal"), object: nil)
             
             

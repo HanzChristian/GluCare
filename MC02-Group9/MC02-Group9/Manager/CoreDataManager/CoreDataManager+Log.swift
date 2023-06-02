@@ -33,6 +33,7 @@ extension CoreDataManager{
     func updateLog(log: Log, logFire:LogFire){
         log.bg_check_result = logFire.bg_check_result
         log.action = logFire.action
+        log.dateTake = logFire.dateTake
         
         do{
             try self.context.save()

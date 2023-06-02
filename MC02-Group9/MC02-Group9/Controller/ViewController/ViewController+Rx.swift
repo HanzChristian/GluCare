@@ -140,11 +140,17 @@ extension ViewController{
             
             // Convert Date to String
             let date = dateFormatter.string(from: log.dateTake!)
+            let dates = dateFormatter.string(from: log.date!)
             
             cell.tintColor = UIColor.green
             cell.cellBtn.setImage(UIImage(named:"Taken"), for: UIControl.State.normal)
             
-            cell.freqLbl.text = "Diminum pada \(date)"
+            if(role == 2){
+                cell.freqLbl.text = "Diminum pada \(date)"
+                print("Ini adalah waktunya \(date)")
+            }else{
+                cell.freqLbl.text = "Diminum pada \(date)"
+            }
         }
     }
     
