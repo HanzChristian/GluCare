@@ -629,21 +629,25 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                             if(medicine.eat_time == 0){
                                 content.title = "Yuk Minum Obat!"
                                 content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)!"
+                                content.sound = UNNotificationSound.default
                                 newDate.addTimeInterval(-1800)
                             }
                             else if(medicine.eat_time == 1){
                                 content.title = "Yuk Minum Obat!"
                                 content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Jangan lupa makan setelah itu!"
+                                content.sound = UNNotificationSound.default
                                 newDate.addTimeInterval(-1800)
                             }
-                            else if(medicine.eat_time == 1){
+                            else if(medicine.eat_time == 2){
                                 content.title = "Yuk Minum Obat!"
                                 content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Yuk makan sekarang!"
+                                content.sound = UNNotificationSound.default
                                 newDate.addTimeInterval(-3600)
                             }
                             else{
                                 content.title = "Yuk Minum Obat!"
                                 content.body = "Jangan lupa minum obatmu pukul \(med_time.time!)! Jangan lupa disertakan dengan makan!"
+                                content.sound = UNNotificationSound.default
                                 newDate.addTimeInterval(-1800)
                             }
                             
@@ -652,18 +656,22 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                             if(medicine.eat_time == 0){
                                 content2.title = "Yuk Minum Obatmu Sekarang!"
                                 content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                                content2.sound = UNNotificationSound.default
                             }
                             else if(medicine.eat_time == 1){
                                 content2.title = "Yuk Minum Obatmu Sekarang!"
                                 content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                                content2.sound = UNNotificationSound.default
                             }
                             else if(medicine.eat_time == 2){
                                 content2.title = "Yuk Minum Obatmu Sekarang!"
                                 content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                                content2.sound = UNNotificationSound.default
                             }
                             else{
                                 content2.title = "Yuk Minum Obatmu Sekarang!"
                                 content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                                content2.sound = UNNotificationSound.default
                             }
                             
                             
@@ -708,7 +716,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
             
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+//            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
             MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
             
@@ -808,21 +816,25 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         if(medicine.eat_time == 0){
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)!"
+                            content.sound = UNNotificationSound.default
                             newDate.addTimeInterval(-1800)
                         }
                         else if(medicine.eat_time == 1){
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa makan setelah itu!"
+                            content.sound = UNNotificationSound.default
                             newDate.addTimeInterval(-1800)
                         }
-                        else if(medicine.eat_time == 1){
+                        else if(medicine.eat_time == 2){
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Yuk makan sekarang!"
+                            content.sound = UNNotificationSound.default
                             newDate.addTimeInterval(-3600)
                         }
                         else{
                             content.title = "Yuk Minum Obat!"
                             content.body = "Jangan lupa minum obatmu pukul \(medicine_time.time!)! Jangan lupa disertakan dengan makan!"
+                            content.sound = UNNotificationSound.default
                             newDate.addTimeInterval(-1800)
                         }
                         
@@ -831,18 +843,22 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
                         if(medicine.eat_time == 0){
                             content2.title = "Yuk Minum Obatmu Sekarang!"
                             content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            content2.sound = UNNotificationSound.default
                         }
                         else if(medicine.eat_time == 1){
                             content2.title = "Yuk Minum Obatmu Sekarang!"
                             content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            content2.sound = UNNotificationSound.default
                         }
                         else if(medicine.eat_time == 2){
                             content2.title = "Yuk Minum Obatmu Sekarang!"
                             content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            content2.sound = UNNotificationSound.default
                         }
                         else{
                             content2.title = "Yuk Minum Obatmu Sekarang!"
                             content2.body = "Jangan lupa untuk minum obatmu sekarang ya!"
+                            content2.sound = UNNotificationSound.default
                         }
                         
                         
@@ -896,7 +912,7 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         //           }
         //           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
         //        }
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewMedToFirestore(medicine: medicine)
         do{
