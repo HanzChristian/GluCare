@@ -217,28 +217,30 @@ class CoreDataManager{
     
     func medLog(medicine_name:String,date: Date, time:String,bg_id:String, eat_time: Int16){
         
-        var tempDate = date
-        for _ in 1...14{
-            let log = makeLogInit(ref_id: bg_id)
-            log.medicine_name = medicine_name
-            log.date = tempDate
-            log.time = time
-            log.action = "Nil" //First time
-            log.type = 0 //med
-            log.eat_time = eat_time
-            
-            do{
-                try self.context.save()
-            }catch{
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            var tempDate = date
+            for _ in 1...135{
+                let log = self.makeLogInit(ref_id: bg_id)
+                log.medicine_name = medicine_name
+                log.date = tempDate
+                log.time = time
+                log.action = "Nil" //First time
+                log.type = 0 //med
+                log.eat_time = eat_time
                 
+                do{
+                    try self.context.save()
+                }catch{
+                    
+                }
+                //Firestore
+                MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
+                
+                tempDate = self.calendarHelper.addDays(date: tempDate, days: 1)
             }
-            //Firestore
-            MigrateFirestoreToCoreData.migrateFirestoreToCoreData.addNewLogToFirestore(log: log)
-            
-            tempDate = calendarHelper.addDays(date: tempDate, days: 1)
         }
-        
- 
+
     }
     
     func bgLog(bgDate:Date,bgTime:String,bg_id:String, bg_type: Int16){

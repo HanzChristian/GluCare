@@ -33,16 +33,16 @@ extension ViewController{
     }
     
     func checkAvailableInitLog(daySelected: Date){
-        if coreDataManager.fromLogin == true{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
-                self!.coreDataManager.fromLogin = false
-            }
-            return
-        }
-        
-        self.coreDataManager.fetchMeds()
-        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        coreDataManager.checkMedLogAvailable(logs: coreDataManager.logs!, meds: coreDataManager.medicines!, dayselected: daySelected)
+//        if coreDataManager.fromLogin == true{
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
+//                self!.coreDataManager.fromLogin = false
+//            }
+//            return
+//        }
+//
+//        self.coreDataManager.fetchMeds()
+//        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+//        coreDataManager.checkMedLogAvailable(logs: coreDataManager.logs!, meds: coreDataManager.medicines!, dayselected: daySelected)
     }
     
     func mergeTV(){

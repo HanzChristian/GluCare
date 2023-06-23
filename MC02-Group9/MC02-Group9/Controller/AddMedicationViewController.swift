@@ -924,8 +924,12 @@ class AddMedicationViewController: UIViewController, UITableViewDelegate, UITabl
         //        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: uuidString)
         
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         
+        self.coreDataManager.fetchMeds()
+        self.coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
+        self.coreDataManager.checkMedLogAvailable(logs: coreDataManager.logs!, meds: coreDataManager.medicines!, dayselected: daySelected)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         dismiss(animated: true, completion: nil)
         
     }

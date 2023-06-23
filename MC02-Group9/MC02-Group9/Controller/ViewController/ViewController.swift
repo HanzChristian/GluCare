@@ -88,17 +88,24 @@ class ViewController: UIViewController{
     }
     
     @objc func refresh() {
-        coreDataManager.fetchMedicine(tableView: tableView)
-        coreDataManager.fetchLogs(tableView: tableView, daySelected: daySelected)
-        coreDataManager.fetchBG()
-        coreDataManager.fetchBGTime(daySelected: daySelected)
         
-        if(coreDataManager.logs!.count > 0 ){
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.coreDataManager.fetchMedicine(tableView: self.tableView)
+            self.coreDataManager.fetchLogs(tableView: self.tableView, daySelected: daySelected)
+            self.coreDataManager.fetchBG()
+            self.coreDataManager.fetchBGTime(daySelected: daySelected)
+            
+            if(self.coreDataManager.logs!.count > 0 ){
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidden"), object: nil)
+            }
+            else{
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
+            }
+            self.mergeTV()
         }
-        else{
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unhidden"), object: nil)
-        }
-        mergeTV()
+        
+        
     }
 }
