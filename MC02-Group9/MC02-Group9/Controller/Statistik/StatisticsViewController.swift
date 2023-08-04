@@ -201,6 +201,9 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
             return 0.0
         }
         resultBG = Double((round(((totalBG) / (countBG))*100)) / 100.0)
+        if (resultBG == -1) {
+            return 0.0
+        }
         
         return resultBG
     }
@@ -223,6 +226,10 @@ class StatisticsViewController: UIViewController, UITableViewDelegate, UITableVi
             return 0.0
         }
         resultHbA1C = Double((round(((totalHbA1C) / (countHbA1c))*100)) / 100.0)
+        if (resultHbA1C == -1) {
+            return 0.0
+        }
+        
         return resultHbA1C
     }
     
