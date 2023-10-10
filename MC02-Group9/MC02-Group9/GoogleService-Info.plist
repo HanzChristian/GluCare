@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:184613963404:ios:57b8c1f2516621cc29dda9</string>
+	<key>DATABASE_URL</key>
+	<string>https://glucare-33ea0-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>
