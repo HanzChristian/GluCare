@@ -9,83 +9,65 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import RxSwift
 
 class LoginViewController: UIViewController {
-    
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var msgLabel: UILabel!
-    @IBOutlet weak var loginBtn: UIButton!
-    
-    @IBAction func masukBtn(_ sender: Any) {
-        if let email = emailTextField.text, let pass = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: pass){ [weak self] authResult, error in
-                
-                if let e = error {
-                    self!.msgLabel.text = "\(e.localizedDescription)"
-                }else{
-//                    self!.msgLabel.text = "login berhasil"
-                    // make segue
-                    CoreDataManager.coreDataManager.resetAllCoreData()
-                    FirebaseManager.firebaseManager.getAccountInfo()
-//                    self!.performSegue(withIdentifier: "masuk", sender: self)
+
+  private let navigator = DefaultOnboardingNavigator()
+  private let disposeBag = DisposeBag()
+
+  @IBOutlet weak var emailTextField: UITextField!
+  @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var msgLabel: UILabel!
+  @IBOutlet weak var loginBtn: UIButton!
+  @IBAction func masukBtn(_ sender: Any) {
+    if let email = emailTextField.text, let pass = passwordTextField.text {
+      Auth.auth().signIn(withEmail: email, password: pass){ [weak self] authResult, error in
+        guard let self = self else { return }
+        if let e = error {
+          self.msgLabel.text = "\(e.localizedDescription)"
+        }else{
+          guard let user = Auth.auth().currentUser else{
+            return
+          }
+          user.reload{ [weak self] error in
+            guard let self = self else { return }
+            switch user.isEmailVerified {
+            case true:
+              AuthService.shared.fetchUser(uid: user.uid).subscribe(onNext: { user in
+                if user.caregiver == false && user.patient == false {
+                  // MARK: Handle User that already verified but dont have role
+                  self.navigator.navigateToRoleManagementFromLogin(from: self)
+                }else {
+                  // MARK: Handle User that completely registered
+                  
                 }
+              }).disposed(by: disposeBag)
+              break
+            case false:
+              // MARK: Handle User that already register but email is not verified
+              self.navigator.navigateToVerificationFromLogin(from: self)
             }
+          }
         }
+      }
     }
-    
-    func alreadyLogin(){
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                
-                // User is signed in. Show home screen
-                FirebaseManager.firebaseManager.getAccountInfo()
-//                DispatchQueue.main.asyncAfter(deadline: .now()){
-//                    self.performSegue(withIdentifier: "masuk", sender: self)
-//                    print("Already Login")
-//                }
-                
-            }
-        }
-    }
-    
-    @objc func goToMain(){
-        CoreDataManager.coreDataManager.fromLogin = true
-        self.performSegue(withIdentifier: "masuk", sender: self)
-        print("Already Login")
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
-        loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
-        listCaregiver.caregiverList.removeAll()
-        alreadyLogin()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.goToMain), name: NSNotification.Name(rawValue: "finishGetAccountInfo"), object: nil)
-    }
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+  }
 
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
+  @objc func goToMain(){
+    CoreDataManager.coreDataManager.fromLogin = true
+    self.performSegue(withIdentifier: "masuk", sender: self)
+    print("Already Login")
+  }
 
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
 
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    hideKeyboardWhenTappedAround()
+    loginBtn.tintColor = hexStringToUIColor(hex: "1E84C6")
+    listCaregiver.caregiverList.removeAll()
 
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
+    NotificationCenter.default.addObserver(self, selector: #selector(self.goToMain), name: NSNotification.Name(rawValue: "finishGetAccountInfo"), object: nil)
+  }
+
 }

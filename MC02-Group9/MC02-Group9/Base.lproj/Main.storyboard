@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1Z-4T-PEy">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,12 +14,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" title="Jadwal Obat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UBT-jF-w6S">
-                                <rect key="frame" x="0.0" y="143" width="390" height="97"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="97"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="G6E-hP-0JZ"/>
@@ -70,7 +70,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-rF-G8m">
                                 <rect key="frame" x="0.0" y="240" width="390" height="521"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -100,7 +100,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="USQ-P3-NFF">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Nt2-9V-138">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZYh-xo-hI3">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -416,7 +416,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXA-C3-Unf">
-                                <rect key="frame" x="18" y="749.66666666666663" width="354" height="20.333333333333371"/>
+                                <rect key="frame" x="18" y="783.66666666666663" width="354" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
@@ -440,6 +440,7 @@
                             <constraint firstItem="gvW-CB-5l1" firstAttribute="top" secondItem="S6K-DW-RRh" secondAttribute="bottom" constant="50" id="tVL-il-Ker"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Whp-qD-nRx"/>
                     <connections>
                         <outlet property="errorLabel" destination="dXA-C3-Unf" id="rfg-BS-97m"/>
                         <outlet property="resendButton" destination="gvW-CB-5l1" id="cJs-4D-1f2"/>
@@ -455,17 +456,17 @@
             <objects>
                 <viewController storyboardIdentifier="roleManagementVC" id="oSz-iB-UEh" customClass="RoleManagementVC" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D7y-lu-U4U">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamu adalah ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-9R-uwq">
-                                <rect key="frame" x="20" y="87" width="191" height="33"/>
+                                <rect key="frame" x="20" y="40" width="191" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1b-Bg-wtz">
-                                <rect key="frame" x="20" y="138" width="350" height="146"/>
+                                <rect key="frame" x="20" y="91" width="350" height="146"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="card-patient"/>
@@ -474,7 +475,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="if1-IE-f4m">
-                                <rect key="frame" x="20" y="316" width="350" height="146"/>
+                                <rect key="frame" x="20" y="269" width="350" height="146"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="card-caregiver">
@@ -485,10 +486,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="7Yt-qG-Po3">
-                                <rect key="frame" x="20" y="658" width="24" height="24"/>
+                                <rect key="frame" x="20" y="715" width="24" height="24"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztu-wd-G9r">
-                                <rect key="frame" x="20" y="710" width="350" height="57"/>
+                                <rect key="frame" x="20" y="767" width="350" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="u8M-RA-9uR"/>
                                 </constraints>
@@ -502,7 +503,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peranmu tidak dapat diubah setelah konfirmasi" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-LG-0gz">
-                                <rect key="frame" x="64" y="649.33333333333337" width="306" height="40.666666666666629"/>
+                                <rect key="frame" x="64" y="706.33333333333337" width="306" height="40.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="E0t-uu-qAP"/>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="zrT-BF-iOm"/>
@@ -545,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgs-U4-hS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="-1319"/>
+            <point key="canvasLocation" x="874" y="-1909"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="mKz-HX-BJs">
@@ -583,7 +584,7 @@
                     <tabBarItem key="tabBarItem" title="Jadwal" image="med" id="PFC-jO-WrZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Pfv-ef-OCP">
-                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
@@ -909,7 +910,7 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KmU-Z3-mmk" customClass="RegisterViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vla-bd-teA">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="jane@doe.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWV-hW-ij5">
@@ -1075,7 +1076,7 @@
             <objects>
                 <viewController id="4JW-Xf-aQ8" customClass="LoginViewController" customModule="MC02_Group9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lFk-C2-LdH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK4-Ip-RO7">
@@ -1155,11 +1156,13 @@
                         <outlet property="msgLabel" destination="xtH-NI-Wvn" id="Yyb-nF-ILk"/>
                         <outlet property="passwordTextField" destination="F9y-Wn-PLq" id="BoW-6L-ENA"/>
                         <segue destination="k0n-Oj-qNT" kind="presentation" identifier="masuk" modalPresentationStyle="fullScreen" id="KoF-Bm-9Lp"/>
+                        <segue destination="gBx-aM-cUj" kind="presentation" identifier="FromLoginToVerify" modalPresentationStyle="fullScreen" id="Lma-Ax-n2h"/>
+                        <segue destination="oSz-iB-UEh" kind="presentation" identifier="FromLoginToRoleManagement" modalPresentationStyle="fullScreen" id="hNL-O4-p5Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9t-tw-TA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="-901"/>
+            <point key="canvasLocation" x="928" y="-1103"/>
         </scene>
         <!--Testing View Controller-->
         <scene sceneID="21M-f9-9nL">
@@ -1321,9 +1324,9 @@
                                 </constraints>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-xi-IZE" userLabel="Daftar Rutinitas Table View">
-                                <rect key="frame" x="0.0" y="143" width="390" height="618"/>
+                                <rect key="frame" x="0.0" y="96" width="390" height="699"/>
                                 <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="ljq-jQ-qY1">
-                                    <rect key="frame" x="0.0" y="168" width="390" height="485"/>
+                                    <rect key="frame" x="0.0" y="168.33333015441895" width="390" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <connections>
                                         <segue destination="S5d-OC-bWY" kind="embed" id="g1v-sq-xlw"/>
@@ -1445,13 +1448,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-g7-uqZ">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4N-9I-Def" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="145.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="134"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="ntA-Ci-Asg">
-                                                <rect key="frame" x="2" y="80.000000000000014" width="386" height="185.33333333333337"/>
+                                                <rect key="frame" x="2" y="80" width="386" height="174"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -1462,10 +1465,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-r5-t2r" userLabel="MiddleView">
-                                        <rect key="frame" x="98" y="167.33333333333331" width="194" height="145.33333333333331"/>
+                                        <rect key="frame" x="98" y="156" width="194" height="134"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum ada rutinitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKF-cb-Jnv">
-                                                <rect key="frame" x="20.333333333333329" y="62.666666666666671" width="153.33333333333337" height="142.66666666666663"/>
+                                                <rect key="frame" x="20.333333333333329" y="62.666666666666643" width="153.33333333333337" height="131.33333333333337"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1479,7 +1482,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lU-0t-cp3" userLabel="BottomView">
-                                        <rect key="frame" x="61.666666666666657" y="334.66666666666669" width="267" height="145.33333333333331"/>
+                                        <rect key="frame" x="61.666666666666657" y="312" width="267" height="134"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtx-hO-W5Y">
                                                 <rect key="frame" x="10" y="10" width="247" height="52"/>
@@ -1594,7 +1597,7 @@
                                                     <rect key="frame" x="12" y="6" width="350" height="54"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="act-a5-s5i">
-                                                            <rect key="frame" x="219.66666666666663" y="8" width="122.33333333333334" height="38"/>
+                                                            <rect key="frame" x="219.66666666666666" y="8" width="122.33333333333334" height="38"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1684,7 +1687,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTt-JE-7RT">
-                                <rect key="frame" x="24" y="161" width="342" height="67"/>
+                                <rect key="frame" x="24" y="114" width="342" height="67"/>
                                 <string key="text">Kamu telah mengambil langkah awal yang baru dalam menjalani pengelolaan diabetes.
 
 Ini adalah target kamu dalam mengelola diabetes:</string>
@@ -1693,13 +1696,13 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Noah," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP2-8f-r2Z">
-                                <rect key="frame" x="24" y="95" width="342" height="34"/>
+                                <rect key="frame" x="24" y="48" width="342" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1F-Ce-1gk" customClass="OnBoardingBackView" customModule="MC02_Group9" customModuleProvider="target">
-                                <rect key="frame" x="24" y="256" width="342" height="87"/>
+                                <rect key="frame" x="24" y="209" width="342" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kegiatan konsumsi obat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8h-Sf-W5q">
                                         <rect key="frame" x="15" y="15" width="312" height="21"/>
@@ -1727,7 +1730,7 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaB-uf-F1s" customClass="OnBoardingBackView" customModule="MC02_Group9" customModuleProvider="target">
-                                <rect key="frame" x="24" y="361" width="342" height="87"/>
+                                <rect key="frame" x="24" y="314" width="342" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menjaga Gula Puasa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brj-W8-Yfb">
                                         <rect key="frame" x="15" y="15" width="312" height="21"/>
@@ -1755,7 +1758,7 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpH-6C-3FE" customClass="OnBoardingBackView" customModule="MC02_Group9" customModuleProvider="target">
-                                <rect key="frame" x="24" y="466" width="342" height="87"/>
+                                <rect key="frame" x="24" y="419" width="342" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menjaga tingkat HbA1C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRC-PX-xOZ">
                                         <rect key="frame" x="15" y="15" width="312" height="21"/>
@@ -1783,7 +1786,7 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tahan tombol di bawah ini sebagai bentuk komitmen kamu untuk mencapai tujuan!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKC-Wa-UhG">
-                                <rect key="frame" x="24" y="585" width="342" height="33.666666666666629"/>
+                                <rect key="frame" x="24" y="538" width="342" height="33.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1820,13 +1823,15 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIw-KN-n2t" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1529" y="-1637"/>
+            <point key="canvasLocation" x="1708" y="-1909"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="NRd-8N-AW9"/>
         <segue reference="FrA-CF-765"/>
         <segue reference="Itf-Nf-aZh"/>
+        <segue reference="hNL-O4-p5Q"/>
+        <segue reference="Lma-Ax-n2h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>
@@ -1846,25 +1851,25 @@ Ini adalah target kamu dalam mengelola diabetes:</string>
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

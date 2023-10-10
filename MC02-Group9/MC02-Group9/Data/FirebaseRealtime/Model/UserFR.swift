@@ -8,22 +8,24 @@
 import Foundation
 import FirebaseAuth
 
-struct UserFR {
-  var fullname: String
+struct AuthCredentials {
   let email: String
-  var bio: String
-  let uid: String
-  var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }
-  var profileImageUrl: String
-  var balance: Int
+  let password: String
+  let fullname: String
+}
+
+struct UserFR {
+  var uid: String
+  var fullname: String
+  var email: String
+  var caregiver: Bool
+  var patient: Bool
 
   init(uid:String, dictionary: [String: AnyObject]){
     self.uid = uid
-
     self.fullname = dictionary["fullname"] as? String ?? ""
     self.email = dictionary["email"] as? String ?? ""
-    self.bio = dictionary["bio"] as? String ?? ""
-    self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-    self.balance = dictionary["balance"] as? Int ?? 0
+    self.caregiver = dictionary["caregiver"] as? Bool ?? false
+    self.patient = dictionary["patient"] as? Bool ?? false
   }
 }
