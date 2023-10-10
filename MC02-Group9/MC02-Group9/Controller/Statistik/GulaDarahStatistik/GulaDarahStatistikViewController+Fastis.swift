@@ -16,8 +16,16 @@ extension GulaDarahStatistikViewController{
         fastisController.maximumDate = Date()
         fastisController.allowToChooseNilDate = true
         fastisController.shortcuts = [.today, .lastWeek, .lastMonth]
-        fastisController.doneHandler = { newValue in
-            self.currentValue = newValue
+
+        fastisController.dismissHandler = { [weak self] action in
+          guard let self = self else { return }
+            switch action {
+            case .done(let newValue):
+              self.currentValue = newValue
+            case .cancel:
+               break
+
+            }
         }
         fastisController.present(above: self)
     }
